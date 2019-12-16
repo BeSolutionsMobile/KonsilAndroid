@@ -3,6 +3,10 @@
     <color name="colorPrimary">#008577</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
+    <color name="color1">#E0EBEE</color>
+    <color name="color2">#057493</color>
+    <color name="color3">#323232</color>
+    <color name="color4">#C43224</color>
 
     <!--
         Check Android Theme colors for color reference:
