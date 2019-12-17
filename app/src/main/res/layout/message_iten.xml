@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="horizontal"
+    android:layout_width="match_parent"
+    android:layout_height="@dimen/_60sdp">
+    <android.support.v7.widget.CardView
+        android:layout_width="@dimen/_50sdp"
+        android:layout_height="@dimen/_50sdp"
+        app:cardCornerRadius="@dimen/_25sdp"
+        android:padding="@dimen/_20sdp"
+        app:cardBackgroundColor="@color/color2"
+        android:layout_gravity="center"
+        >
+        <android.support.v7.widget.CardView
+            android:layout_width="@dimen/_48sdp"
+            android:layout_height="@dimen/_48sdp"
+            app:cardCornerRadius="@dimen/_24sdp"
+            app:cardBackgroundColor="@color/color1"
+            android:layout_gravity="center"
+            >
+            <ImageView
+                android:layout_width="@dimen/_35sdp"
+                android:layout_height="@dimen/_35sdp"
+                android:src="@drawable/doctor_one"
+                android:layout_gravity="center"
+                />
+        </android.support.v7.widget.CardView>
+    </android.support.v7.widget.CardView>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:paddingLeft="@dimen/_10sdp"
+        android:gravity="center|left">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Dr mahmoud"
+            android:id="@+id/name"
+            android:textSize="@dimen/_12ssp"
+            android:textColor="@color/color2"
+            />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Please send medical files"
+            android:textSize="@dimen/_11ssp"
+            android:textColor="@color/color3"
+            android:id="@+id/desc"
+            />
+    </LinearLayout>
+</LinearLayout>

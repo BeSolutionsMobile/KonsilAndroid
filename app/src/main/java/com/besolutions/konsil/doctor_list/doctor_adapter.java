@@ -1,16 +1,19 @@
 package com.besolutions.konsil.doctor_list;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
 import com.besolutions.konsil.R;
+import com.besolutions.konsil.doctor_info.doctor_info;
 
 import java.util.ArrayList;
 
@@ -36,6 +39,12 @@ public class doctor_adapter extends RecyclerView.Adapter<doctor_adapter.doctor_h
     viewHolder.name.setText(mylist.get(i).getName().toString());
     viewHolder.degree.setText(mylist.get(i).getDegree().toString());
     viewHolder.rating.setRating(mylist.get(i).getRate());
+    viewHolder.item.setOnClickListener(new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            context.startActivity(new Intent(context, doctor_info.class));
+        }
+    });
     }
 
     @Override
@@ -46,12 +55,14 @@ public class doctor_adapter extends RecyclerView.Adapter<doctor_adapter.doctor_h
         TextView name,degree;
         ImageView doctor_img;
         RatingBar rating;
+        LinearLayout item;
         public doctor_holder(@NonNull View itemView) {
             super(itemView);
             name=(TextView)itemView.findViewById(R.id.name);
             degree=(TextView)itemView.findViewById(R.id.degree);
             doctor_img=(ImageView)itemView.findViewById(R.id.doctor_img);
             rating=(RatingBar)itemView.findViewById(R.id.ratings);
+            item=(LinearLayout)itemView.findViewById(R.id.item);
         }
     }
 

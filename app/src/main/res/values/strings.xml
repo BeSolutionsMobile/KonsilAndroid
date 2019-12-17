@@ -17,4 +17,21 @@
     <string name="degree">Degree</string>
     <string name="submit">Submit</string>
     <string name="finger">finger</string>
+    <string name="patients">Patients</string>
+    <string name="request_consulation">Request Consulation</string>
+    <string name="requst_online_converstaion">Requst Online Converstaion</string>
+    <string name="consulation_title">Consulation title</string>
+    <string name="consualtion_details">Consualtion details</string>
+    <string name="upload_photos_of_the_medical_consulation">Upload photos of the medical Consulation</string>
+    <string name="complete_the_request">Complete the request</string>
+    <string name="msg">Messages</string>
+    <string name="final_report">Final report</string>
+    <string name="files">Files</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="send">Send</string>
+    <string name="request_online_converstaion">Request online converstaion</string>
+    <string name="make_a_complaint">Make a complaint</string>
+    <string name="there_are_all_uploaded_file">there are all uploaded file</string>
 </resources>

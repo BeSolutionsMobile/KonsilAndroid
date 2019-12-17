@@ -113,6 +113,7 @@
     <orderEntry type="library" name="Gradle: com.parse.bolts:bolts-tasks:1.4.0@jar" level="project" />
     <orderEntry type="library" name="Gradle: com.facebook.android:facebook-login:4.40.0@aar" level="project" />
     <orderEntry type="library" name="Gradle: co.infinum:goldfinger:1.1.1@aar" level="project" />
+    <orderEntry type="library" name="Gradle: com.github.ceryle:RadioRealButton:v2.1.1@aar" level="project" />
     <orderEntry type="library" name="Gradle: com.facebook.android:facebook-common:4.40.0@aar" level="project" />
     <orderEntry type="library" name="Gradle: com.google.android.gms:play-services:11.0.4@aar" level="project" />
     <orderEntry type="library" name="Gradle: com.google.android.gms:play-services-cast-framework:11.0.4@aar" level="project" />

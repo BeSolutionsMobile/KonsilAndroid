@@ -11,12 +11,15 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".doctor_list.doctor_list"></activity>
-        <activity android:name=".sign_up.sign_up" />
-        <activity android:name=".fingerprint.fingerprint">
+        <activity android:name=".Consulation_result.consulation_result">
 
         </activity>
-        <activity android:name=".login.login" >
+        <activity android:name=".Consulation_request.consulation_request" />
+        <activity android:name=".doctor_info.doctor_info" />
+        <activity android:name=".doctor_list.doctor_list" />
+        <activity android:name=".sign_up.sign_up" />
+        <activity android:name=".fingerprint.fingerprint" />
+        <activity android:name=".login.login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -25,9 +28,7 @@
         </activity>
         <activity
             android:name=".MainActivity"
-            android:label="@string/app_name">
-
-        </activity>
+            android:label="@string/app_name" />
     </application>
 
 </manifest>
