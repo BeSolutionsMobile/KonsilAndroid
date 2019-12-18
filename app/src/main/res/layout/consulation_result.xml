@@ -24,7 +24,6 @@
         app:rrbg_animateTexts_enter="overshoot"
         app:rrbg_animateTexts_enterDuration="500"
         app:rrbg_backgroundColor="@color/color3"
-        app:rrbg_bottomLineSize="2dp"
         app:rrbg_checkedPosition="2"
         app:rrbg_dividerColor="@color/cardview_light_background"
         app:rrbg_dividerPadding="0dp"

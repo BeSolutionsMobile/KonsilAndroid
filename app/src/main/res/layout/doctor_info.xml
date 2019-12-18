@@ -194,6 +194,7 @@
               android:layout_weight=".475"
               android:layout_width="0dp"
               android:paddingLeft="@dimen/_3sdp"
+              android:id="@+id/online_res"
               android:paddingRight="@dimen/_3sdp"
               android:text="@string/requst_online_converstaion"
               android:textAllCaps="false"
