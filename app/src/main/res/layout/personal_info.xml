@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".personal_info.personal_info">
+    tools:context=".scenarios.scenario_personal_info.Controller.personal_info">
 
     <include layout="@layout/toolbar_default" />
     <LinearLayout

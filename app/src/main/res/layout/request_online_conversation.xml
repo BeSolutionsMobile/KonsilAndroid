@@ -4,7 +4,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".request_online_conversation.request_online_conversation">
+    tools:context=".scenarios.scenario_request_online_conversation.Controller.request_online_conversation">
    <LinearLayout
        android:layout_width="match_parent"
        android:layout_height="match_parent"

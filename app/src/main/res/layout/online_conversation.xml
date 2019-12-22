@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".online_conversation.online_conversation">
+    tools:context=".scenarios.scenario_online_conversation.Controller.online_conversation">
   <include layout="@layout/toolbar_default"/>
     <co.ceryle.radiorealbutton.RadioRealButtonGroup
         android:id="@+id/radioRealButtonGroup_1"

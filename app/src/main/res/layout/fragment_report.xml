@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Consulation_result.fragment_report.fragment_report">
+    tools:context=".scenarios.scenario_Consulation_result.Controller.Consulation_result.fragment_report.Controller.fragment_report">
 
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"

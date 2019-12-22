@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/pro_bg"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    tools:context=".doctor_info.doctor_info">
+    tools:context=".scenarios.scenario_doctor_info.Controller.doctor_info">
   <LinearLayout
       android:layout_width="match_parent"
       android:layout_height="match_parent"

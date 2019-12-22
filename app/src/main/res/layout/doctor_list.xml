@@ -7,7 +7,7 @@
     android:orientation="vertical"
     android:id="@+id/drawer"
     android:background="@color/color1"
-    tools:context=".doctor_list.doctor_list">
+    tools:context=".scenarios.scenario_doctor_list.Controller.doctor_list">
  <LinearLayout
      android:layout_width="match_parent"
      android:layout_height="match_parent"

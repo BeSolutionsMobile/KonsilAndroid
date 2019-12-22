@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".my_consultations.my_consultations">
+    tools:context=".scenarios.scenario_my_consultations.Controlller.my_consultations">
  <include layout="@layout/toolbar_default"/>
  <android.support.v7.widget.RecyclerView
      android:layout_width="match_parent"

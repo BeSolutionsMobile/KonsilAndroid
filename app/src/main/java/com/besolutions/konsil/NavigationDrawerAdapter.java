@@ -56,7 +56,7 @@ public class NavigationDrawerAdapter extends RecyclerView.Adapter<NavigationDraw
     public void onBindViewHolder(NavigationDrawerAdapter.ViewHolder viewHolder, int i) {
         viewHolder.textView.setText(mData.get(i).getText());
         viewHolder.textView.setCompoundDrawablesWithIntrinsicBounds(mData.get(i).getDrawable(), null, null, null);
-        if (mSelectedPosition == i) {
+        if (mSelectedPosition == 0) {
             if (mSelectedView != null) {
                 mSelectedView.setSelected(false);
             }

@@ -7,7 +7,7 @@
     android:orientation="vertical"
     android:gravity="center|top"
     android:background="@color/color1"
-    tools:context=".sign_up.sign_up">
+    tools:context=".scenarios.scenario_sign_up.Controller.sign_up">
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">

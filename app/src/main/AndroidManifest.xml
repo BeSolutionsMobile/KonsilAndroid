@@ -11,27 +11,31 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".personal_info.personal_info">
-            <intent-filter>
+        <activity android:name=".scenarios.scenario_mian_page.Controller.main_screen">
+
+        </activity>
+        <activity android:name=".scenarios.scenario_splash_screen.Controller.splash_screen" >
+        <intent-filter>
             <action android:name="android.intent.action.MAIN" />
 
             <category android:name="android.intent.category.LAUNCHER" />
         </intent-filter>
         </activity>
-        <activity android:name=".my_consultations.my_consultations">
+        <activity android:name=".scenarios.scenario_personal_info.Controller.personal_info">
 
         </activity>
-        <activity android:name=".compalint_details.compalint_details" />
-        <activity android:name=".faq.faq"></activity>
-        <activity android:name=".online_conversation.online_conversation" />
-        <activity android:name=".request_online_conversation.request_online_conversation" />
-        <activity android:name=".Consulation_result.consulation_result" />
-        <activity android:name=".Consulation_request.consulation_request" />
-        <activity android:name=".doctor_info.doctor_info" />
-        <activity android:name=".doctor_list.doctor_list" />
-        <activity android:name=".sign_up.sign_up" />
-        <activity android:name=".fingerprint.fingerprint" />
-        <activity android:name=".login.login" />
+        <activity android:name=".scenarios.scenario_my_consultations.Controlller.my_consultations" />
+        <activity android:name=".scenarios.scenario_compalint_details.compalint_details.Controller.compalint_details" />
+        <activity android:name=".scenarios.scenarios_faq.controller.faq" />
+        <activity android:name=".scenarios.scenario_online_conversation.Controller.online_conversation" />
+        <activity android:name=".scenarios.scenario_request_online_conversation.Controller.request_online_conversation" />
+        <activity android:name=".scenarios.scenario_Consulation_result.Controller.Consulation_result.consulation_result" />
+        <activity android:name=".scenarios.scenario_Consulation_request.Controller.consulation_request" />
+        <activity android:name=".scenarios.scenario_doctor_info.Controller.doctor_info" />
+        <activity android:name=".scenarios.scenario_doctor_list.Controller.doctor_list" />
+        <activity android:name=".scenarios.scenario_sign_up.Controller.sign_up" />
+        <activity android:name=".scenarios.secnario_fingerprint.Controller.fingerprint" />
+        <activity android:name=".scenarios.scenario_login.Controller.login" />
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name" />
