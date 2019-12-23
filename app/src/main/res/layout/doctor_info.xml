@@ -10,7 +10,9 @@
       android:layout_width="match_parent"
       android:layout_height="match_parent"
       android:orientation="vertical">
-      <include layout="@layout/toolbar_default"/>
+      <include layout="@layout/toolbar_default"
+          android:id="@+id/toolbar_actionbar"
+          />
       <android.support.v7.widget.CardView
           android:layout_width="@dimen/_86sdp"
           android:layout_height="@dimen/_86sdp"

@@ -7,7 +7,9 @@
     android:layoutDirection="ltr"
     android:orientation="vertical"
     tools:context=".scenarios.scenarios_faq.controller.faq">
-    <include layout="@layout/toolbar_default"/>
+    <include layout="@layout/toolbar_default"
+        android:id="@+id/toolbar_actionbar"
+        />
     <android.support.v7.widget.RecyclerView
         android:id="@+id/recycle"
         android:layout_width="match_parent"

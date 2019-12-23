@@ -3,6 +3,8 @@ package com.besolutions.konsil.scenarios.scenario_my_consultations.Controlller;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
+import android.widget.TextView;
 
 import com.besolutions.konsil.R;
 import com.besolutions.konsil.scenarios.scenario_my_consultations.pattern.my_consultations_adapter;
@@ -18,6 +20,9 @@ public class my_consultations extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.my_consultations);
+
+        set_toolbar_name();
+
         get_data();
     }
 
@@ -32,5 +37,14 @@ public class my_consultations extends AppCompatActivity {
         my_consitutauin_list=(RecyclerView)findViewById(R.id.my_consitutauin_list);
         utils_adapter utils_adapter=new utils_adapter();
         utils_adapter.Adapter(my_consitutauin_list,new my_consultations_adapter(this,arrayList),this);
+    }
+
+    public void set_toolbar_name()
+    {
+        Toolbar mToolbar = (Toolbar) findViewById(R.id.toolbar_actionbar);
+        setSupportActionBar(mToolbar);
+
+        TextView title=(TextView)findViewById(R.id.title);
+        title.setText("My Consultations");
     }
 }

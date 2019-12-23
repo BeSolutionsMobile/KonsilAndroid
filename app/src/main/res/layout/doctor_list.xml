@@ -56,22 +56,4 @@
              />
      </LinearLayout>
  </LinearLayout>
-
-    <com.besolutions.konsil.ScrimInsetsFrameLayout
-        android:id="@+id/scrimInsetsFrameLayout"
-        android:layout_width="@dimen/navigation_drawer_width"
-        android:layout_height="match_parent"
-        android:layout_gravity="start"
-        android:elevation="10dp"
-        android:fitsSystemWindows="true"
-        app:insetForeground="#4000">
-
-        <fragment
-            android:id="@+id/fragment_drawer"
-            android:name="com.besolutions.konsil.NavigationDrawerFragment"
-            android:layout_width="@dimen/navigation_drawer_width"
-            android:layout_height="match_parent"
-            android:fitsSystemWindows="true"
-            app:layout="@layout/fragment_navigation_drawer" />
-    </com.besolutions.konsil.ScrimInsetsFrameLayout>
 </android.support.v4.widget.DrawerLayout>

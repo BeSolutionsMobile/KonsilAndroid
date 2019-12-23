@@ -2,6 +2,8 @@ package com.besolutions.konsil.scenarios.scenario_online_conversation.Controller
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
+import android.widget.TextView;
 
 import com.besolutions.konsil.R;
 
@@ -38,5 +40,16 @@ public class online_conversation extends AppCompatActivity {
                 }
             }
         });
+
+        set_toolbar_name();
+    }
+
+    public void set_toolbar_name()
+    {
+        Toolbar mToolbar = (Toolbar) findViewById(R.id.toolbar_actionbar);
+        setSupportActionBar(mToolbar);
+
+        TextView title=(TextView)findViewById(R.id.title);
+        title.setText("Online Conversation Details");
     }
 }

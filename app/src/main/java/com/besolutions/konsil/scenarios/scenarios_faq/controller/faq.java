@@ -4,6 +4,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
+import android.widget.TextView;
 
 import com.besolutions.konsil.R;
 import com.besolutions.konsil.scenarios.scenarios_faq.pattern.expandAdapter;
@@ -18,6 +20,8 @@ public class faq extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.faq);
+
+        set_toolbar_name();
 
         RecyclerView recyclerViewexpand=(RecyclerView)findViewById(R.id.recycle);
 
@@ -69,5 +73,14 @@ public class faq extends AppCompatActivity {
         RecyclerView.Adapter adapterr=new expandAdapter(mylsits,faq.this);
         recyclerViewexpand.setAdapter(adapterr);
 
+    }
+
+    public void set_toolbar_name()
+    {
+        Toolbar mToolbar = (Toolbar) findViewById(R.id.toolbar_actionbar);
+        setSupportActionBar(mToolbar);
+
+        TextView title=(TextView)findViewById(R.id.title);
+        title.setText("FAQ");
     }
 }

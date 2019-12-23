@@ -3,21 +3,23 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/_120sdp"
+    android:gravity="center"
+    android:layout_height="@dimen/_150sdp"
     android:background="@drawable/navgation_bg">
     <android.support.v7.widget.CardView
-        android:layout_width="@dimen/_70sdp"
-        android:layout_height="@dimen/_70sdp"
-        app:cardCornerRadius="@dimen/_35sdp"
+        android:layout_width="@dimen/_60sdp"
+        android:layout_height="@dimen/_60sdp"
+        app:cardCornerRadius="@dimen/_30sdp"
         android:padding="@dimen/_20sdp"
+        android:id="@+id/card_bg"
         android:layout_marginTop="@dimen/_15sdp"
-        app:cardBackgroundColor="@android:color/white"
+        android:background="@drawable/img_header_bg"
         android:layout_gravity="center"
         >
         <android.support.v7.widget.CardView
-            android:layout_width="@dimen/_68sdp"
-            android:layout_height="@dimen/_68sdp"
-            app:cardCornerRadius="@dimen/_34sdp"
+            android:layout_width="@dimen/_54sdp"
+            android:layout_height="@dimen/_54sdp"
+            app:cardCornerRadius="@dimen/_27sdp"
             app:cardBackgroundColor="@color/color1"
             android:layout_gravity="center"
             >

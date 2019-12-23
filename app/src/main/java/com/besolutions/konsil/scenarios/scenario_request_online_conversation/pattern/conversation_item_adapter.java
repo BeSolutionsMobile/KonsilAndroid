@@ -6,7 +6,9 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CompoundButton;
 import android.widget.RadioButton;
+import android.widget.Toast;
 
 import com.besolutions.konsil.R;
 import com.besolutions.konsil.scenarios.scenario_request_online_conversation.model.conversation_reserv_list;
@@ -31,8 +33,51 @@ public class conversation_item_adapter extends RecyclerView.Adapter<conversation
     }
 
     @Override
-    public void onBindViewHolder(@NonNull conversation_holder viewHolder, int i) {
-       viewHolder.radio_txt.setText(mylist.get(i).getResev_txt());
+    public void onBindViewHolder(@NonNull final conversation_holder viewHolder, final int position) {
+
+       viewHolder.radio_txt.setText(mylist.get(position).getResev_txt());
+       viewHolder.radio_txt.setChecked(mylist.get(position).getStatus());
+
+       viewHolder.radio_txt.setOnClickListener(new View.OnClickListener() {
+           @Override
+           public void onClick(View v) {
+
+               for (int index=0;index<mylist.size();index++)
+               {
+
+                   if(index!=position)
+                   {
+                       Toast.makeText(context, ""+position, Toast.LENGTH_SHORT).show();
+                       mylist.get(index).setStatus(false);
+                       viewHolder.radio_txt.setChecked(mylist.get(index).getStatus());
+                   }else
+                       {
+                           Toast.makeText(context, "ccczz"+position, Toast.LENGTH_SHORT).show();
+
+                           mylist.get(index).setStatus(true);
+                           viewHolder.radio_txt.setChecked(mylist.get(index).getStatus());
+                       }
+               }
+
+
+               /*mylist.get(i).setStatus(true);
+               for (int index=0;index<mylist.size();index++)
+               {
+
+                   if(index!=i)
+                   {
+                       mylist.get(index).setStatus(false);
+                       viewHolder.radio_txt.setChecked(false);
+                   }
+                   viewHolder.radio_txt.setChecked(true);
+
+               }*/
+
+
+           }
+       });
+
+
     }
 
     @Override

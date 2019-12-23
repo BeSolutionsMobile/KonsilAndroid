@@ -18,6 +18,7 @@ import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v7.widget.CardView;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
@@ -65,7 +66,7 @@ public class NavigationDrawerFragment extends Fragment implements NavigationDraw
     private int mCurrentSelectedPosition = 0;
     private boolean mFromSavedInstanceState;
     private boolean mUserLearnedDrawer;
-
+    CardView card_bg;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -74,6 +75,7 @@ public class NavigationDrawerFragment extends Fragment implements NavigationDraw
         // drawer. See PREF_USER_LEARNED_DRAWER for details.
         SharedPreferences sp = PreferenceManager.getDefaultSharedPreferences(getActivity());
         mUserLearnedDrawer = sp.getBoolean(PREF_USER_LEARNED_DRAWER, false);
+
 
         if (savedInstanceState != null) {
             mCurrentSelectedPosition = savedInstanceState.getInt(STATE_SELECTED_POSITION);
@@ -90,6 +92,9 @@ public class NavigationDrawerFragment extends Fragment implements NavigationDraw
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         mDrawerList.setLayoutManager(layoutManager);
         mDrawerList.setHasFixedSize(true);
+
+        card_bg=(CardView)view.findViewById(R.id.card_bg);
+        card_bg.setBackgroundResource(R.drawable.img_header_bg);
 
         final List<NavigationItem> navigationItems = getMenu();
         NavigationDrawerAdapter adapter = new NavigationDrawerAdapter(navigationItems);
@@ -123,7 +128,7 @@ public class NavigationDrawerFragment extends Fragment implements NavigationDraw
         items.add(new NavigationItem("FAQ", getResources().getDrawable(R.drawable.ic_email_black_24dp)));
         items.add(new NavigationItem("My Complaints", getResources().getDrawable(R.drawable.ic_email_black_24dp)));
         items.add(new NavigationItem("Policy", getResources().getDrawable(R.drawable.ic_email_black_24dp)));
-        items.add(new NavigationItem("De A Doctor", getResources().getDrawable(R.drawable.ic_email_black_24dp)));
+        items.add(new NavigationItem("Be A Doctor", getResources().getDrawable(R.drawable.ic_email_black_24dp)));
         return items;
     }
 
@@ -138,7 +143,7 @@ public class NavigationDrawerFragment extends Fragment implements NavigationDraw
         mFragmentContainerView = (View) getActivity().findViewById(fragmentId).getParent();
         mDrawerLayout = drawerLayout;
 
-        mDrawerLayout.setStatusBarBackgroundColor(getResources().getColor(R.color.myPrimaryDarkColor));
+        mDrawerLayout.setStatusBarBackgroundColor(getResources().getColor(R.color.cardview_dark_background));
 
         mActionBarDrawerToggle = new ActionBarDrawerToggle(getActivity(), mDrawerLayout, toolbar, R.string.drawer_open, R.string.drawer_close) {
             @Override

@@ -4,8 +4,10 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.besolutions.konsil.R;
 import com.besolutions.konsil.scenarios.scenario_online_conversation.Controller.online_conversation;
@@ -26,6 +28,8 @@ public class request_online_conversation extends AppCompatActivity implements Vi
 
         complete_req.setOnClickListener(this);
         get_data();
+
+        set_toolbar_name();
     }
 
     void get_data()
@@ -48,5 +52,14 @@ public class request_online_conversation extends AppCompatActivity implements Vi
         {
           startActivity(new Intent(this, online_conversation.class));
         }
+    }
+
+    public void set_toolbar_name()
+    {
+        Toolbar mToolbar = (Toolbar) findViewById(R.id.toolbar_actionbar);
+        setSupportActionBar(mToolbar);
+
+        TextView title=(TextView)findViewById(R.id.title);
+        title.setText("Request Online Conversation");
     }
 }

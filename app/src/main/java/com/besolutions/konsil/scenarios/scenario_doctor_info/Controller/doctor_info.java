@@ -3,9 +3,11 @@ package com.besolutions.konsil.scenarios.scenario_doctor_info.Controller;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.RatingBar;
+import android.widget.TextView;
 
 import com.besolutions.konsil.R;
 import com.besolutions.konsil.scenarios.scenario_request_online_conversation.Controller.request_online_conversation;
@@ -27,6 +29,8 @@ public class doctor_info extends AppCompatActivity implements View.OnClickListen
         online_res.setOnClickListener(this);
         request_consulation.setOnClickListener(this);
         ratings.setRating(4);
+
+        set_toolbar_name();
     }
 
     @Override
@@ -39,5 +43,14 @@ public class doctor_info extends AppCompatActivity implements View.OnClickListen
         {
             startActivity(new Intent(doctor_info.this, request_online_conversation.class));
         }
+    }
+
+    public void set_toolbar_name()
+    {
+        Toolbar mToolbar = (Toolbar) findViewById(R.id.toolbar_actionbar);
+        setSupportActionBar(mToolbar);
+
+        TextView title=(TextView)findViewById(R.id.title);
+        title.setText("Doctor Info");
     }
 }
