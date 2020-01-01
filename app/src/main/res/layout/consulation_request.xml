@@ -32,6 +32,7 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/_27sdp"
             android:layout_marginTop="@dimen/_5sdp"
+            android:paddingLeft="@dimen/_5sdp"
             android:background="@drawable/form_bg_consulation"/>
         <TextView
         android:layout_width="match_parent"
@@ -44,6 +45,8 @@
         <EditText
             android:layout_width="match_parent"
             android:layout_height="@dimen/_140sdp"
+            android:gravity="left|top"
+            android:padding="@dimen/_5sdp"
             android:layout_marginTop="@dimen/_5sdp"
             android:background="@drawable/form_bg_consulation"/>
         <TextView
@@ -88,6 +91,7 @@
             android:background="@drawable/buttom_bg"
             android:layout_marginBottom="@dimen/_15sdp"
             android:text="@string/complete_the_request"
+            android:id="@+id/complete_req"
             android:textColor="@android:color/white"
             android:textAllCaps="false"
             android:textSize="@dimen/_12ssp"

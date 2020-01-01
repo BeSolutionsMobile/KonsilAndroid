@@ -23,9 +23,9 @@ public class login extends AppCompatActivity implements View.OnClickListener {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
 
-        login=(Button)findViewById(R.id.login);
-        check=(CheckBox)findViewById(R.id.check);
-        signup=(TextView)findViewById(R.id.signup);
+        login =(Button)findViewById(R.id.login);
+        check =(CheckBox)findViewById(R.id.check);
+        signup =(TextView)findViewById(R.id.signup);
 
         login.setOnClickListener(this);
         check.setOnClickListener(this);
@@ -38,7 +38,8 @@ public class login extends AppCompatActivity implements View.OnClickListener {
     public void onClick(View v) {
         if(v.getId()==R.id.login)
         {
-            startActivity(new Intent(this, main_screen.class));
+            loading loading=new loading();
+            loading.dialog(login.this,R.layout.successful_login,.80);
         }
         else if(v.getId()==R.id.check)
         {
@@ -47,7 +48,6 @@ public class login extends AppCompatActivity implements View.OnClickListener {
         else if(v.getId()==R.id.signup)
         {
             startActivity(new Intent(this, sign_up.class));
-
         }
     }
 }

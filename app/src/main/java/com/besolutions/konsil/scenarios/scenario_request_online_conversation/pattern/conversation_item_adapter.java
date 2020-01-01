@@ -59,21 +59,6 @@ public class conversation_item_adapter extends RecyclerView.Adapter<conversation
                        }
                }
 
-
-               /*mylist.get(i).setStatus(true);
-               for (int index=0;index<mylist.size();index++)
-               {
-
-                   if(index!=i)
-                   {
-                       mylist.get(index).setStatus(false);
-                       viewHolder.radio_txt.setChecked(false);
-                   }
-                   viewHolder.radio_txt.setChecked(true);
-
-               }*/
-
-
            }
        });
 

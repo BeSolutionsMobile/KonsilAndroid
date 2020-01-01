@@ -43,4 +43,13 @@
             android:layout_marginLeft="@dimen/_15sdp"
             android:src="@drawable/or_bg"/>
     </LinearLayout>
+    <com.airbnb.lottie.LottieAnimationView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/_70sdp"
+        app:lottie_autoPlay="true"
+        app:lottie_loop="false"
+        app:lottie_rawRes="@raw/heart"
+        />
 </LinearLayout>

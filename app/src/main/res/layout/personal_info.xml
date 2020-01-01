@@ -35,6 +35,9 @@
                           android:background="@drawable/personal_info_image_bg"
                           android:layout_weight=".15"
                           android:layout_width="0dp"
+                          android:src="@drawable/person"
+                          android:padding="@dimen/_6sdp"
+                          android:tint="@android:color/white"
                           android:layout_height="match_parent"/>
                       <TextView
                           android:layout_weight=".85"
@@ -95,6 +98,9 @@
                           android:background="@drawable/personal_info_image_bg"
                           android:layout_weight=".15"
                           android:layout_width="0dp"
+                          android:src="@drawable/lock"
+                          android:padding="@dimen/_6sdp"
+                          android:tint="@android:color/white"
                           android:layout_height="match_parent"/>
                       <TextView
                           android:layout_weight=".85"
@@ -124,6 +130,9 @@
                           android:background="@drawable/personal_info_image_bg"
                           android:layout_weight=".15"
                           android:layout_width="0dp"
+                          android:src="@drawable/phone"
+                          android:padding="@dimen/_6sdp"
+                          android:tint="@android:color/white"
                           android:layout_height="match_parent"/>
                       <TextView
                           android:layout_weight=".85"
@@ -153,6 +162,9 @@
                          <ImageView
                              android:background="@drawable/personal_info_image_bg"
                              android:layout_weight=".15"
+                             android:src="@drawable/img"
+                             android:padding="@dimen/_8sdp"
+                             android:tint="@android:color/white"
                              android:layout_width="0dp"
                              android:layout_height="match_parent"/>
                          <TextView

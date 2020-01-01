@@ -3,6 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.besolutions.konsil">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -11,7 +15,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".scenarios.scenario_make_complaint.make_a_complaint"></activity>
+        <activity android:name=".scenarios.scenario_welcome_tour.scenario_welcome_tour"></activity>
+        <activity android:name=".scenarios.scenario_make_complaint.make_a_complaint" />
         <activity android:name=".scenarios.scenario_be_a_doctor.Controller.be_a_doctor" />
         <activity android:name=".scenarios.scenario_mian_page.Controller.main_screen" />
         <activity android:name=".scenarios.scenario_splash_screen.Controller.splash_screen">

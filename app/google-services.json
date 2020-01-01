@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "575287328824",
+    "firebase_url": "https://konsil.firebaseio.com",
+    "project_id": "konsil",
+    "storage_bucket": "konsil.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:575287328824:android:3627b3497f4623ceebe6cd",
+        "android_client_info": {
+          "package_name": "com.besolutions.konsil"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "575287328824-jh0irrf0j5nik04k9vpmgrr3ofv7akd9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBBPValgUWSRQoCo7QCHrVREoCXi8qzLgc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "575287328824-jh0irrf0j5nik04k9vpmgrr3ofv7akd9.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "575287328824-hkhcirph7cvs7hfb2jkdlkb716iesh7p.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.begroup.Konsil"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

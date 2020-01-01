@@ -43,4 +43,7 @@
     <string name="add_your_name">Add Your Name</string>
     <string name="complaint_message">Complaint Message</string>
     <string name="complaint_type">Complaint Type</string>
+    <string name="consult_amp_chat"><![CDATA[Consult & Chat]]></string>
+    <string name="start">Start</string>
+    <string name="skip">Skip</string>
 </resources>

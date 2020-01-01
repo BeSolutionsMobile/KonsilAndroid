@@ -42,5 +42,7 @@ public class consulation_result extends AppCompatActivity {
             }
         });
 
+        radioRealButtonGroup.setPosition(0);
+
     }
 }

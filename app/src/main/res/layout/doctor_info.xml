@@ -57,7 +57,7 @@
           android:id="@+id/ratings"
           style="?android:attr/ratingBarStyleSmall"
           android:layout_width="wrap_content"
-          android:isIndicator="false"
+          android:isIndicator="true"
           android:focusable="false"
           android:clickable="false"
           android:scaleX="1.2"

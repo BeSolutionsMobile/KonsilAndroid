@@ -66,6 +66,7 @@
            android:textColor="@android:color/white"
            android:textAllCaps="false"
            android:textSize="@dimen/_12ssp"
+           android:id="@+id/req_online_conv"
            android:layout_marginLeft="@dimen/_15sdp"
            android:layout_marginRight="@dimen/_15sdp"
            />

@@ -40,7 +40,7 @@ public class online_conversation extends AppCompatActivity {
                 }
             }
         });
-
+        radioRealButtonGroup.setPosition(0);
         set_toolbar_name();
     }
 
