@@ -19,7 +19,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical"
-            android:background="@drawable/pro_bg"
+            android:background="@drawable/walkthrough"
             >
             <android.support.v7.widget.CardView
                 android:layout_width="@dimen/_70sdp"

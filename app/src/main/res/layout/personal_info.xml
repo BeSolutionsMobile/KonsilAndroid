@@ -4,6 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/color1"
+
     android:orientation="vertical"
     tools:context=".scenarios.scenario_personal_info.Controller.personal_info">
 
@@ -20,7 +22,6 @@
                      android:gravity="center"
                      android:weightSum="5"
                      android:orientation="vertical"
-                     android:background="@color/color1"
                      android:layout_weight=".6">
                   <LinearLayout
                       android:layout_width="match_parent"
@@ -36,7 +37,7 @@
                           android:layout_weight=".15"
                           android:layout_width="0dp"
                           android:src="@drawable/person"
-                          android:padding="@dimen/_6sdp"
+                          android:padding="@dimen/_7sdp"
                           android:tint="@android:color/white"
                           android:layout_height="match_parent"/>
                       <TextView
@@ -67,6 +68,9 @@
                       <ImageView
                           android:background="@drawable/personal_info_image_bg"
                           android:layout_weight=".15"
+                          android:src="@drawable/ic_email_black_24dp"
+                          android:tint="@android:color/white"
+                          android:padding="@dimen/_7sdp"
                           android:layout_width="0dp"
                           android:layout_height="match_parent"/>
                       <TextView
@@ -99,7 +103,7 @@
                           android:layout_weight=".15"
                           android:layout_width="0dp"
                           android:src="@drawable/lock"
-                          android:padding="@dimen/_6sdp"
+                          android:padding="@dimen/_7sdp"
                           android:tint="@android:color/white"
                           android:layout_height="match_parent"/>
                       <TextView
@@ -131,7 +135,7 @@
                           android:layout_weight=".15"
                           android:layout_width="0dp"
                           android:src="@drawable/phone"
-                          android:padding="@dimen/_6sdp"
+                          android:padding="@dimen/_7sdp"
                           android:tint="@android:color/white"
                           android:layout_height="match_parent"/>
                       <TextView
@@ -162,9 +166,9 @@
                          <ImageView
                              android:background="@drawable/personal_info_image_bg"
                              android:layout_weight=".15"
-                             android:src="@drawable/img"
-                             android:padding="@dimen/_8sdp"
                              android:tint="@android:color/white"
+                             android:src="@drawable/add_image"
+                             android:padding="@dimen/_7sdp"
                              android:layout_width="0dp"
                              android:layout_height="match_parent"/>
                          <TextView
@@ -181,5 +185,12 @@
 
                      </LinearLayout>
                  </LinearLayout>
+                 <ImageView
+                     android:layout_width="match_parent"
+                     android:layout_height="0dp"
+                     android:layout_weight=".4"
+                     android:src="@drawable/personal_info"
+                     android:scaleType="fitXY"
+                     />
              </LinearLayout>
 </LinearLayout>

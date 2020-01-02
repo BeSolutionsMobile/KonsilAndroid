@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    android:background="@color/color1"
+    android:background="@drawable/make_compalint"
     tools:context=".scenarios.scenario_make_complaint.make_a_complaint">
 <include layout="@layout/toolbar_default"/>
     <TextView

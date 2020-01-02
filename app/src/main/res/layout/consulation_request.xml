@@ -5,7 +5,7 @@
     android:orientation="vertical"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/pro_bg"
+    android:background="@drawable/consulation_request"
     tools:context=".scenarios.scenario_Consulation_request.consulation_request">
     <include layout="@layout/toolbar_default"
         android:id="@+id/toolbar_actionbar"
