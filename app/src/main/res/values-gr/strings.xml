@@ -1,0 +1,51 @@
+<resources>
+    <string name="app_name">Konsil gr</string>
+    <string name="drawer_open">Menu opened</string>
+    <string name="drawer_close">Menu closed</string>
+    <string name="action_settings">Settings</string>
+    <string name="e_mail_address">E-mail Address</string>
+    <string name="allow_biomatric_authentication">Allow Biomatric Authentication</string>
+    <string name="no_account">NO Account ?</string>
+    <string name="register_now">Register Now</string>
+    <string name="password">Password</string>
+    <string name="phone">Phone</string>
+    <string name="e_mail">E-mail gr</string>
+    <string name="log_in">Log In gr</string>
+    <string name="sign_up">Sign Up gr</string>
+    <string name="doctors_list">Doctors List</string>
+    <string name="filter">Filter</string>
+    <string name="degree">Degree</string>
+    <string name="submit">Submit</string>
+    <string name="finger">finger</string>
+    <string name="patients">Patients</string>
+    <string name="request_consulation">Request Consulation</string>
+    <string name="requst_online_converstaion">Requst Online Converstaion</string>
+    <string name="consulation_title">Consulation title</string>
+    <string name="consualtion_details">Consualtion details</string>
+    <string name="upload_photos_of_the_medical_consulation">Upload photos of the medical Consulation</string>
+    <string name="complete_the_request">Complete the request</string>
+    <string name="msg">Messages</string>
+    <string name="final_report">Final report</string>
+    <string name="files">Files</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="send">Send</string>
+    <string name="request_online_converstaion">Request online converstaion</string>
+    <string name="make_a_complaint">Make a complaint</string>
+    <string name="there_are_all_uploaded_file">there are all uploaded file</string>
+    <string name="appoinments_available_for_dr">Appoinments available for Dr</string>
+    <string name="info">Info</string>
+    <string name="report">Report</string>
+    <string name="view">View</string>
+    <string name="select_specialty">germany lan</string>
+    <string name="add_your_photo">Add Your Photo</string>
+    <string name="add_your_name">Add Your Name</string>
+    <string name="complaint_message">Complaint Message</string>
+    <string name="complaint_type">Complaint Type</string>
+    <string name="consult_amp_chat"><![CDATA[Consult & Chat]]></string>
+    <string name="start">Start</string>
+    <string name="skip">Skip</string>
+    <string name="english">English</string>
+    <string name="germany">Germany</string>
+</resources>

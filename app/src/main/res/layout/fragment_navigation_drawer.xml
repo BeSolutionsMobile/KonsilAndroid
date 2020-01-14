@@ -4,6 +4,9 @@
     android:background="@drawable/navgation_bg"
     xmlns:android="http://schemas.android.com/apk/res/android" >
     <include layout="@layout/drawer_header"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
 <android.support.v7.widget.RecyclerView
     android:layout_width="match_parent"
     android:layout_height="match_parent"
@@ -13,4 +16,35 @@
     android:fitsSystemWindows="true"
     android:scrollbars="vertical"
     xmlns:android="http://schemas.android.com/apk/res/android" />
+        <ImageView
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_1sdp"
+            android:src="@color/color3"
+            android:layout_alignParentBottom="true"
+            android:layout_marginBottom="@dimen/_50sdp"
+            />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/_50sdp"
+            android:layout_alignParentBottom="true"
+            android:id="@+id/change_lan"
+            android:paddingLeft="@dimen/_10sdp"
+            android:paddingRight="@dimen/_5sdp"
+            android:orientation="horizontal">
+            <ImageView
+                android:layout_width="@dimen/_25sdp"
+                android:layout_height="@dimen/_25sdp"
+                android:src="@drawable/subject"
+                android:layout_gravity="center"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:text="Change Language To Germany"
+                android:gravity="center|left"
+                android:paddingLeft="@dimen/_10sdp"
+                android:id="@+id/change_language"
+                android:textColor="@android:color/black"
+                android:textSize="@dimen/_11ssp"/>
+        </LinearLayout>
+    </RelativeLayout>
 </LinearLayout>

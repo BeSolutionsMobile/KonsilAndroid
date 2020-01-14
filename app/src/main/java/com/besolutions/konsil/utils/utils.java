@@ -2,11 +2,16 @@ package com.besolutions.konsil.utils;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.provider.MediaStore;
 import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
+import android.util.DisplayMetrics;
+
+import java.util.Locale;
 
 
 public class utils {
@@ -63,6 +68,18 @@ public class utils {
      */
     public Bitmap convertToBitmap(byte[] b){
         return BitmapFactory.decodeByteArray(b, 0, b.length);
+    }
+
+    /**
+     * SET LANGUAGE
+     */
+   public void set_language(String Lan,Context context)
+    {
+        Resources resources=context.getResources();
+        DisplayMetrics displayMetrics=resources.getDisplayMetrics();
+        Configuration configuration=resources.getConfiguration();
+        configuration.setLocale(new Locale(Lan.toLowerCase()));
+        resources.updateConfiguration(configuration,displayMetrics);
     }
 
 }
