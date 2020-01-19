@@ -51,6 +51,8 @@ public class doctor_info extends AppCompatActivity implements View.OnClickListen
         setSupportActionBar(mToolbar);
 
         TextView title=(TextView)findViewById(R.id.title);
-        title.setText("Doctor Info");
+        String doc_info = getResources().getString(R.string.doc_info);
+
+        title.setText(doc_info);
     }
 }

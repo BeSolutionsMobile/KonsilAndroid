@@ -134,7 +134,7 @@ public class NavigationDrawerFragment extends Fragment implements NavigationDraw
         items.add(new NavigationItem("FAQ", getResources().getDrawable(R.drawable.ic_email_black_24dp)));
         items.add(new NavigationItem(MyComplaints, getResources().getDrawable(R.drawable.ic_email_black_24dp)));
         items.add(new NavigationItem(Policy, getResources().getDrawable(R.drawable.ic_email_black_24dp)));
-        items.add(new NavigationItem("Be A Doctor", getResources().getDrawable(R.drawable.ic_email_black_24dp)));
+        items.add(new NavigationItem(be_a_doctor, getResources().getDrawable(R.drawable.ic_email_black_24dp)));
         return items;
     }
 
