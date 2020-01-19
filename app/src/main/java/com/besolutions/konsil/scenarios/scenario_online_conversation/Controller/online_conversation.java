@@ -50,6 +50,7 @@ public class online_conversation extends AppCompatActivity {
         setSupportActionBar(mToolbar);
 
         TextView title=(TextView)findViewById(R.id.title);
-        title.setText("Online Conversation Details");
+        String online_con_details=getResources().getString(R.string.online_con_details);
+        title.setText(online_con_details);
     }
 }

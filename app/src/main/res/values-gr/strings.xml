@@ -31,7 +31,7 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="send">senden</string>
-    <string name="request_online_converstaion">Request online converstaion</string>
+    <string name="request_online_converstaion">Online-Gespräch anfordern</string>
     <string name="make_a_complaint">Eine Beschwerde einreichen</string>
     <string name="there_are_all_uploaded_file">Dies sind alles hochgeladene Dateien</string>
     <string name="appoinments_available_for_dr">Termine für den Arzt zur Verfügung</string>
@@ -99,6 +99,8 @@
     <string name="neurologo">Neurologie</string>
     <string name="language_changed_successfully">Sprache erfolgreich geändert....</string>
     <string name="doc_info">Arzt Info</string>
+    <string name="online_con_details">Online-Konversationsdetails</string>
+    <string name="con_req">Konsultationsanfrage</string>
 
 
 

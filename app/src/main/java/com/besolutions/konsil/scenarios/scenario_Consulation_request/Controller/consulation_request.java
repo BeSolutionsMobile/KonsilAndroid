@@ -50,6 +50,7 @@ public class consulation_request extends AppCompatActivity implements View.OnCli
         setSupportActionBar(mToolbar);
 
         TextView title=(TextView)findViewById(R.id.title);
-        title.setText("Consultation Request");
+        String con_req = getResources().getString(R.string.con_req);
+        title.setText(con_req);
     }
 }

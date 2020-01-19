@@ -99,6 +99,8 @@
     <string name="neurologo">Neurologo</string>
     <string name="language_changed_successfully">Language Changed Successfully....</string>
     <string name="doc_info">Doctor Info</string>
+    <string name="online_con_details">Online Conversation Details</string>
+    <string name="con_req">Consultation Request</string>
 
 
 </resources>

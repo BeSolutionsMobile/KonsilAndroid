@@ -28,7 +28,8 @@ public class be_a_doctor extends AppCompatActivity implements View.OnClickListen
         setSupportActionBar(mToolbar);
 
         TextView title=(TextView)findViewById(R.id.title);
-        title.setText("Be A Doctor");
+        String be_a_doc=getResources().getString(R.string.be_a_doctor);
+        title.setText(be_a_doc);
     }
 
     @Override

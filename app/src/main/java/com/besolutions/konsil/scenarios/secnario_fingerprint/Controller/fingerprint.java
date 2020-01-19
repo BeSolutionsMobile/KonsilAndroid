@@ -13,7 +13,8 @@ import co.infinum.goldfinger.Error;
 import co.infinum.goldfinger.Goldfinger;
 
 
-public class fingerprint extends AppCompatActivity {
+public class
+fingerprint extends AppCompatActivity {
     Goldfinger goldfinger;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
