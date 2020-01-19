@@ -84,7 +84,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Conversation hour rate :"
+                android:text="@string/conversation_hour_rate"
                 android:textSize="@dimen/_12ssp"
                 android:textColor="@color/color2"/>
             <TextView
@@ -113,7 +113,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginLeft="@dimen/_15sdp"
-            android:text="Please select from the available perside"
+            android:text="@string/please_select_from_the_available_periods"
             android:textColor="@color/color2"
             android:textSize="@dimen/_11ssp"
             />

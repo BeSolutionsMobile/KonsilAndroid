@@ -27,6 +27,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:paddingLeft="@dimen/_5sdp"
+        android:hint="@string/enter_message_here"
         android:background="@drawable/send_bg"/>
        <Button
            android:layout_width="@dimen/_50sdp"
@@ -45,7 +46,7 @@
            <TextView
                android:layout_width="wrap_content"
                android:layout_height="wrap_content"
-               android:text="counseling status :"
+               android:text="@string/counseling_status"
                android:textSize="@dimen/_12ssp"
                android:textColor="@color/color2"/>
            <TextView
@@ -62,7 +63,7 @@
            android:layout_marginTop="@dimen/_5sdp"
            android:background="@drawable/buttom_bg"
            android:layout_marginBottom="@dimen/_15sdp"
-           android:text="@string/request_online_converstaion"
+           android:text="@string/requst_online_converstaion"
            android:textColor="@android:color/white"
            android:textAllCaps="false"
            android:textSize="@dimen/_12ssp"

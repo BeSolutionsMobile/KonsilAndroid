@@ -48,7 +48,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_20sdp"
-                android:text="Filter Data Based On"
+                android:text="@string/filter_data_based_on"
                 android:textSize="@dimen/_12ssp"
                 android:gravity="center"
                 android:textStyle="bold"
@@ -80,7 +80,7 @@
                         android:layout_width="0dp"
                         android:textSize="@dimen/_10ssp"
                         android:textStyle="bold"
-                        android:text="Advisory"
+                        android:text="@string/advisory"
                         android:textColor="@color/color2"
                         android:buttonTint="@color/color2"
                         android:paddingLeft="@dimen/_5sdp"
@@ -91,7 +91,7 @@
                         android:textSize="@dimen/_10ssp"
                         android:textStyle="bold"
                         android:buttonTint="@color/color2"
-                        android:text="Specialist"
+                        android:text="@string/specialist"
                         android:layout_marginLeft="@dimen/_30sdp"
                         android:textColor="@color/color2"
                         android:layout_height="match_parent"/>
@@ -110,7 +110,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_20sdp"
-                android:text="Rate"
+                android:text="@string/ratess"
                 android:paddingLeft="@dimen/_3sdp"
                 android:layout_marginLeft="@dimen/_15sdp"
                 android:textSize="@dimen/_12ssp"

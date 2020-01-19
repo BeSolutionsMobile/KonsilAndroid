@@ -25,7 +25,6 @@ public class request_online_conversation extends AppCompatActivity implements Vi
         super.onCreate(savedInstanceState);
         setContentView(R.layout.request_online_conversation);
         complete_req=(Button)findViewById(R.id.complete_req);
-
         complete_req.setOnClickListener(this);
         get_data();
 
@@ -60,6 +59,7 @@ public class request_online_conversation extends AppCompatActivity implements Vi
         setSupportActionBar(mToolbar);
 
         TextView title=(TextView)findViewById(R.id.title);
-        title.setText("Request Online Conversation");
+        String r_o_c = getResources().getString(R.string.request_online_converstaion);
+        title.setText(r_o_c);
     }
 }

@@ -23,7 +23,7 @@
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Welcoming Tour"
+        android:text="@string/welcome_to_konzil"
         android:gravity="center"
         android:textSize="@dimen/_14ssp"
         android:layout_marginTop="@dimen/_50sdp"

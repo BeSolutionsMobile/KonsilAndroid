@@ -27,7 +27,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_25sdp"
                 android:layout_marginTop="@dimen/_20sdp"
-                android:hint="Full Name"
+                android:hint="@string/full_name"
                 android:textColorHint="@color/color2"
                 android:textSize="@dimen/_10ssp"
                 android:paddingLeft="@dimen/_20sdp"
@@ -50,7 +50,7 @@
                 android:layout_marginLeft="@dimen/_40sdp"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_25sdp"
-                android:hint="@string/e_mail"
+                android:hint="@string/e_mail_address"
                 android:textColorHint="@color/color2"
                 android:layout_marginTop="@dimen/_8sdp"
                 android:textSize="@dimen/_10ssp"
@@ -76,7 +76,7 @@
                 android:paddingLeft="@dimen/_7sdp"
                 android:layout_height="@dimen/_20sdp"
                 android:textSize="@dimen/_11ssp"
-                android:text="Accept All Items And Conditions"
+                android:text="@string/accept_all_items_and_conditions"
                 />
 
             <Button
@@ -111,7 +111,7 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="OR"
+                    android:text="@string/orrr"
                     android:textSize="@dimen/_12ssp"
                     android:textColor="@color/color2"
                     android:textStyle="bold"

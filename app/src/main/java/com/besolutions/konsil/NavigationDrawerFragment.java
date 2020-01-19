@@ -123,11 +123,17 @@ public class NavigationDrawerFragment extends Fragment implements NavigationDraw
 
     public List<NavigationItem> getMenu() {
         List<NavigationItem> items = new ArrayList<NavigationItem>();
-        items.add(new NavigationItem("Personal Info", getResources().getDrawable(R.drawable.ic_email_black_24dp)));
-        items.add(new NavigationItem("My Consitations", getResources().getDrawable(R.drawable.ic_email_black_24dp)));
+        String Personal_info = getResources().getString(R.string.Personal_info);
+        String MyConsitations = getResources().getString(R.string.my_consultation);
+        String MyComplaints = getResources().getString(R.string.my_complaints);
+        String Policy = getResources().getString(R.string.Policy);
+        String be_a_doctor = getResources().getString(R.string.be_a_doctor);
+
+        items.add(new NavigationItem(Personal_info, getResources().getDrawable(R.drawable.ic_email_black_24dp)));
+        items.add(new NavigationItem(MyConsitations, getResources().getDrawable(R.drawable.ic_email_black_24dp)));
         items.add(new NavigationItem("FAQ", getResources().getDrawable(R.drawable.ic_email_black_24dp)));
-        items.add(new NavigationItem("My Complaints", getResources().getDrawable(R.drawable.ic_email_black_24dp)));
-        items.add(new NavigationItem("Policy", getResources().getDrawable(R.drawable.ic_email_black_24dp)));
+        items.add(new NavigationItem(MyComplaints, getResources().getDrawable(R.drawable.ic_email_black_24dp)));
+        items.add(new NavigationItem(Policy, getResources().getDrawable(R.drawable.ic_email_black_24dp)));
         items.add(new NavigationItem("Be A Doctor", getResources().getDrawable(R.drawable.ic_email_black_24dp)));
         return items;
     }

@@ -69,7 +69,7 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Upload files of the medical Consulation"
+            android:text="@string/upload_files_of_the_medical_consulation"
             android:textColor="@color/color2"
             android:gravity="center"
             android:textSize="@dimen/_13ssp"

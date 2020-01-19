@@ -17,6 +17,7 @@ public class personal_info extends AppCompatActivity {
         setSupportActionBar(mToolbar);
 
         TextView title=(TextView)findViewById(R.id.title);
-        title.setText("Personal Info");
+        String Personal_Info = getResources().getString(R.string.Personal_info);
+        title.setText(Personal_Info);
     }
 }

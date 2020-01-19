@@ -42,7 +42,8 @@ public class doctor_list extends AppCompatActivity implements View.OnClickListen
         setSupportActionBar(mToolbar);
 
         TextView title=(TextView)findViewById(R.id.title);
-        title.setText("Doctor List");
+        String doc_filters = getResources().getString(R.string.Specialist);
+        title.setText(doc_filters);
 
 
 
@@ -55,10 +56,10 @@ public class doctor_list extends AppCompatActivity implements View.OnClickListen
         //ADD TO ARRAY LIST
         ArrayList<doctor_list_items> arrayList=new ArrayList<>();
         arrayList.add(new doctor_list_items("1","ahmed awad","prof","dddd",5));
-        arrayList.add(new doctor_list_items("1","mahmoud awad","prof","dddd",3));
-        arrayList.add(new doctor_list_items("1","mahmoud awad","prof","dddd",3));
-        arrayList.add(new doctor_list_items("1","mahmoud awad","prof","dddd",3));
-        arrayList.add(new doctor_list_items("1","mahmoud awad","prof","dddd",3));
+        arrayList.add(new doctor_list_items("1","mahmoud ibraheem","prof","dddd",3));
+        arrayList.add(new doctor_list_items("1","saeed awad","prof","dddd",3));
+        arrayList.add(new doctor_list_items("1","mahmoud el ahmady","prof","dddd",3));
+        arrayList.add(new doctor_list_items("1","fathi yaseen awad","prof","dddd",3));
 
         doctor_list=(RecyclerView)findViewById(R.id.doctor_list);
 

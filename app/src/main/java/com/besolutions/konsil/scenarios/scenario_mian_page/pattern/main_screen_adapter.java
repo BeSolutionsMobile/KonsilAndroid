@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
@@ -36,6 +37,7 @@ public class main_screen_adapter extends RecyclerView.Adapter<main_screen_adapte
     @Override
     public void onBindViewHolder(@NonNull main_screen_holder viewHolder, int i) {
       viewHolder.name.setText(mylist.get(i).getName());
+      viewHolder.img.setImageResource(mylist.get(i).getImage());
 
       viewHolder.item.setOnClickListener(new View.OnClickListener() {
           @Override
@@ -70,10 +72,12 @@ public class main_screen_adapter extends RecyclerView.Adapter<main_screen_adapte
     class main_screen_holder extends RecyclerView.ViewHolder {
         LinearLayout item;
         TextView name;
+        ImageView img;
         public main_screen_holder(@NonNull View itemView) {
             super(itemView);
             item=(LinearLayout)itemView.findViewById(R.id.item);
             name=(TextView)itemView.findViewById(R.id.name);
+            img=(ImageView)itemView.findViewById(R.id.img);
         }
     }
 }

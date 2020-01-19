@@ -45,6 +45,8 @@ public class my_consultations extends AppCompatActivity {
         setSupportActionBar(mToolbar);
 
         TextView title=(TextView)findViewById(R.id.title);
-        title.setText("My Consultations");
+        String my_consultation = getResources().getString(R.string.my_consultation);
+
+        title.setText(my_consultation);
     }
 }

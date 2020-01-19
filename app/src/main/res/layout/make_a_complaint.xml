@@ -62,6 +62,7 @@
         android:gravity="top|left"
         android:layout_marginRight="@dimen/_30sdp"
         android:layout_marginLeft="@dimen/_30sdp"
+        android:hint="@string/enter_message_here"
         android:background="@drawable/faq_item_bg"
         android:layout_marginTop="@dimen/_20sdp"/>
     <Button
@@ -71,7 +72,7 @@
         android:layout_marginTop="@dimen/_50sdp"
         android:layout_gravity="center"
         android:id="@+id/make_complaint"
-        android:text="Submit"
+        android:text="@string/submit"
         android:textSize="@dimen/_11ssp"
         android:textColor="@android:color/white"
         android:textAllCaps="false"/>

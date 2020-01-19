@@ -1,6 +1,7 @@
 package com.besolutions.konsil.scenarios.scenario_mian_page.Controller;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.content.res.Resources;
 import android.support.v4.widget.DrawerLayout;
@@ -20,6 +21,8 @@ import android.widget.Toast;
 import com.besolutions.konsil.NavigationDrawerCallbacks;
 import com.besolutions.konsil.NavigationDrawerFragment;
 import com.besolutions.konsil.R;
+import com.besolutions.konsil.local_data.send_data;
+import com.besolutions.konsil.local_data.saved_data;
 import com.besolutions.konsil.scenarios.scenaio_settings.Controller.settings;
 import com.besolutions.konsil.scenarios.scenario_be_a_doctor.Controller.be_a_doctor;
 import com.besolutions.konsil.scenarios.scenario_login.Controller.loading;
@@ -35,11 +38,11 @@ import com.besolutions.konsil.utils.utils_adapter;
 import java.util.ArrayList;
 import java.util.Locale;
 
-public class main_screen extends AppCompatActivity implements NavigationDrawerCallbacks {
+public class main_screen extends AppCompatActivity implements NavigationDrawerCallbacks, View.OnClickListener {
     Toolbar mToolbar;
     private NavigationDrawerFragment mNavigationDrawerFragment;
     int num=0;
-
+    SharedPreferences sharedPreferences;
     TextView title;
     utils utils;
 
@@ -55,7 +58,8 @@ public class main_screen extends AppCompatActivity implements NavigationDrawerCa
         setSupportActionBar(mToolbar);
 
         title=(TextView)findViewById(R.id.title);
-        title.setText("Spechalist");
+        String Spechalist = getResources().getString(R.string.Specialist);
+        title.setText(Spechalist);
 
         mNavigationDrawerFragment = (NavigationDrawerFragment)
                 getFragmentManager().findFragmentById(R.id.fragment_drawer);
@@ -65,14 +69,11 @@ public class main_screen extends AppCompatActivity implements NavigationDrawerCa
 
         //CHANGE LANGUAGE
         LinearLayout change_lan=(LinearLayout)findViewById(R.id.change_lan);
-        change_lan.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                utils.set_language("gr",main_screen.this);
-                com.besolutions.konsil.scenarios.scenario_login.Controller.loading loading=new loading();
-                loading.dialog(main_screen.this,R.layout.language_changed,.80);
-            }
-        });
+        change_lan.setOnClickListener(this);
+
+        //SET LANGUAGE TEXT IN NAVIGATION
+        TextView change_language=(TextView)findViewById(R.id.change_language);
+        change_language.setText(new saved_data().get_nav_word(this));
 
         get_data();
     }
@@ -81,14 +82,22 @@ public class main_screen extends AppCompatActivity implements NavigationDrawerCa
     void get_data()
     {
         RecyclerView specialty_list=(RecyclerView)findViewById(R.id.specialty_list);
+
+        String Surgeries = getResources().getString(R.string.Surgeries);
+        String Dental = getResources().getString(R.string.Dental);
+        String Bones = getResources().getString(R.string.Bones);
+        String heart_blood = getResources().getString(R.string.heart_blood);
+        String Pediatrics = getResources().getString(R.string.Pediatrics);
+        String neurologo = getResources().getString(R.string.neurologo);
+
         //ADD TO LIST
         ArrayList<main_screen_list>arrayList=new ArrayList<>();
-        arrayList.add(new main_screen_list("1","Surgery",null));
-        arrayList.add(new main_screen_list("1","Surgery",null));
-        arrayList.add(new main_screen_list("1","Surgery",null));
-        arrayList.add(new main_screen_list("1","Surgery",null));
-        arrayList.add(new main_screen_list("1","Surgery",null));
-        arrayList.add(new main_screen_list("1","Surgery",null));
+        arrayList.add(new main_screen_list("1",Surgeries,R.drawable.doctors));
+        arrayList.add(new main_screen_list("1",Dental,R.drawable.tees));
+        arrayList.add(new main_screen_list("1",Bones,R.drawable.bones));
+        arrayList.add(new main_screen_list("1",heart_blood,R.drawable.heartblooad));
+        arrayList.add(new main_screen_list("1",Pediatrics,R.drawable.women));
+        arrayList.add(new main_screen_list("1",neurologo,R.drawable.brain));
 
         utils_adapter utils_adapter=new utils_adapter();
         utils_adapter.griddAdapters(specialty_list,new main_screen_adapter(this,arrayList),this,2);
@@ -169,4 +178,30 @@ public class main_screen extends AppCompatActivity implements NavigationDrawerCa
         super.onPause();
         finish();
     }
+
+    @Override
+    public void onClick(View v) {
+
+        if(v.getId()==R.id.change_lan){
+
+             String language=new saved_data().get_lan(main_screen.this);
+
+             if(language.equals("en"))
+             {
+                 send_data.send_lan(this,"gr");
+                 send_data.send_word_navigation(main_screen.this,"Change Language To English");
+
+             }
+             else {
+                 send_data.send_lan(this,"en");
+                 send_data.send_word_navigation(main_screen.this,"sprache auf deutsch umstellen");
+             }
+
+            utils.set_language(new saved_data().get_lan(main_screen.this),main_screen.this);
+            com.besolutions.konsil.scenarios.scenario_login.Controller.loading loading=new loading();
+            loading.dialog(main_screen.this,R.layout.language_changed,.80);
+        }
+    }
+
+
 }

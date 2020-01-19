@@ -106,7 +106,7 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="open"
+                android:text="@string/open"
                 android:id="@+id/status"
                 android:textColor="@android:color/black"
                 android:textSize="@dimen/_11ssp"/>
