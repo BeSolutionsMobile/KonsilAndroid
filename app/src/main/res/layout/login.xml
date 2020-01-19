@@ -64,14 +64,15 @@
                   android:layout_height="@dimen/_7sdp"
                   android:layout_marginLeft="@dimen/_7sdp"
                   android:src="@drawable/or_bg"/>
+
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/_10sdp"
                     android:text="@string/orrr"
-                    android:textSize="@dimen/_12ssp"
                     android:textColor="@color/color2"
-                    android:textStyle="bold"
-                    android:layout_marginLeft="@dimen/_10sdp"/>
+                    android:textSize="@dimen/_12ssp"
+                    android:textStyle="bold" />
                 <ImageView
                     android:layout_width="@dimen/_7sdp"
                     android:layout_height="@dimen/_7sdp"
