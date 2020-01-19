@@ -64,6 +64,8 @@
             android:background="@drawable/personal_info_image_bg"
             android:layout_weight=".15"
             android:layout_width="0dp"
+            android:src="@drawable/person_name"
+            android:padding="@dimen/_5sdp"
             android:layout_height="match_parent"/>
         <TextView
             android:layout_weight=".85"
@@ -90,6 +92,8 @@
         <ImageView
             android:background="@drawable/personal_info_image_bg"
             android:layout_weight=".15"
+            android:src="@drawable/at"
+            android:padding="@dimen/_5sdp"
             android:layout_width="0dp"
             android:layout_height="match_parent"/>
         <TextView
@@ -118,6 +122,9 @@
             android:background="@drawable/personal_info_image_bg"
             android:layout_weight=".15"
             android:layout_width="0dp"
+            android:src="@drawable/lock"
+            android:tint="@android:color/white"
+            android:padding="@dimen/_5sdp"
             android:layout_height="match_parent"/>
         <TextView
             android:layout_weight=".85"
@@ -144,6 +151,9 @@
         <ImageView
             android:background="@drawable/personal_info_image_bg"
             android:layout_weight=".15"
+            android:src="@drawable/phone"
+            android:tint="@android:color/white"
+            android:padding="@dimen/_5sdp"
             android:layout_width="0dp"
             android:layout_height="match_parent"/>
         <TextView

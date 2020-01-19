@@ -15,6 +15,7 @@ import android.widget.TextView;
 import com.besolutions.konsil.R;
 import com.besolutions.konsil.scenarios.scenario_doctor_info.Controller.doctor_info;
 import com.besolutions.konsil.scenarios.scenario_doctor_list.model.doctor_list_items;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -37,6 +38,7 @@ public class doctor_adapter extends RecyclerView.Adapter<doctor_adapter.doctor_h
 
     @Override
     public void onBindViewHolder(@NonNull doctor_holder viewHolder, int i) {
+    Picasso.with(context).load(mylist.get(i).getImg()).into(viewHolder.doctor_img);
     viewHolder.name.setText(mylist.get(i).getName().toString());
     viewHolder.degree.setText(mylist.get(i).getDegree().toString());
     viewHolder.rating.setRating(mylist.get(i).getRate());

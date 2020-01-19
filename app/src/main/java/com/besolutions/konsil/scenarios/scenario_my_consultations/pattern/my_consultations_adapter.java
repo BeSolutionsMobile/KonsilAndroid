@@ -43,7 +43,7 @@ public class my_consultations_adapter extends RecyclerView.Adapter<my_consultati
       viewHolder.item.setOnClickListener(new View.OnClickListener() {
           @Override
           public void onClick(View v) {
-           context.startActivity(new Intent(context, doctor_info.class));
+         //  context.startActivity(new Intent(context, doctor_info.class));
           }
       });
       viewHolder.view.setOnClickListener(new View.OnClickListener() {

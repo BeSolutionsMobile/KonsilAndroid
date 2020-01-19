@@ -33,4 +33,9 @@ public class splash_screen extends AppCompatActivity {
         circleIndicator.setViewPager(viewPager);
     }
 
+    @Override
+    protected void onStop() {
+        super.onStop();
+        finish();
+    }
 }

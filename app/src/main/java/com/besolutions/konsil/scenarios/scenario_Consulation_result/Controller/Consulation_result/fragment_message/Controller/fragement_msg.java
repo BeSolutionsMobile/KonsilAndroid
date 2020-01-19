@@ -47,9 +47,9 @@ public class fragement_msg extends Fragment implements View.OnClickListener {
     {
         //ADD DATA
         ArrayList<consulation_list>arrayList=new ArrayList<>();
-        arrayList.add(new consulation_list("1","Dr Ibraheem","Please send data",null));
-        arrayList.add(new consulation_list("1","mahmoud saad","ok",null));
-        arrayList.add(new consulation_list("1","Dr Saeed","done mr ",null));
+        arrayList.add(new consulation_list("1","Dr Ibraheem","Please send data","https://img.medscape.com/thumbnail_library/dt_181213_sad_depressed_pensive_doctor_800x450.jpg"));
+        arrayList.add(new consulation_list("1","mahmoud saad","ok","https://assets.entrepreneur.com/content/3x2/2000/20190502194704-ent19-june-editorsnote.jpeg"));
+        arrayList.add(new consulation_list("1","Dr Saeed","done mr ","https://img.medscape.com/thumbnail_library/dt_181213_sad_depressed_pensive_doctor_800x450.jpg"));
 
         RecyclerView msg_list=(RecyclerView)view.findViewById(R.id.msg_list);
         utils_adapter utils_adapter=new utils_adapter();

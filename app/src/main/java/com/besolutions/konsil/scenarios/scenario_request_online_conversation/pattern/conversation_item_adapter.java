@@ -47,12 +47,10 @@ public class conversation_item_adapter extends RecyclerView.Adapter<conversation
 
                    if(index!=position)
                    {
-                       Toast.makeText(context, ""+position, Toast.LENGTH_SHORT).show();
-                       mylist.get(index).setStatus(false);
+                       mylist.get(index).setStatus(true);
                        viewHolder.radio_txt.setChecked(mylist.get(index).getStatus());
                    }else
                        {
-                           Toast.makeText(context, "ccczz"+position, Toast.LENGTH_SHORT).show();
 
                            mylist.get(index).setStatus(true);
                            viewHolder.radio_txt.setChecked(mylist.get(index).getStatus());

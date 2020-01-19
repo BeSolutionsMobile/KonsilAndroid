@@ -2,6 +2,7 @@ package com.besolutions.konsil.scenarios.scenario_Consulation_result.Controller.
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.TextView;
 
 import com.besolutions.konsil.scenarios.scenario_Consulation_result.Controller.Consulation_result.fragment_files.fragment_files;
 import com.besolutions.konsil.scenarios.scenario_Consulation_result.Controller.Consulation_result.fragment_message.Controller.fragement_msg;
@@ -43,6 +44,10 @@ public class consulation_result extends AppCompatActivity {
         });
 
         radioRealButtonGroup.setPosition(0);
+
+        TextView title=(TextView)findViewById(R.id.title);
+        String req_online_con = getResources().getString(R.string.request_online_converstaion);
+        title.setText(req_online_con);
 
     }
 }

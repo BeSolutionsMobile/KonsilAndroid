@@ -12,4 +12,10 @@ public class scenario_welcome_tour extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.scenario_welcome_tour);
     }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        finish();
+    }
 }

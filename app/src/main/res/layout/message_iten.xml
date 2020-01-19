@@ -22,6 +22,7 @@
             <ImageView
                 android:layout_width="@dimen/_35sdp"
                 android:layout_height="@dimen/_35sdp"
+                android:id="@+id/img"
                 android:src="@drawable/doctor_one"
                 android:layout_gravity="center"
                 />

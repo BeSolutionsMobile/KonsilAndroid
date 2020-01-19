@@ -173,11 +173,7 @@ public class main_screen extends AppCompatActivity implements NavigationDrawerCa
         return super.onOptionsItemSelected(item);
     }
 
-    @Override
-    protected void onPause() {
-        super.onPause();
-        finish();
-    }
+   
 
     @Override
     public void onClick(View v) {

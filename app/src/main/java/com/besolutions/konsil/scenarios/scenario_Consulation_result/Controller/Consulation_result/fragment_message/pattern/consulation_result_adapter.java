@@ -1,15 +1,18 @@
 package com.besolutions.konsil.scenarios.scenario_Consulation_result.Controller.Consulation_result.fragment_message.pattern;
 
 import android.content.Context;
+import android.media.Image;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.besolutions.konsil.R;
 import com.besolutions.konsil.scenarios.scenario_Consulation_result.Controller.Consulation_result.fragment_message.model.consulation_list;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 
@@ -34,6 +37,7 @@ public class consulation_result_adapter extends RecyclerView.Adapter<consulation
     public void onBindViewHolder(@NonNull consulation_result_holder viewHolder, int i) {
      viewHolder.name.setText(mylist.get(i).getName());
      viewHolder.desc.setText(mylist.get(i).getDesc());
+       // Picasso.with(context).load(mylist.get(i).getImg()).into(viewHolder.img);
     }
 
     @Override
@@ -43,10 +47,12 @@ public class consulation_result_adapter extends RecyclerView.Adapter<consulation
 
     class consulation_result_holder extends RecyclerView.ViewHolder {
         TextView name,desc;
+        ImageView img;
         public consulation_result_holder(@NonNull View itemView) {
             super(itemView);
             name=(TextView)itemView.findViewById(R.id.name);
             desc=(TextView)itemView.findViewById(R.id.desc);
+            img=(ImageView)itemView.findViewById(R.id.img);
         }
     }
 }

@@ -50,4 +50,10 @@ public class login extends AppCompatActivity implements View.OnClickListener {
             startActivity(new Intent(this, sign_up.class));
         }
     }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        finish();
+    }
 }
