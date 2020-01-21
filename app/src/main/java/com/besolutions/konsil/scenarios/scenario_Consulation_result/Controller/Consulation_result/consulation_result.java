@@ -46,7 +46,7 @@ public class consulation_result extends AppCompatActivity {
         radioRealButtonGroup.setPosition(0);
 
         TextView title=(TextView)findViewById(R.id.title);
-        String req_online_con = getResources().getString(R.string.request_online_converstaion);
+        String req_online_con = "Consultation Details";
         title.setText(req_online_con);
 
     }

@@ -14,6 +14,7 @@ import com.besolutions.konsil.R;
 import com.besolutions.konsil.scenarios.scenario_Consulation_result.Controller.Consulation_result.fragment_message.model.consulation_list;
 import com.besolutions.konsil.scenarios.scenario_Consulation_result.Controller.Consulation_result.fragment_message.pattern.consulation_result_adapter;
 import com.besolutions.konsil.scenarios.scenario_online_conversation.Controller.online_conversation;
+import com.besolutions.konsil.scenarios.scenario_request_online_conversation.Controller.request_online_conversation;
 import com.besolutions.konsil.utils.utils_adapter;
 
 import java.util.ArrayList;
@@ -61,7 +62,7 @@ public class fragement_msg extends Fragment implements View.OnClickListener {
     public void onClick(View v) {
         if(v.getId()==R.id.req_online_conv)
         {
-            startActivity(new Intent(getActivity(), online_conversation.class));
+            startActivity(new Intent(getActivity(), request_online_conversation.class));
         }
     }
 }

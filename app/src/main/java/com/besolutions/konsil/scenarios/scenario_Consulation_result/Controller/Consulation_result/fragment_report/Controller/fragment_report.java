@@ -13,6 +13,7 @@ import android.widget.Button;
 import com.besolutions.konsil.R;
 import com.besolutions.konsil.scenarios.scenario_make_complaint.make_a_complaint;
 import com.besolutions.konsil.scenarios.scenario_online_conversation.Controller.online_conversation;
+import com.besolutions.konsil.scenarios.scenario_request_online_conversation.Controller.request_online_conversation;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -45,7 +46,7 @@ public class fragment_report extends Fragment implements View.OnClickListener {
     public void onClick(View v) {
         if(v.getId()==R.id.req_online_conv)
         {
-            startActivity(new Intent(getActivity(), online_conversation.class));
+            startActivity(new Intent(getActivity(), request_online_conversation.class));
         }
         else if(v.getId()==R.id.make_complaint)
         {

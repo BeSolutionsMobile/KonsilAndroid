@@ -110,6 +110,7 @@
                 android:layout_marginTop="@dimen/_15sdp"
                 android:drawableLeft="@drawable/ic_lock_outline_black_24dp"
                 android:textSize="@dimen/_11ssp"
+                android:inputType="textPassword"
                 android:paddingLeft="@dimen/_10sdp"
                 android:gravity="center"
                 android:background="@drawable/form_bg"
@@ -126,14 +127,13 @@
                 android:background="@drawable/buttom_bg"/>
             <CheckBox
                 android:layout_marginTop="@dimen/_15sdp"
-                android:layout_width="match_parent"
-                android:layout_marginLeft="@dimen/_30sdp"
-                android:paddingLeft="@dimen/_25sdp"
+                android:layout_width="wrap_content"
+                android:layout_gravity="center"
+                android:paddingLeft="@dimen/_5sdp"
                 android:layout_height="@dimen/_20sdp"
                 android:id="@+id/check"
                 android:textSize="@dimen/_11ssp"
-                android:text="@string/allow_biomatric_authentication"
-                />
+                android:text="@string/allow_biomatric_authentication"/>
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_20sdp"
