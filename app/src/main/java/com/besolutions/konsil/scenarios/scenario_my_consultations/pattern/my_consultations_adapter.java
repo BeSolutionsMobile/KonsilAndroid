@@ -12,6 +12,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.besolutions.konsil.R;
+import com.besolutions.konsil.scenarios.scenario_Consulation_result.Controller.Consulation_result.consulation_result;
 import com.besolutions.konsil.scenarios.scenario_doctor_info.Controller.doctor_info;
 import com.besolutions.konsil.scenarios.scenario_my_consultations.model.my_consultations_list;
 
@@ -43,13 +44,13 @@ public class my_consultations_adapter extends RecyclerView.Adapter<my_consultati
       viewHolder.item.setOnClickListener(new View.OnClickListener() {
           @Override
           public void onClick(View v) {
-         //  context.startActivity(new Intent(context, doctor_info.class));
+           context.startActivity(new Intent(context, consulation_result.class));
           }
       });
       viewHolder.view.setOnClickListener(new View.OnClickListener() {
           @Override
           public void onClick(View v) {
-              context.startActivity(new Intent(context, doctor_info.class));
+              context.startActivity(new Intent(context, consulation_result.class));
           }
       });
     }

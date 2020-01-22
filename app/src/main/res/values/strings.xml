@@ -101,6 +101,16 @@
     <string name="doc_info">Doctor Info</string>
     <string name="online_con_details">Online Conversation Details</string>
     <string name="con_req">Consultation Request</string>
+    <string name="patient_history">Patient History</string>
+    <string name="done">Done</string>
+    <string name="pay">Pay</string>
+    <string name="credit_card_type">Credit Card Type *</string>
+    <string name="credit_card_number">Credit Card Number *</string>
+    <string name="expiry_date">Expiry Date *</string>
+    <string name="cvc">CVC *</string>
+    <string name="_3_digits_at_the_back_of_your_card">3 digits at the back of your card</string>
+    <string name="card_holder_name">Card Holder Name *</string>
+    <string name="in_progress">In Progress...</string>
 
 
 </resources>

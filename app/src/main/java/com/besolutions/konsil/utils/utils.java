@@ -46,11 +46,23 @@ public class utils {
     /**
      * Upload Image
      */
-     public void upload_image(Context context,int requestCode)
-     {
-         Intent i = new Intent( Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
-         ((AppCompatActivity)context).startActivityForResult(Intent.createChooser(i, "Select Your Photo"),requestCode);
-     }
+    public void upload_image(Context context,int requestCode)
+    {
+        Intent i = new Intent( Intent.ACTION_PICK, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+        ((AppCompatActivity)context).startActivityForResult(Intent.createChooser(i, "Select Your Photo"),requestCode);
+    }
+
+    /**
+     * Upload Files
+     */
+    public void upload_files(Context context,int requestCode)
+    {
+        Intent i = new Intent( Intent.ACTION_OPEN_DOCUMENT);
+        i.setType("application/pdf");
+        i.addCategory(Intent.CATEGORY_OPENABLE);
+        ((AppCompatActivity)context).startActivityForResult(i,requestCode);
+
+    }
 
     /**
      * REPLACE FRAGMENT

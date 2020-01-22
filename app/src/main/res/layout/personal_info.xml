@@ -19,10 +19,11 @@
                  <LinearLayout
                      android:layout_width="match_parent"
                      android:layout_height="0dp"
-                     android:gravity="center"
+                     android:gravity="center|top"
+                     android:paddingTop="@dimen/_10sdp"
                      android:weightSum="5"
                      android:orientation="vertical"
-                     android:layout_weight=".6">
+                     android:layout_weight=".77">
                   <LinearLayout
                       android:layout_width="match_parent"
                       android:layout_height="0dp"
@@ -46,6 +47,10 @@
                           android:layout_height="match_parent"
                           android:text="mahmoud mohamed"
                           android:gravity="center|left"
+                          android:layout_marginTop="@dimen/_2sdp"
+                          android:layout_marginBottom="@dimen/_3sdp"
+                          android:layout_marginRight="@dimen/_8sdp"
+                          android:background="@color/color1"
                           android:hint="@string/change_name"
                           android:paddingLeft="@dimen/_10sdp"
                           android:textColor="@color/color2"
@@ -74,11 +79,15 @@
                           android:padding="@dimen/_7sdp"
                           android:layout_width="0dp"
                           android:layout_height="match_parent"/>
-                      <TextView
+                      <EditText
                           android:layout_weight=".85"
                           android:layout_width="0dp"
                           android:layout_height="match_parent"
+                          android:layout_marginTop="@dimen/_2sdp"
+                          android:layout_marginBottom="@dimen/_3sdp"
+                          android:layout_marginRight="@dimen/_8sdp"
                           android:text="ibraheemmohamed@gmail.com"
+                          android:background="@color/color1"
                           android:gravity="center|left"
                           android:hint="@string/change_email"
                           android:paddingLeft="@dimen/_10sdp"
@@ -108,12 +117,17 @@
                           android:padding="@dimen/_7sdp"
                           android:tint="@android:color/white"
                           android:layout_height="match_parent"/>
-                      <TextView
+                      <EditText
                           android:layout_weight=".85"
                           android:layout_width="0dp"
                           android:layout_height="match_parent"
-                          android:text="Change password"
                           android:hint="@string/change_pass"
+                          android:background="@color/color1"
+                          android:layout_marginTop="@dimen/_2sdp"
+                          android:inputType="textPassword"
+                          android:text="7050302010"
+                          android:layout_marginBottom="@dimen/_3sdp"
+                          android:layout_marginRight="@dimen/_8sdp"
                           android:gravity="center|left"
                           android:paddingLeft="@dimen/_10sdp"
                           android:textColor="@color/color2"
@@ -141,11 +155,15 @@
                           android:padding="@dimen/_7sdp"
                           android:tint="@android:color/white"
                           android:layout_height="match_parent"/>
-                      <TextView
+                      <EditText
                           android:layout_weight=".85"
                           android:layout_width="0dp"
+                          android:layout_marginTop="@dimen/_2sdp"
+                          android:layout_marginBottom="@dimen/_3sdp"
+                          android:layout_marginRight="@dimen/_8sdp"
                           android:layout_height="match_parent"
                           android:text="Add your phone"
+                          android:background="@color/color1"
                           android:gravity="center|left"
                           android:hint="@string/add_ur_phone"
                           android:paddingLeft="@dimen/_10sdp"
@@ -183,17 +201,64 @@
                              android:hint="@string/add_your_ph"
                              android:gravity="center|left"
                              android:paddingLeft="@dimen/_10sdp"
+                             android:background="@color/color1"
+                             android:layout_marginTop="@dimen/_2sdp"
+                             android:layout_marginBottom="@dimen/_3sdp"
+                             android:layout_marginRight="@dimen/_8sdp"
                              android:textColor="@color/color2"
                              android:textSize="@dimen/_12ssp"
                              android:id="@+id/change_pass"
                              />
-
                      </LinearLayout>
+                     <LinearLayout
+                         android:layout_width="match_parent"
+                         android:layout_height="0dp"
+                         android:layout_weight=".15"/>
+                     <LinearLayout
+                         android:layout_width="match_parent"
+                         android:layout_height="0dp"
+                         android:orientation="horizontal"
+                         android:weightSum="1"
+                         android:layout_marginRight="@dimen/_30sdp"
+                         android:layout_marginLeft="@dimen/_30sdp"
+                         android:layout_weight="1.2">
+
+                         <EditText
+                             android:layout_weight="1"
+                             android:layout_width="0dp"
+                             android:layout_height="match_parent"
+                             android:background="@drawable/personal_info_item_bg"
+                             android:hint="@string/patient_history"
+                             android:gravity="top|left"
+                             android:paddingTop="@dimen/_10sdp"
+                             android:paddingLeft="@dimen/_10sdp"
+                             android:layout_marginTop="@dimen/_2sdp"
+                             android:layout_marginBottom="@dimen/_3sdp"
+                             android:layout_marginRight="@dimen/_8sdp"
+                             android:textColor="@color/color2"
+                             android:textSize="@dimen/_12ssp"
+                             />
+                     </LinearLayout>
+                     <LinearLayout
+                         android:layout_width="match_parent"
+                         android:layout_height="0dp"
+                         android:layout_weight=".15"/>
+                     <Button
+                         android:layout_width="@dimen/_120sdp"
+                         android:layout_height="0dp"
+                         android:layout_weight=".35"
+                         android:text="@string/done"
+                         android:textAllCaps="false"
+                         android:id="@+id/login"
+                         android:textSize="@dimen/_12ssp"
+                         android:textColor="@android:color/white"
+                         android:background="@drawable/buttom_bg"/>
+
                  </LinearLayout>
                  <ImageView
                      android:layout_width="match_parent"
                      android:layout_height="0dp"
-                     android:layout_weight=".4"
+                     android:layout_weight=".23"
                      android:src="@drawable/personal_info"
                      android:scaleType="fitXY"
                      />

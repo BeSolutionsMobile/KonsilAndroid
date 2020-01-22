@@ -173,7 +173,7 @@ public class main_screen extends AppCompatActivity implements NavigationDrawerCa
         return super.onOptionsItemSelected(item);
     }
 
-   
+
 
     @Override
     public void onClick(View v) {

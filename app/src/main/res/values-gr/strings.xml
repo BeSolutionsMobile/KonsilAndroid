@@ -101,6 +101,16 @@
     <string name="doc_info">Arzt Info</string>
     <string name="online_con_details">Online-Konversationsdetails</string>
     <string name="con_req">Konsultationsanfrage</string>
+    <string name="patient_history">Anamnese</string>
+    <string name="done">erledigt</string>
+    <string name="pay">Zahlen</string>
+    <string name="credit_card_type">Kreditkartentyp *</string>
+    <string name="credit_card_number">Kreditkartennummer *</string>
+    <string name="expiry_date">Verfallsdatum *</string>
+    <string name="cvc">CVC *</string>
+    <string name="_3_digits_at_the_back_of_your_card">3 Ziffern auf der Rückseite Ihrer Karte</string>
+    <string name="card_holder_name">Name des Karteninhabers *</string>
+    <string name="in_progress">In Bearbeitung...</string>
 
 
 

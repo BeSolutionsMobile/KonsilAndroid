@@ -4,52 +4,56 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".scenarios.scenario_Consulation_result.Controller.Consulation_result.fragment_files.fragment_files">
- <android.support.v4.widget.NestedScrollView
-     android:layout_width="match_parent"
-     android:layout_height="match_parent">
+
 <LinearLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:weightSum="1"
     android:orientation="vertical">
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:gravity="center"
-        android:layout_marginTop="@dimen/_15sdp"
+        android:layout_weight=".1"
         android:textColor="@color/color2"
         android:textSize="@dimen/_14ssp"
         android:text="@string/there_are_all_uploaded_file"/>
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_300sdp"
+        android:layout_height="0dp"
+        android:layout_weight=".4"
         android:layout_marginRight="@dimen/_10sdp"
         android:layout_marginLeft="@dimen/_10sdp"
-        android:layout_marginTop="@dimen/_20sdp"
         android:id="@+id/file_list"
         />
          <LinearLayout
              android:layout_width="match_parent"
-             android:layout_height="wrap_content"
+             android:layout_height="0dp"
              android:gravity="center"
+             android:layout_weight=".2"
+             android:weightSum="1"
              android:orientation="vertical">
              <ImageView
                  android:layout_width="@dimen/_80sdp"
-                 android:layout_height="@dimen/_55sdp"
+                 android:layout_height="0dp"
+                 android:layout_weight=".7"
                  android:tint="@color/color4"
                  android:src="@drawable/uplaod_file_to"/>
              <TextView
                  android:layout_width="match_parent"
-                 android:layout_height="wrap_content"
+                 android:layout_height="0dp"
+                 android:layout_weight=".3"
                  android:textSize="@dimen/_13ssp"
                  android:textColor="@color/color3"
                  android:paddingLeft="@dimen/_5sdp"
                  android:paddingRight="@dimen/_5sdp"
                  android:text="@string/choose_file_to_uplaod"
-                 android:gravity="center"/>
+                 android:gravity="center|top"/>
          </LinearLayout>
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_40sdp"
+        android:layout_height="0dp"
+        android:layout_weight=".15"
         android:gravity="center">
         <TextView
             android:layout_width="wrap_content"
@@ -68,10 +72,9 @@
     <Button
         android:id="@+id/button"
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_27sdp"
-        android:layout_marginTop="@dimen/_10sdp"
+        android:layout_height="0dp"
+        android:layout_weight=".07"
         android:background="@drawable/buttom_bg"
-        android:layout_marginBottom="@dimen/_15sdp"
         android:text="@string/request_online_converstaion"
         android:textColor="@android:color/white"
         android:textAllCaps="false"
@@ -80,5 +83,4 @@
         android:layout_marginRight="@dimen/_15sdp"
         />
 </LinearLayout>
- </android.support.v4.widget.NestedScrollView>
 </FrameLayout>
