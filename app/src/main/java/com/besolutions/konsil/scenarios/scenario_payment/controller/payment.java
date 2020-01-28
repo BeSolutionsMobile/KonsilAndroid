@@ -4,6 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.besolutions.konsil.R;
 
@@ -15,6 +16,10 @@ public class payment extends AppCompatActivity implements View.OnClickListener {
         setContentView(R.layout.payment);
         pay=(Button)findViewById(R.id.pay);
         pay.setOnClickListener(this);
+
+        TextView title =(TextView)findViewById(R.id.title);
+        String Payment = getResources().getString(R.string.payment);
+        title.setText(Payment);
     }
 
     @Override

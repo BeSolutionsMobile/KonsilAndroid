@@ -111,6 +111,7 @@
     <string name="_3_digits_at_the_back_of_your_card">3 Ziffern auf der Rückseite Ihrer Karte</string>
     <string name="card_holder_name">Name des Karteninhabers *</string>
     <string name="in_progress">In Bearbeitung...</string>
+    <string name="payment">Zahlung</string>
 
 
 

@@ -111,6 +111,7 @@
     <string name="_3_digits_at_the_back_of_your_card">3 digits at the back of your card</string>
     <string name="card_holder_name">Card Holder Name *</string>
     <string name="in_progress">In Progress...</string>
+    <string name="payment">Payment</string>
 
 
 </resources>

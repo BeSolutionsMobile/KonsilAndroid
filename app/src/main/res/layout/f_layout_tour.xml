@@ -19,7 +19,7 @@
     <ImageView
         android:layout_width="match_parent"
         android:layout_height="@dimen/_120sdp"
-        android:src="@drawable/konsilnew"/>
+        android:src="@drawable/konzil_logo"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

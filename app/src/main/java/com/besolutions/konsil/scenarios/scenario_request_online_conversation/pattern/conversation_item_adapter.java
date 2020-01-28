@@ -18,7 +18,7 @@ import java.util.ArrayList;
 public class conversation_item_adapter extends RecyclerView.Adapter<conversation_item_adapter.conversation_holder> {
  Context context;
  ArrayList<conversation_reserv_list> mylist;
-
+    int lastpost=-1;
     public conversation_item_adapter(Context context, ArrayList<conversation_reserv_list> mylist) {
         this.context = context;
         this.mylist = mylist;
@@ -35,31 +35,9 @@ public class conversation_item_adapter extends RecyclerView.Adapter<conversation
     @Override
     public void onBindViewHolder(@NonNull final conversation_holder viewHolder, final int position) {
 
-       viewHolder.radio_txt.setText(mylist.get(position).getResev_txt());
-       viewHolder.radio_txt.setChecked(mylist.get(position).getStatus());
-
-       viewHolder.radio_txt.setOnClickListener(new View.OnClickListener() {
-           @Override
-           public void onClick(View v) {
-
-               for (int index=0;index<mylist.size();index++)
-               {
-
-                   if(index!=position)
-                   {
-                       mylist.get(index).setStatus(true);
-                       viewHolder.radio_txt.setChecked(mylist.get(index).getStatus());
-                   }else
-                       {
-
-                           mylist.get(index).setStatus(true);
-                           viewHolder.radio_txt.setChecked(mylist.get(index).getStatus());
-                       }
-               }
-
-           }
-       });
-
+        viewHolder.radio_txt.setText(mylist.get(position).getResev_txt());
+        viewHolder.radio_txt.setChecked(mylist.get(position).getStatus());
+        viewHolder.radio_txt.setChecked(lastpost == position);
 
     }
 
