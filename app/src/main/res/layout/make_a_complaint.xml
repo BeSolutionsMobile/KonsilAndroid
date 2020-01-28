@@ -28,6 +28,7 @@
             android:layout_width="match_parent"
             android:layout_height="@dimen/_30sdp"
             android:paddingLeft="@dimen/_5sdp"
+            android:id="@+id/make_complaint_spi"
             android:backgroundTintMode="@color/color4"
             android:background="@drawable/faq_item_bg"
             />

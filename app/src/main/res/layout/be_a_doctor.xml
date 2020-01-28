@@ -67,12 +67,16 @@
             android:src="@drawable/person_name"
             android:padding="@dimen/_5sdp"
             android:layout_height="match_parent"/>
-        <TextView
+        <EditText
             android:layout_weight=".85"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:text="@string/add_your_name"
+            android:hint="@string/add_your_name"
             android:gravity="center|left"
+            android:background="@color/color1"
+            android:layout_marginTop="@dimen/_2sdp"
+            android:layout_marginBottom="@dimen/_3sdp"
+            android:layout_marginRight="@dimen/_8sdp"
             android:paddingLeft="@dimen/_10sdp"
             android:textColor="@color/color2"
             android:textSize="@dimen/_12ssp"
@@ -96,11 +100,15 @@
             android:padding="@dimen/_5sdp"
             android:layout_width="0dp"
             android:layout_height="match_parent"/>
-        <TextView
+        <EditText
             android:layout_weight=".85"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:text="@string/add_your_email"
+            android:hint="@string/add_your_email"
+            android:background="@color/color1"
+            android:layout_marginTop="@dimen/_2sdp"
+            android:layout_marginBottom="@dimen/_3sdp"
+            android:layout_marginRight="@dimen/_8sdp"
             android:gravity="center|left"
             android:paddingLeft="@dimen/_10sdp"
             android:textColor="@color/color2"
@@ -126,11 +134,16 @@
             android:tint="@android:color/white"
             android:padding="@dimen/_5sdp"
             android:layout_height="match_parent"/>
-        <TextView
+        <EditText
             android:layout_weight=".85"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:text="@string/add_your_password"
+            android:hint="@string/add_your_password"
+            android:background="@color/color1"
+            android:layout_marginTop="@dimen/_2sdp"
+            android:layout_marginBottom="@dimen/_3sdp"
+            android:layout_marginRight="@dimen/_8sdp"
+            android:inputType="textPassword"
             android:gravity="center|left"
             android:paddingLeft="@dimen/_10sdp"
             android:textColor="@color/color2"
@@ -156,12 +169,17 @@
             android:padding="@dimen/_5sdp"
             android:layout_width="0dp"
             android:layout_height="match_parent"/>
-        <TextView
+        <EditText
             android:layout_weight=".85"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:text="@string/add_your_phone"
+            android:hint="@string/add_your_phone"
             android:gravity="center|left"
+            android:background="@color/color1"
+            android:layout_marginTop="@dimen/_2sdp"
+            android:layout_marginBottom="@dimen/_3sdp"
+            android:layout_marginRight="@dimen/_8sdp"
+            android:inputType="number"
             android:paddingLeft="@dimen/_10sdp"
             android:textColor="@color/color2"
             android:textSize="@dimen/_12ssp"
