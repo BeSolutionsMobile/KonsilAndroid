@@ -39,32 +39,21 @@ public class faq extends AppCompatActivity {
 
 
 
-        mylsits.add(new expandlist(1,"Whats your name?",about));
-        about.add(new itemList(1,"My name is Hatly"));
+        mylsits.add(new expandlist(1,"Whats application name?",about));
+        about.add(new itemList(1,"application is called konzil"));
 
-        mylsits.add(new expandlist(1,"Whats your name of your best friend?",about1));
-        about1.add(new itemList(1,"his name is Hatly"));
+        mylsits.add(new expandlist(1,"why konzil",about1));
+        about1.add(new itemList(1,"you can find best doctors with best prices"));
 
-        mylsits.add(new expandlist(1,"Whats your name of your best friend?",about2));
-        about2.add(new itemList(1,"his name is Hatly"));
+        mylsits.add(new expandlist(1,"how many doctors in konzil",about2));
+        about2.add(new itemList(1,"knzil collect more than 1000 doctors"));
 
-        mylsits.add(new expandlist(1,"Whats your name of your best friend?",about3));
-        about3.add(new itemList(1,"his name is Hatly"));
+        mylsits.add(new expandlist(1,"where is konzil",about3));
+        about3.add(new itemList(1,"its is in germany "));
 
-        mylsits.add(new expandlist(1,"Whats your name of your best friend?",about4));
-        about4.add(new itemList(1,"his name is Hatly"));
+        mylsits.add(new expandlist(1,"what about our social media accounts",about4));
+        about4.add(new itemList(1,"we have facebook and twitter"));
 
-        mylsits.add(new expandlist(1,"Whats your name of your best friend?",about5));
-        about5.add(new itemList(1,"his name is Hatly"));
-
-        mylsits.add(new expandlist(1,"Whats your name of your best friend?",about6));
-        about6.add(new itemList(1,"his name is Hatly"));
-
-        mylsits.add(new expandlist(1,"Whats your name of your best friend?",about7));
-        about7.add(new itemList(1,"his name is Hatly"));
-
-        mylsits.add(new expandlist(1,"Whats your name of your best friend?",about8));
-        about8.add(new itemList(1,"his name is Hatly"));
 
 
 
