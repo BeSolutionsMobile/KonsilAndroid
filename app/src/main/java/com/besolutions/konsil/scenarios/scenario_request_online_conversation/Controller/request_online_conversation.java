@@ -11,6 +11,7 @@ import android.widget.TextView;
 
 import com.besolutions.konsil.R;
 import com.besolutions.konsil.scenarios.scenario_online_conversation.Controller.online_conversation;
+import com.besolutions.konsil.scenarios.scenario_payment.controller.payment;
 import com.besolutions.konsil.scenarios.scenario_request_online_conversation.pattern.conversation_item_adapter;
 import com.besolutions.konsil.scenarios.scenario_request_online_conversation.model.conversation_reserv_list;
 import com.besolutions.konsil.utils.utils_adapter;
@@ -49,7 +50,7 @@ public class request_online_conversation extends AppCompatActivity implements Vi
     public void onClick(View v) {
         if(v.getId()==R.id.complete_req)
         {
-          startActivity(new Intent(this, online_conversation.class));
+          startActivity(new Intent(this, payment.class));
         }
     }
 

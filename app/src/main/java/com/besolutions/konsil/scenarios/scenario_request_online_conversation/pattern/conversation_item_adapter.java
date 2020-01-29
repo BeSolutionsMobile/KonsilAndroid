@@ -42,7 +42,6 @@ public class conversation_item_adapter extends RecyclerView.Adapter<conversation
         viewHolder.radio_txt.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 RadioButton checked_rb = (RadioButton) v;
                 if(lastCheckedRB != null){
                     lastCheckedRB.setChecked(false);

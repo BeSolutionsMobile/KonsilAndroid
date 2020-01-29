@@ -20,7 +20,6 @@ public class loading {
         dialog.getWindow().setLayout(width, height);
         dialog.show();
 
-
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             public void run() {
