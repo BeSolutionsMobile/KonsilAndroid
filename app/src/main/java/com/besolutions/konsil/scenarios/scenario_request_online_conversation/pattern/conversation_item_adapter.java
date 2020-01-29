@@ -16,9 +16,12 @@ import com.besolutions.konsil.scenarios.scenario_request_online_conversation.mod
 import java.util.ArrayList;
 
 public class conversation_item_adapter extends RecyclerView.Adapter<conversation_item_adapter.conversation_holder> {
- Context context;
- ArrayList<conversation_reserv_list> mylist;
-    int lastpost=-1;
+
+       private Context context;
+       private ArrayList<conversation_reserv_list> mylist;
+
+    private RadioButton lastCheckedRB = null;
+
     public conversation_item_adapter(Context context, ArrayList<conversation_reserv_list> mylist) {
         this.context = context;
         this.mylist = mylist;
@@ -28,16 +31,26 @@ public class conversation_item_adapter extends RecyclerView.Adapter<conversation
     @Override
     public conversation_holder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         View view= LayoutInflater.from(context).inflate(R.layout.converstaion_item,viewGroup,false);
-        conversation_holder conversation_holder=new conversation_holder(view);
-        return conversation_holder;
+        return new conversation_holder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull final conversation_holder viewHolder, final int position) {
 
         viewHolder.radio_txt.setText(mylist.get(position).getResev_txt());
-        viewHolder.radio_txt.setChecked(mylist.get(position).getStatus());
-        viewHolder.radio_txt.setChecked(lastpost == position);
+
+        viewHolder.radio_txt.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                RadioButton checked_rb = (RadioButton) v;
+                if(lastCheckedRB != null){
+                    lastCheckedRB.setChecked(false);
+                }
+                lastCheckedRB = checked_rb;
+
+            }
+        });
 
     }
 
@@ -48,9 +61,9 @@ public class conversation_item_adapter extends RecyclerView.Adapter<conversation
 
     class  conversation_holder extends RecyclerView.ViewHolder {
         RadioButton radio_txt;
-        public conversation_holder(@NonNull View itemView) {
+        conversation_holder(@NonNull View itemView) {
             super(itemView);
-            radio_txt=(RadioButton)itemView.findViewById(R.id.radio_item);
+            radio_txt= itemView.findViewById(R.id.radio_item);
         }
     }
 }
