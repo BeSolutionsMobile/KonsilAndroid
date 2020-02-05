@@ -37,9 +37,9 @@ public class request_online_conversation extends AppCompatActivity implements Vi
         reserv_list=(RecyclerView)findViewById(R.id.reserv_list);
 
         ArrayList<conversation_reserv_list> arrayList=new ArrayList<>();
-        arrayList.add(new conversation_reserv_list("1","From 1 Am to 2 Pm"));
-        arrayList.add(new conversation_reserv_list("1","From 1 Am to 2 Pm"));
-        arrayList.add(new conversation_reserv_list("1","From 1 Am to 2 Pm"));
+        arrayList.add(new conversation_reserv_list("1","From 1 Pm to 1:30 Pm"));
+        arrayList.add(new conversation_reserv_list("1","From 1:30 Pm to 2 Pm"));
+        arrayList.add(new conversation_reserv_list("1","From 2 Pm to 2:30 Pm"));
 
         utils_adapter utils_adapter=new utils_adapter();
         utils_adapter.Adapter(reserv_list,new conversation_item_adapter(this,arrayList),this);

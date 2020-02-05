@@ -33,7 +33,7 @@
     <string name="send">Send</string>
     <string name="request_online_converstaion">Request online converstaion</string>
     <string name="make_a_complaint">Make a complaint</string>
-    <string name="there_are_all_uploaded_file">there are all uploaded file</string>
+    <string name="there_are_all_uploaded_file">these are all uploaded file</string>
     <string name="appoinments_available_for_dr">Appoinments available for Dr</string>
     <string name="info">Info</string>
     <string name="report">Report</string>
@@ -112,6 +112,7 @@
     <string name="card_holder_name">Card Holder Name *</string>
     <string name="in_progress">In Progress...</string>
     <string name="payment">Payment</string>
+    <string name="registed_suc">Registed Successfully</string>
 
 
 </resources>

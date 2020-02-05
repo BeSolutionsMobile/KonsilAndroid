@@ -11,6 +11,10 @@ import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.util.DisplayMetrics;
 
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.InstanceIdResult;
+
 import java.util.Locale;
 
 
@@ -93,5 +97,6 @@ public class utils {
         configuration.setLocale(new Locale(Lan.toLowerCase()));
         resources.updateConfiguration(configuration,displayMetrics);
     }
+
 
 }

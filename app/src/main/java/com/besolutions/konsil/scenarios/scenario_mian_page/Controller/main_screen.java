@@ -139,7 +139,8 @@ public class main_screen extends AppCompatActivity implements NavigationDrawerCa
             mNavigationDrawerFragment.closeDrawer();
         }
         else{
-            finish();
+
+            moveTaskToBack(true);
         }
 
     }

@@ -24,4 +24,14 @@ public class send_data {
         editor.putString("nav_lan", lan);
         editor.commit();
     }
+
+    //SAVE TOKEN
+    public static void save_token(Context context,String token)
+    {
+            //SAVE LANGUAGE STATUS
+            SharedPreferences sharedPreferences=context.getSharedPreferences("token",MODE_PRIVATE);
+            SharedPreferences.Editor editor=sharedPreferences.edit();
+            editor.putString("token", token);
+            editor.commit();
+    }
 }

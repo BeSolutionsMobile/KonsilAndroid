@@ -16,6 +16,12 @@ public class saved_data {
     {
         SharedPreferences sharedPreferences=context.getSharedPreferences("nav_lan",Context.MODE_PRIVATE);
         return sharedPreferences.getString("nav_lan","sprache auf deutsch umstellen");
+    }
 
+    //GET TOKEN
+    public  String get_token(Context context)
+    {
+        SharedPreferences sharedPreferences=context.getSharedPreferences("token",Context.MODE_PRIVATE);
+        return sharedPreferences.getString("token","");
     }
 }

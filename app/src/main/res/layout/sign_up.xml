@@ -26,11 +26,13 @@
                 android:layout_marginLeft="@dimen/_40sdp"
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_25sdp"
+                android:id="@+id/username"
                 android:layout_marginTop="@dimen/_20sdp"
                 android:hint="@string/full_name"
                 android:textColorHint="@color/color2"
                 android:textSize="@dimen/_10ssp"
                 android:paddingLeft="@dimen/_20sdp"
+                android:paddingRight="@dimen/_5sdp"
                 android:background="@drawable/form_bg"
                 />
             <EditText
@@ -39,11 +41,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_25sdp"
                 android:inputType="number"
-                        android:hint="@string/phone"
+                android:hint="@string/phone"
+                android:id="@+id/phone"
                 android:textColorHint="@color/color2"
                 android:layout_marginTop="@dimen/_8sdp"
                 android:textSize="@dimen/_10ssp"
                 android:paddingLeft="@dimen/_20sdp"
+                android:paddingRight="@dimen/_5sdp"
                 android:background="@drawable/form_bg"
                 />
             <EditText
@@ -52,11 +56,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_25sdp"
                 android:hint="@string/e_mail_address"
+                android:id="@+id/email"
                 android:inputType="textEmailAddress"
                 android:textColorHint="@color/color2"
                 android:layout_marginTop="@dimen/_8sdp"
                 android:textSize="@dimen/_10ssp"
                 android:paddingLeft="@dimen/_20sdp"
+                android:paddingRight="@dimen/_5sdp"
                 android:background="@drawable/form_bg"
                 />
             <EditText
@@ -65,11 +71,13 @@
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_25sdp"
                 android:hint="@string/password"
+                android:id="@+id/password"
                 android:inputType="textPassword"
                 android:textColorHint="@color/color2"
                 android:layout_marginTop="@dimen/_8sdp"
                 android:textSize="@dimen/_10ssp"
                 android:paddingLeft="@dimen/_20sdp"
+                android:paddingRight="@dimen/_5sdp"
                 android:background="@drawable/form_bg"
                 />
             <CheckBox
