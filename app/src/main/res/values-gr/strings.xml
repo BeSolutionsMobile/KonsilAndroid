@@ -41,7 +41,7 @@
     <string name="select_specialty">Spezialität auswählen</string>
     <string name="add_your_photo">Fügen Sie Ihr Foto hinzu</string>
     <string name="add_your_name">füge deinen Namen hinzu</string>
-    <string name="complaint_message">Beschwerde Nachricht</string>
+    <string name="complaint_message">Aktuelle Beschwerde</string>
     <string name="complaint_type">Beschwerde Typ</string>
     <string name="consult_amp_chat"><![CDATA[Beraten & Chatten]]></string>
     <string name="start">Start</string>
@@ -113,6 +113,7 @@
     <string name="in_progress">In Bearbeitung...</string>
     <string name="payment">Zahlung</string>
     <string name="registed_suc">Erfolgreich registriert</string>
+    <string name="doctor">Abteilungsleiter am Berliner Krankenhaus</string>
 
 
 

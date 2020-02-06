@@ -41,7 +41,7 @@
     <string name="select_specialty">Select Specialty</string>
     <string name="add_your_photo">Add Your Photo</string>
     <string name="add_your_name">Add Your Name</string>
-    <string name="complaint_message">Complaint Message</string>
+    <string name="complaint_message">Current Complaint</string>
     <string name="complaint_type">Complaint Type</string>
     <string name="consult_amp_chat"><![CDATA[Consult & Chat]]></string>
     <string name="start">Start</string>
@@ -113,6 +113,7 @@
     <string name="in_progress">In Progress...</string>
     <string name="payment">Payment</string>
     <string name="registed_suc">Registed Successfully</string>
+    <string name="doctor">Head of department, Berlin Hospital</string>
 
 
 </resources>

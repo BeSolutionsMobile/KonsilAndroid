@@ -41,7 +41,7 @@
     <string name="select_specialty">اختر التخصص</string>
     <string name="add_your_photo">اضافة صوره</string>
     <string name="add_your_name">اضافة اسم</string>
-    <string name="complaint_message">تفاصيل الشكوى</string>
+    <string name="complaint_message">الشكوه الحاليه</string>
     <string name="complaint_type">نوع الشكوى</string>
     <string name="consult_amp_chat">استشر و تحدث الى طبيبك</string>
     <string name="start">بدأ</string>
@@ -113,6 +113,7 @@
     <string name="in_progress">جارى الدفع ...</string>
     <string name="payment">الدفع</string>
     <string name="registed_suc">تم التسجيل بنجاح</string>
+    <string name="doctor">رئيس القسم في مستشفى برلين</string>
 
 
 
