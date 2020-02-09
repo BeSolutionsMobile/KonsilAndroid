@@ -3,6 +3,7 @@ package com.besolutions.konsil.scenarios.scenario_sign_up.Controller;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -15,6 +16,8 @@ import com.besolutions.konsil.NetworkLayer.ResponseModel;
 import com.besolutions.konsil.R;
 import com.besolutions.konsil.local_data.saved_data;
 import com.besolutions.konsil.local_data.send_data;
+import com.besolutions.konsil.scenarios.scenario_login.Controller.loading;
+import com.besolutions.konsil.scenarios.scenario_login.Controller.login;
 import com.besolutions.konsil.scenarios.scenario_mian_page.Controller.main_screen;
 import com.besolutions.konsil.scenarios.scenario_sign_up.model.signup_model;
 import com.besolutions.konsil.scenarios.scenario_splash_screen.Controller.splash_screen;
@@ -48,6 +51,8 @@ public class sign_up extends AppCompatActivity implements View.OnClickListener, 
 
         signup.setOnClickListener(this);
 
+        firebase_token();
+
     }
 
     @Override
@@ -71,7 +76,7 @@ public class sign_up extends AppCompatActivity implements View.OnClickListener, 
                 //COMPLETE MOBILE TOKEN AND LANGUAGE
                 //GET DEVICE LANGUAGE
                 String lang = new saved_data().get_lan(sign_up.this);
-                new Apicalls(sign_up.this, this).insertUser(username.getText().toString(), phone.getText().toString(), email.getText().toString(), password.getText().toString(), "2", "", "en", "ssss");
+                new Apicalls(sign_up.this, this).insertUser(username.getText().toString(), phone.getText().toString(), email.getText().toString(), password.getText().toString(), "2", "", new saved_data().get_lan(this), firebase_token());
             }
         }
 
@@ -84,22 +89,30 @@ public class sign_up extends AppCompatActivity implements View.OnClickListener, 
 
     @Override
     public void OnResponse(ResponseModel model) {
-
-        Toast.makeText(this, model.getResponse(), Toast.LENGTH_SHORT).show();
-      /*  signup_model = new signup_model(model.getJsonObject());
+       // Toast.makeText(this, ""+model.getResponse(), Toast.LENGTH_SHORT).show();
+        signup_model = new signup_model(model.getJsonObject());
 
         //GET TOKEN AND SAVE IT IN LOCAL DATA
         send_data.save_token(sign_up.this, signup_model.getToken());
 
+        //POP UP
+        loading loading=new loading();
+        loading.dialog(sign_up.this,R.layout.successful_login,.80);
+
+        //toasty
         String registed_suc = getResources().getString(R.string.registed_suc);
-        Toasty.success(sign_up.this, registed_suc, Toasty.LENGTH_SHORT);
-*/
+        Toasty.success(sign_up.this, registed_suc, Toasty.LENGTH_SHORT).show();
+
+
+
+
+
 
     }
 
     @Override
     public void OnError(VolleyError error) {
-
+        Toast.makeText(this, ""+error.networkResponse.statusCode, Toast.LENGTH_SHORT).show();
     }
 
 
