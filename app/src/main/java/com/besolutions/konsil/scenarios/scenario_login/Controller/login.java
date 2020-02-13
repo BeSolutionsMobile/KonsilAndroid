@@ -11,32 +11,19 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.android.volley.DefaultRetryPolicy;
-import com.android.volley.NetworkResponse;
-import com.android.volley.Request;
-import com.android.volley.RequestQueue;
-import com.android.volley.Response;
 import com.android.volley.VolleyError;
-import com.android.volley.toolbox.JsonObjectRequest;
-import com.android.volley.toolbox.StringRequest;
-import com.android.volley.toolbox.Volley;
+
 import com.besolutions.konsil.NetworkLayer.Apicalls;
 import com.besolutions.konsil.NetworkLayer.NetworkInterface;
 import com.besolutions.konsil.NetworkLayer.ResponseModel;
 import com.besolutions.konsil.R;
-import com.besolutions.konsil.local_data.saved_data;
 import com.besolutions.konsil.local_data.send_data;
-import com.besolutions.konsil.scenarios.scenario_doctor_list.Controller.doctor_list;
 import com.besolutions.konsil.scenarios.scenario_login.model.login_root;
-import com.besolutions.konsil.scenarios.scenario_mian_page.Controller.main_screen;
+
 import com.besolutions.konsil.scenarios.secnario_fingerprint.Controller.fingerprint;
 import com.besolutions.konsil.scenarios.scenario_sign_up.Controller.sign_up;
+import com.google.gson.Gson;
 
-import org.json.JSONException;
-import org.json.JSONObject;
-
-import java.util.HashMap;
-import java.util.Map;
 
 import es.dmoral.toasty.Toasty;
 
@@ -54,9 +41,9 @@ public class login extends AppCompatActivity implements View.OnClickListener, Ne
         super.onCreate(savedInstanceState);
         setContentView(R.layout.login);
 
-        login = (Button) findViewById(R.id.login);
-        check = (CheckBox) findViewById(R.id.check);
-        signup = (TextView) findViewById(R.id.signup);
+        login = findViewById(R.id.login);
+        check = findViewById(R.id.check);
+        signup = findViewById(R.id.signup);
 
 
         login.setOnClickListener(this);
@@ -69,8 +56,8 @@ public class login extends AppCompatActivity implements View.OnClickListener, Ne
     @Override
     public void onClick(View v) {
         if (v.getId() == R.id.login) {
-            email = (EditText) findViewById(R.id.email);
-            password = (EditText) findViewById(R.id.password);
+            email = findViewById(R.id.email);
+            password = findViewById(R.id.password);
 
             if (email.getText().toString().length() < 6) {
                 email.setError("Please enter the correct mail!");
@@ -101,37 +88,27 @@ public class login extends AppCompatActivity implements View.OnClickListener, Ne
 
     @Override
     public void OnResponse(ResponseModel model) {
-        Toast.makeText(this, ""+model.getJsonObject(), Toast.LENGTH_SHORT).show();
         loading loading = new loading();
         loading.dialog(login.this, R.layout.successful_login, .80);
 
+        Gson gson = new Gson();
 
-        login_root login_root = new login_root(model.getJsonObject());
+        login_root login_root = gson.fromJson(model.getResponse(), login_root.class);
 
         //GET TOKEN AND SAVE IT IN LOCAL DATA
         send_data.save_token(login.this, login_root.getToken());
 
-        //toasty
-        String logged_in_successfully = getResources().getString(R.string.logged_in_successfully);
-        Toasty.success(login.this, logged_in_successfully, Toasty.LENGTH_SHORT).show();
     }
 
     @Override
     public void OnError(VolleyError error) {
-        if(error.networkResponse.statusCode==401)
-        {
+        if (error.networkResponse.statusCode == 401) {
             Toasty.error(login.this, "Email or Password is incorrect", Toasty.LENGTH_SHORT).show();
-        }
-        else if(error.networkResponse.statusCode==405)
-        {
+        } else if (error.networkResponse.statusCode == 405) {
             Toasty.error(login.this, "Email is Empty", Toasty.LENGTH_SHORT).show();
-        }
-        else if(error.networkResponse.statusCode==406)
-        {
+        } else if (error.networkResponse.statusCode == 406) {
             Toasty.error(login.this, "Password is Empty", Toasty.LENGTH_SHORT).show();
-        }
-        else if(error.networkResponse.statusCode==407 )
-        {
+        } else if (error.networkResponse.statusCode == 407) {
             Toasty.error(login.this, "Mobile Token is Empty", Toasty.LENGTH_SHORT).show();
         }
     }

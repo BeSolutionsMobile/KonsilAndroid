@@ -64,49 +64,13 @@
                 android:layout_marginLeft="@dimen/_15sdp"
                 android:textSize="@dimen/_12ssp"
                 android:textColor="@android:color/black"/>
-            <RadioGroup
+            <android.support.v7.widget.RecyclerView
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_55sdp"
                 android:layout_marginLeft="@dimen/_15sdp"
                 android:layout_marginRight="@dimen/_15sdp"
-                >
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="@dimen/_20sdp"
-                    android:layout_marginTop="@dimen/_10sdp"
-                    android:weightSum="1">
-                    <RadioButton
-                        android:layout_weight=".5"
-                        android:layout_width="0dp"
-                        android:textSize="@dimen/_10ssp"
-                        android:textStyle="bold"
-                        android:text="@string/advisory"
-                        android:textColor="@color/color2"
-                        android:buttonTint="@color/color2"
-                        android:paddingLeft="@dimen/_5sdp"
-                        android:layout_height="match_parent"/>
-                    <RadioButton
-                        android:layout_weight=".5"
-                        android:layout_width="0dp"
-                        android:textSize="@dimen/_10ssp"
-                        android:textStyle="bold"
-                        android:buttonTint="@color/color2"
-                        android:text="@string/specialist"
-                        android:layout_marginLeft="@dimen/_30sdp"
-                        android:textColor="@color/color2"
-                        android:layout_height="match_parent"/>
-                </LinearLayout>
-                <RadioButton
-
-                    android:layout_width="match_parent"
-                    android:textSize="@dimen/_10ssp"
-                    android:textStyle="bold"
-                    android:text="Prof"
-                    android:buttonTint="@color/color2"
-                    android:textColor="@color/color2"
-                    android:paddingLeft="@dimen/_5sdp"
-                    android:layout_height="match_parent"/>
-            </RadioGroup>
+                android:id="@+id/radio_list"
+                />
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="@dimen/_20sdp"

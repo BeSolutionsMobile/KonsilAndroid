@@ -1,9 +1,7 @@
 package com.besolutions.konsil.scenarios.scenario_sign_up.Controller;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -17,11 +15,8 @@ import com.besolutions.konsil.R;
 import com.besolutions.konsil.local_data.saved_data;
 import com.besolutions.konsil.local_data.send_data;
 import com.besolutions.konsil.scenarios.scenario_login.Controller.loading;
-import com.besolutions.konsil.scenarios.scenario_login.Controller.login;
-import com.besolutions.konsil.scenarios.scenario_mian_page.Controller.main_screen;
-import com.besolutions.konsil.scenarios.scenario_sign_up.model.signup_model;
-import com.besolutions.konsil.scenarios.scenario_splash_screen.Controller.splash_screen;
-import com.besolutions.konsil.utils.utils;
+import com.besolutions.konsil.scenarios.scenario_sign_up.model.UserInfo;
+import com.besolutions.konsil.scenarios.scenario_sign_up.model.root_signup;
 import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -35,7 +30,8 @@ import es.dmoral.toasty.Toasty;
 public class sign_up extends AppCompatActivity implements View.OnClickListener, NetworkInterface {
     Button signup;
     EditText username, phone, email, password;
-    signup_model signup_model;
+    root_signup root_signup;
+    com.besolutions.konsil.scenarios.scenario_sign_up.model.UserInfo UserInfo;
 
 
     @Override
@@ -43,11 +39,11 @@ public class sign_up extends AppCompatActivity implements View.OnClickListener, 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.sign_up);
 
-        signup = (Button) findViewById(R.id.signup);
-        username = (EditText) findViewById(R.id.username);
-        phone = (EditText) findViewById(R.id.phone);
-        email = (EditText) findViewById(R.id.email);
-        password = (EditText) findViewById(R.id.password);
+        signup = findViewById(R.id.signup);
+        username = findViewById(R.id.username);
+        phone = findViewById(R.id.phone);
+        email = findViewById(R.id.email);
+        password = findViewById(R.id.password);
 
         signup.setOnClickListener(this);
 
@@ -90,21 +86,17 @@ public class sign_up extends AppCompatActivity implements View.OnClickListener, 
     @Override
     public void OnResponse(ResponseModel model) {
        // Toast.makeText(this, ""+model.getResponse(), Toast.LENGTH_SHORT).show();
-        signup_model = new signup_model(model.getJsonObject());
+        Gson gson=new Gson();
+        root_signup = gson.fromJson(""+model.getResponse(),root_signup.class);
+
+        UserInfo = root_signup.getUserInfo();
 
         //GET TOKEN AND SAVE IT IN LOCAL DATA
-        send_data.save_token(sign_up.this, signup_model.getToken());
+        send_data.save_token(sign_up.this, root_signup.getToken());
 
-        //POP UP
+       //POP UP
         loading loading=new loading();
         loading.dialog(sign_up.this,R.layout.successful_login,.80);
-
-        //toasty
-        String registed_suc = getResources().getString(R.string.registed_suc);
-        Toasty.success(sign_up.this, registed_suc, Toasty.LENGTH_SHORT).show();
-
-
-
 
 
 
@@ -112,7 +104,7 @@ public class sign_up extends AppCompatActivity implements View.OnClickListener, 
 
     @Override
     public void OnError(VolleyError error) {
-        Toast.makeText(this, ""+error.networkResponse.statusCode, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, ""+error.networkResponse, Toast.LENGTH_SHORT).show();
     }
 
 

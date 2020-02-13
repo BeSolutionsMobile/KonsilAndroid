@@ -31,7 +31,7 @@ public class send_data {
             //SAVE LANGUAGE STATUS
             SharedPreferences sharedPreferences=context.getSharedPreferences("token",MODE_PRIVATE);
             SharedPreferences.Editor editor=sharedPreferences.edit();
-            editor.putString("token", token);
+            editor.putString("token_key", token);
             editor.commit();
     }
 }

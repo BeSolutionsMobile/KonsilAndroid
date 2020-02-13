@@ -11,18 +11,20 @@
     android:background="@drawable/spechail_item"
     >
   <ImageView
-      android:layout_width="@dimen/_90sdp"
-      android:layout_height="@dimen/_90sdp"
+      android:layout_width="@dimen/_60sdp"
+      android:layout_height="@dimen/_60sdp"
       android:id="@+id/img"
+      android:layout_marginBottom="@dimen/_15sdp"
       android:src="@drawable/doctor_one"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="Surgery"
+        android:maxLines="2"
         android:layout_marginBottom="@dimen/_3sdp"
         android:id="@+id/name"
         android:paddingRight="@dimen/_5sdp"
         android:paddingLeft="@dimen/_5sdp"
-        android:textSize="@dimen/_10ssp"
+        android:textSize="@dimen/_13ssp"
         android:gravity="center"/>
 </LinearLayout>

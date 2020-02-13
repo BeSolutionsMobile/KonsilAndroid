@@ -3,6 +3,8 @@ package com.besolutions.konsil.local_data;
 import android.content.Context;
 import android.content.SharedPreferences;
 
+import static android.content.Context.MODE_PRIVATE;
+
 public class saved_data {
 
    public  String get_lan(Context context)
@@ -21,7 +23,8 @@ public class saved_data {
     //GET TOKEN
     public  String get_token(Context context)
     {
-        SharedPreferences sharedPreferences=context.getSharedPreferences("token",Context.MODE_PRIVATE);
-        return sharedPreferences.getString("token","");
+        SharedPreferences sharedPreferences=context.getSharedPreferences("token",MODE_PRIVATE);
+        String token=sharedPreferences.getString("token_key","0");
+        return token;
     }
 }

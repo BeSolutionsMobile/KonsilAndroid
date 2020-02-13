@@ -1,5 +1,6 @@
 package com.besolutions.konsil.utils;
 
+import android.util.Log;
 import android.view.View;
 
 import com.daimajia.androidanimations.library.Techniques;
@@ -18,6 +19,7 @@ public class utils_library {
             @Override
             public void onSuccess(InstanceIdResult instanceIdResult) {
                 token = instanceIdResult.getToken();
+                Log.e("token_is",token);
                 // send it to server
             }
         });

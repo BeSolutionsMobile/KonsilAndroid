@@ -114,6 +114,7 @@
     <string name="payment">Payment</string>
     <string name="registed_suc">Registed Successfully</string>
     <string name="doctor">Head of department, Berlin Hospital</string>
+    <string name="consultation">consultation</string>
 
 
 </resources>

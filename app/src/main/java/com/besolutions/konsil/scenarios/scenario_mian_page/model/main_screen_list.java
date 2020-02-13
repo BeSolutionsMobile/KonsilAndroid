@@ -1,20 +1,20 @@
 package com.besolutions.konsil.scenarios.scenario_mian_page.model;
 
 public class main_screen_list {
-    String id,name;
-    int image;
+    String name,image;
+    int id;
 
-    public main_screen_list(String id, String name, int image) {
+    public main_screen_list(int id, String name, String image) {
         this.id = id;
         this.name = name;
         this.image = image;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -26,11 +26,11 @@ public class main_screen_list {
         this.name = name;
     }
 
-    public int getImage() {
+    public String getImage() {
         return image;
     }
 
-    public void setImage(int image) {
+    public void setImage(String image) {
         this.image = image;
     }
 }

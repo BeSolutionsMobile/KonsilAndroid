@@ -32,7 +32,7 @@
               <ImageView
                   android:layout_width="@dimen/_60sdp"
                   android:layout_height="@dimen/_60sdp"
-                  android:src="@drawable/doctor_one"
+                  android:id="@+id/doc_img"
                   android:layout_gravity="center"
                   />
           </android.support.v7.widget.CardView>
@@ -40,7 +40,7 @@
       <TextView
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
-          android:text="Ahmed mohamed ali"
+          android:id="@+id/doc_name"
           android:gravity="center"
           android:layout_marginTop="@dimen/_3sdp"
           android:textColor="@color/color2"
@@ -49,7 +49,7 @@
       <TextView
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
-          android:text="Dental Specialst"
+          android:id="@+id/doc_job"
           android:gravity="center"
           android:textColor="@android:color/black"
           />
@@ -90,15 +90,15 @@
               <TextView
                   android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
-                  android:text="@string/patients"
+                  android:text="@string/consultation"
                   android:textSize="@dimen/_10ssp"
                   android:textColor="@color/color2"
                   />
               <TextView
                   android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
-                  android:text="55"
                   android:textSize="@dimen/_10ssp"
+                  android:id="@+id/consultation"
                   android:textColor="@color/color2"
                   />
           </LinearLayout>
@@ -123,7 +123,7 @@
               <TextView
                   android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
-                  android:text="350"
+                  android:id="@+id/price"
                   android:textSize="@dimen/_10ssp"
                   android:textColor="@color/color2"
                   />
@@ -149,8 +149,8 @@
               <TextView
                   android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
-                  android:text="350"
                   android:textSize="@dimen/_10ssp"
+                  android:id="@+id/conversation"
                   android:textColor="@color/color2"
                   />
           </LinearLayout>
@@ -164,7 +164,7 @@
           android:textColor="@android:color/black"
           android:layout_marginTop="@dimen/_15sdp"
           android:textSize="@dimen/_10ssp"
-          android:text="Professor of Dermatology and Andrology ,aesthetic and Laser MD in Dermatology member of American Academy of Dermatology (AAD) member of European Academy of Dermatology (EADV) Member of Egyptian association of Dermatology and Venereology Vice-president of Delta association of Dermatology"
+          android:id="@+id/doc_desc"
           />
       <LinearLayout
           android:layout_width="match_parent"

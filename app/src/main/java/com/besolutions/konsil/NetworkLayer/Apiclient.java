@@ -17,16 +17,15 @@ public enum Apiclient {
      */
 
     LOGIN_USER("auth/login", Arrays.asList("email", "password","mobile_token")),
-    LOGIN_INVESTOR("login_investor?", Arrays.asList("email", "pass")),
+    ALL_SPECIALITIES("specialities", null),
     INSERT_USER("auth/register", Arrays.asList("name","phone","email","password","platform","image_url","lang","mobile_token")),
     //INSERT_INVESTOR("insert_investor?", Arrays.asList("Name","Email","Password","Age","Gender","Work","Mobile","Images")),
-    INSERT_ORDER("store-order", Arrays.asList("order_description","image","distance","duration","promo_code","delivery_time","order_from_location"
-            ,"order_to_location","client_location_lat","client_location_long","order_location_lat", "order_location_long")),
-    ACCEPT_OFFER("accept-offer", Arrays.asList("offer_id")),
-    REJECT_OFFER("reject-offer",Arrays.asList("offer_id")),
+    ALL_DOCS_SPECI("speciality-doctors", Arrays.asList("speciality_id")),
+    DOCTORS_DETAILS("doctor-details", Arrays.asList("doctor_id")),
+    FILTER("filter-doctors",Arrays.asList("speciality_id","degree_id","rate")),
     SUBMIT_OFFER("submit-offer", Arrays.asList("star_id","order_id","expected_delivery_time","offer_value")),
     SET_RATE("rate", Arrays.asList("order_id","rate","note_id")),
-    SET_COMPLAINT("make-complaint", Arrays.asList("order_id","complaint_type_id","complaint")),
+    ADD_CONSULTATION("add-consultation", Arrays.asList("title","details","doctor_id","images","files")),
     CANCEL_ORDER("cancel-order", Arrays.asList("order_id")),
     SELECT_MY_REQUESTS_INVESTOR("selecte_my_request_invistor?", Collections.singletonList("id_investor")),
     SELECT_PRODUCTS("selecte_product_bymember?", Collections.singletonList("id_member")),

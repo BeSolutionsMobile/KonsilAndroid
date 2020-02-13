@@ -25,7 +25,7 @@ public class request_online_conversation extends AppCompatActivity implements Vi
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.request_online_conversation);
-        complete_req=(Button)findViewById(R.id.complete_req);
+        complete_req = findViewById(R.id.complete_req);
         complete_req.setOnClickListener(this);
         get_data();
 
@@ -34,7 +34,7 @@ public class request_online_conversation extends AppCompatActivity implements Vi
 
     void get_data()
     {
-        reserv_list=(RecyclerView)findViewById(R.id.reserv_list);
+        reserv_list= findViewById(R.id.reserv_list);
 
         ArrayList<conversation_reserv_list> arrayList=new ArrayList<>();
         arrayList.add(new conversation_reserv_list("1","From 1 Pm to 1:30 Pm"));
@@ -56,10 +56,10 @@ public class request_online_conversation extends AppCompatActivity implements Vi
 
     public void set_toolbar_name()
     {
-        Toolbar mToolbar = (Toolbar) findViewById(R.id.toolbar_actionbar);
+        Toolbar mToolbar = findViewById(R.id.toolbar_actionbar);
         setSupportActionBar(mToolbar);
 
-        TextView title=(TextView)findViewById(R.id.title);
+        TextView title= findViewById(R.id.title);
         String r_o_c = getResources().getString(R.string.request_online_converstaion);
         title.setText(r_o_c);
     }

@@ -8,11 +8,13 @@ import android.view.Window;
 
 import com.besolutions.konsil.scenarios.scenario_mian_page.Controller.main_screen;
 
+import java.util.Objects;
+
 
 public class loading {
     public void dialog(final Context context, int resource, double widthh) {
         final Dialog dialog = new Dialog(context);
-        dialog.getWindow().setBackgroundDrawableResource(android.R.color.transparent);
+        Objects.requireNonNull(dialog.getWindow()).setBackgroundDrawableResource(android.R.color.transparent);
         dialog.requestWindowFeature(Window.FEATURE_NO_TITLE);
         dialog.setContentView(resource);
         int width = (int) (context.getResources().getDisplayMetrics().widthPixels * widthh);

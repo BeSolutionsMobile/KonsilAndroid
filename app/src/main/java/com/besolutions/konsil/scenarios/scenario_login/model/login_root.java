@@ -28,12 +28,13 @@ public class login_root{
 
 	/**
 	 * Instantiate the instance using the passed jsonObject to set the properties values
-	 */
+     * @param jsonObject
+     */
 	public login_root(JSONObject jsonObject){
 		if(jsonObject == null){
 			return;
 		}
-		token = jsonObject.optString("token");
+        token = jsonObject.optString("token");
 		userInfo = new UserInfo(jsonObject.optJSONObject("userInfo"));
 	}
 

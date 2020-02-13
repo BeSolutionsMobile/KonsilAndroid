@@ -6,8 +6,10 @@ import com.android.volley.Request;
 
 import org.json.JSONException;
 
+import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.List;
 
 /**
  *
@@ -42,12 +44,12 @@ public class Apicalls {
 
     /**
      *
-     * @func Investor Login
+     * @func GET ALL SPECIALITIES
      */
 
-    public void loginInvestor(final String email, final String pass) {
+    public void get_all_specialities() throws JSONException {
 
-        apiRouter.performRequest(Apiclient.LOGIN_INVESTOR.getURL(),Apiclient.LOGIN_INVESTOR.getParams(), Arrays.asList(email,pass), Request.Method.POST,1);
+        apiRouter.makeAdvancedRequest(Apiclient.ALL_SPECIALITIES.getURL(),Request.Method.GET,Apiclient.ALL_SPECIALITIES.getParams(),null,null);
 
     }
 
@@ -70,12 +72,12 @@ public class Apicalls {
 
     /**
      *
-     * @func Investor Registration
+     * @func GET ALL DOCTOR SPECIALIY
      */
 
-    public void insertInvestor(final String Name, final String Email, final String Password, final String Age, final String Gender, final String Work, final String Mobile, final String Images) {
+    public void doctor_speciality(final int id) throws JSONException {
 
-     //   apiRouter.performRequest(Apiclient.INSERT_INVESTOR.getURL(),Apiclient.INSERT_INVESTOR.getParams(), Arrays.asList(Name,Email,Password,Age,Gender,Work,Mobile,Images), Request.Method.POST,3);
+        apiRouter.makeAdvancedRequest(Apiclient.ALL_DOCS_SPECI.getURL(),Request.Method.POST,Apiclient.ALL_DOCS_SPECI.getParams(),Arrays.asList(""+id),null);
 
     }
 
@@ -87,10 +89,10 @@ public class Apicalls {
      * @func Accept Offer
      */
 
-    public void AcceptOffer(final String offer_id) {
+    public void doctor_details(final String doctor_id) {
 
         try {
-            apiRouter.makeAdvancedRequest(Apiclient.ACCEPT_OFFER.getURL(), Request.Method.POST,Apiclient.ACCEPT_OFFER.getParams(), Arrays.asList(offer_id),null);
+            apiRouter.makeAdvancedRequest(Apiclient.DOCTORS_DETAILS.getURL(), Request.Method.POST,Apiclient.DOCTORS_DETAILS.getParams(), Arrays.asList(doctor_id),null);
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -101,13 +103,15 @@ public class Apicalls {
 
     /**
      *
-     * @func Reject Offer
+     * @func FILTER
      */
 
-    public void RejectOffer(final String offer_id) {
+    public void FILTER(final String speciality_id, final Integer [] degree_id, final String rate) {
 
         try {
-            apiRouter.makeAdvancedRequest(Apiclient.REJECT_OFFER.getURL(), Request.Method.POST,Apiclient.REJECT_OFFER.getParams(), Arrays.asList(offer_id),null);
+
+
+            apiRouter.makeAdvancedRequest_array(Apiclient.FILTER.getURL(), Request.Method.POST , speciality_id , degree_id ,rate,null);
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -118,12 +122,12 @@ public class Apicalls {
 
     /**
      *
-     * @func Retrieve Investors
+     * @func ADD CONSULTATION
      */
 
-    public void selectInvestors(final String id_member) {
+    public void add_consultation(final String title,final String details,final String doc_id) throws JSONException {
 
-//        apiRouter.performRequest(Apiclient.SELECT_INVESTORS.getURL(),Apiclient.SELECT_INVESTORS.getParams(), Collections.singletonList(id_member), Request.Method.POST,5);
+        apiRouter.makeAdvancedRequest_addconsultation(Apiclient.ADD_CONSULTATION.getURL(),Request.Method.POST,title,details,doc_id,null);
 
     }
 
@@ -252,12 +256,6 @@ public class Apicalls {
     public void Insert_Order(final String order_descripition, final String image, final String distance, final String duration, final String promo_code, final String delivery_time, final String order_from_location,
                              final String order_to_location,String client_location_lat,String client_location_long,String order_location_lat,String order_location_long) {
 
-        try {
-            apiRouter.makeAdvancedRequest(Apiclient.INSERT_ORDER.getURL(), Request.Method.POST,Apiclient.INSERT_ORDER.getParams(),Arrays.asList(order_descripition,image,distance,duration,promo_code,delivery_time,
-                    order_from_location,order_to_location,client_location_lat,client_location_long,order_location_lat,order_location_long),null);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
 
 
     }
@@ -428,11 +426,11 @@ public class Apicalls {
 
     public void set_complaint(String order_id,String complaint_type_id,String complaint) {
 
-        try {
-            apiRouter.makeAdvancedRequest(Apiclient.SET_COMPLAINT.getURL(), Request.Method.POST,Apiclient.SET_COMPLAINT.getParams(),Arrays.asList(order_id,complaint_type_id,complaint),null);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+//        try {
+//            apiRouter.makeAdvancedRequest(Apiclient.SET_COMPLAINT.getURL(), Request.Method.POST,Apiclient.SET_COMPLAINT.getParams(),Arrays.asList(order_id,complaint_type_id,complaint),null);
+//        } catch (JSONException e) {
+//            e.printStackTrace();
+//        }
 
     }
 
