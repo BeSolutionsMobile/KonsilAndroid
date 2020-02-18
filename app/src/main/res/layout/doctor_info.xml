@@ -29,9 +29,9 @@
               app:cardBackgroundColor="@color/color1"
               android:layout_gravity="center"
               >
-              <ImageView
-                  android:layout_width="@dimen/_60sdp"
-                  android:layout_height="@dimen/_60sdp"
+              <de.hdodenhof.circleimageview.CircleImageView
+                  android:layout_width="@dimen/_83sdp"
+                  android:layout_height="@dimen/_83sdp"
                   android:id="@+id/doc_img"
                   android:layout_gravity="center"
                   />

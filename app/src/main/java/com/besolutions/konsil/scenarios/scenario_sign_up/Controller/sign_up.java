@@ -59,13 +59,13 @@ public class sign_up extends AppCompatActivity implements View.OnClickListener, 
             if (username.getText().length() < 6) {
                 username.setError("Username id too short!");
                 yoyo(R.id.username);
-            } else if (phone.getText().length() < 11) {
+            } else if (phone.getText().length() < 10) {
                 phone.setError("phone id too short!");
                 yoyo(R.id.phone);
-            } else if (email.getText().length() < 11) {
+            } else if (email.getText().length() < 6) {
                 email.setError("email id too short!");
                 yoyo(R.id.email);
-            } else if (password.getText().length() < 6) {
+            } else if (password.getText().length() < 8) {
                 password.setError("password id too short!");
                 yoyo(R.id.password);
             } else {
@@ -104,7 +104,14 @@ public class sign_up extends AppCompatActivity implements View.OnClickListener, 
 
     @Override
     public void OnError(VolleyError error) {
-        Toast.makeText(this, ""+error.networkResponse, Toast.LENGTH_SHORT).show();
+        if(error.networkResponse.statusCode == 402)
+        {
+            Toasty.error(sign_up.this,"Email Has Been Taken",Toasty.LENGTH_SHORT).show();
+        }
+        else if(error.networkResponse.statusCode == 500)
+        {
+            Toasty.error(sign_up.this," Error on Saving Data",Toasty.LENGTH_SHORT).show();
+        }
     }
 
 

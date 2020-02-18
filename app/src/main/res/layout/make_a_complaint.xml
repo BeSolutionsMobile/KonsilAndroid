@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="@drawable/make_compalint"
-    tools:context=".scenarios.scenario_make_complaint.make_a_complaint">
+    tools:context=".scenarios.scenario_make_complaint.Controller.make_a_complaint">
 <include layout="@layout/toolbar_default"/>
     <TextView
         android:layout_width="match_parent"
@@ -61,6 +61,7 @@
         android:layout_height="@dimen/_100sdp"
         android:padding="@dimen/_5sdp"
         android:gravity="top|left"
+        android:id="@+id/enter_msg"
         android:layout_marginRight="@dimen/_30sdp"
         android:layout_marginLeft="@dimen/_30sdp"
         android:hint="@string/enter_message_here"

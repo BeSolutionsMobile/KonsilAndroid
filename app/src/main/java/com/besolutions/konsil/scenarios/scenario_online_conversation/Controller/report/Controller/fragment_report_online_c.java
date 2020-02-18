@@ -10,7 +10,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.besolutions.konsil.R;
-import com.besolutions.konsil.scenarios.scenario_make_complaint.make_a_complaint;
+import com.besolutions.konsil.scenarios.scenario_make_complaint.Controller.make_a_complaint;
 
 /**
  * A simple {@link Fragment} subclass.

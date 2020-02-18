@@ -10,6 +10,10 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 
+import com.android.volley.VolleyError;
+import com.besolutions.konsil.NetworkLayer.Apicalls;
+import com.besolutions.konsil.NetworkLayer.NetworkInterface;
+import com.besolutions.konsil.NetworkLayer.ResponseModel;
 import com.besolutions.konsil.R;
 import com.besolutions.konsil.scenarios.scenario_Consulation_result.Controller.Consulation_result.fragment_message.model.consulation_list;
 import com.besolutions.konsil.scenarios.scenario_Consulation_result.Controller.Consulation_result.fragment_message.pattern.consulation_result_adapter;
@@ -22,8 +26,8 @@ import java.util.ArrayList;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class fragement_msg extends Fragment implements View.OnClickListener {
-
+public class fragement_msg extends Fragment implements View.OnClickListener , NetworkInterface
+{
    RecyclerView msg_list;
    View view;
 
@@ -36,7 +40,8 @@ public class fragement_msg extends Fragment implements View.OnClickListener {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         view= inflater.inflate(R.layout.fragement_msg, container, false);
-        get_data();
+
+//         new Apicalls(getActivity(),this).send_msg();
 
         Button req_online_conv =(Button)view.findViewById(R.id.req_online_conv);
         req_online_conv.setOnClickListener(this);
@@ -64,5 +69,20 @@ public class fragement_msg extends Fragment implements View.OnClickListener {
         {
             startActivity(new Intent(getActivity(), request_online_conversation.class));
         }
+    }
+
+    @Override
+    public void OnStart() {
+
+    }
+
+    @Override
+    public void OnResponse(ResponseModel model) {
+
+    }
+
+    @Override
+    public void OnError(VolleyError error) {
+
     }
 }

@@ -1,22 +1,32 @@
 package com.besolutions.konsil.scenarios.scenario_login.model;//
 //  UserInfo.java
 //  Model Generated using http://www.jsoncafe.com/ 
-//  Created on February 9, 2020
+//  Created on February 18, 2020
 
 import org.json.*;
 import java.util.*;
+import com.google.gson.annotations.SerializedName;
 
 
 public class UserInfo{
 
+	@SerializedName("code")
 	private String code;
+	@SerializedName("email")
 	private String email;
+	@SerializedName("id")
 	private int id;
+	@SerializedName("image_url")
 	private Object imageUrl;
+	@SerializedName("lang")
 	private String lang;
+	@SerializedName("mobile_token")
 	private String mobileToken;
+	@SerializedName("name")
 	private String name;
+	@SerializedName("phone")
 	private String phone;
+	@SerializedName("user_type_id")
 	private String userTypeId;
 
 	public void setCode(String code){
@@ -74,7 +84,6 @@ public class UserInfo{
 		return this.userTypeId;
 	}
 
-
 	/**
 	 * Instantiate the instance using the passed jsonObject to set the properties values
 	 */
@@ -84,14 +93,13 @@ public class UserInfo{
 		}
 		code = jsonObject.optString("code");
 		email = jsonObject.optString("email");
-		id = jsonObject.optInt("id");
-		imageUrl = jsonObject.optString(
-		        "image_url");
 		lang = jsonObject.optString("lang");
 		mobileToken = jsonObject.optString("mobile_token");
 		name = jsonObject.optString("name");
 		phone = jsonObject.optString("phone");
 		userTypeId = jsonObject.optString("user_type_id");
+		id = jsonObject.optInt("id");
+		imageUrl = jsonObject.optString("image_url");
 	}
 
 	/**
@@ -110,6 +118,7 @@ public class UserInfo{
 			jsonObject.put("name", name);
 			jsonObject.put("phone", phone);
 			jsonObject.put("user_type_id", userTypeId);
+			
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

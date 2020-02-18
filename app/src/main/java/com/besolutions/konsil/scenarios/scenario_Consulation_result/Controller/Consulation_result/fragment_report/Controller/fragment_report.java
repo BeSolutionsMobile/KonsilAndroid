@@ -11,8 +11,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 
 import com.besolutions.konsil.R;
-import com.besolutions.konsil.scenarios.scenario_make_complaint.make_a_complaint;
-import com.besolutions.konsil.scenarios.scenario_online_conversation.Controller.online_conversation;
+import com.besolutions.konsil.scenarios.scenario_make_complaint.Controller.make_a_complaint;
 import com.besolutions.konsil.scenarios.scenario_request_online_conversation.Controller.request_online_conversation;
 
 /**

@@ -25,11 +25,10 @@ import com.squareup.picasso.Picasso;
 
 
 public class doctor_info extends AppCompatActivity implements View.OnClickListener, NetworkInterface {
-   RatingBar ratings;
-   Button request_consulation,online_res;
-   Doctor  doctors;
-   int doc_id;
-
+    RatingBar ratings;
+    Button request_consulation, online_res;
+    Doctor doctors;
+    int doc_id;
 
 
     @Override
@@ -37,9 +36,9 @@ public class doctor_info extends AppCompatActivity implements View.OnClickListen
         super.onCreate(savedInstanceState);
         setContentView(R.layout.doctor_info);
 
-        ratings= findViewById(R.id.ratings);
-        request_consulation= findViewById(R.id.request_consulation);
-        online_res= findViewById(R.id.online_res);
+        ratings = findViewById(R.id.ratings);
+        request_consulation = findViewById(R.id.request_consulation);
+        online_res = findViewById(R.id.online_res);
 
         online_res.setOnClickListener(this);
         request_consulation.setOnClickListener(this);
@@ -47,29 +46,30 @@ public class doctor_info extends AppCompatActivity implements View.OnClickListen
 
         set_toolbar_name();
         String doc_id = getIntent().getStringExtra("id");
-        new Apicalls(this,this).doctor_details(doc_id);
+        new Apicalls(this, this).doctor_details(doc_id);
     }
 
     @Override
     public void onClick(View v) {
-        if(v.getId()==R.id.request_consulation)
-        {
+        if (v.getId() == R.id.request_consulation) {
             Intent intent = new Intent(doctor_info.this, consulation_request.class);
-            intent.putExtra("doc_id",doc_id);
+            intent.putExtra("doc_id", doc_id);
             startActivity(intent);
-        }
-        else if(v.getId()==R.id.online_res)
-        {
-            startActivity(new Intent(doctor_info.this, request_online_conversation.class));
+        } else if (v.getId() == R.id.online_res) {
+            Intent intent = new Intent(doctor_info.this, request_online_conversation.class);
+            intent.putExtra("image", doctors.getImageUrl());
+            intent.putExtra("doc_name", doctors.getName());
+            intent.putExtra("doc_title", doctors.getJobTitle() + "");
+            intent.putExtra("rating", doctors.getRate());
+            startActivity(intent);
         }
     }
 
-    public void set_toolbar_name()
-    {
+    public void set_toolbar_name() {
         Toolbar mToolbar = findViewById(R.id.toolbar_actionbar);
         setSupportActionBar(mToolbar);
 
-        TextView title= findViewById(R.id.title);
+        TextView title = findViewById(R.id.title);
         String doc_info = getResources().getString(R.string.doc_info);
 
         title.setText(doc_info);
@@ -83,7 +83,7 @@ public class doctor_info extends AppCompatActivity implements View.OnClickListen
     @SuppressLint("SetTextI18n")
     @Override
     public void OnResponse(ResponseModel model) {
-        ImageView doc_img= findViewById(R.id.doc_img);
+        de.hdodenhof.circleimageview.CircleImageView doc_img = findViewById(R.id.doc_img);
         TextView doc_name = findViewById(R.id.doc_name);
         TextView doc_job = findViewById(R.id.doc_job);
         TextView doc_desc = findViewById(R.id.doc_desc);
@@ -94,17 +94,17 @@ public class doctor_info extends AppCompatActivity implements View.OnClickListen
 
 
         Gson gson = new Gson();
-        root_details root_details = gson.fromJson(""+model.getJsonObject(),root_details.class);
+        root_details root_details = gson.fromJson("" + model.getJsonObject(), root_details.class);
         doctors = root_details.getDoctor();
 
         //SET DATA
-       Picasso.with(doctor_info.this).load(doctors.getImageUrl()).into(doc_img);
+        Picasso.with(doctor_info.this).load(doctors.getImageUrl()).into(doc_img);
         doc_name.setText(doctors.getName());
         doc_job.setText(doctors.getSpecialist());
-        doc_desc.setText(""+doctors.getJobTitle());
-        price.setText(""+doctors.getConsultationPrice());
-        consultation.setText(""+doctors.getTotalConsultation());
-        conversation.setText(""+doctors.getTotalConversation());
+        doc_desc.setText("" + doctors.getJobTitle());
+        price.setText("" + doctors.getConsultationPrice());
+        consultation.setText("" + doctors.getTotalConsultation());
+        conversation.setText("" + doctors.getTotalConversation());
         ratingBar.setRating(doctors.getRate());
         doc_id = doctors.getId();
 

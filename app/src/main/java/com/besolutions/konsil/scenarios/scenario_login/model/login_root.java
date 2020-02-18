@@ -1,15 +1,18 @@
 package com.besolutions.konsil.scenarios.scenario_login.model;//
 //  login_root.java
 //  Model Generated using http://www.jsoncafe.com/ 
-//  Created on February 9, 2020
+//  Created on February 18, 2020
 
 import org.json.*;
 import java.util.*;
+import com.google.gson.annotations.SerializedName;
 
 
 public class login_root{
 
+	@SerializedName("token")
 	private String token;
+	@SerializedName("userInfo")
 	private UserInfo userInfo;
 
 	public void setToken(String token){
@@ -25,16 +28,14 @@ public class login_root{
 		return this.userInfo;
 	}
 
-
 	/**
 	 * Instantiate the instance using the passed jsonObject to set the properties values
-     * @param jsonObject
-     */
+	 */
 	public login_root(JSONObject jsonObject){
 		if(jsonObject == null){
 			return;
 		}
-        token = jsonObject.optString("token");
+		token = jsonObject.optString("token");
 		userInfo = new UserInfo(jsonObject.optJSONObject("userInfo"));
 	}
 
@@ -47,6 +48,7 @@ public class login_root{
 		try {
 			jsonObject.put("token", token);
 			jsonObject.put("userInfo", userInfo.toJsonObject());
+			
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

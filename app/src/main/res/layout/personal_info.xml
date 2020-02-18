@@ -39,9 +39,10 @@
                           android:layout_width="0dp"
                           android:src="@drawable/person"
                           android:padding="@dimen/_7sdp"
+                          android:id="@+id/username"
                           android:tint="@android:color/white"
                           android:layout_height="match_parent"/>
-                      <TextView
+                      <EditText
                           android:layout_weight=".85"
                           android:layout_width="0dp"
                           android:layout_height="match_parent"
@@ -125,7 +126,7 @@
                           android:background="@color/color1"
                           android:layout_marginTop="@dimen/_2sdp"
                           android:inputType="textPassword"
-                          android:text="7050302010"
+                          android:id="@+id/password"
                           android:layout_marginBottom="@dimen/_3sdp"
                           android:layout_marginRight="@dimen/_8sdp"
                           android:gravity="center|left"
@@ -162,8 +163,8 @@
                           android:layout_marginBottom="@dimen/_3sdp"
                           android:layout_marginRight="@dimen/_8sdp"
                           android:layout_height="match_parent"
-                          android:text="Add your phone"
                           android:background="@color/color1"
+                          android:id="@+id/phone"
                           android:gravity="center|left"
                           android:hint="@string/add_ur_phone"
                           android:paddingLeft="@dimen/_10sdp"
@@ -181,6 +182,7 @@
                          android:layout_height="0dp"
                          android:orientation="horizontal"
                          android:weightSum="1"
+                         android:id="@+id/change_photo"
                          android:background="@drawable/personal_info_item_bg"
                          android:layout_marginRight="@dimen/_30sdp"
                          android:layout_marginLeft="@dimen/_30sdp"
@@ -197,7 +199,6 @@
                              android:layout_weight=".85"
                              android:layout_width="0dp"
                              android:layout_height="match_parent"
-                             android:text="Add your photo"
                              android:hint="@string/add_your_ph"
                              android:gravity="center|left"
                              android:paddingLeft="@dimen/_10sdp"
@@ -207,7 +208,6 @@
                              android:layout_marginRight="@dimen/_8sdp"
                              android:textColor="@color/color2"
                              android:textSize="@dimen/_12ssp"
-                             android:id="@+id/change_pass"
                              />
                      </LinearLayout>
                      <LinearLayout
@@ -230,6 +230,7 @@
                              android:background="@drawable/personal_info_item_bg"
                              android:hint="@string/patient_history"
                              android:gravity="top|left"
+                             android:id="@+id/desc"
                              android:paddingTop="@dimen/_10sdp"
                              android:paddingLeft="@dimen/_10sdp"
                              android:layout_marginTop="@dimen/_2sdp"
@@ -248,7 +249,7 @@
                          android:layout_weight=".35"
                          android:text="@string/done"
                          android:textAllCaps="false"
-                         android:id="@+id/login"
+                         android:id="@+id/done"
                          android:textSize="@dimen/_12ssp"
                          android:textColor="@android:color/white"
                          android:background="@drawable/buttom_bg"/>

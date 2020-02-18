@@ -1,9 +1,11 @@
 package com.besolutions.konsil.scenarios.scenario_Consulation_request.Controller;
 
+import android.content.ClipData;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -90,7 +92,15 @@ public class consulation_request extends AppCompatActivity implements View.OnCli
     public void onClick(View v) {
         utils utils = new utils();
         if (v.getId() == R.id.upload_img) {
-            utils.upload_image(this, 1);
+
+            //SEND ARRAY OF IMAGES
+            Intent i = new Intent( Intent.EXTRA_ALLOW_MULTIPLE, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+            i.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
+            i.setType("image/*");
+            i.setAction(Intent.ACTION_GET_CONTENT);
+            startActivityForResult(Intent.createChooser(i, "Select Your Photo"),1);
+
+
         } else if (v.getId() == R.id.complete_req) {
 
             int doc_id = getIntent().getIntExtra("doc_id", 0);
@@ -140,22 +150,15 @@ public class consulation_request extends AppCompatActivity implements View.OnCli
         if (requestCode == 1) {
             if (resultCode == RESULT_OK) {
                 {
-                    Uri selectedImage = data.getData();
-                    InputStream imageStream = null;
-                    try {
-                        assert selectedImage != null;
-                        imageStream = getContentResolver().openInputStream(selectedImage);
-                    } catch (FileNotFoundException e) {
-                        e.printStackTrace();
+                    ClipData clipData=data.getClipData();
+                    if (clipData==null)
+                    {
+                        Toasty.warning(consulation_request.this,"Please Select More Than Image",Toasty.LENGTH_LONG).show();
                     }
-                    Bitmap SelectedPhoto = BitmapFactory.decodeStream(imageStream);
-                    Bitmap bitmap = Bitmap.createScaledBitmap(SelectedPhoto, 300, 300, true);
-
-                    //UPLOAD TO FIREBASE
-                    firebase_storage firebase_storage = new firebase_storage();
-                    firebase_storage.uploadImage(selectedImage, consulation_request.this, true);
-
-                    if (bitmap != null) {
+                    else if(clipData != null){
+                        //UPLOAD TO FIREBASE
+                        firebase_storage firebase_storage = new firebase_storage();
+                        firebase_storage.uploadImage(clipData, consulation_request.this, true);
                         upload_img_check.playAnimation();
                     }
                 }
@@ -166,12 +169,13 @@ public class consulation_request extends AppCompatActivity implements View.OnCli
             upload_file_check.playAnimation();
             Uri selected_file = data.getData();
 
-            firebase_storage firebase_storage = new firebase_storage();
-            firebase_storage.uploadImage(selected_file, consulation_request.this, true);
+//            firebase_storage firebase_storage = new firebase_storage();
+//            firebase_storage.uploadImage(selected_file, consulation_request.this, true);
         }
         }
-        else if (resultCode == PAYPAL_REQUEST_CODE)
+        else if (requestCode == PAYPAL_REQUEST_CODE)
         {
+
             if (resultCode == RESULT_OK)
             {
                 PaymentConfirmation paymentConfirmation = data.getParcelableExtra(PaymentActivity.EXTRA_RESULT_CONFIRMATION);

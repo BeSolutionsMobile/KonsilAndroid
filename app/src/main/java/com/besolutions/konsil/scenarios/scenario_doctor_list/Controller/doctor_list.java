@@ -18,6 +18,7 @@ import com.besolutions.konsil.NetworkLayer.NetworkInterface;
 import com.besolutions.konsil.NetworkLayer.ResponseModel;
 import com.besolutions.konsil.R;
 import com.besolutions.konsil.scenarios.scenario_doctor_list.Controller.filter.scenario_filter.Controller.filter;
+import com.besolutions.konsil.scenarios.scenario_doctor_list.Controller.filter.scenario_filter.pattern.filter_item_adapter;
 import com.besolutions.konsil.scenarios.scenario_doctor_list.model.Degree;
 import com.besolutions.konsil.scenarios.scenario_doctor_list.model.Doctor;
 import com.besolutions.konsil.scenarios.scenario_doctor_list.model.doctor_list_items;
@@ -36,7 +37,8 @@ public class doctor_list extends AppCompatActivity implements View.OnClickListen
     Doctor[] doctor;
     Degree[] Degree;
     ResponseModel model;
-    root root_doc_speciality ;
+    root root_doc_speciality;
+    TextView nodata;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,16 +62,14 @@ public class doctor_list extends AppCompatActivity implements View.OnClickListen
         try {
             if (num == 0) {
                 int stars_num = getIntent().getIntExtra("stars_num", 0);
-                Integer[] degree_id = {1};
-                new Apicalls(this, this).FILTER("1", degree_id, String.valueOf(stars_num));
+
+            new Apicalls(this, this).FILTER("1", filter_item_adapter.int_list, String.valueOf(stars_num));
             } else {
                 new Apicalls(this, this).doctor_speciality(id);
             }
         } catch (JSONException e) {
             e.printStackTrace();
         }
-
-//        get_data();
     }
 
 
@@ -77,7 +77,7 @@ public class doctor_list extends AppCompatActivity implements View.OnClickListen
     public void onClick(View v) {
         if (v.getId() == R.id.filter) {
             com.besolutions.konsil.scenarios.scenario_doctor_list.Controller.filter.scenario_filter.Controller.filter filter = new filter();
-            filter.dialog(this, R.layout.doctor_filter, .90,Degree);
+            filter.dialog(this, R.layout.doctor_filter, .90, Degree);
         }
     }
 
@@ -95,10 +95,20 @@ public class doctor_list extends AppCompatActivity implements View.OnClickListen
         ArrayList<doctor_list_items> arrayList = new ArrayList<>();
 
         Gson gson = new Gson();
-         root_doc_speciality = gson.fromJson("" + model.getJsonObject(), root.class);
+        root_doc_speciality = gson.fromJson("" + model.getJsonObject(), root.class);
 
         doctor = root_doc_speciality.getDoctors();
         Degree = root_doc_speciality.getDegrees();
+
+        TextView nodata = (TextView)findViewById(R.id.nodata);
+        //CHECK IF WE FOUND DOCTOR DATA OR NOT
+        if (root_doc_speciality.getDoctors().length == 0)
+        {
+            nodata.setText("لاتوجد بيانات");
+        }
+        else {
+            nodata.setText("");
+        }
 
         for (int index = 0; index < root_doc_speciality.getDoctors().length; index++) {
             arrayList.add(new doctor_list_items("" + doctor[index].getId(), doctor[index].getName(), doctor[index].getDegree(), doctor[index].getImageUrl(), doctor[index].getRate()));

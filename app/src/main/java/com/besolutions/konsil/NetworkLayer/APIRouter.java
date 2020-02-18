@@ -12,6 +12,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.besolutions.konsil.local_data.saved_data;
+import com.besolutions.konsil.utils.firebase_storage;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -89,6 +90,8 @@ public class APIRouter {
         if (params != null && values != null) {
             for (int index = 0; index < params.size(); index++) {
                 object.put(params.get(index), values.get(index));
+                Log.e("paramms", params.get(index) + "000" +values.get(index));
+
             }
         }
 
@@ -132,7 +135,7 @@ public class APIRouter {
     }
 
     //CUSTOM SEND API FILTER
-    public void makeAdvancedRequest_array(String url, final int method, String special_id, Integer[] num, String rate, final HashMap<String, String> body) throws JSONException {
+    public void makeAdvancedRequest_array(String url, final int method, String special_id, List<Integer> num, String rate, final HashMap<String, String> body) throws JSONException {
         Log.e("url", url);
 
         networkInterface.OnStart();
@@ -196,16 +199,19 @@ public class APIRouter {
 
         JSONObject object = new JSONObject();
 
-        //SEND IMAGES TO SERVER
-        String[] images = new String[] {
-        "https://www.drmahmoudhegazy.com/dashboardImages/about/1576060190WhatsApp Image 2019-12-11 at 12.17.25 PM (1).jpeg",
-                "https://www.drmahmoudhegazy.com/dashboardImages/about/1576060190WhatsApp Image 2019-12-11 at 12.17.25 PM (1).jpeg",
-                "https://www.drmahmoudhegazy.com/dashboardImages/about/1576060190WhatsApp Image 2019-12-11 at 12.17.25 PM (1).jpeg"};
-
         JSONArray jsonArray = new JSONArray();
-        for (String n : images) {
-            jsonArray.put(n);
+        //CHECK FOR ARRAY OF IMAGES IF NULL OR NOT
+        if(firebase_storage.images == null)
+        {
+            jsonArray.put("link");
         }
+        else {
+            for (String n : firebase_storage.images) {
+                jsonArray.put(n);
+            }
+        }
+
+
 
         //SEND FILES TO FILES
         object.put("title", title);

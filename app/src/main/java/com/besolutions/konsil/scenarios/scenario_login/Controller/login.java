@@ -9,7 +9,6 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.volley.VolleyError;
 
@@ -18,8 +17,9 @@ import com.besolutions.konsil.NetworkLayer.NetworkInterface;
 import com.besolutions.konsil.NetworkLayer.ResponseModel;
 import com.besolutions.konsil.R;
 import com.besolutions.konsil.local_data.send_data;
-import com.besolutions.konsil.scenarios.scenario_login.model.login_root;
 
+import com.besolutions.konsil.scenarios.scenario_login.model.UserInfo;
+import com.besolutions.konsil.scenarios.scenario_login.model.login_root;
 import com.besolutions.konsil.scenarios.secnario_fingerprint.Controller.fingerprint;
 import com.besolutions.konsil.scenarios.scenario_sign_up.Controller.sign_up;
 import com.google.gson.Gson;
@@ -35,6 +35,7 @@ public class login extends AppCompatActivity implements View.OnClickListener, Ne
     CheckBox check;
     TextView signup;
     EditText email, password;
+    UserInfo userInfo;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -97,6 +98,15 @@ public class login extends AppCompatActivity implements View.OnClickListener, Ne
 
         //GET TOKEN AND SAVE IT IN LOCAL DATA
         send_data.save_token(login.this, login_root.getToken());
+
+        //SAVE PERSONAL INFO
+        userInfo = login_root.getUserInfo();
+
+        new send_data().send_name(this,userInfo.getName());
+        new send_data().send_email(this,userInfo.getEmail());
+        new send_data().send_phone(this,userInfo.getPhone());
+
+
 
     }
 

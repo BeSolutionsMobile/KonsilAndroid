@@ -1,6 +1,7 @@
 package com.besolutions.konsil.NetworkLayer;
 
 
+import java.lang.reflect.Array;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
@@ -26,11 +27,11 @@ public enum Apiclient {
     SUBMIT_OFFER("submit-offer", Arrays.asList("star_id","order_id","expected_delivery_time","offer_value")),
     SET_RATE("rate", Arrays.asList("order_id","rate","note_id")),
     ADD_CONSULTATION("add-consultation", Arrays.asList("title","details","doctor_id","images","files")),
-    CANCEL_ORDER("cancel-order", Arrays.asList("order_id")),
-    SELECT_MY_REQUESTS_INVESTOR("selecte_my_request_invistor?", Collections.singletonList("id_investor")),
-    SELECT_PRODUCTS("selecte_product_bymember?", Collections.singletonList("id_member")),
-    SELECT_MY_INSTALLMENTS("selecte_my_installment?", Collections.singletonList("id_user")),
-    SELECT_ADV_1("select_adv_1", null),
+    SEND_MSG("send-message", Arrays.asList("consultation_id","message")),
+    APPOIENMENTS("get-date", Arrays.asList("doctor_id","date")),
+    UPDATE_USER_INFO("update-user-info", Arrays.asList("name","phone","email","password","image_url")),
+    GET_COMPLAINT_TYPE("get-complaint-type", null),
+    MAKE_COMPLAINT("make-complaint", Arrays.asList("type_id","complaint")),
     NOTIFCATION("my-notifications", null),
     MY_ORDERS("my-orders", null),
     ORDERS("show-orders", null),

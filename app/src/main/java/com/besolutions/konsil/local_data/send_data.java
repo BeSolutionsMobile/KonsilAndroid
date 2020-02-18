@@ -34,4 +34,35 @@ public class send_data {
             editor.putString("token_key", token);
             editor.commit();
     }
+
+    //SAVE PERSONAL_NAME
+    public static void send_name(Context context,String name)
+    {
+        //SAVE LANGUAGE STATUS
+        SharedPreferences sharedPreferences=context.getSharedPreferences("personal_info",MODE_PRIVATE);
+        SharedPreferences.Editor editor=sharedPreferences.edit();
+        editor.putString("name", name);
+        editor.commit();
+    }
+
+    //SAVE PERSONAL_NAME
+    public static void send_email(Context context,String email)
+    {
+        //SAVE LANGUAGE STATUS
+        SharedPreferences sharedPreferences=context.getSharedPreferences("personal_info",MODE_PRIVATE);
+        SharedPreferences.Editor editor=sharedPreferences.edit();
+        editor.putString("email", email);
+        editor.commit();
+    }
+
+    //SAVE PERSONAL_PHONE
+    public static void send_phone(Context context,String email)
+    {
+        //SAVE LANGUAGE STATUS
+        SharedPreferences sharedPreferences=context.getSharedPreferences("personal_info",MODE_PRIVATE);
+        SharedPreferences.Editor editor=sharedPreferences.edit();
+        editor.putString("phone", email);
+        editor.commit();
+    }
+
 }

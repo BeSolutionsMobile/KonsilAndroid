@@ -2,6 +2,7 @@ package com.besolutions.konsil.utils;
 
 
 import android.app.ProgressDialog;
+import android.content.ClipData;
 import android.content.Context;
 import android.net.Uri;
 import android.support.annotation.NonNull;
@@ -9,6 +10,7 @@ import android.util.Log;
 import android.widget.Toast;
 
 
+import com.besolutions.konsil.scenarios.scenario_Consulation_request.Controller.consulation_request;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FirebaseStorage;
@@ -16,15 +18,19 @@ import com.google.firebase.storage.OnProgressListener;
 import com.google.firebase.storage.StorageReference;
 import com.google.firebase.storage.UploadTask;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.UUID;
 
+import es.dmoral.toasty.Toasty;
 
 
 public class firebase_storage {
 
     private String imageURL = "NoLink";
+    public static List<String> images;
 
-    public String uploadImage(Uri customfilepath, final Context context,Boolean isEnglish) {
+    public String uploadImage(ClipData clipData, final Context context, Boolean isEnglish) {
 
         FirebaseStorage storage = FirebaseStorage.getInstance();
         StorageReference storageReference = storage.getReference();
@@ -42,15 +48,21 @@ public class firebase_storage {
             done = "?? ????? ?????";
             failed = "???";
         }
-
-        if(customfilepath != null)
+        //DEFINE ARRAYLIST
+        images = new ArrayList<>();
+        if(clipData != null)
         {
             final ProgressDialog progressDialog = new ProgressDialog(context);
             progressDialog.setTitle(uploading);
             progressDialog.show();
 
+            for(int index=0 ; index <clipData.getItemCount() ; index++)
+            {
+
+                ClipData.Item item = clipData.getItemAt(index);
+                Uri uri = item.getUri();
             final StorageReference ref = storageReference.child("images/"+ UUID.randomUUID().toString());
-            ref.putFile(customfilepath)
+            ref.putFile(uri)
                     .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
@@ -66,10 +78,14 @@ public class firebase_storage {
 
                                     imageURL = uri.toString();
 
-                                    Log.e("imageURL",imageURL);
+                                    images.add(imageURL);
+
+                                    Log.e("imageURL", String.valueOf(images));
 
                                 }
                             });
+                            Toasty.success(context,"Successful Uploaded",Toasty.LENGTH_SHORT).show();
+
 
                         }
                     })
@@ -88,6 +104,7 @@ public class firebase_storage {
                             progressDialog.setMessage("Uploaded "+(int)progress+"%");
                         }
                     });
+            }
         }
 
         return imageURL;
