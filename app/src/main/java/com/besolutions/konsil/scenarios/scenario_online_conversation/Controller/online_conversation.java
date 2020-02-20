@@ -5,6 +5,9 @@ import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
 import android.widget.TextView;
 
+import com.android.volley.VolleyError;
+import com.besolutions.konsil.NetworkLayer.NetworkInterface;
+import com.besolutions.konsil.NetworkLayer.ResponseModel;
 import com.besolutions.konsil.R;
 
 import com.besolutions.konsil.scenarios.scenario_online_conversation.Controller.info.Controller.fragment_info;
@@ -14,7 +17,7 @@ import com.besolutions.konsil.utils.utils;
 import co.ceryle.radiorealbutton.RadioRealButton;
 import co.ceryle.radiorealbutton.RadioRealButtonGroup;
 
-public class online_conversation extends AppCompatActivity {
+public class online_conversation extends AppCompatActivity implements NetworkInterface {
     RadioRealButtonGroup radioRealButtonGroup;
 
     @Override
@@ -52,5 +55,20 @@ public class online_conversation extends AppCompatActivity {
         TextView title=(TextView)findViewById(R.id.title);
         String online_con_details=getResources().getString(R.string.online_con_details);
         title.setText(online_con_details);
+    }
+
+    @Override
+    public void OnStart() {
+
+    }
+
+    @Override
+    public void OnResponse(ResponseModel model) {
+
+    }
+
+    @Override
+    public void OnError(VolleyError error) {
+
     }
 }

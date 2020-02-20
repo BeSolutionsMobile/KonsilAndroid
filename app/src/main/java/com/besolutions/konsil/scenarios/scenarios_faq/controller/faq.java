@@ -7,69 +7,88 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.widget.TextView;
 
+import com.android.volley.VolleyError;
+import com.besolutions.konsil.NetworkLayer.Apicalls;
+import com.besolutions.konsil.NetworkLayer.NetworkInterface;
+import com.besolutions.konsil.NetworkLayer.ResponseModel;
 import com.besolutions.konsil.R;
+import com.besolutions.konsil.scenarios.scenarios_faq.model.Datum;
+import com.besolutions.konsil.scenarios.scenarios_faq.model.root_faq;
 import com.besolutions.konsil.scenarios.scenarios_faq.pattern.expandAdapter;
 import com.besolutions.konsil.scenarios.scenarios_faq.pattern.expandlist;
 import com.besolutions.konsil.scenarios.scenarios_faq.model.itemList;
+import com.google.gson.Gson;
+
+import org.json.JSONException;
 
 import java.util.ArrayList;
 
-public class faq extends AppCompatActivity {
+public class faq extends AppCompatActivity implements NetworkInterface {
+
+    root_faq root_faq;
+    Datum[] data;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.faq);
 
+        try {
+            new Apicalls(this, this).faq();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
         set_toolbar_name();
 
-        RecyclerView recyclerViewexpand=(RecyclerView)findViewById(R.id.recycle);
+        try {
+            new Apicalls(this,this).faq();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
 
-        ArrayList<expandlist> mylsits=new ArrayList();
+    public void set_toolbar_name() {
+        Toolbar mToolbar = findViewById(R.id.toolbar_actionbar);
+        setSupportActionBar(mToolbar);
 
-        ArrayList<itemList>about=new ArrayList();
-        ArrayList<itemList>about1=new ArrayList();
-        ArrayList<itemList>about2=new ArrayList();
-        ArrayList<itemList>about3=new ArrayList();
-        ArrayList<itemList>about4=new ArrayList();
-        ArrayList<itemList>about5=new ArrayList();
-        ArrayList<itemList>about6=new ArrayList();
-        ArrayList<itemList>about7=new ArrayList();
-        ArrayList<itemList>about8=new ArrayList();
+        TextView title = findViewById(R.id.title);
+        title.setText("FAQ");
+    }
 
-
-
-        mylsits.add(new expandlist(1,"Whats application name?",about));
-        about.add(new itemList(1,"application is called konzil"));
-
-        mylsits.add(new expandlist(1,"why konzil",about1));
-        about1.add(new itemList(1,"you can find best doctors with best prices"));
-
-        mylsits.add(new expandlist(1,"how many doctors in konzil",about2));
-        about2.add(new itemList(1,"knzil collect more than 1000 doctors"));
-
-        mylsits.add(new expandlist(1,"where is konzil",about3));
-        about3.add(new itemList(1,"its is in germany "));
-
-        mylsits.add(new expandlist(1,"what about our social media accounts",about4));
-        about4.add(new itemList(1,"we have facebook and twitter"));
-
-
-
-
-        RecyclerView.LayoutManager layoutManagerr=new LinearLayoutManager(this);
-        recyclerViewexpand.setLayoutManager(layoutManagerr);
-        RecyclerView.Adapter adapterr=new expandAdapter(mylsits,faq.this);
-        recyclerViewexpand.setAdapter(adapterr);
+    @Override
+    public void OnStart() {
 
     }
 
-    public void set_toolbar_name()
-    {
-        Toolbar mToolbar = (Toolbar) findViewById(R.id.toolbar_actionbar);
-        setSupportActionBar(mToolbar);
+    @Override
+    public void OnResponse(ResponseModel model) {
+        RecyclerView recyclerViewexpand = findViewById(R.id.recycle);
 
-        TextView title=(TextView)findViewById(R.id.title);
-        title.setText("FAQ");
+        ArrayList<expandlist> mylsit = new ArrayList();
+
+        Gson gson = new Gson();
+        root_faq = gson.fromJson("" + model.getJsonObject(), root_faq.class);
+
+        data = root_faq.getData();
+
+        for(int index = 0 ; index < data.length ; index++ )
+        {
+            ArrayList<itemList> about =  new ArrayList();
+            about.add(new itemList(data[index].getId(),data[index].getAnswer()));
+
+            mylsit.add(new expandlist(data[index].getId(), data[index].getQuestion(), about));
+
+        }
+
+        RecyclerView.LayoutManager layoutManagerr = new LinearLayoutManager(this);
+        recyclerViewexpand.setLayoutManager(layoutManagerr);
+        RecyclerView.Adapter adapterr = new expandAdapter(mylsit, faq.this);
+        recyclerViewexpand.setAdapter(adapterr);
+    }
+
+    @Override
+    public void OnError(VolleyError error) {
+
     }
 }

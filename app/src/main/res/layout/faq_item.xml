@@ -7,11 +7,11 @@
     android:layoutDirection="rtl"
     android:layout_marginBottom="@dimen/_10sdp"
     android:layout_width="match_parent"
-    android:layout_height="@dimen/_27sdp">
+    android:layout_height="wrap_content">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="@dimen/_27sdp"
+        android:layout_height="@dimen/_30sdp"
         android:orientation="horizontal"
         android:layout_marginRight="@dimen/_10sdp"
         android:layout_marginLeft="@dimen/_10sdp"
@@ -33,8 +33,9 @@
         android:layout_width="match_parent"
         android:gravity="left|center"
         android:id="@+id/parent"
+        android:paddingBottom="@dimen/_3sdp"
+        android:textAlignment="center"
         android:text="kanflanflknalkfnlkanflaknflanfklakfnlanflwkajdwkjadwjbjwkabdkjwbddbkwjbdjwbkdb"
-        android:singleLine="true"
         android:paddingLeft="@dimen/_10sdp"
         android:layout_height="match_parent"/>
 

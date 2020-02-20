@@ -25,8 +25,10 @@ import com.besolutions.konsil.NetworkLayer.NetworkInterface;
 import com.besolutions.konsil.NetworkLayer.ResponseModel;
 import com.besolutions.konsil.R;
 import com.besolutions.konsil.config.Config;
+import com.besolutions.konsil.scenarios.scenario_Consulation_request.model.consultation_reserve;
 import com.besolutions.konsil.utils.firebase_storage;
 import com.besolutions.konsil.utils.utils;
+import com.google.gson.Gson;
 import com.paypal.android.sdk.payments.PayPalConfiguration;
 import com.paypal.android.sdk.payments.PayPalPayment;
 import com.paypal.android.sdk.payments.PayPalService;
@@ -46,8 +48,11 @@ public class consulation_request extends AppCompatActivity implements View.OnCli
     ImageView upload_img, upload_file;
     LottieAnimationView upload_img_check, upload_file_check;
     EditText title, desc;
+    consultation_reserve consultation_reserve;
 
     private static final int PAYPAL_REQUEST_CODE = 3;
+
+    int paid = 0;
 
     private static PayPalConfiguration payPalConfiguration = new PayPalConfiguration()
             .environment(PayPalConfiguration.ENVIRONMENT_SANDBOX).clientId(Config.CLIENT_ID);
@@ -169,8 +174,7 @@ public class consulation_request extends AppCompatActivity implements View.OnCli
             upload_file_check.playAnimation();
             Uri selected_file = data.getData();
 
-//            firebase_storage firebase_storage = new firebase_storage();
-//            firebase_storage.uploadImage(selected_file, consulation_request.this, true);
+
         }
         }
         else if (requestCode == PAYPAL_REQUEST_CODE)
@@ -182,7 +186,16 @@ public class consulation_request extends AppCompatActivity implements View.OnCli
                 //VALIDATE ON ALL ITEMS
                 if(paymentConfirmation != null)
                 {
-                    Toasty.success(consulation_request.this, "Successful Payment", Toasty.LENGTH_SHORT).show();
+                    Toasty.success(consulation_request.this, "Successful Payment", Toasty.LENGTH_LONG).show();
+
+                    try {
+                        new Apicalls(consulation_request.this,consulation_request.this).confirm_consultation(""+consultation_reserve.getId(),""+1);
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+                    Log.e("statusandsecond",""+consultation_reserve.getId());
+
+                    paid = 1;
                 }
 
             }
@@ -201,7 +214,19 @@ public class consulation_request extends AppCompatActivity implements View.OnCli
 
     @Override
     public void OnResponse(ResponseModel model) {
-        Log.e("paynow",model.getJsonObject()+"");
+
+        if(paid == 0)
+        {
+            Gson gson = new Gson();
+            consultation_reserve = gson.fromJson(""+model.getJsonObject(),consultation_reserve.class);
+
+            Toasty.success(consulation_request.this,consultation_reserve.getMessage(),Toasty.LENGTH_LONG).show();
+        }
+        else if(paid == 1)
+        {
+            paid = 0 ;
+        }
+
     }
 
 

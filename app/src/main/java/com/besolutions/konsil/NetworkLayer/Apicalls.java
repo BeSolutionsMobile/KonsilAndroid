@@ -129,9 +129,9 @@ public class Apicalls {
      * @func Send Message
      */
 
-    public void send_msg(final String consultation_id, final String message) {
+    public void send_msg(final String consultation_id, final String message) throws JSONException {
 
-        apiRouter.performRequest(Apiclient.SEND_MSG.getURL(), Apiclient.SEND_MSG.getParams(), Arrays.asList(consultation_id, message), Request.Method.POST, 6);
+        apiRouter.makeAdvancedRequest(Apiclient.SEND_MSG.getURL(), Request.Method.POST, Apiclient.SEND_MSG.getParams(), Arrays.asList(consultation_id, message), null);
 
     }
 
@@ -157,7 +157,7 @@ public class Apicalls {
 
     public void update_personal_info(String name, String phone, String email, String password, String image_url) throws JSONException {
 
-        apiRouter.makeAdvancedRequest(Apiclient.UPDATE_USER_INFO.getURL(), Request.Method.POST, Apiclient.UPDATE_USER_INFO.getParams(), Arrays.asList(name,phone,email,password,image_url), null);
+        apiRouter.makeAdvancedRequest(Apiclient.UPDATE_USER_INFO.getURL(), Request.Method.POST, Apiclient.UPDATE_USER_INFO.getParams(), Arrays.asList(name, phone, email, password, image_url), null);
 
     }
 
@@ -181,23 +181,9 @@ public class Apicalls {
      * @func Make Complaint
      */
 
-    public void make_complaint(String type_id , String message) throws JSONException {
+    public void make_complaint(String type_id, String message) throws JSONException {
 
-        apiRouter.makeAdvancedRequest(Apiclient.MAKE_COMPLAINT.getURL(), Request.Method.POST, Apiclient.MAKE_COMPLAINT.getParams(), Arrays.asList(type_id , message), null);
-
-    }
-
-
-    //----------------------------------------------------------------------------------------------
-
-
-    /**
-     * @func Retrieve User Requests
-     */
-
-    public void selectMyRequests(final String id_user) {
-
-        //  apiRouter.performRequest(Apiclient.SELECT_MY_REQUESTS.getURL(),Apiclient.SELECT_MY_REQUESTS.getParams(), Collections.singletonList(id_user), Request.Method.POST,7);
+        apiRouter.makeAdvancedRequest(Apiclient.MAKE_COMPLAINT.getURL(), Request.Method.POST, Apiclient.MAKE_COMPLAINT.getParams(), Arrays.asList(type_id, message), null);
 
     }
 
@@ -206,12 +192,26 @@ public class Apicalls {
 
 
     /**
-     * @func Update User Data
+     * @func MY_CONSULTATIONS
      */
 
-    public void updateUser(final String id, final String Name, final String Email, final String Password, final String Age, final String Gender, final String Work, final String Mobile, final String Images, final String Identification, final String Account_statement) {
+    public void my_consultations() throws JSONException {
 
-        apiRouter.performRequest(Apiclient.INSERT_USER.getURL(), Apiclient.INSERT_USER.getParams(), Arrays.asList(id, Name, Email, Password, Age, Gender, Work, Mobile, Images, Identification, Account_statement), Request.Method.POST, 8);
+        apiRouter.makeAdvancedRequest(Apiclient.MY_CONSULTATIONS.getURL(), Request.Method.GET, Apiclient.MY_CONSULTATIONS.getParams(), null, null);
+
+    }
+
+
+    //----------------------------------------------------------------------------------------------
+
+
+    /**
+     * @func CONFIRM_CONSULTATION
+     */
+
+    public void confirm_consultation(String consultation_id, String payment_status) throws JSONException {
+
+        apiRouter.makeAdvancedRequest(Apiclient.CONFIRM_CONSULTATION.getURL(), Request.Method.POST, Apiclient.CONFIRM_CONSULTATION.getParams(), Arrays.asList(consultation_id, payment_status), null);
 
     }
 
@@ -219,12 +219,12 @@ public class Apicalls {
     //----------------------------------------------------------------------------------------------
 
     /**
-     * @func Update Investor Data
+     * @func RESERVE_CONVERSATION
      */
 
-    public void updateInvestor(final String id, final String Name, final String Email, final String Password, final String Age, final String Gender, final String Work, final String Mobile, final String Images) {
+    public void reserve_conversation(String doctor_id, String appointment_id) throws JSONException {
 
-        // apiRouter.performRequest(Apiclient.INSERT_INVESTOR.getURL(),Apiclient.INSERT_INVESTOR.getParams(), Arrays.asList(id,Name,Email,Password,Age,Gender,Work,Mobile,Images), Request.Method.POST,9);
+        apiRouter.makeAdvancedRequest(Apiclient.RESERVE_CONVERSATION.getURL(), Request.Method.POST, Apiclient.RESERVE_CONVERSATION.getParams(), Arrays.asList(doctor_id, appointment_id), null);
 
     }
 
@@ -232,12 +232,11 @@ public class Apicalls {
     //----------------------------------------------------------------------------------------------
 
     /**
-     * @func Update Investor Data
+     * @func Confirm Conversation
      */
 
-    public void Insert_Order(final String order_descripition, final String image, final String distance, final String duration, final String promo_code, final String delivery_time, final String order_from_location,
-                             final String order_to_location, String client_location_lat, String client_location_long, String order_location_lat, String order_location_long) {
-
+    public void confirm_conversation(final String consultation_id, final String payment_status) throws JSONException {
+        apiRouter.makeAdvancedRequest(Apiclient.CONFIRM_CONVERSATION.getURL(), Request.Method.POST, Apiclient.CONFIRM_CONVERSATION.getParams(), Arrays.asList(consultation_id, payment_status), null);
 
     }
 
@@ -245,25 +244,24 @@ public class Apicalls {
     //----------------------------------------------------------------------------------------------
 
     /**
-     * @func Retrieve User Requests
+     * @func FAQ
      */
 
-    public void selectMyRequestsInvestor(final String id_investor) {
+    public void faq() throws JSONException {
 
-//        apiRouter.performRequest(Apiclient.SELECT_MY_REQUESTS_INVESTOR.getURL(),Apiclient.SELECT_MY_REQUESTS_INVESTOR.getParams(), Collections.singletonList(id_investor), Request.Method.POST,11);
-
+        apiRouter.makeAdvancedRequest(Apiclient.FAQ.getURL(), Request.Method.GET, Apiclient.FAQ.getParams(), null, null);
     }
 
 
     //----------------------------------------------------------------------------------------------
 
     /**
-     * @func Retrieve Products
+     * @func GET MESSAGES
      */
 
-    public void selectUser(final String id_user) {
+    public void get_all_msg(final String consultation_id) throws JSONException {
 
-        //  apiRouter.performRequest(Apiclient.SELECT_USER.getURL(),Apiclient.SELECT_USER.getParams(), Collections.singletonList(id_user), Request.Method.POST,12);
+        apiRouter.makeAdvancedRequest(Apiclient.GET_ALL_MSG.getURL(), Request.Method.POST, Apiclient.GET_ALL_MSG.getParams(), Arrays.asList(consultation_id), null);
 
     }
 
@@ -276,7 +274,7 @@ public class Apicalls {
 
     public void selectInstallments(final String id_user) {
 
-    //    apiRouter.performRequest(Apiclient.SELECT_MY_INSTALLMENTS.getURL(), Apiclient.SELECT_MY_INSTALLMENTS.getParams(), Collections.singletonList(id_user), Request.Method.POST, 13);
+        //    apiRouter.performRequest(Apiclient.SELECT_MY_INSTALLMENTS.getURL(), Apiclient.SELECT_MY_INSTALLMENTS.getParams(), Collections.singletonList(id_user), Request.Method.POST, 13);
 
     }
 
@@ -303,7 +301,7 @@ public class Apicalls {
 
     public void updateRate(final String number_rate, final String number_star, final String id_user) {
 
-        apiRouter.performRequest(Apiclient.UPDATE_RATE.getURL(), Apiclient.UPDATE_RATE.getParams(), Arrays.asList(number_rate, number_star, id_user), Request.Method.POST, 15);
+     //   apiRouter.performRequest(Apiclient.UPDATE_RATE.getURL(), Apiclient.UPDATE_RATE.getParams(), Arrays.asList(number_rate, number_star, id_user), Request.Method.POST, 15);
 
     }
 
@@ -316,11 +314,6 @@ public class Apicalls {
 
     public void Get_data(String id) {
 
-        try {
-            apiRouter.makeAdvancedRequest(Apiclient.OFFERS.getURL() + id, Request.Method.GET, Apiclient.OFFERS.getParams(), null, null);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
 
     }
 
@@ -332,11 +325,6 @@ public class Apicalls {
 
     public void Get_order_data() {
 
-        try {
-            apiRouter.makeAdvancedRequest(Apiclient.ORDERS.getURL(), Request.Method.GET, Apiclient.ORDERS.getParams(), null, null);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
 
     }
 
@@ -364,11 +352,6 @@ public class Apicalls {
 
     public void Get_myOrder() {
 
-        try {
-            apiRouter.makeAdvancedRequest(Apiclient.MY_ORDERS.getURL(), Request.Method.GET, Apiclient.MY_ORDERS.getParams(), null, null);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
 
     }
 
@@ -423,12 +406,6 @@ public class Apicalls {
      */
 
     public void Get_notifcation_data() {
-
-        try {
-            apiRouter.makeAdvancedRequest(Apiclient.NOTIFCATION.getURL(), Request.Method.GET, Apiclient.NOTIFCATION.getParams(), null, null);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
 
     }
 

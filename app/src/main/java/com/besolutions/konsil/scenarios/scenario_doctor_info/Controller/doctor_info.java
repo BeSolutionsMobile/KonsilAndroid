@@ -23,6 +23,8 @@ import com.besolutions.konsil.scenarios.scenario_Consulation_request.Controller.
 import com.google.gson.Gson;
 import com.squareup.picasso.Picasso;
 
+import es.dmoral.toasty.Toasty;
+
 
 public class doctor_info extends AppCompatActivity implements View.OnClickListener, NetworkInterface {
     RatingBar ratings;
@@ -40,13 +42,14 @@ public class doctor_info extends AppCompatActivity implements View.OnClickListen
         request_consulation = findViewById(R.id.request_consulation);
         online_res = findViewById(R.id.online_res);
 
-        online_res.setOnClickListener(this);
-        request_consulation.setOnClickListener(this);
+
         ratings.setRating(4);
 
         set_toolbar_name();
         String doc_id = getIntent().getStringExtra("id");
         new Apicalls(this, this).doctor_details(doc_id);
+
+
     }
 
     @Override
@@ -56,12 +59,20 @@ public class doctor_info extends AppCompatActivity implements View.OnClickListen
             intent.putExtra("doc_id", doc_id);
             startActivity(intent);
         } else if (v.getId() == R.id.online_res) {
+
+            if(doctors.getImageUrl() == null)
+            {
+                Toasty.warning(doctor_info.this,"Please wait until loading all data ...",Toasty.LENGTH_LONG).show();
+            }
+            else {
             Intent intent = new Intent(doctor_info.this, request_online_conversation.class);
             intent.putExtra("image", doctors.getImageUrl());
             intent.putExtra("doc_name", doctors.getName());
             intent.putExtra("doc_title", doctors.getJobTitle() + "");
+            intent.putExtra("conversation_price", doctors.getConversationPrice() + "");
             intent.putExtra("rating", doctors.getRate());
             startActivity(intent);
+        }
         }
     }
 
@@ -107,6 +118,10 @@ public class doctor_info extends AppCompatActivity implements View.OnClickListen
         conversation.setText("" + doctors.getTotalConversation());
         ratingBar.setRating(doctors.getRate());
         doc_id = doctors.getId();
+
+        //SET ON CLICK DATA
+        online_res.setOnClickListener(this);
+        request_consulation.setOnClickListener(this);
 
     }
 

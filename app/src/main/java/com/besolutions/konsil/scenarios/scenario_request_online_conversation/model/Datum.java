@@ -1,7 +1,7 @@
 package com.besolutions.konsil.scenarios.scenario_request_online_conversation.model;//
 //  Datum.java
 //  Model Generated using http://www.jsoncafe.com/ 
-//  Created on February 17, 2020
+//  Created on February 19, 2020
 
 import org.json.*;
 import java.util.*;
@@ -10,22 +10,30 @@ import com.google.gson.annotations.SerializedName;
 
 public class Datum{
 
+	@SerializedName("from")
+	private String from;
 	@SerializedName("id")
 	private int id;
-	@SerializedName("time")
-	private String time;
+	@SerializedName("to")
+	private String to;
 
+	public void setFrom(String from){
+		this.from = from;
+	}
+	public String getFrom(){
+		return this.from;
+	}
 	public void setId(int id){
 		this.id = id;
 	}
 	public int getId(){
 		return this.id;
 	}
-	public void setTime(String time){
-		this.time = time;
+	public void setTo(String to){
+		this.to = to;
 	}
-	public String getTime(){
-		return this.time;
+	public String getTo(){
+		return this.to;
 	}
 
 	/**
@@ -35,7 +43,8 @@ public class Datum{
 		if(jsonObject == null){
 			return;
 		}
-		time = jsonObject.optString("time");
+		from = jsonObject.optString("from");
+		to = jsonObject.optString("to");
 		id = jsonObject.optInt("id");
 	}
 
@@ -46,8 +55,9 @@ public class Datum{
 	{
 		JSONObject jsonObject = new JSONObject();
 		try {
+			jsonObject.put("from", from);
 			jsonObject.put("id", id);
-			jsonObject.put("time", time);
+			jsonObject.put("to", to);
 			
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block

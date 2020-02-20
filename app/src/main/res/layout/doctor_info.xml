@@ -33,6 +33,7 @@
                   android:layout_width="@dimen/_83sdp"
                   android:layout_height="@dimen/_83sdp"
                   android:id="@+id/doc_img"
+                  android:src="@drawable/konzil_logo"
                   android:layout_gravity="center"
                   />
           </android.support.v7.widget.CardView>

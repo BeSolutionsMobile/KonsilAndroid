@@ -28,6 +28,7 @@
         android:layout_height="match_parent"
         android:paddingLeft="@dimen/_5sdp"
         android:hint="@string/enter_message_here"
+        android:id="@+id/enter_msg"
         android:background="@drawable/send_bg"/>
        <Button
            android:layout_width="@dimen/_50sdp"
@@ -35,6 +36,7 @@
            android:layout_alignParentRight="true"
            android:textAllCaps="false"
            android:text="@string/send"
+           android:id="@+id/send_msg"
            android:textSize="@dimen/_11ssp"
            android:textColor="@android:color/white"
            android:background="@drawable/send_button_bg"/>

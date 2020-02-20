@@ -1,7 +1,7 @@
 package com.besolutions.konsil.scenarios.scenario_request_online_conversation.model;//
 //  root_appointment.java
 //  Model Generated using http://www.jsoncafe.com/ 
-//  Created on February 17, 2020
+//  Created on February 19, 2020
 
 import org.json.*;
 import java.util.*;

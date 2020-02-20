@@ -1,17 +1,13 @@
 package com.besolutions.konsil.scenarios.scenario_request_online_conversation.model;
 
 public class conversation_reserv_list {
-    String id,resev_txt;
+    String id,from,to;
     Boolean status=false;
 
-    public  conversation_reserv_list(Boolean status)
-    {
-        this.status=status;
-    }
-
-    public conversation_reserv_list(String id, String resev_txt) {
+    public conversation_reserv_list(String id, String from, String to) {
         this.id = id;
-        this.resev_txt = resev_txt;
+        this.from = from;
+        this.to = to;
     }
 
     public String getId() {
@@ -22,12 +18,20 @@ public class conversation_reserv_list {
         this.id = id;
     }
 
-    public String getResev_txt() {
-        return resev_txt;
+    public String getFrom() {
+        return from;
     }
 
-    public void setResev_txt(String resev_txt) {
-        this.resev_txt = resev_txt;
+    public void setFrom(String from) {
+        this.from = from;
+    }
+
+    public String getTo() {
+        return to;
+    }
+
+    public void setTo(String to) {
+        this.to = to;
     }
 
     public Boolean getStatus() {

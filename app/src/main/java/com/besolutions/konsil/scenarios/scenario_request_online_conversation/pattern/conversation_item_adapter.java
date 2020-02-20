@@ -22,6 +22,8 @@ public class conversation_item_adapter extends RecyclerView.Adapter<conversation
 
     private RadioButton lastCheckedRB = null;
 
+    public static String radio_id = "1000" ;
+
     public conversation_item_adapter(Context context, ArrayList<conversation_reserv_list> mylist) {
         this.context = context;
         this.mylist = mylist;
@@ -37,7 +39,8 @@ public class conversation_item_adapter extends RecyclerView.Adapter<conversation
     @Override
     public void onBindViewHolder(@NonNull final conversation_holder viewHolder, final int position) {
 
-        viewHolder.radio_txt.setText(mylist.get(position).getResev_txt());
+        viewHolder.radio_txt.setText("from "+mylist.get(position).getFrom()+" to "+mylist.get(position).getTo());
+
 
         viewHolder.radio_txt.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -47,6 +50,8 @@ public class conversation_item_adapter extends RecyclerView.Adapter<conversation
                     lastCheckedRB.setChecked(false);
                 }
                 lastCheckedRB = checked_rb;
+
+                radio_id = mylist.get(position).getId();
 
             }
         });

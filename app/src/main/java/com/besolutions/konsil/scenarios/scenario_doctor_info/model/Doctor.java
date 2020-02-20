@@ -14,6 +14,8 @@ public class Doctor{
 	private Object bio;
 	@SerializedName("consultation_price")
 	private Object consultationPrice;
+	@SerializedName("conversation_price")
+	private Object conversationPrice;
 	@SerializedName("degree")
 	private String degree;
 	@SerializedName("id")
@@ -45,6 +47,12 @@ public class Doctor{
 	public Object getConsultationPrice(){
 		return this.consultationPrice;
 	}
+    public void setConversationPrice(Object conversationPrice){
+        this.conversationPrice = conversationPrice;
+    }
+    public Object getConversationPrice(){
+        return this.conversationPrice;
+    }
 	public void setDegree(String degree){
 		this.degree = degree;
 	}

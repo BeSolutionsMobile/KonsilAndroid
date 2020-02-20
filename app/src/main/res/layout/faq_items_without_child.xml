@@ -19,10 +19,9 @@
         android:id="@+id/child"
         android:textColor="@android:color/black"
         android:text="kanflanflknalkfnlkanflaknflanfklakfnlanflwkajdwkjadwjbjwkabdkjwbddbkwjbdjwbkdb"
-        android:singleLine="true"
         android:paddingLeft="@dimen/_15sdp"
         android:paddingRight="@dimen/_15sdp"
-        android:layout_height="match_parent"/>
+        android:layout_height="wrap_content"/>
 
     </LinearLayout>
 
