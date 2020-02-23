@@ -20,6 +20,8 @@ public class Datum{
 	private Object price;
 	@SerializedName("status")
 	private String status;
+    @SerializedName("doctor_id")
+    private int doctor_id;
 	@SerializedName("type")
 	private String type;
 
@@ -56,6 +58,12 @@ public class Datum{
 	public void setType(String type){
 		this.type = type;
 	}
+    public void setDocId(int doctor_id){
+        this.doctor_id = doctor_id;
+    }
+    public int getDocId(){
+        return this.doctor_id;
+    }
 	public String getType(){
 		return this.type;
 	}
@@ -72,6 +80,7 @@ public class Datum{
 		status = jsonObject.optString("status");
 		type = jsonObject.optString("type");
 		id = jsonObject.optInt("id");
+		doctor_id = jsonObject.optInt("doctor_id");
 		price = jsonObject.optString("price");
 	}
 
@@ -86,7 +95,8 @@ public class Datum{
 			jsonObject.put("image", image);
 			jsonObject.put("name", name);
 			jsonObject.put("price", price);
-			jsonObject.put("status", status);
+            jsonObject.put("doctor_id", doctor_id);
+            jsonObject.put("status", status);
 			jsonObject.put("type", type);
 			
 		} catch (JSONException e) {

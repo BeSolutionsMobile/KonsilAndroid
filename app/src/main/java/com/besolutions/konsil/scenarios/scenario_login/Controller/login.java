@@ -7,6 +7,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -16,10 +17,12 @@ import com.besolutions.konsil.NetworkLayer.Apicalls;
 import com.besolutions.konsil.NetworkLayer.NetworkInterface;
 import com.besolutions.konsil.NetworkLayer.ResponseModel;
 import com.besolutions.konsil.R;
+import com.besolutions.konsil.local_data.saved_data;
 import com.besolutions.konsil.local_data.send_data;
 
 import com.besolutions.konsil.scenarios.scenario_login.model.UserInfo;
 import com.besolutions.konsil.scenarios.scenario_login.model.login_root;
+import com.besolutions.konsil.scenarios.scenario_mian_page.Controller.main_screen;
 import com.besolutions.konsil.scenarios.secnario_fingerprint.Controller.fingerprint;
 import com.besolutions.konsil.scenarios.scenario_sign_up.Controller.sign_up;
 import com.google.gson.Gson;
@@ -36,6 +39,8 @@ public class login extends AppCompatActivity implements View.OnClickListener, Ne
     TextView signup;
     EditText email, password;
     UserInfo userInfo;
+    CheckBox check_finger;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -45,6 +50,7 @@ public class login extends AppCompatActivity implements View.OnClickListener, Ne
         login = findViewById(R.id.login);
         check = findViewById(R.id.check);
         signup = findViewById(R.id.signup);
+        check_finger = findViewById(R.id.check);
 
 
         login.setOnClickListener(this);
@@ -52,6 +58,21 @@ public class login extends AppCompatActivity implements View.OnClickListener, Ne
         signup.setOnClickListener(this);
 
         firebase_token();
+
+        //SET FINGER PRINT
+        check_finger.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                email = findViewById(R.id.email);
+                password = findViewById(R.id.password);
+
+                new send_data().finger_print(login.this, "yes");
+
+            }
+        });
+
+        //SET FINGER PRINT
+        setCheck_finger();
     }
 
     @Override
@@ -68,9 +89,8 @@ public class login extends AppCompatActivity implements View.OnClickListener, Ne
                 yoyo(R.id.password, password);
             } else {
                 new Apicalls(login.this, login.this).loginUser(email.getText().toString(), password.getText().toString(), firebase_token());
+                new send_data().login_status(login.this, true);
             }
-        } else if (v.getId() == R.id.check) {
-            startActivity(new Intent(this, fingerprint.class));
         } else if (v.getId() == R.id.signup) {
             startActivity(new Intent(this, sign_up.class));
         }
@@ -102,10 +122,9 @@ public class login extends AppCompatActivity implements View.OnClickListener, Ne
         //SAVE PERSONAL INFO
         userInfo = login_root.getUserInfo();
 
-        new send_data().send_name(this,userInfo.getName());
-        new send_data().send_email(this,userInfo.getEmail());
-        new send_data().send_phone(this,userInfo.getPhone());
-
+        new send_data().send_name(this, userInfo.getName());
+        new send_data().send_email(this, userInfo.getEmail());
+        new send_data().send_phone(this, userInfo.getPhone());
 
 
     }
@@ -120,6 +139,18 @@ public class login extends AppCompatActivity implements View.OnClickListener, Ne
             Toasty.error(login.this, "Password is Empty", Toasty.LENGTH_SHORT).show();
         } else if (error.networkResponse.statusCode == 407) {
             Toasty.error(login.this, "Mobile Token is Empty", Toasty.LENGTH_SHORT).show();
+        }
+    }
+
+    //CHECK IF FINGER PRINT
+    void setCheck_finger() {
+        if(new saved_data().get_login_status(this) == true) {
+            if (new saved_data().get_finger_print(this).equals("yes")) {
+                startActivity(new Intent(login.this, fingerprint.class));
+            }
+            else {
+                startActivity(new Intent(login.this, main_screen.class));
+            }
         }
     }
 

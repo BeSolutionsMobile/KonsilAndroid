@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.VolleyError;
 import com.besolutions.konsil.NetworkLayer.Apicalls;
@@ -30,6 +31,9 @@ public class fragment_info extends Fragment implements NetworkInterface {
     TextView doc_name, date, con_link, status;
     root_conversation_details root_conversation_details;
     Datum data;
+
+    public static String date_conv ;
+    public static String status_conv ;
 
     public fragment_info() {
         // Required empty public constructor
@@ -75,6 +79,12 @@ public class fragment_info extends Fragment implements NetworkInterface {
         date.setText(data.getDate());
         con_link.setText(data.getConversationLink());
         status.setText(data.getStatus());
+
+        //SET DATA TO DATE AND STATUS TO MAKE IT REUSABLE
+        date_conv = data.getDate();
+        status_conv = data.getStatus();
+
+       // Toast.makeText(getActivity(), ""+date_conv+"////"+status_conv, Toast.LENGTH_SHORT).show();
     }
 
     @Override

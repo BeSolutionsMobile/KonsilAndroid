@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.VolleyError;
@@ -17,6 +18,7 @@ import com.besolutions.konsil.NetworkLayer.Apicalls;
 import com.besolutions.konsil.NetworkLayer.NetworkInterface;
 import com.besolutions.konsil.NetworkLayer.ResponseModel;
 import com.besolutions.konsil.R;
+import com.besolutions.konsil.scenarios.scenario_Consulation_result.Controller.Consulation_result.consulation_result;
 import com.besolutions.konsil.scenarios.scenario_Consulation_result.Controller.Consulation_result.fragment_message.model.Message;
 import com.besolutions.konsil.scenarios.scenario_Consulation_result.Controller.Consulation_result.fragment_message.model.consulation_list;
 import com.besolutions.konsil.scenarios.scenario_Consulation_result.Controller.Consulation_result.fragment_message.model.root_msg;
@@ -42,6 +44,7 @@ public class fragement_msg extends Fragment implements View.OnClickListener, Net
     Button send_msg;
     int msg_status = 0;
     Message[] messages;
+    TextView nomsg;
 
     public fragement_msg() {
         // Required empty public constructor
@@ -63,6 +66,7 @@ public class fragement_msg extends Fragment implements View.OnClickListener, Net
         //DEFINE ALL VARS
         enter_msg = view.findViewById(R.id.enter_msg);
         send_msg = view.findViewById(R.id.send_msg);
+        nomsg = view.findViewById(R.id.nomsg);
 
         Button req_online_conv = view.findViewById(R.id.req_online_conv);
         req_online_conv.setOnClickListener(this);
@@ -104,23 +108,29 @@ public class fragement_msg extends Fragment implements View.OnClickListener, Net
             ArrayList<consulation_list> arrayList = new ArrayList<>();
 
             messages = root_msg.getMessages();
-            for (int index = 0; index < messages.length; index++) {
-                arrayList.add(new consulation_list("" + messages[index].getId(), messages[index].getName(), messages[index].getMessage(), messages[index].getUserImage()));
+            if (messages.length == 0) {
+                nomsg.setText("لاتوجد رسائل");
+            } else {
+                for (int index = 0; index < messages.length; index++) {
+                    arrayList.add(new consulation_list("" + messages[index].getId(), messages[index].getName(), messages[index].getMessage(), messages[index].getUserImage()));
+                }
+
+                utils_adapter utils_adapter = new utils_adapter();
+                utils_adapter.Adapter(msg_list, new consulation_result_adapter(getActivity(), arrayList), getActivity());
+
             }
 
-            utils_adapter utils_adapter = new utils_adapter();
-            utils_adapter.Adapter(msg_list , new consulation_result_adapter(getActivity() , arrayList) ,getActivity() );
-
             // SET MSG STATUS = 1
-            msg_status = 1 ;
+            msg_status = 1;
         }
 
         //SEND DATA TO SERVER SEND MSG
 
-        else if(msg_status == 1 )
-        {
-            Toast.makeText(getActivity(), "" + model.getJsonObject(), Toast.LENGTH_SHORT).show();
-            msg_status = 0 ;
+        else if (msg_status == 1) {
+            Intent intent =new Intent(getContext(), consulation_result.class);
+            getActivity().finish();
+            startActivity(intent);
+            msg_status = 0;
 
         }
 
@@ -130,4 +140,5 @@ public class fragement_msg extends Fragment implements View.OnClickListener, Net
     public void OnError(VolleyError error) {
 
     }
+
 }

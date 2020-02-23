@@ -14,8 +14,10 @@ import android.graphics.Rect;
 import android.graphics.RectF;
 import android.graphics.Shader;
 import android.graphics.drawable.Drawable;
+import android.os.Build;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.support.annotation.RequiresApi;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.widget.CardView;
@@ -27,6 +29,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import com.besolutions.konsil.local_data.saved_data;
+import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -67,6 +72,8 @@ public class NavigationDrawerFragment extends Fragment implements NavigationDraw
     private boolean mFromSavedInstanceState;
     private boolean mUserLearnedDrawer;
     CardView card_bg;
+    de.hdodenhof.circleimageview.CircleImageView personal_img;
+    TextView name ;
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -83,17 +90,18 @@ public class NavigationDrawerFragment extends Fragment implements NavigationDraw
         }
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_navigation_drawer, container, false);
-        mDrawerList = (RecyclerView) view.findViewById(R.id.drawerList);
+        mDrawerList = view.findViewById(R.id.drawerList);
         LinearLayoutManager layoutManager = new LinearLayoutManager(getActivity());
         layoutManager.setOrientation(LinearLayoutManager.VERTICAL);
         mDrawerList.setLayoutManager(layoutManager);
         mDrawerList.setHasFixedSize(true);
 
-        card_bg=(CardView)view.findViewById(R.id.card_bg);
+        card_bg= view.findViewById(R.id.card_bg);
         card_bg.setBackgroundResource(R.drawable.img_header_bg);
 
         final List<NavigationItem> navigationItems = getMenu();
@@ -101,6 +109,13 @@ public class NavigationDrawerFragment extends Fragment implements NavigationDraw
         adapter.setNavigationDrawerCallbacks(this);
         mDrawerList.setAdapter(adapter);
         selectItem(mCurrentSelectedPosition);
+
+        //SET IMAGE AND NAME
+        //personal_img = view.findViewById(R.id.personal_img);
+    //    Picasso.with(getContext()).load(new saved_data().)
+        name = view.findViewById(R.id.name);
+        name.setText(new saved_data().get_name(getActivity()));
+
         return view;
     }
 

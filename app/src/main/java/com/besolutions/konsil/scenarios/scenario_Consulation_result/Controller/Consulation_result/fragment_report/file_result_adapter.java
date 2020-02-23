@@ -1,11 +1,14 @@
 package com.besolutions.konsil.scenarios.scenario_Consulation_result.Controller.Consulation_result.fragment_report;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.besolutions.konsil.R;
@@ -31,8 +34,16 @@ public class file_result_adapter extends RecyclerView.Adapter<file_result_adapte
     }
 
     @Override
-    public void onBindViewHolder(@NonNull consulation_result_holder viewHolder, int i) {
+    public void onBindViewHolder(@NonNull consulation_result_holder viewHolder, final int i) {
      viewHolder.name.setText(mylist.get(i).getName());
+
+     viewHolder.file_download.setOnClickListener(new View.OnClickListener() {
+         @Override
+         public void onClick(View v) {
+             Intent browse = new Intent(Intent.ACTION_VIEW, Uri.parse(mylist.get(i).getName()));
+             context.startActivity(browse);
+         }
+     });
     }
 
     @Override
@@ -42,9 +53,11 @@ public class file_result_adapter extends RecyclerView.Adapter<file_result_adapte
 
     class consulation_result_holder extends RecyclerView.ViewHolder {
         TextView name;
+        LinearLayout file_download;
         public consulation_result_holder(@NonNull View itemView) {
             super(itemView);
             name=(TextView)itemView.findViewById(R.id.title);
+            file_download = itemView.findViewById(R.id.file_download);
         }
     }
 }

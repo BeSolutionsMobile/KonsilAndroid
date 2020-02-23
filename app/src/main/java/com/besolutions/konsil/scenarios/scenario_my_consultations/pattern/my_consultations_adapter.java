@@ -24,6 +24,7 @@ public class my_consultations_adapter extends RecyclerView.Adapter<my_consultati
     Context context;
     ArrayList<my_consultations_list> mylist;
     public static String id;
+    public static String doc_id;
 
     public my_consultations_adapter(Context context, ArrayList<my_consultations_list> mylist) {
         this.context = context;
@@ -52,11 +53,14 @@ public class my_consultations_adapter extends RecyclerView.Adapter<my_consultati
                 //CHECK FOR TYPE TO KNOW GO TO CONVERSATION OR CONSULTATION
                 if (mylist.get(i).getType().equals("1")) {
 
+                    doc_id = mylist.get(i).getDoc_id();
                     Intent intent = new Intent(context, consulation_result.class);
                     id = mylist.get(i).getId();
                     context.startActivity(intent);
 
                 } else if (mylist.get(i).getType().equals("2")) {
+
+                    doc_id = mylist.get(i).getDoc_id();
                     Intent intent = new Intent(context, online_conversation.class);
                     id = mylist.get(i).getId();
                     context.startActivity(intent);

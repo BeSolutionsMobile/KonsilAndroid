@@ -45,4 +45,18 @@ public class saved_data {
         String phone = sharedPreferences.getString("phone", "0");
         return phone;
     }
+
+    //GET FINGER_PRINT
+    public String get_finger_print(Context context) {
+        SharedPreferences sharedPreferences = context.getSharedPreferences("finger_print", MODE_PRIVATE);
+        String phone = sharedPreferences.getString("finger_print", "no");
+        return phone;
+    }
+
+    //GET LOGIN STATUS
+    public Boolean get_login_status(Context context) {
+        SharedPreferences sharedPreferences = context.getSharedPreferences("login_bool", MODE_PRIVATE);
+        Boolean status = sharedPreferences.getBoolean("login_bool", false);
+        return status;
+    }
 }

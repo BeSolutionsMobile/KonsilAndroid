@@ -2,6 +2,7 @@ package com.besolutions.konsil.scenarios.scenario_Consulation_result.Controller.
 
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
@@ -9,17 +10,39 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.TextView;
+import android.widget.Toast;
 
+import com.android.volley.VolleyError;
+import com.besolutions.konsil.NetworkLayer.Apicalls;
+import com.besolutions.konsil.NetworkLayer.NetworkInterface;
+import com.besolutions.konsil.NetworkLayer.ResponseModel;
 import com.besolutions.konsil.R;
+import com.besolutions.konsil.scenarios.scenario_Consulation_result.Controller.Consulation_result.fragment_report.model.Consultation;
+import com.besolutions.konsil.scenarios.scenario_Consulation_result.Controller.Consulation_result.fragment_report.model.root_download_report;
 import com.besolutions.konsil.scenarios.scenario_make_complaint.Controller.make_a_complaint;
+import com.besolutions.konsil.scenarios.scenario_my_consultations.pattern.my_consultations_adapter;
 import com.besolutions.konsil.scenarios.scenario_request_online_conversation.Controller.request_online_conversation;
+import com.google.gson.Gson;
+
+import org.json.JSONException;
+
+import es.dmoral.toasty.Toasty;
 
 /**
  * A simple {@link Fragment} subclass.
  */
-public class fragment_report extends Fragment implements View.OnClickListener {
-   RecyclerView list;
-   View view;
+public class fragment_report extends Fragment implements View.OnClickListener, NetworkInterface {
+    RecyclerView list;
+    View view;
+    ImageView download;
+    root_download_report root_download_report;
+    Consultation consultations;
+    TextView no_medical;
+    LinearLayout setvisablitiy;
+
     public fragment_report() {
         // Required empty public constructor
     }
@@ -29,13 +52,22 @@ public class fragment_report extends Fragment implements View.OnClickListener {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        view= inflater.inflate(R.layout.fragment_report, container, false);
+        view = inflater.inflate(R.layout.fragment_report, container, false);
 
-        Button req_online_conv=(Button)view.findViewById(R.id.req_online_conv);
-        Button make_a_complaint=(Button)view.findViewById(R.id.make_complaint);
+        Button make_a_complaint = view.findViewById(R.id.make_complaint);
+        download = view.findViewById(R.id.download);
+        setvisablitiy = view.findViewById(R.id.setvisablitiy);
+        no_medical = view.findViewById(R.id.no_medical);
 
-        req_online_conv.setOnClickListener(this);
         make_a_complaint.setOnClickListener(this);
+        download.setOnClickListener(this);
+
+        try {
+            new Apicalls(getContext(), this).download_file(my_consultations_adapter.id);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
 
         return view;
     }
@@ -43,13 +75,44 @@ public class fragment_report extends Fragment implements View.OnClickListener {
 
     @Override
     public void onClick(View v) {
-        if(v.getId()==R.id.req_online_conv)
-        {
-            startActivity(new Intent(getActivity(), request_online_conversation.class));
-        }
-        else if(v.getId()==R.id.make_complaint)
-        {
+        if (v.getId() == R.id.make_complaint) {
             startActivity(new Intent(getActivity(), make_a_complaint.class));
+        } else if (v.getId() == R.id.download) {
+            //GO TO URL
+            Intent browse = new Intent(Intent.ACTION_VIEW, Uri.parse(consultations.getUrl()));
+            startActivity(browse);
         }
+    }
+
+    @Override
+    public void OnStart() {
+
+    }
+
+    @Override
+    public void OnResponse(ResponseModel model) {
+        Gson gson = new Gson();
+        root_download_report = gson.fromJson("" + model.getJsonObject(), root_download_report.class);
+
+        consultations = root_download_report.getConsultation();
+
+        if (consultations.getUrl().equals("noLink")) {
+
+            //SET VISIBILITY AND TEXT
+            setvisablitiy.setVisibility(View.GONE);
+            no_medical.setText("There is no medical report");
+        } else {
+
+            //SET VISIBILITY AND TEXT
+            setvisablitiy.setVisibility(View.VISIBLE);
+            no_medical.setText("");
+        }
+
+
+    }
+
+    @Override
+    public void OnError(VolleyError error) {
+        Toast.makeText(getActivity(), "" + error.networkResponse, Toast.LENGTH_SHORT).show();
     }
 }

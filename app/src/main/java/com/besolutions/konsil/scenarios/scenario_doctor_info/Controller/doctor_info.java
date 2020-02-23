@@ -31,7 +31,7 @@ public class doctor_info extends AppCompatActivity implements View.OnClickListen
     Button request_consulation, online_res;
     Doctor doctors;
     int doc_id;
-
+    String doc_id_st;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,8 +46,8 @@ public class doctor_info extends AppCompatActivity implements View.OnClickListen
         ratings.setRating(4);
 
         set_toolbar_name();
-        String doc_id = getIntent().getStringExtra("id");
-        new Apicalls(this, this).doctor_details(doc_id);
+        doc_id_st = getIntent().getStringExtra("id");
+        new Apicalls(this, this).doctor_details(doc_id_st);
 
 
     }
@@ -60,19 +60,18 @@ public class doctor_info extends AppCompatActivity implements View.OnClickListen
             startActivity(intent);
         } else if (v.getId() == R.id.online_res) {
 
-            if(doctors.getImageUrl() == null)
-            {
-                Toasty.warning(doctor_info.this,"Please wait until loading all data ...",Toasty.LENGTH_LONG).show();
+            if (doctors.getImageUrl() == null) {
+                Toasty.warning(doctor_info.this, "Please wait until loading all data ...", Toasty.LENGTH_LONG).show();
+            } else {
+                Intent intent = new Intent(doctor_info.this, request_online_conversation.class);
+                intent.putExtra("image", doctors.getImageUrl());
+                intent.putExtra("doc_name", doctors.getName());
+                intent.putExtra("doc_title", doctors.getJobTitle() + "");
+                intent.putExtra("conversation_price", doctors.getConversationPrice() + "");
+                intent.putExtra("rating", doctors.getRate());
+                intent.putExtra("doc_id", doc_id_st);
+                startActivity(intent);
             }
-            else {
-            Intent intent = new Intent(doctor_info.this, request_online_conversation.class);
-            intent.putExtra("image", doctors.getImageUrl());
-            intent.putExtra("doc_name", doctors.getName());
-            intent.putExtra("doc_title", doctors.getJobTitle() + "");
-            intent.putExtra("conversation_price", doctors.getConversationPrice() + "");
-            intent.putExtra("rating", doctors.getRate());
-            startActivity(intent);
-        }
         }
     }
 

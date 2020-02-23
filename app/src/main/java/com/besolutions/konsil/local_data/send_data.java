@@ -65,4 +65,23 @@ public class send_data {
         editor.commit();
     }
 
+    //SAVE FINGER PRINT
+    public static void finger_print(Context context,String yes)
+    {
+        //SAVE LANGUAGE STATUS
+        SharedPreferences sharedPreferences=context.getSharedPreferences("finger_print",MODE_PRIVATE);
+        SharedPreferences.Editor editor=sharedPreferences.edit();
+        editor.putString("finger_print", yes);
+        editor.commit();
+    }
+
+    //SET LOGIN TRUE
+    public static void login_status(Context context,boolean status)
+    {
+        //SAVE LANGUAGE STATUS
+        SharedPreferences sharedPreferences=context.getSharedPreferences("login_bool",MODE_PRIVATE);
+        SharedPreferences.Editor editor=sharedPreferences.edit();
+        editor.putBoolean("login_bool", status);
+        editor.commit();
+    }
 }

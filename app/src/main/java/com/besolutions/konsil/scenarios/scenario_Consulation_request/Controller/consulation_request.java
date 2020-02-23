@@ -50,6 +50,7 @@ public class consulation_request extends AppCompatActivity implements View.OnCli
     EditText title, desc;
     consultation_reserve consultation_reserve;
 
+
     private static final int PAYPAL_REQUEST_CODE = 3;
 
     int paid = 0;
@@ -112,7 +113,7 @@ public class consulation_request extends AppCompatActivity implements View.OnCli
 
             //SEND DATA TO API
             try {
-                new Apicalls(consulation_request.this, consulation_request.this).add_consultation("patient", "patient", "" + doc_id);
+                new Apicalls(consulation_request.this, consulation_request.this).add_consultation(title.getText().toString(),desc.getText().toString() , "" + doc_id);
             } catch (JSONException e) {
                 e.printStackTrace();
             }

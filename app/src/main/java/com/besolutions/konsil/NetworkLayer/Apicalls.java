@@ -269,13 +269,11 @@ public class Apicalls {
     //----------------------------------------------------------------------------------------------
 
     /**
-     * @func Retrieve Products
+     * @func Download Files
      */
 
-    public void selectInstallments(final String id_user) {
-
-        //    apiRouter.performRequest(Apiclient.SELECT_MY_INSTALLMENTS.getURL(), Apiclient.SELECT_MY_INSTALLMENTS.getParams(), Collections.singletonList(id_user), Request.Method.POST, 13);
-
+    public void download_file(final String consultation_id) throws JSONException {
+        apiRouter.makeAdvancedRequest(Apiclient.DOWNLOAD_REPORT.getURL(), Request.Method.POST, Apiclient.DOWNLOAD_REPORT.getParams(), Arrays.asList(consultation_id), null);
     }
 
 
@@ -283,12 +281,12 @@ public class Apicalls {
 
 
     /**
-     * @func Update Investor Data
+     * @func CONSULTATION_FILES
      */
 
-    public void updateInstallment(final String id, final String status) {
+    public void consultation_files(final String consultation_id) throws JSONException {
 
-        apiRouter.performRequest(Apiclient.UPDATE_INSTALLMENT.getURL(), Apiclient.UPDATE_INSTALLMENT.getParams(), Arrays.asList(id, status), Request.Method.POST, 14);
+        apiRouter.makeAdvancedRequest(Apiclient.CONSULTATION_FILES.getURL(), Request.Method.POST, Apiclient.CONSULTATION_FILES.getParams(), Arrays.asList("3"), null);
 
     }
 

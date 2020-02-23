@@ -87,6 +87,7 @@
                 android:paddingLeft="@dimen/_7sdp"
                 android:layout_height="@dimen/_20sdp"
                 android:textSize="@dimen/_11ssp"
+                android:id="@+id/accept_condition"
                 android:text="@string/accept_all_items_and_conditions"
                 />
 

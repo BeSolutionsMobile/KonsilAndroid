@@ -8,9 +8,12 @@ import android.widget.Toast;
 
 import com.besolutions.konsil.R;
 import com.besolutions.konsil.scenarios.scenario_doctor_list.Controller.doctor_list;
+import com.besolutions.konsil.scenarios.scenario_login.Controller.loading;
+import com.besolutions.konsil.scenarios.scenario_login.Controller.login;
 
 import co.infinum.goldfinger.Error;
 import co.infinum.goldfinger.Goldfinger;
+import es.dmoral.toasty.Toasty;
 
 
 public class
@@ -30,11 +33,12 @@ fingerprint extends AppCompatActivity {
         if (goldfinger.hasFingerprintHardware() && goldfinger.hasEnrolledFingerprint()) {
 
             authenticateUserFingerprint();
+            loading loading = new loading();
+            loading.dialog(fingerprint.this, R.layout.successful_login, .80);
 
         }else
         {
-
-
+            Toasty.error(fingerprint.this,"Cant authenticated",Toasty.LENGTH_LONG).show();
         }
     }
 

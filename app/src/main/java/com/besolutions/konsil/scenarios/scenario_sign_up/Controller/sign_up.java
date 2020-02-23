@@ -4,6 +4,8 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.CompoundButton;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -32,7 +34,8 @@ public class sign_up extends AppCompatActivity implements View.OnClickListener, 
     EditText username, phone, email, password;
     root_signup root_signup;
     com.besolutions.konsil.scenarios.scenario_sign_up.model.UserInfo UserInfo;
-
+    CheckBox accept_condition;
+    Boolean check_box = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,8 +47,17 @@ public class sign_up extends AppCompatActivity implements View.OnClickListener, 
         phone = findViewById(R.id.phone);
         email = findViewById(R.id.email);
         password = findViewById(R.id.password);
+        accept_condition = findViewById(R.id.accept_condition);
 
         signup.setOnClickListener(this);
+
+        //SET ON CHECK BOX
+        accept_condition.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
+                check_box = isChecked;
+            }
+        });
 
         firebase_token();
 
@@ -68,7 +80,12 @@ public class sign_up extends AppCompatActivity implements View.OnClickListener, 
             } else if (password.getText().length() < 8) {
                 password.setError("password id too short!");
                 yoyo(R.id.password);
-            } else {
+            }
+            else if(check_box == false)
+            {
+                Toasty.warning(sign_up.this,"You must accept conditions to Sign up",Toasty.LENGTH_LONG).show();
+            }
+            else {
                 //COMPLETE MOBILE TOKEN AND LANGUAGE
                 //GET DEVICE LANGUAGE
                 String lang = new saved_data().get_lan(sign_up.this);
@@ -97,6 +114,12 @@ public class sign_up extends AppCompatActivity implements View.OnClickListener, 
        //POP UP
         loading loading=new loading();
         loading.dialog(sign_up.this,R.layout.successful_login,.80);
+
+        //SAVE PERSONAL INFO
+
+        new send_data().send_name(this,UserInfo.getName());
+        new send_data().send_email(this,UserInfo.getEmail());
+        new send_data().send_phone(this,UserInfo.getPhone());
 
 
 

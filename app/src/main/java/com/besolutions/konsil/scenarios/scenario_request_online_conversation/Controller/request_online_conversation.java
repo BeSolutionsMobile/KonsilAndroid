@@ -55,6 +55,8 @@ public class request_online_conversation extends AppCompatActivity implements Vi
 
     int PAYPAL_REQUEST_CODE = 3;
 
+    String doc_id;
+
     private static PayPalConfiguration payPalConfiguration = new PayPalConfiguration()
             .environment(PayPalConfiguration.ENVIRONMENT_SANDBOX).clientId(Config.CLIENT_ID);
 
@@ -65,8 +67,10 @@ public class request_online_conversation extends AppCompatActivity implements Vi
         complete_req = findViewById(R.id.complete_req);
         complete_req.setOnClickListener(this);
 
+        doc_id = getIntent().getStringExtra("doc_id");
+
         try {
-            new Apicalls(this, this).appointment(String.valueOf(43), "2020-02-13");
+            new Apicalls(this, this).appointment(doc_id, "2020-02-13");
         } catch (JSONException e) {
             e.printStackTrace();
         }
@@ -86,7 +90,7 @@ public class request_online_conversation extends AppCompatActivity implements Vi
                 Toasty.error(request_online_conversation.this, "Please choose appoienment time", Toasty.LENGTH_LONG).show();
             } else {
                 try {
-                    new Apicalls(request_online_conversation.this, request_online_conversation.this).reserve_conversation("43", conversation_item_adapter.radio_id);
+                    new Apicalls(request_online_conversation.this, request_online_conversation.this).reserve_conversation(doc_id, conversation_item_adapter.radio_id);
                     complete_req_status = 1;
                 } catch (JSONException e) {
                     e.printStackTrace();

@@ -216,7 +216,7 @@ public class APIRouter {
         //SEND FILES TO FILES
         object.put("title", title);
         object.put("details", details);
-        object.put("doctor_id", 26);
+        object.put("doctor_id", doc_id);
         object.put("images", jsonArray);
         object.put("files", jsonArray);
 

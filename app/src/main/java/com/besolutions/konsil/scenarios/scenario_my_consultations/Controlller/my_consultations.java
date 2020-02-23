@@ -79,7 +79,7 @@ public class my_consultations extends AppCompatActivity implements NetworkInterf
         //LOOP ON ALL DATA
         for(int index = 0; index <data.length ; index++)
         {
-            arrayList.add(new my_consultations_list(data[index].getName(), data[index].getStatus(), (String) data[index].getPrice(), data[index].getStatus(), data[index].getImage(), ""+data[index].getId(),data[index].getType()));
+            arrayList.add(new my_consultations_list(data[index].getName(), data[index].getStatus(), (String) data[index].getPrice(), data[index].getStatus(), data[index].getImage(), ""+data[index].getId(),data[index].getType(),""+data[index].getDocId()));
         }
 
         utils_adapter utils_adapter = new utils_adapter();

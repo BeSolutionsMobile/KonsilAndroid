@@ -1,15 +1,16 @@
 package com.besolutions.konsil.scenarios.scenario_my_consultations.model;
 
 public class my_consultations_list {
-    String name,desc,price,status,img,id,type;
+    String name, desc, price, status, img, id, type, doc_id;
 
-    public my_consultations_list(String name, String desc, String price, String status, String img, String id ,String type) {
+    public my_consultations_list(String name, String desc, String price, String status, String img, String id, String type, String doc_id) {
         this.name = name;
         this.desc = desc;
         this.price = price;
         this.status = status;
         this.img = img;
         this.id = id;
+        this.doc_id = doc_id;
         this.type = type;
     }
 
@@ -67,5 +68,13 @@ public class my_consultations_list {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    public String getDoc_id() {
+        return doc_id;
+    }
+
+    public void setDoc_id(String doc_id) {
+        this.doc_id = doc_id;
     }
 }
