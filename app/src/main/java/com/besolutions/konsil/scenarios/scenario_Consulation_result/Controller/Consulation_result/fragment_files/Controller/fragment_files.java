@@ -3,31 +3,22 @@ package com.besolutions.konsil.scenarios.scenario_Consulation_result.Controller.
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.provider.MediaStore;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
-import android.widget.ImageView;
-import android.widget.Toast;
+import android.widget.ProgressBar;
 
 import com.android.volley.VolleyError;
 import com.besolutions.konsil.NetworkLayer.Apicalls;
 import com.besolutions.konsil.NetworkLayer.NetworkInterface;
 import com.besolutions.konsil.NetworkLayer.ResponseModel;
-import com.besolutions.konsil.scenarios.scenario_Consulation_result.Controller.Consulation_result.fragment_files.model.root_download_files;
 import com.besolutions.konsil.scenarios.scenario_Consulation_result.Controller.Consulation_result.fragment_report.model.file_list;
 import com.besolutions.konsil.scenarios.scenario_Consulation_result.Controller.Consulation_result.fragment_report.file_result_adapter;
 import com.besolutions.konsil.R;
 import com.besolutions.konsil.scenarios.scenario_my_consultations.pattern.my_consultations_adapter;
-import com.besolutions.konsil.scenarios.scenario_request_online_conversation.Controller.request_online_conversation;
 import com.besolutions.konsil.utils.utils_adapter;
-import com.google.gson.Gson;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -41,9 +32,8 @@ import java.util.ArrayList;
 public class fragment_files extends Fragment implements NetworkInterface,View.OnClickListener {
     View view;
     RecyclerView list;
-    Button button;
-    ImageView upload_files;
-    root_download_files root_download_files;
+    ProgressBar pg;
+
 
     public fragment_files() {
         // Required empty public constructor
@@ -63,6 +53,9 @@ public class fragment_files extends Fragment implements NetworkInterface,View.On
             e.printStackTrace();
         }
 
+        //DEFINE VARS
+        pg = view.findViewById(R.id.pg);
+
 
         return view;
     }
@@ -76,6 +69,7 @@ public class fragment_files extends Fragment implements NetworkInterface,View.On
     @Override
     public void OnResponse(ResponseModel model) {
 
+        pg.setVisibility(View.GONE); //SET IT IF THERE IS DATA FROM SERVER
 
         ArrayList<file_list> arrayList = new ArrayList<>();
 

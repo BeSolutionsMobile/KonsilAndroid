@@ -26,6 +26,7 @@ import com.besolutions.konsil.NetworkLayer.ResponseModel;
 import com.besolutions.konsil.R;
 import com.besolutions.konsil.config.Config;
 import com.besolutions.konsil.scenarios.scenario_Consulation_request.model.consultation_reserve;
+import com.besolutions.konsil.scenarios.scenario_mian_page.Controller.main_screen;
 import com.besolutions.konsil.utils.firebase_storage;
 import com.besolutions.konsil.utils.utils;
 import com.google.gson.Gson;
@@ -64,8 +65,8 @@ public class consulation_request extends AppCompatActivity implements View.OnCli
         setContentView(R.layout.consulation_request);
 
         //START PAYPAL SERVICE
-        Intent intent = new Intent(this , PayPalService.class);
-        intent.putExtra(PayPalService.EXTRA_PAYPAL_CONFIGURATION,payPalConfiguration);
+        Intent intent = new Intent(this, PayPalService.class);
+        intent.putExtra(PayPalService.EXTRA_PAYPAL_CONFIGURATION, payPalConfiguration);
         startService(intent);
 
         upload_img = findViewById(R.id.upload_img);
@@ -91,7 +92,7 @@ public class consulation_request extends AppCompatActivity implements View.OnCli
     @Override
     protected void onDestroy() {
         super.onDestroy();
-        stopService(new Intent(this , PayPalService.class));
+        stopService(new Intent(this, PayPalService.class));
     }
 
     @Override
@@ -99,26 +100,39 @@ public class consulation_request extends AppCompatActivity implements View.OnCli
         utils utils = new utils();
         if (v.getId() == R.id.upload_img) {
 
+
+            String select_img = getResources().getString(R.string.select_img);
+
+
             //SEND ARRAY OF IMAGES
-            Intent i = new Intent( Intent.EXTRA_ALLOW_MULTIPLE, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
+            Intent i = new Intent(Intent.EXTRA_ALLOW_MULTIPLE, MediaStore.Images.Media.EXTERNAL_CONTENT_URI);
             i.putExtra(Intent.EXTRA_ALLOW_MULTIPLE, true);
             i.setType("image/*");
             i.setAction(Intent.ACTION_GET_CONTENT);
-            startActivityForResult(Intent.createChooser(i, "Select Your Photo"),1);
+            startActivityForResult(Intent.createChooser(i, select_img), 1);
 
 
         } else if (v.getId() == R.id.complete_req) {
 
-            int doc_id = getIntent().getIntExtra("doc_id", 0);
+            String titles = getResources().getString(R.string.short_title);
+            String descr = getResources().getString(R.string.desc);
 
-            //SEND DATA TO API
-            try {
-                new Apicalls(consulation_request.this, consulation_request.this).add_consultation(title.getText().toString(),desc.getText().toString() , "" + doc_id);
-            } catch (JSONException e) {
-                e.printStackTrace();
+            if (title.getText().length() < 4) {
+                Toasty.warning(consulation_request.this, titles,Toasty.LENGTH_SHORT).show();
+            } else if (desc.getText().length() < 4) {
+                Toasty.warning(consulation_request.this, descr,Toasty.LENGTH_SHORT).show();
+            } else {
+
+                int doc_id = getIntent().getIntExtra("doc_id", 0);
+
+                //SEND DATA TO API
+                try {
+                    new Apicalls(consulation_request.this, consulation_request.this).add_consultation(title.getText().toString(), desc.getText().toString(), "" + doc_id);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+                process_payment();
             }
-
-            process_payment();
 
         } else if (v.getId() == R.id.upload_file) {
             utils.upload_files(this, 2);
@@ -128,14 +142,17 @@ public class consulation_request extends AppCompatActivity implements View.OnCli
 
     //PAYMENT PROCESS
     private void process_payment() {
-        PayPalPayment payPalPayment = new PayPalPayment(new BigDecimal("150"),"USD",
-                "Pay now for konsil",PayPalPayment.PAYMENT_INTENT_SALE);
+
+        String pay_konsil = getResources().getString(R.string.pay_konsil);
+
+        PayPalPayment payPalPayment = new PayPalPayment(new BigDecimal("150"), "USD",
+                pay_konsil, PayPalPayment.PAYMENT_INTENT_SALE);
 
         Intent intent = new Intent(consulation_request.this, PaymentActivity.class);
-        intent.putExtra(PayPalService.EXTRA_PAYPAL_CONFIGURATION,payPalConfiguration);
-        intent.putExtra(PaymentActivity.EXTRA_PAYMENT,payPalPayment);
+        intent.putExtra(PayPalService.EXTRA_PAYPAL_CONFIGURATION, payPalConfiguration);
+        intent.putExtra(PaymentActivity.EXTRA_PAYMENT, payPalPayment);
 
-        startActivityForResult(intent,PAYPAL_REQUEST_CODE);
+        startActivityForResult(intent, PAYPAL_REQUEST_CODE);
 
     }
 
@@ -156,12 +173,13 @@ public class consulation_request extends AppCompatActivity implements View.OnCli
         if (requestCode == 1) {
             if (resultCode == RESULT_OK) {
                 {
-                    ClipData clipData=data.getClipData();
-                    if (clipData==null)
-                    {
-                        Toasty.warning(consulation_request.this,"Please Select More Than Image",Toasty.LENGTH_LONG).show();
-                    }
-                    else if(clipData != null){
+                    ClipData clipData = data.getClipData();
+                    if (clipData == null) {
+
+                        String select_more_imgs = getResources().getString(R.string.select_more_imgs);
+                        Toasty.warning(consulation_request.this, select_more_imgs, Toasty.LENGTH_LONG).show();
+
+                    } else if (clipData != null) {
                         //UPLOAD TO FIREBASE
                         firebase_storage firebase_storage = new firebase_storage();
                         firebase_storage.uploadImage(clipData, consulation_request.this, true);
@@ -169,41 +187,39 @@ public class consulation_request extends AppCompatActivity implements View.OnCli
                     }
                 }
             }
-        }
-        else if (requestCode == 2) {
+        } else if (requestCode == 2) {
             if (resultCode == RESULT_OK) {
-            upload_file_check.playAnimation();
-            Uri selected_file = data.getData();
+                upload_file_check.playAnimation();
+                Uri selected_file = data.getData();
 
 
-        }
-        }
-        else if (requestCode == PAYPAL_REQUEST_CODE)
-        {
+            }
+        } else if (requestCode == PAYPAL_REQUEST_CODE) {
 
-            if (resultCode == RESULT_OK)
-            {
+            if (resultCode == RESULT_OK) {
                 PaymentConfirmation paymentConfirmation = data.getParcelableExtra(PaymentActivity.EXTRA_RESULT_CONFIRMATION);
                 //VALIDATE ON ALL ITEMS
-                if(paymentConfirmation != null)
-                {
-                    Toasty.success(consulation_request.this, "Successful Payment", Toasty.LENGTH_LONG).show();
+                if (paymentConfirmation != null) {
+
+                    String successfull_payment = getResources().getString(R.string.successfull_payment);
+                    Toasty.success(consulation_request.this, successfull_payment, Toasty.LENGTH_LONG).show();
+                    startActivity(new Intent(consulation_request.this, main_screen.class));
 
                     try {
-                        new Apicalls(consulation_request.this,consulation_request.this).confirm_consultation(""+consultation_reserve.getId(),""+1);
+                        new Apicalls(consulation_request.this, consulation_request.this).confirm_consultation("" + consultation_reserve.getId(), "" + 1);
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }
-                    Log.e("statusandsecond",""+consultation_reserve.getId());
+                    Log.e("statusandsecond", "" + consultation_reserve.getId());
 
                     paid = 1;
                 }
 
             }
 
-        }
-        else if(requestCode == PaymentActivity.RESULT_EXTRAS_INVALID){
-            Toasty.error(consulation_request.this, "Invalid", Toasty.LENGTH_SHORT).show();
+        } else if (requestCode == PaymentActivity.RESULT_EXTRAS_INVALID) {
+            String Invalid = getResources().getString(R.string.Invalid);
+            Toasty.error(consulation_request.this, Invalid, Toasty.LENGTH_SHORT).show();
         }
 
     }
@@ -216,16 +232,13 @@ public class consulation_request extends AppCompatActivity implements View.OnCli
     @Override
     public void OnResponse(ResponseModel model) {
 
-        if(paid == 0)
-        {
+        if (paid == 0) {
             Gson gson = new Gson();
-            consultation_reserve = gson.fromJson(""+model.getJsonObject(),consultation_reserve.class);
+            consultation_reserve = gson.fromJson("" + model.getJsonObject(), consultation_reserve.class);
 
-            Toasty.success(consulation_request.this,consultation_reserve.getMessage(),Toasty.LENGTH_LONG).show();
-        }
-        else if(paid == 1)
-        {
-            paid = 0 ;
+            Toasty.success(consulation_request.this, consultation_reserve.getMessage(), Toasty.LENGTH_LONG).show();
+        } else if (paid == 1) {
+            paid = 0;
         }
 
     }

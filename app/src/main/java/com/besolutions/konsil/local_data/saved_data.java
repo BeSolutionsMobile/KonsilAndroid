@@ -46,6 +46,20 @@ public class saved_data {
         return phone;
     }
 
+    //GET PHONE
+    public String get_desc(Context context) {
+        SharedPreferences sharedPreferences = context.getSharedPreferences("personal_info", MODE_PRIVATE);
+        String phone = sharedPreferences.getString("desc", "");
+        return phone;
+    }
+
+    //GET IMAGE
+    public String get_img(Context context) {
+        SharedPreferences sharedPreferences = context.getSharedPreferences("personal_info", MODE_PRIVATE);
+        String phone = sharedPreferences.getString("image", "0");
+        return phone;
+    }
+
     //GET FINGER_PRINT
     public String get_finger_print(Context context) {
         SharedPreferences sharedPreferences = context.getSharedPreferences("finger_print", MODE_PRIVATE);

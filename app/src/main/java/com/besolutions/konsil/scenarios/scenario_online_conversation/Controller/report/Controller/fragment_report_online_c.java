@@ -97,7 +97,9 @@ public class fragment_report_online_c extends Fragment implements View.OnClickLi
 
              //SET VISIBILITY AND TEXT
             setvisablitiy.setVisibility(View.GONE);
-            no_medical.setText("There is no medical report");
+
+            String no_med = getResources().getString(R.string.no_medical_r);
+            no_medical.setText(no_med);
         } else {
             //SET VISIBILITY AND TEXT
             setvisablitiy.setVisibility(View.VISIBLE);

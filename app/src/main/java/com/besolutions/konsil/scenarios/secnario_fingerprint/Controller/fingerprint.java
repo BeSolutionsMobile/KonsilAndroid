@@ -1,15 +1,11 @@
 package com.besolutions.konsil.scenarios.secnario_fingerprint.Controller;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.ImageView;
-import android.widget.Toast;
 
 import com.besolutions.konsil.R;
-import com.besolutions.konsil.scenarios.scenario_doctor_list.Controller.doctor_list;
 import com.besolutions.konsil.scenarios.scenario_login.Controller.loading;
-import com.besolutions.konsil.scenarios.scenario_login.Controller.login;
 
 import co.infinum.goldfinger.Error;
 import co.infinum.goldfinger.Goldfinger;
@@ -33,12 +29,12 @@ fingerprint extends AppCompatActivity {
         if (goldfinger.hasFingerprintHardware() && goldfinger.hasEnrolledFingerprint()) {
 
             authenticateUserFingerprint();
-            loading loading = new loading();
-            loading.dialog(fingerprint.this, R.layout.successful_login, .80);
+
 
         }else
         {
-            Toasty.error(fingerprint.this,"Cant authenticated",Toasty.LENGTH_LONG).show();
+            String cant_auth = getResources().getString(R.string.cant_auth);
+            Toasty.error(fingerprint.this,cant_auth,Toasty.LENGTH_LONG).show();
         }
     }
 
@@ -50,14 +46,14 @@ fingerprint extends AppCompatActivity {
             @Override
             public void onSuccess(String value) {
                 //login.setEnabled(true);
-                Toast.makeText(fingerprint.this, "successfully", Toast.LENGTH_SHORT).show();
-                startActivity(new Intent(fingerprint.this, doctor_list.class));
-                finish();
+                loading loading = new loading();
+                loading.dialog(fingerprint.this, R.layout.successful_login, .80);
             }
 
             @Override
             public void onError(Error error) {
-                Toast.makeText(fingerprint.this, "Cant Access", Toast.LENGTH_SHORT).show();
+                String cant_access = getResources().getString(R.string.cant_access);
+                Toasty.error(fingerprint.this,cant_access,Toasty.LENGTH_LONG).show();
             }
         });
     }
@@ -65,6 +61,7 @@ fingerprint extends AppCompatActivity {
     @Override
     protected void onStop() {
         super.onStop();
+        finish();
         goldfinger.cancel();
     }
 }

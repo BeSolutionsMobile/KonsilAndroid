@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Konsil gr</string>
+    <string name="app_name">konsilmed</string>
     <string name="drawer_open">Menu opened</string>
     <string name="drawer_close">Menu closed</string>
     <string name="action_settings">الاعدادات</string>
@@ -88,7 +88,7 @@
     <string name="add_your_password"> كلمة المرور</string>
     <string name="add_your_email">البريد الاكترونى</string>
     <string name="add_your_phone">الهاتف</string>
-    <string name="welcome_to_konzil">مرحبا فى كونسيل</string>
+    <string name="welcome_to_konzil">مرحبا فى كونسيل </string>
     <string name="chat_or_get_consultations_and_repoerts_from_doctors_in_all_fields_of_medicine_any_time_any_where_now">Chatten oder erhalten Sie jederzeit und überall Konsultationen und Berichte von Ärzten aus allen Bereichen der Medizin.</string>
     <string name="logged_in_successfully">تم الدخول بنجاح...</string>
     <string name="Surgeries">جراحه</string>
@@ -114,8 +114,7 @@
     <string name="payment">الدفع</string>
     <string name="registed_suc">تم التسجيل بنجاح</string>
     <string name="doctor">رئيس القسم في مستشفى برلين</string>
-
-
+    <string name="edited_successfully">Edited successfully...</string>
 
 
 </resources>

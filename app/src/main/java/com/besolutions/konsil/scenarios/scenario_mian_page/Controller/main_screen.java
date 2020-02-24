@@ -11,6 +11,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.LinearLayout;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -31,6 +32,7 @@ import com.besolutions.konsil.scenarios.scenario_mian_page.model.main_screen_lis
 import com.besolutions.konsil.scenarios.scenario_mian_page.pattern.main_screen_adapter;
 import com.besolutions.konsil.scenarios.scenario_my_consultations.Controlller.my_consultations;
 import com.besolutions.konsil.scenarios.scenario_personal_info.Controller.personal_info;
+import com.besolutions.konsil.scenarios.scenario_splash_screen.Controller.splash_screen;
 import com.besolutions.konsil.scenarios.scenarios_faq.controller.faq;
 import com.besolutions.konsil.utils.utils;
 import com.besolutions.konsil.utils.utils_adapter;
@@ -40,28 +42,32 @@ import org.json.JSONException;
 
 import java.util.ArrayList;
 
-public class main_screen extends AppCompatActivity implements NavigationDrawerCallbacks, View.OnClickListener , NetworkInterface {
+public class main_screen extends AppCompatActivity implements NavigationDrawerCallbacks, View.OnClickListener, NetworkInterface {
     Toolbar mToolbar;
     private NavigationDrawerFragment mNavigationDrawerFragment;
-    int num=0;
+    int num = 0;
     TextView title;
     utils utils;
     all_specialitiesDatum[] all_specialitiesDatumsss;
+    ProgressBar pg;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main_screen);
 
-        utils=new utils();
+
+        utils = new utils();
 
         mToolbar = findViewById(R.id.toolbar_actionbar);
-     //   mToolbar.setTitle("Spechalist");
+        //   mToolbar.setTitle("Spechalist");
         setSupportActionBar(mToolbar);
 
-        title= findViewById(R.id.title);
+        title = findViewById(R.id.title);
         String Spechalist = getResources().getString(R.string.Specialist);
         title.setText(Spechalist);
+
 
         mNavigationDrawerFragment = (NavigationDrawerFragment)
                 getFragmentManager().findFragmentById(R.id.fragment_drawer);
@@ -70,47 +76,39 @@ public class main_screen extends AppCompatActivity implements NavigationDrawerCa
         mNavigationDrawerFragment.setup(R.id.fragment_drawer, (DrawerLayout) findViewById(R.id.drawer), mToolbar);
 
         //CHANGE LANGUAGE
-        LinearLayout change_lan= findViewById(R.id.change_lan);
+        LinearLayout change_lan = findViewById(R.id.change_lan);
         change_lan.setOnClickListener(this);
 
-        //SET LANGUAGE TEXT IN NAVIGATION
-        TextView change_language= findViewById(R.id.change_language);
-        change_language.setText(new saved_data().get_nav_word(this));
 
         //GET DATA FROM SERVER
         try {
-            new Apicalls(this,this).get_all_specialities();
+            new Apicalls(this, this).get_all_specialities();
         } catch (JSONException e) {
-            Log.e("WRONG","WRONG FROM SERVER");
-         }
-    }
+            Log.e("WRONG", "WRONG FROM SERVER");
+        }
 
+        //PROGRESS DIALOG
+        pg = findViewById(R.id.pg);
+
+
+    }
 
 
     @Override
     public void onNavigationDrawerItemSelected(int position) {
 
         // update the main content by replacing fragments
-        if(position==0)
-        {
-            if(num==0)
-            {
-                num=1;
-            }
-            else {
+        if (position == 0) {
+            if (num == 0) {
+                num = 1;
+            } else {
                 startActivity(new Intent(this, personal_info.class));
             }
-        }
-        else if(position==1)
-        {
+        } else if (position == 1) {
             startActivity(new Intent(this, my_consultations.class));
-        }
-        else if(position==2)
-        {
+        } else if (position == 2) {
             startActivity(new Intent(this, faq.class));
-        }
-        else if(position==5)
-        {
+        } else if (position == 5) {
             startActivity(new Intent(this, be_a_doctor.class));
         }
     }
@@ -121,8 +119,7 @@ public class main_screen extends AppCompatActivity implements NavigationDrawerCa
 
         if (mNavigationDrawerFragment.isDrawerOpen()) {
             mNavigationDrawerFragment.closeDrawer();
-        }
-        else{
+        } else {
 
             moveTaskToBack(true);
         }
@@ -159,28 +156,15 @@ public class main_screen extends AppCompatActivity implements NavigationDrawerCa
     }
 
 
-
     @Override
     public void onClick(View v) {
 
-        if(v.getId()==R.id.change_lan){
 
-             String language=new saved_data().get_lan(main_screen.this);
+        if (v.getId() == R.id.change_lan) {
+            language_filter language_filter = new language_filter();
+            language_filter.dialog_language(main_screen.this, R.layout.language_filter, .70);            mNavigationDrawerFragment.closeDrawer();
+            mNavigationDrawerFragment.closeDrawer();
 
-             if(language.equals("en"))
-             {
-                 send_data.send_lan(this,"gr");
-                 send_data.send_word_navigation(main_screen.this,"Change Language To English");
-
-             }
-             else {
-                 send_data.send_lan(this,"en");
-                 send_data.send_word_navigation(main_screen.this,"sprache auf deutsch umstellen");
-             }
-
-            utils.set_language(new saved_data().get_lan(main_screen.this),main_screen.this);
-            com.besolutions.konsil.scenarios.scenario_login.Controller.loading loading=new loading();
-            loading.dialog(main_screen.this,R.layout.language_changed,.80);
         }
     }
 
@@ -192,24 +176,27 @@ public class main_screen extends AppCompatActivity implements NavigationDrawerCa
 
     @Override
     public void OnResponse(ResponseModel model) {
-        RecyclerView specialty_list= findViewById(R.id.specialty_list);
-        ArrayList<main_screen_list>arrayList=new ArrayList<>();
+
+        //SET VISABLITY GONE
+        pg.setVisibility(View.GONE);
+
+        RecyclerView specialty_list = findViewById(R.id.specialty_list);
+        ArrayList<main_screen_list> arrayList = new ArrayList<>();
 
         Gson gson = new Gson();
-        all_specialitiesroot_specialities all_specialitiesroot_specialities = gson.fromJson(""+model.getJsonObject(),all_specialitiesroot_specialities.class);
+        all_specialitiesroot_specialities all_specialitiesroot_specialities = gson.fromJson("" + model.getJsonObject(), all_specialitiesroot_specialities.class);
         all_specialitiesDatumsss = all_specialitiesroot_specialities.getData();
 
-        for (int index=0;index<all_specialitiesroot_specialities.getData().length;index++)
-        {
-            arrayList.add(new main_screen_list(all_specialitiesDatumsss[index].getId(),all_specialitiesDatumsss[index].getTitle(),all_specialitiesDatumsss[index].getImageUrl()));
+        for (int index = 0; index < all_specialitiesroot_specialities.getData().length; index++) {
+            arrayList.add(new main_screen_list(all_specialitiesDatumsss[index].getId(), all_specialitiesDatumsss[index].getTitle(), all_specialitiesDatumsss[index].getImageUrl()));
         }
-        utils_adapter utils_adapter=new utils_adapter();
-        utils_adapter.griddAdapters(specialty_list,new main_screen_adapter(main_screen.this,arrayList),main_screen.this,2);
+        utils_adapter utils_adapter = new utils_adapter();
+        utils_adapter.griddAdapters(specialty_list, new main_screen_adapter(main_screen.this, arrayList), main_screen.this, 2);
     }
 
     @Override
     public void OnError(VolleyError error) {
-        Toast.makeText(this, ""+error.networkResponse, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "" + error.networkResponse, Toast.LENGTH_SHORT).show();
 
     }
 }

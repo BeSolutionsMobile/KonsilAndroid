@@ -1,5 +1,6 @@
 package com.besolutions.konsil.utils;
 
+import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
@@ -11,20 +12,14 @@ import android.support.v4.app.Fragment;
 import android.support.v7.app.AppCompatActivity;
 import android.util.DisplayMetrics;
 
-import com.google.android.gms.tasks.OnSuccessListener;
-import com.google.firebase.iid.FirebaseInstanceId;
-import com.google.firebase.iid.InstanceIdResult;
 
 import java.util.Locale;
 
 
 public class utils {
 
-    Context context;
+   static ProgressDialog  pd;
 
-   /* public utils(Context context) {
-        this.context = context;
-    }*/
 
     /**
      * SPLASH SCREEN
@@ -89,13 +84,33 @@ public class utils {
     /**
      * SET LANGUAGE
      */
-   public void set_language(String Lan,Context context)
+   public static void set_language(String Lan, Context context)
     {
         Resources resources=context.getResources();
         DisplayMetrics displayMetrics=resources.getDisplayMetrics();
         Configuration configuration=resources.getConfiguration();
         configuration.setLocale(new Locale(Lan.toLowerCase()));
         resources.updateConfiguration(configuration,displayMetrics);
+    }
+
+    /**
+     * SET PROGRESS DIALOG
+     */
+
+    public void set_dialog(Context context)
+    {
+        pd = new ProgressDialog(context);
+        pd.setMessage("Loading...");
+        pd.show();
+    }
+
+    /**
+     * SET PROGRESS DIALOG DISMISS
+     */
+
+    public void dismiss_dialog(Context context)
+    {
+        pd.dismiss();
     }
 
 

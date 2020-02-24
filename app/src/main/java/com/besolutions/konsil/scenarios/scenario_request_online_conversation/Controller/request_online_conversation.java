@@ -9,6 +9,7 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ProgressBar;
 import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -57,6 +58,9 @@ public class request_online_conversation extends AppCompatActivity implements Vi
 
     String doc_id;
 
+    TextView nomsg;
+    ProgressBar pg;
+
     private static PayPalConfiguration payPalConfiguration = new PayPalConfiguration()
             .environment(PayPalConfiguration.ENVIRONMENT_SANDBOX).clientId(Config.CLIENT_ID);
 
@@ -79,6 +83,10 @@ public class request_online_conversation extends AppCompatActivity implements Vi
         //SET DATA
         set_doc_details();
 
+        //DEFINE ALL VARS
+        nomsg = findViewById(R.id.nomsg);
+        pg = findViewById(R.id.pg);
+
 
     }
 
@@ -87,7 +95,9 @@ public class request_online_conversation extends AppCompatActivity implements Vi
     public void onClick(View v) {
         if (v.getId() == R.id.complete_req) {
             if (conversation_item_adapter.radio_id.equals("1000")) {
-                Toasty.error(request_online_conversation.this, "Please choose appoienment time", Toasty.LENGTH_LONG).show();
+
+                String choose_time = getResources().getString(R.string.choose_time);
+                Toasty.error(request_online_conversation.this, choose_time, Toasty.LENGTH_LONG).show();
             } else {
                 try {
                     new Apicalls(request_online_conversation.this, request_online_conversation.this).reserve_conversation(doc_id, conversation_item_adapter.radio_id);
@@ -116,6 +126,8 @@ public class request_online_conversation extends AppCompatActivity implements Vi
     @Override
     public void OnResponse(ResponseModel model) {
 
+        pg.setVisibility(View.GONE);   //SET VISIBALITY GONE GOR BAR
+
         //CHECK TO KNOW WHAT REQUEST WILL COME
 
         //FIRST ITEM IS GET DATA FROM SERVER
@@ -128,11 +140,20 @@ public class request_online_conversation extends AppCompatActivity implements Vi
 
             ArrayList<conversation_reserv_list> arrayList = new ArrayList<>();
 
-            for (int index = 0; index < datnum.length; index++) {
-                arrayList.add(new conversation_reserv_list("" + datnum[index].getId(), datnum[index].getFrom(), datnum[index].getTo()));
+            //CHECK IF THERE IS DATA OR NOT
+            if (datnum.length == 0) {
+                String nodates = getResources().getString(R.string.nodates);
+                nomsg.setText(nodates);   //IF THERE IS DATA RETURN NO DATA FOUND
             }
-            utils_adapter utils_adapter = new utils_adapter();
-            utils_adapter.Adapter(reserv_list, new conversation_item_adapter(this, arrayList), this);
+            else {
+                //LOOP TO GET DATA
+                for (int index = 0; index < datnum.length; index++) {
+                    arrayList.add(new conversation_reserv_list("" + datnum[index].getId(), datnum[index].getFrom(), datnum[index].getTo()));
+                }
+                utils_adapter utils_adapter = new utils_adapter();
+                utils_adapter.Adapter(reserv_list, new conversation_item_adapter(this, arrayList), this);
+            }
+
         }
 
         //SECOND THING GO TO PAYMENT
@@ -142,9 +163,7 @@ public class request_online_conversation extends AppCompatActivity implements Vi
 
             Toasty.success(request_online_conversation.this, conversation_reserve.getMessage(), Toasty.LENGTH_SHORT).show();
             process_payment();
-        }
-         else if(complete_req_status == 2 )
-        {
+        } else if (complete_req_status == 2) {
             complete_req_status = 1;
             startActivity(new Intent(request_online_conversation.this, main_screen.class));
         }
@@ -181,8 +200,9 @@ public class request_online_conversation extends AppCompatActivity implements Vi
 
     //PAYMENT PROCESS
     private void process_payment() {
+        String pay_konsil = getResources().getString(R.string.pay_konsil);
         PayPalPayment payPalPayment = new PayPalPayment(new BigDecimal("150"), "USD",
-                "Pay now for konsil", PayPalPayment.PAYMENT_INTENT_SALE);
+                pay_konsil, PayPalPayment.PAYMENT_INTENT_SALE);
 
         Intent intent = new Intent(request_online_conversation.this, PaymentActivity.class);
         intent.putExtra(PayPalService.EXTRA_PAYPAL_CONFIGURATION, payPalConfiguration);
@@ -202,7 +222,8 @@ public class request_online_conversation extends AppCompatActivity implements Vi
                 PaymentConfirmation paymentConfirmation = data.getParcelableExtra(PaymentActivity.EXTRA_RESULT_CONFIRMATION);
                 //VALIDATE ON ALL ITEMS
                 if (paymentConfirmation != null) {
-                    Toasty.success(request_online_conversation.this, "Successful Payment", Toasty.LENGTH_LONG).show();
+                    String Successful_Payment = getResources().getString(R.string.successfull_payment);
+                    Toasty.success(request_online_conversation.this, Successful_Payment, Toasty.LENGTH_LONG).show();
                     try {
                         new Apicalls(request_online_conversation.this, request_online_conversation.this).confirm_conversation("" + conversation_reserve.getId(), "1");
                         complete_req_status = 2;

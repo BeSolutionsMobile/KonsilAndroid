@@ -40,7 +40,7 @@ public enum Apiclient {
     GET_ALL_MSG("chat-messages", Arrays.asList("consultation_id")),
     DOWNLOAD_REPORT("download-report", Arrays.asList("consultation_id")),
     CONSULTATION_FILES("consultation-files", Arrays.asList("consultation_id")),
-    GET_BALANCE("get-balance", null),
+    CHANGE_LANG("change-lang", Arrays.asList("lang")),
     ADD_PHONE("add-phone", Collections.singletonList("phone")),
     CHANGE_PASS("change-password", Arrays.asList("password","password_confirmation")),
     CHANGE_PHOTO("update-personal-image", Collections.singletonList("image_url")),

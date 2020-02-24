@@ -6,6 +6,9 @@
     android:id="@+id/drawer"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".scenarios.scenario_mian_page.Controller.main_screen">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
      <LinearLayout
          android:layout_width="match_parent"
          android:layout_height="match_parent"
@@ -13,6 +16,8 @@
      <include layout="@layout/toolbar_default"
          android:id="@+id/toolbar_actionbar"
          />
+
+
     <TextView
         android:layout_width="match_parent"
         android:layout_height="@dimen/_30sdp"
@@ -31,6 +36,14 @@
         android:layout_marginRight="@dimen/_20sdp"
         />
      </LinearLayout>
+        <ProgressBar
+            android:layout_width="@dimen/_50sdp"
+            android:layout_height="@dimen/_50sdp"
+            android:id="@+id/pg"
+            android:indeterminateTint="@color/color2"
+            android:layout_centerInParent="true"
+            />
+    </RelativeLayout>
     <com.besolutions.konsil.ScrimInsetsFrameLayout
         android:id="@+id/scrimInsetsFrameLayout"
         android:layout_width="@dimen/navigation_drawer_width"

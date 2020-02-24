@@ -25,6 +25,7 @@ import com.besolutions.konsil.scenarios.scenario_login.model.login_root;
 import com.besolutions.konsil.scenarios.scenario_mian_page.Controller.main_screen;
 import com.besolutions.konsil.scenarios.secnario_fingerprint.Controller.fingerprint;
 import com.besolutions.konsil.scenarios.scenario_sign_up.Controller.sign_up;
+import com.besolutions.konsil.utils.utils;
 import com.google.gson.Gson;
 
 
@@ -88,8 +89,11 @@ public class login extends AppCompatActivity implements View.OnClickListener, Ne
                 password.setError("Please enter the correct password!");
                 yoyo(R.id.password, password);
             } else {
+
+                new utils().set_dialog(login.this);  //CALL PROGRESS DIALOG
+
+                //CALL SERVER
                 new Apicalls(login.this, login.this).loginUser(email.getText().toString(), password.getText().toString(), firebase_token());
-                new send_data().login_status(login.this, true);
             }
         } else if (v.getId() == R.id.signup) {
             startActivity(new Intent(this, sign_up.class));
@@ -109,6 +113,10 @@ public class login extends AppCompatActivity implements View.OnClickListener, Ne
 
     @Override
     public void OnResponse(ResponseModel model) {
+
+        new utils().dismiss_dialog(login.this);  //DISMISS PROGRESS DIALOG
+
+
         loading loading = new loading();
         loading.dialog(login.this, R.layout.successful_login, .80);
 
@@ -125,6 +133,9 @@ public class login extends AppCompatActivity implements View.OnClickListener, Ne
         new send_data().send_name(this, userInfo.getName());
         new send_data().send_email(this, userInfo.getEmail());
         new send_data().send_phone(this, userInfo.getPhone());
+
+        new send_data().login_status(login.this, true);  //SET TRUE TO MAKE LOGIN AFTER FIRST LOGIN
+
 
 
     }
@@ -152,6 +163,11 @@ public class login extends AppCompatActivity implements View.OnClickListener, Ne
                 startActivity(new Intent(login.this, main_screen.class));
             }
         }
+    }
+
+    @Override
+    public void onBackPressed() {
+        moveTaskToBack(true);
     }
 
 }

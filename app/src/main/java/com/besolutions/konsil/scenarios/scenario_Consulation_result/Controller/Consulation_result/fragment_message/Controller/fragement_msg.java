@@ -10,6 +10,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -34,6 +35,8 @@ import org.json.JSONException;
 
 import java.util.ArrayList;
 
+import es.dmoral.toasty.Toasty;
+
 /**
  * A simple {@link Fragment} subclass.
  */
@@ -45,6 +48,8 @@ public class fragement_msg extends Fragment implements View.OnClickListener, Net
     int msg_status = 0;
     Message[] messages;
     TextView nomsg;
+    ProgressBar pg;
+
 
     public fragement_msg() {
         // Required empty public constructor
@@ -56,20 +61,15 @@ public class fragement_msg extends Fragment implements View.OnClickListener, Net
                              Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragement_msg, container, false);
 
-        //GET MESSAGES FROM SERVER
-        try {
-            new Apicalls(getActivity(), fragement_msg.this).get_all_msg(my_consultations_adapter.id);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+        //METHOD TO GET DATA FROM SERVER
+        get_all_msg();
 
         //DEFINE ALL VARS
         enter_msg = view.findViewById(R.id.enter_msg);
         send_msg = view.findViewById(R.id.send_msg);
         nomsg = view.findViewById(R.id.nomsg);
+        pg = view.findViewById(R.id.pg);
 
-        Button req_online_conv = view.findViewById(R.id.req_online_conv);
-        req_online_conv.setOnClickListener(this);
 
         //SET ON CLICK BUTTON
         send_msg.setOnClickListener(this);
@@ -80,14 +80,20 @@ public class fragement_msg extends Fragment implements View.OnClickListener, Net
 
     @Override
     public void onClick(View v) {
-        if (v.getId() == R.id.req_online_conv) {
-            startActivity(new Intent(getActivity(), request_online_conversation.class));
-        } else if (v.getId() == R.id.send_msg) {
-            try {
-                new Apicalls(getActivity(), this).send_msg(my_consultations_adapter.id, enter_msg.getText().toString());
-            } catch (JSONException e) {
-                e.printStackTrace();
+        if (v.getId() == R.id.send_msg) {
+            if (enter_msg.getText().length() < 3) {
+                String short_msg = getResources().getString(R.string.short_msg);
+                Toasty.warning(getActivity(), short_msg,Toasty.LENGTH_SHORT).show();
+            } else {
+                pg.setVisibility(View.VISIBLE); // SET PROGREES BAR VISIBLITY
+
+                try {
+                    new Apicalls(getActivity(), this).send_msg(my_consultations_adapter.id, enter_msg.getText().toString());
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
             }
+
         }
     }
 
@@ -101,6 +107,10 @@ public class fragement_msg extends Fragment implements View.OnClickListener, Net
 
         //GET DATA FROM SERVER GET ALL MESSAGES
         if (msg_status == 0) {
+
+            //SET VISABILITY GONE
+            pg.setVisibility(View.GONE);
+
             Gson gson = new Gson();
             root_msg root_msg = gson.fromJson("" + model.getJsonObject(), root_msg.class);
 
@@ -109,7 +119,8 @@ public class fragement_msg extends Fragment implements View.OnClickListener, Net
 
             messages = root_msg.getMessages();
             if (messages.length == 0) {
-                nomsg.setText("لاتوجد رسائل");
+             //   String no_msg = getContext().getResources().getString(R.string.no_msg);
+                nomsg.setText("No Messages");
             } else {
                 for (int index = 0; index < messages.length; index++) {
                     arrayList.add(new consulation_list("" + messages[index].getId(), messages[index].getName(), messages[index].getMessage(), messages[index].getUserImage()));
@@ -127,10 +138,11 @@ public class fragement_msg extends Fragment implements View.OnClickListener, Net
         //SEND DATA TO SERVER SEND MSG
 
         else if (msg_status == 1) {
-            Intent intent =new Intent(getContext(), consulation_result.class);
-            getActivity().finish();
-            startActivity(intent);
-            msg_status = 0;
+            pg.setVisibility(View.VISIBLE); // SET PROGREES BAR GONE
+            get_all_msg();   //METHOD FROM SERVER
+            msg_status = 0;    // SET STATE ZERO TO KONW TYPE IF GET MESSAGE OR SEND MESSAGE
+            enter_msg.getText().clear();    // SET EDIT TEXT EMPTY AFTER SEND MSG
+            nomsg.setText("");    //SET TEXT EMPTY IF LENGTH MORE THAN ONE
 
         }
 
@@ -139,6 +151,15 @@ public class fragement_msg extends Fragment implements View.OnClickListener, Net
     @Override
     public void OnError(VolleyError error) {
 
+    }
+
+    //GET MESSAGES FROM SERVER
+    void get_all_msg() {
+        try {
+            new Apicalls(getActivity(), fragement_msg.this).get_all_msg(my_consultations_adapter.id);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
     }
 
 }

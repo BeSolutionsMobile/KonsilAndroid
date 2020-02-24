@@ -8,14 +8,11 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import com.android.volley.VolleyError;
 import com.besolutions.konsil.NetworkLayer.Apicalls;
 import com.besolutions.konsil.NetworkLayer.NetworkInterface;
@@ -24,7 +21,6 @@ import com.besolutions.konsil.R;
 import com.besolutions.konsil.local_data.saved_data;
 import com.besolutions.konsil.local_data.send_data;
 import com.besolutions.konsil.scenarios.scenario_login.Controller.loading;
-import com.besolutions.konsil.scenarios.scenario_login.Controller.login;
 import com.besolutions.konsil.scenarios.scenario_personal_info.model.UserInfo;
 import com.besolutions.konsil.scenarios.scenario_personal_info.model.root_personal_info;
 import com.besolutions.konsil.utils.firebase_storage_one_img;
@@ -48,6 +44,7 @@ public class personal_info extends AppCompatActivity implements NetworkInterface
 
     root_personal_info root_personal_info;
     UserInfo userInfo;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -73,6 +70,8 @@ public class personal_info extends AppCompatActivity implements NetworkInterface
         username.setText(new saved_data().get_name(this));
         email.setText(new saved_data().get_email(this));
         phone.setText(new saved_data().get_phone(this));
+        desc.setText(new saved_data().get_desc(this));
+
 
         done.setOnClickListener(this);
         change_photo.setOnClickListener(this);
@@ -102,6 +101,7 @@ public class personal_info extends AppCompatActivity implements NetworkInterface
         new send_data().send_name(this, userInfo.getName());
         new send_data().send_email(this, userInfo.getEmail());
         new send_data().send_phone(this, userInfo.getPhone());
+        new send_data().send_descripition(this, desc.getText().toString());
 
         //OPEN DIALOG SUCCESS EDIT
 
@@ -111,9 +111,16 @@ public class personal_info extends AppCompatActivity implements NetworkInterface
     @Override
     public void OnError(VolleyError error) {
         if (error.networkResponse.statusCode == 402) {
-            Toasty.error(personal_info.this, " Email Has Been Taken", Toasty.LENGTH_SHORT).show();
+
+            String email_token = getResources().getString(R.string.email_token);
+            Toasty.error(personal_info.this, email_token, Toasty.LENGTH_SHORT).show();
+
         } else if (error.networkResponse.statusCode == 406) {
-            Toasty.error(personal_info.this, "phone is Empty or less than 8 numbers", Toasty.LENGTH_SHORT).show();
+
+
+            String phone_empty = getResources().getString(R.string.phone_empty);
+            Toasty.error(personal_info.this, phone_empty, Toasty.LENGTH_SHORT).show();
+
         }
 
     }
@@ -125,11 +132,18 @@ public class personal_info extends AppCompatActivity implements NetworkInterface
 
             //VALIDATION IN ALL ELEMENTS
             if (username.getText().toString().length() < 2) {
-                Toasty.error(personal_info.this, " Name is Empty or less than 2 chars", Toasty.LENGTH_SHORT).show();
+
+                String empty_name = getResources().getString(R.string.empty_name);
+                Toasty.error(personal_info.this, empty_name, Toasty.LENGTH_SHORT).show();
+
             } else if (phone.getText().toString().length() < 8) {
-                Toasty.error(personal_info.this, "Phone is Empty or less than 8 numbers", Toasty.LENGTH_SHORT).show();
+
+                String empty_phone = getResources().getString(R.string.empty_phone);
+                Toasty.error(personal_info.this, empty_phone, Toasty.LENGTH_SHORT).show();
+
             } else if (email.getText().toString().length() < 6) {
-                Toasty.error(personal_info.this, "Email is Empty or short", Toasty.LENGTH_SHORT).show();
+                String empty_mail = getResources().getString(R.string.empty_mail);
+                Toasty.error(personal_info.this, empty_mail, Toasty.LENGTH_SHORT).show();
             } else {
                 try {
 
@@ -165,5 +179,11 @@ public class personal_info extends AppCompatActivity implements NetworkInterface
                 firebase_storage.uploadImage(selectedImage, personal_info.this, true);
             }
         }
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+
     }
 }

@@ -17,8 +17,10 @@ import com.besolutions.konsil.R;
 import com.besolutions.konsil.local_data.saved_data;
 import com.besolutions.konsil.local_data.send_data;
 import com.besolutions.konsil.scenarios.scenario_login.Controller.loading;
+import com.besolutions.konsil.scenarios.scenario_login.Controller.login;
 import com.besolutions.konsil.scenarios.scenario_sign_up.model.UserInfo;
 import com.besolutions.konsil.scenarios.scenario_sign_up.model.root_signup;
+import com.besolutions.konsil.utils.utils;
 import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -69,23 +71,31 @@ public class sign_up extends AppCompatActivity implements View.OnClickListener, 
 
             //VALIDATION IN ALL INPUTS OF SIGN UP
             if (username.getText().length() < 6) {
-                username.setError("Username id too short!");
+                String short_user = getResources().getString(R.string.short_user);
+                username.setError(short_user);
                 yoyo(R.id.username);
             } else if (phone.getText().length() < 10) {
-                phone.setError("phone id too short!");
+                String phone_empty = getResources().getString(R.string.phone_empty);
+                phone.setError(phone_empty);
                 yoyo(R.id.phone);
             } else if (email.getText().length() < 6) {
-                email.setError("email id too short!");
+                String empty_mail = getResources().getString(R.string.empty_mail);
+                email.setError(empty_mail);
                 yoyo(R.id.email);
             } else if (password.getText().length() < 8) {
-                password.setError("password id too short!");
+                String password_empty = getResources().getString(R.string.password_empty);
+                password.setError(password_empty);
                 yoyo(R.id.password);
             }
             else if(check_box == false)
             {
-                Toasty.warning(sign_up.this,"You must accept conditions to Sign up",Toasty.LENGTH_LONG).show();
+                String accept_condition = getResources().getString(R.string.accept_condition);
+                Toasty.warning(sign_up.this,accept_condition,Toasty.LENGTH_LONG).show();
             }
             else {
+
+                new utils().set_dialog(sign_up.this);  //CALL PROGRESS DIALOG
+
                 //COMPLETE MOBILE TOKEN AND LANGUAGE
                 //GET DEVICE LANGUAGE
                 String lang = new saved_data().get_lan(sign_up.this);
@@ -102,7 +112,9 @@ public class sign_up extends AppCompatActivity implements View.OnClickListener, 
 
     @Override
     public void OnResponse(ResponseModel model) {
-       // Toast.makeText(this, ""+model.getResponse(), Toast.LENGTH_SHORT).show();
+
+        new utils().dismiss_dialog(sign_up.this);  //DISMISS PROGRESS DIALOG
+
         Gson gson=new Gson();
         root_signup = gson.fromJson(""+model.getResponse(),root_signup.class);
 
@@ -121,6 +133,9 @@ public class sign_up extends AppCompatActivity implements View.OnClickListener, 
         new send_data().send_email(this,UserInfo.getEmail());
         new send_data().send_phone(this,UserInfo.getPhone());
 
+        new send_data().login_status(sign_up.this, true);  //SET TRUE TO MAKE LOGIN AFTER FIRST LOGIN
+
+
 
 
     }
@@ -129,7 +144,8 @@ public class sign_up extends AppCompatActivity implements View.OnClickListener, 
     public void OnError(VolleyError error) {
         if(error.networkResponse.statusCode == 402)
         {
-            Toasty.error(sign_up.this,"Email Has Been Taken",Toasty.LENGTH_SHORT).show();
+            String email_token = getResources().getString(R.string.email_token);
+            Toasty.error(sign_up.this,email_token,Toasty.LENGTH_SHORT).show();
         }
         else if(error.networkResponse.statusCode == 500)
         {

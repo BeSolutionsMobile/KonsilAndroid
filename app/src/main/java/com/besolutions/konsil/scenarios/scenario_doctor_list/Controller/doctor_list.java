@@ -8,6 +8,7 @@ import android.support.v7.widget.Toolbar;
 
 
 import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -38,7 +39,9 @@ public class doctor_list extends AppCompatActivity implements View.OnClickListen
     Degree[] Degree;
     ResponseModel model;
     root root_doc_speciality;
-    TextView nodata;
+    ProgressBar pg;
+    static int id;
+    static int id_filter = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,20 +54,22 @@ public class doctor_list extends AppCompatActivity implements View.OnClickListen
         Toolbar mToolbar = findViewById(R.id.toolbar_actionbar);
         setSupportActionBar(mToolbar);
 
+        pg = findViewById(R.id.pg);
+
         TextView title = findViewById(R.id.title);
         String doc_filters = getResources().getString(R.string.Specialist);
         title.setText(doc_filters);
 
-        int id = getIntent().getIntExtra("id", 0);
+        id = getIntent().getIntExtra("id", 0);
         int num = getIntent().getIntExtra("num", 0);
 
         //GET DATA FROM SERVER
         try {
             if (num == 0) {
                 int stars_num = getIntent().getIntExtra("stars_num", 0);
-
-            new Apicalls(this, this).FILTER("1", filter_item_adapter.int_list, String.valueOf(stars_num));
+                new Apicalls(this, this).FILTER("" + id_filter, filter_item_adapter.int_list, String.valueOf(stars_num));
             } else {
+                id_filter = id;
                 new Apicalls(this, this).doctor_speciality(id);
             }
         } catch (JSONException e) {
@@ -89,6 +94,9 @@ public class doctor_list extends AppCompatActivity implements View.OnClickListen
     @Override
     public void OnResponse(ResponseModel model) {
 
+        //PROGRESS BAR VISABILITY
+        pg.setVisibility(View.GONE);
+
         this.model = model;
 
         doctor_list = findViewById(R.id.doctor_list);
@@ -100,13 +108,12 @@ public class doctor_list extends AppCompatActivity implements View.OnClickListen
         doctor = root_doc_speciality.getDoctors();
         Degree = root_doc_speciality.getDegrees();
 
-        TextView nodata = (TextView)findViewById(R.id.nodata);
+        TextView nodata = findViewById(R.id.nodata);
         //CHECK IF WE FOUND DOCTOR DATA OR NOT
-        if (root_doc_speciality.getDoctors().length == 0)
-        {
-            nodata.setText("لاتوجد بيانات");
-        }
-        else {
+        if (root_doc_speciality.getDoctors().length == 0) {
+            String no_doctors = getResources().getString(R.string.no_doctors);
+            nodata.setText(no_doctors);
+        } else {
             nodata.setText("");
         }
 

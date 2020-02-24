@@ -151,6 +151,8 @@ public class APIRouter {
         object.put("degree_id", jsonArray);
         object.put("rate", rate);
 
+        Log.e("speciality_id",""+special_id +"degree_id0000"+jsonArray + rate);
+
 
         JsonObjectRequest sr = new JsonObjectRequest(method, url, object,
 

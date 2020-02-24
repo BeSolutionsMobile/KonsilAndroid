@@ -109,7 +109,8 @@ public class make_a_complaint extends AppCompatActivity implements View.OnClickL
 
         else if(flag == 1 )
         {
-           Toasty.success(make_a_complaint.this,"Complaint Sent Successfully",Toasty.LENGTH_LONG).show();
+            String com_sent = getResources().getString(R.string.com_sent);
+            Toasty.success(make_a_complaint.this,com_sent,Toasty.LENGTH_LONG).show();
             flag = 0;
 
             //GO TO MAIN SCREEN

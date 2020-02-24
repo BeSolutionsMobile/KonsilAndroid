@@ -22,6 +22,8 @@ import com.besolutions.konsil.utils.utils_adapter;
 import java.util.ArrayList;
 import java.util.Objects;
 
+import es.dmoral.toasty.Toasty;
+
 public class filter implements View.OnClickListener {
 
     private Context context;
@@ -60,15 +62,22 @@ public class filter implements View.OnClickListener {
     public void onClick(View v) {
         if (v.getId() == R.id.submit) {
 
-            if (rating() >= 1) {
+            if (filter_item_adapter.int_list.size() == 0) {
+
+                String select_degree = context.getResources().getString(R.string.select_degree);
+                Toasty.warning(context, select_degree, Toasty.LENGTH_SHORT).show();
+            }
+            else if (rating() >= 1) {
                 Intent intent = new Intent(context, doctor_list.class);
                 intent.putExtra("num", 0);
                 intent.putExtra("stars_num", rating());
+
                 context.startActivity(intent);
                 ((AppCompatActivity) context).finish();
 
             } else {
-                Toast.makeText(context, "You must select rate", Toast.LENGTH_SHORT).show();
+                String select_rate = context.getResources().getString(R.string.select_rate);
+                Toasty.warning(context, select_rate, Toasty.LENGTH_SHORT).show();
             }
         }
     }

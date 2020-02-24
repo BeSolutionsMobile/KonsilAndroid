@@ -6,11 +6,32 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".scenarios.scenario_my_consultations.Controlller.my_consultations">
+
  <include layout="@layout/toolbar_default"
      android:id="@+id/toolbar_actionbar"/>
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
  <android.support.v7.widget.RecyclerView
      android:layout_width="match_parent"
      android:layout_height="match_parent"
-     android:padding="@dimen/_15sdp"
+     android:layout_marginTop="@dimen/_10sdp"
+     android:paddingLeft="@dimen/_15sdp"
+     android:paddingRight="@dimen/_15sdp"
      android:id="@+id/my_consitutauin_list"/>
+         <ProgressBar
+             android:layout_width="@dimen/_50sdp"
+             android:layout_height="@dimen/_50sdp"
+             android:id="@+id/pg"
+             android:indeterminateTint="@color/color2"
+             android:layout_centerInParent="true"
+             />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/_13ssp"
+            android:layout_centerInParent="true"
+            android:id="@+id/nodata"/>
+     </RelativeLayout>
 </LinearLayout>

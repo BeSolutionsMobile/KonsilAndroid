@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Konsil gr</string>
+    <string name="app_name">konsilmed</string>
     <string name="drawer_open">Menu opened</string>
     <string name="drawer_close">Menu closed</string>
     <string name="action_settings">Settings</string>
@@ -114,7 +114,32 @@
     <string name="payment">Zahlung</string>
     <string name="registed_suc">Erfolgreich registriert</string>
     <string name="doctor">Abteilungsleiter am Berliner Krankenhaus</string>
-
-
+    <string name="select_img">Wählen Sie Ihr Foto aus</string>
+    <string name="short_title">Titel ist zu kurz</string>
+    <string name="desc">Beschreibung ist zu kurz</string>
+    <string name="pay_konsil">Bezahlen für</string>
+    <string name="select_more_imgs">Bitte mehr als Bild</string>
+    <string name="successfull_payment">Erfolgreiche Zahlung</string>
+    <string name="Invalid">Ungültig</string>
+    <string name="short_msg">Die Nachricht ist zu kurz</string>
+    <string name="no_msg">keine Nachrichten</string>
+    <string name="no_medical_r">Es gibt keinen medizinischen Bericht</string>
+    <string name="com_sent">Beschwerde erfolgreich gesendet</string>
+    <string name="no_consultation">Keine Beratung</string>
+    <string name="email_token">E-Mail wurde genommen</string>
+    <string name="phone_empty">Telefon ist leer oder weniger als 8 Nummern</string>
+    <string name="empty_name">Der Name ist leer oder weniger als 2 Zeichen</string>
+    <string name="empty_phone">Das Telefon ist leer oder weniger als 8 Nummern</string>
+    <string name="empty_mail">E-Mail ist leer oder kurz</string>
+    <string name="short_user">Benutzername ID zu kurz!</string>
+    <string name="accept_condition">Sie müssen die Bedingungen für die Anmeldung akzeptieren</string>
+    <string name="cant_auth">Kann nicht authentifiziert werden</string>
+    <string name="cant_access">Cant Access</string>
+    <string name="nodates">Es gibt keine Daten</string>
+    <string name="choose_time">Bitte wählen Sie einen Termin</string>
+    <string name="edited_successfully">Erfolgreich bearbeitet...</string>
+    <string name="select_degree">Sie müssen den Abschluss auswählen</string>
+    <string name="select_rate">Sie müssen Rate auswählen</string>
+    <string name="no_doctors">Keine Ärzte</string>
 
 </resources>

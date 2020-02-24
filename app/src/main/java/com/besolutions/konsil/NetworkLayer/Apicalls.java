@@ -3,6 +3,7 @@ package com.besolutions.konsil.NetworkLayer;
 import android.content.Context;
 
 import com.android.volley.Request;
+import com.besolutions.konsil.local_data.saved_data;
 
 import org.json.JSONException;
 
@@ -294,12 +295,18 @@ public class Apicalls {
     //----------------------------------------------------------------------------------------------
 
     /**
-     * @func Update Investor Data
+     * @func CHANGE LANGUAGE
      */
 
-    public void updateRate(final String number_rate, final String number_star, final String id_user) {
+    public void change_lan(Context context) throws JSONException {
 
-     //   apiRouter.performRequest(Apiclient.UPDATE_RATE.getURL(), Apiclient.UPDATE_RATE.getParams(), Arrays.asList(number_rate, number_star, id_user), Request.Method.POST, 15);
+        String language = new saved_data().get_lan(context);
+        if(language.equals("gr"))
+        {
+            language ="de";
+        }
+
+        apiRouter.makeAdvancedRequest(Apiclient.CHANGE_LANG.getURL(), Request.Method.POST, Apiclient.CHANGE_LANG.getParams(), Arrays.asList(language), null);
 
     }
 
@@ -462,11 +469,6 @@ public class Apicalls {
 
     public void get_balance() {
 
-        try {
-            apiRouter.makeAdvancedRequest(Apiclient.GET_BALANCE.getURL(), Request.Method.GET, Apiclient.GET_BALANCE.getParams(), null, null);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
 
     }
 

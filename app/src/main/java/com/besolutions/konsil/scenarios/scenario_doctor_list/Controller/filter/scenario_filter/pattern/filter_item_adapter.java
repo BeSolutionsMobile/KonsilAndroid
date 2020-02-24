@@ -21,9 +21,9 @@ import java.util.List;
 
 public class filter_item_adapter extends RecyclerView.Adapter<filter_item_adapter.conversation_holder> {
 
-       private Context context;
-       private ArrayList<filter_reserv_list> mylist;
-       public static List<Integer> int_list;
+    private Context context;
+    private ArrayList<filter_reserv_list> mylist;
+    public static List<Integer> int_list;
 
     private RadioButton lastCheckedRB = null;
 
@@ -35,7 +35,7 @@ public class filter_item_adapter extends RecyclerView.Adapter<filter_item_adapte
     @NonNull
     @Override
     public conversation_holder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View view= LayoutInflater.from(context).inflate(R.layout.check_item,viewGroup,false);
+        View view = LayoutInflater.from(context).inflate(R.layout.check_item, viewGroup, false);
         return new conversation_holder(view);
     }
 
@@ -50,11 +50,9 @@ public class filter_item_adapter extends RecyclerView.Adapter<filter_item_adapte
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
 
-                if(isChecked == true)
-                {
+                if (isChecked == true) {
                     int_list.add(Integer.valueOf(mylist.get(position).getId()));
-                }
-                else {
+                } else {
                     int_list.remove(Integer.valueOf(mylist.get(position).getId()));
                 }
 
@@ -67,8 +65,9 @@ public class filter_item_adapter extends RecyclerView.Adapter<filter_item_adapte
         return mylist.size();
     }
 
-    class  conversation_holder extends RecyclerView.ViewHolder {
-        CheckBox check_item ;
+    class conversation_holder extends RecyclerView.ViewHolder {
+        CheckBox check_item;
+
         conversation_holder(@NonNull View itemView) {
             super(itemView);
             check_item = itemView.findViewById(R.id.check_item);

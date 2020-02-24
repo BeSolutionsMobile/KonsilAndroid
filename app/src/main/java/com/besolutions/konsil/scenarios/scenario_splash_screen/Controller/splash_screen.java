@@ -13,16 +13,17 @@ import me.relex.circleindicator.CircleIndicator;
 
 public class splash_screen extends AppCompatActivity {
     viewimage viewimage;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.scenario_welcome_tour);
-        new utils().set_language(new saved_data().get_lan(splash_screen.this),splash_screen.this);
-        final ViewPager  viewPager = (ViewPager) findViewById(R.id.viewpager);
+        new utils().set_language(new saved_data().get_lan(splash_screen.this), splash_screen.this);
+        final ViewPager viewPager = findViewById(R.id.viewpager);
         viewimage = new viewimage(splash_screen.this);
         viewPager.setAdapter(viewimage);
 
-        CircleIndicator circleIndicator=(CircleIndicator)findViewById(R.id.indicator);
+        CircleIndicator circleIndicator = findViewById(R.id.indicator);
         circleIndicator.setViewPager(viewPager);
     }
 

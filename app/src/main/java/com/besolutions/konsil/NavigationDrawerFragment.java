@@ -2,6 +2,7 @@ package com.besolutions.konsil;
 
 import android.app.Activity;
 import android.app.Fragment;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.res.Configuration;
 import android.graphics.Bitmap;
@@ -27,10 +28,13 @@ import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.besolutions.konsil.local_data.saved_data;
+import com.besolutions.konsil.local_data.send_data;
+import com.besolutions.konsil.scenarios.scenario_login.Controller.login;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -41,7 +45,7 @@ import java.util.List;
  * See the <a href="https://developer.android.com/design/patterns/navigation-drawer.html#Interaction">
  * design guidelines</a> for a complete explanation of the behaviors implemented here.
  */
-public class NavigationDrawerFragment extends Fragment implements NavigationDrawerCallbacks {
+public class NavigationDrawerFragment extends Fragment implements NavigationDrawerCallbacks, View.OnClickListener {
 
     /**
      * Remember the position of the selected item.
@@ -73,7 +77,9 @@ public class NavigationDrawerFragment extends Fragment implements NavigationDraw
     private boolean mUserLearnedDrawer;
     CardView card_bg;
     de.hdodenhof.circleimageview.CircleImageView personal_img;
-    TextView name ;
+    TextView name;
+    Button logout;
+
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -101,7 +107,7 @@ public class NavigationDrawerFragment extends Fragment implements NavigationDraw
         mDrawerList.setLayoutManager(layoutManager);
         mDrawerList.setHasFixedSize(true);
 
-        card_bg= view.findViewById(R.id.card_bg);
+        card_bg = view.findViewById(R.id.card_bg);
         card_bg.setBackgroundResource(R.drawable.img_header_bg);
 
         final List<NavigationItem> navigationItems = getMenu();
@@ -112,9 +118,19 @@ public class NavigationDrawerFragment extends Fragment implements NavigationDraw
 
         //SET IMAGE AND NAME
         //personal_img = view.findViewById(R.id.personal_img);
-    //    Picasso.with(getContext()).load(new saved_data().)
+        //    Picasso.with(getContext()).load(new saved_data().)
         name = view.findViewById(R.id.name);
         name.setText(new saved_data().get_name(getActivity()));
+
+        logout = view.findViewById(R.id.logout);
+        logout.setOnClickListener(this);
+
+        personal_img = view.findViewById(R.id.personal_img);
+        if(!new saved_data().get_img(getActivity()).equals("0"))
+        {
+            Picasso.with(getActivity()).load(new saved_data().get_img(getActivity())).into(personal_img);
+        }
+
 
         return view;
     }
@@ -254,4 +270,13 @@ public class NavigationDrawerFragment extends Fragment implements NavigationDraw
         mActionBarDrawerToggle.onConfigurationChanged(newConfig);
     }
 
+    @Override
+    public void onClick(View v) {
+        if (v.getId() == R.id.logout) {
+            new send_data().login_status(getActivity(), false);  //SET FALSE TO MAKE LOGIN
+            getActivity().startActivity(new Intent(getActivity(),login.class));
+            getActivity().finish();
+
+        }
+    }
 }

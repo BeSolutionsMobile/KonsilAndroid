@@ -5,6 +5,8 @@ import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 import android.util.Log;
+import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.android.volley.VolleyError;
@@ -30,6 +32,10 @@ public class my_consultations extends AppCompatActivity implements NetworkInterf
 
     Datum[] data;
 
+    ProgressBar pg;
+
+    TextView nodata;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -44,6 +50,11 @@ public class my_consultations extends AppCompatActivity implements NetworkInterf
             e.printStackTrace();
         }
 
+        //PROGRESS DIALOG
+        pg = findViewById(R.id.pg);
+
+        //DEFINE VARS
+        nodata = findViewById(R.id.nodata);
     }
 
 
@@ -65,6 +76,9 @@ public class my_consultations extends AppCompatActivity implements NetworkInterf
     @Override
     public void OnResponse(ResponseModel model) {
 
+        //SET VISABLITY GONE
+        pg.setVisibility(View.GONE);
+
         Log.e("model_data",model.getJsonObject()+"");
 
         ArrayList<my_consultations_list> arrayList = new ArrayList<>();
@@ -76,14 +90,22 @@ public class my_consultations extends AppCompatActivity implements NetworkInterf
 
         data = root_consultation.getData();
 
-        //LOOP ON ALL DATA
-        for(int index = 0; index <data.length ; index++)
+        if(data.length == 0)
         {
-            arrayList.add(new my_consultations_list(data[index].getName(), data[index].getStatus(), (String) data[index].getPrice(), data[index].getStatus(), data[index].getImage(), ""+data[index].getId(),data[index].getType(),""+data[index].getDocId()));
+            String no_consultation = getResources().getString(R.string.no_consultation);
+            nodata.setText(no_consultation); //PLACE HOLDER IF THERE IS NO DATA
+        }
+        else {
+            //LOOP ON ALL DATA
+            for(int index = 0; index <data.length ; index++)
+            {
+                arrayList.add(new my_consultations_list(data[index].getName(), data[index].getStatus(), (String) data[index].getPrice(), data[index].getStatus(), data[index].getImage(), ""+data[index].getId(),data[index].getType(),""+data[index].getDocId()));
+            }
+
+            utils_adapter utils_adapter = new utils_adapter();
+            utils_adapter.Adapter(my_consitutauin_list, new my_consultations_adapter(this, arrayList), this);
         }
 
-        utils_adapter utils_adapter = new utils_adapter();
-        utils_adapter.Adapter(my_consitutauin_list, new my_consultations_adapter(this, arrayList), this);
 
     }
 

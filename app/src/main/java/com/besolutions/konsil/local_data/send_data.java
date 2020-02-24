@@ -65,6 +65,26 @@ public class send_data {
         editor.commit();
     }
 
+    //SAVE PERSONAL_DESCRIPITION
+    public static void send_descripition(Context context,String desc)
+    {
+        //SAVE LANGUAGE STATUS
+        SharedPreferences sharedPreferences=context.getSharedPreferences("personal_info",MODE_PRIVATE);
+        SharedPreferences.Editor editor=sharedPreferences.edit();
+        editor.putString("desc", desc);
+        editor.commit();
+    }
+
+    //SAVE PERSONAL_Image
+    public static void send_image(Context context,String img)
+    {
+        //SAVE LANGUAGE STATUS
+        SharedPreferences sharedPreferences=context.getSharedPreferences("personal_info",MODE_PRIVATE);
+        SharedPreferences.Editor editor=sharedPreferences.edit();
+        editor.putString("image", img);
+        editor.commit();
+    }
+
     //SAVE FINGER PRINT
     public static void finger_print(Context context,String yes)
     {

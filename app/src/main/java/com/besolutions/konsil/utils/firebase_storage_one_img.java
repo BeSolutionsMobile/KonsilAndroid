@@ -65,6 +65,8 @@ public class firebase_storage_one_img{
 
                                     imageURL = uri.toString();
 
+                                    send_data.send_image(context,imageURL);
+
 
                                 }
                             });

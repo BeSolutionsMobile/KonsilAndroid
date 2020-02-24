@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Konsil</string>
+    <string name="app_name">konsilmed</string>
     <string name="drawer_open">Menu opened</string>
     <string name="drawer_close">Menu closed</string>
     <string name="action_settings">Settings</string>
@@ -88,7 +88,7 @@
     <string name="add_your_password">Add Your Password</string>
     <string name="add_your_email">Add Your Email</string>
     <string name="add_your_phone">Add Your Phone</string>
-    <string name="welcome_to_konzil">Welcome To Konzil</string>
+    <string name="welcome_to_konzil">Welcome To Konzilmed</string>
     <string name="chat_or_get_consultations_and_repoerts_from_doctors_in_all_fields_of_medicine_any_time_any_where_now">Chat or get consultations and repoerts from doctors in all fields of medicine any time any where now .</string>
     <string name="logged_in_successfully">Logged in Successfully...</string>
     <string name="Surgeries">Surgeries</string>
@@ -115,6 +115,34 @@
     <string name="registed_suc">Registed Successfully</string>
     <string name="doctor">Head of department, Berlin Hospital</string>
     <string name="consultation">consultation</string>
+    <string name="select_img">Please Select Photo</string>
+    <string name="short_title">Title is too short!</string>
+    <string name="desc">Descripition is too short!</string>
+    <string name="pay_konsil">Pay for konsilmed</string>
+    <string name="select_more_imgs">Please more than image</string>
+    <string name="successfull_payment">Successfull Payment</string>
+    <string name="Invalid">Invalid</string>
+    <string name="short_msg">The message is too short!</string>
+    <string name="no_msg">No Messages</string>
+    <string name="no_medical_r">There Is No Medical Report</string>
+    <string name="com_sent">Complaint Sent Successfully</string>
+    <string name="no_consultation">No Consultation</string>
+    <string name="email_token">Email Has Been Taken</string>
+    <string name="phone_empty">phone is Empty or less than 8 numbers</string>
+    <string name="empty_name">Name is Empty or less than 2 chars</string>
+    <string name="empty_phone">Phone is Empty or less than 8 numbers</string>
+    <string name="empty_mail">Email is Empty or short</string>
+    <string name="short_user">Username id too short!</string>
+    <string name="password_empty">Username id too short!</string>
+    <string name="accept_condition">You must accept conditions to Sign up</string>
+    <string name="cant_auth">Cant authenticated</string>
+    <string name="cant_access">Cant Access</string>
+    <string name="nodates">There are no dates</string>
+    <string name="choose_time">Please choose appoienment time</string>
+    <string name="edited_successfully">Edited successfully...</string>
+    <string name="select_degree">You must select degree</string>
+    <string name="select_rate">You must select rate</string>
+    <string name="no_doctors">No Doctors</string>
 
 
 </resources>
