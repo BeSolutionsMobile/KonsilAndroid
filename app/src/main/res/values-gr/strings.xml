@@ -36,7 +36,7 @@
     <string name="there_are_all_uploaded_file">Dies sind alles hochgeladene Dateien</string>
     <string name="appoinments_available_for_dr">Termine für den Arzt zur Verfügung</string>
     <string name="info">Die Info</string>
-    <string name="report">Report</string>
+    <string name="report">Bericht</string>
     <string name="view">Aussicht</string>
     <string name="select_specialty">Spezialität auswählen</string>
     <string name="add_your_photo">Fügen Sie Ihr Foto hinzu</string>
@@ -67,7 +67,7 @@
     <string name="there_is_a_medical_report_for_case">Dies ist der ärztliche Bericht für den Fall</string>
     <string name="date_of_report">Datum des Berichts :</string>
     <string name="choose_file_to_uplaod">Wählen Sie eine Datei aus, um sie hochzuladen</string>
-    <string name="conversation_hour_rate">Gesprächsstundensatz :</string>
+    <string name="conversation_hour_rate">Wechselkurs :</string>
     <string name="please_select_from_the_available_periods">Bitte wählen Sie aus den verfügbaren Zeiträumen</string>
     <string name="date">Datum :</string>
     <string name="duration">Dauer :</string>
@@ -141,5 +141,13 @@
     <string name="select_degree">Sie müssen den Abschluss auswählen</string>
     <string name="select_rate">Sie müssen Rate auswählen</string>
     <string name="no_doctors">Keine Ärzte</string>
+    <string name="no_files">Es wurden keine Dateien hochgeladen</string>
+    <string name="uploading">Hochladen...</string>
+    <string name="upd_success">Erfolgreich hochgeladen</string>
+    <string name="upd_failed">Hochladen fehlgeschlagen</string>
+    <string name="uploaded">Hochgeladen</string>
+    <string name="_30_minutes">30 Protokoll</string>
+    <string name="tap_to_choose_desired_day">Tippen Sie hier, um den gewünschten Tag auszuwählen</string>
+    <string name="nobioavailable">Keine Bioverfügbarkeit</string>
 
 </resources>

@@ -32,6 +32,7 @@ public class doctor_info extends AppCompatActivity implements View.OnClickListen
     Doctor doctors;
     int doc_id;
     String doc_id_st;
+    String No_bioavailable;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -48,6 +49,9 @@ public class doctor_info extends AppCompatActivity implements View.OnClickListen
         set_toolbar_name();
         doc_id_st = getIntent().getStringExtra("id");
         new Apicalls(this, this).doctor_details(doc_id_st);
+
+        //SET RESOURCE FILE FOR CHECK IS NULL OR NOT
+        No_bioavailable = getResources().getString(R.string.nobioavailable);
 
 
     }
@@ -111,11 +115,22 @@ public class doctor_info extends AppCompatActivity implements View.OnClickListen
         Picasso.with(doctor_info.this).load(doctors.getImageUrl()).into(doc_img);
         doc_name.setText(doctors.getName());
         doc_job.setText(doctors.getSpecialist());
-        doc_desc.setText("" + doctors.getJobTitle());
         price.setText("" + doctors.getConsultationPrice());
         consultation.setText("" + doctors.getTotalConsultation());
         conversation.setText("" + doctors.getTotalConversation());
         ratingBar.setRating(doctors.getRate());
+
+        //SET CHECK ON DOCTOR_DESCRIPITION IF NULL OR NOT
+        if(doctors.getJobTitle() == null)
+        {
+            doc_desc.setText(No_bioavailable);  //IF ITEMS RETURN WITH NULL
+        }
+        else {
+            doc_desc.setText("" + doctors.getJobTitle());  //IF ITEMS RETURN WITH DATA
+
+        }
+
+
         doc_id = doctors.getId();
 
         //SET ON CLICK DATA

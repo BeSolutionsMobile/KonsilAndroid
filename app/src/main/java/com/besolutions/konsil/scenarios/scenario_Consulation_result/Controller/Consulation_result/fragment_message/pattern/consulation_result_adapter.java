@@ -47,12 +47,12 @@ public class consulation_result_adapter extends RecyclerView.Adapter<consulation
 
     class consulation_result_holder extends RecyclerView.ViewHolder {
         TextView name,desc;
-        ImageView img;
+        de.hdodenhof.circleimageview.CircleImageView img;
         public consulation_result_holder(@NonNull View itemView) {
             super(itemView);
-            name=(TextView)itemView.findViewById(R.id.name);
-            desc=(TextView)itemView.findViewById(R.id.desc);
-            img=(ImageView)itemView.findViewById(R.id.img);
+            name= itemView.findViewById(R.id.name);
+            desc= itemView.findViewById(R.id.desc);
+            img= itemView.findViewById(R.id.img);
         }
     }
 }

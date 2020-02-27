@@ -1,5 +1,7 @@
 package com.besolutions.konsil.scenarios.scenario_request_online_conversation.Controller;
 
+import android.app.DatePickerDialog;
+import android.app.TimePickerDialog;
 import android.content.Intent;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -9,9 +11,11 @@ import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.DatePicker;
 import android.widget.ProgressBar;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.android.volley.VolleyError;
@@ -41,6 +45,7 @@ import org.json.JSONException;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 import es.dmoral.toasty.Toasty;
 
@@ -52,14 +57,17 @@ public class request_online_conversation extends AppCompatActivity implements Vi
     RatingBar ratingBar;
     de.hdodenhof.circleimageview.CircleImageView ci_image;
     TextView doc_name, job_title, price;
-    int complete_req_status = 0;
+    int complete_req_status = 0; //THIS FLAG USE  TO KNOW WHAT RESPONSE WILL COME FROM SERVER
 
     int PAYPAL_REQUEST_CODE = 3;
+    ArrayList<conversation_reserv_list> arrayList = new ArrayList<>(); //DEFINE APPOIENMENT LIST
 
     String doc_id;
 
     TextView nomsg;
     ProgressBar pg;
+
+    TextView choose_date;
 
     private static PayPalConfiguration payPalConfiguration = new PayPalConfiguration()
             .environment(PayPalConfiguration.ENVIRONMENT_SANDBOX).clientId(Config.CLIENT_ID);
@@ -73,19 +81,26 @@ public class request_online_conversation extends AppCompatActivity implements Vi
 
         doc_id = getIntent().getStringExtra("doc_id");
 
-        try {
-            new Apicalls(this, this).appointment(doc_id, "2020-02-13");
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+
         set_toolbar_name();
 
         //SET DATA
         set_doc_details();
 
+        //DATA FROM SERVER
+        // get_appoienments("2020-02-13");
+
         //DEFINE ALL VARS
         nomsg = findViewById(R.id.nomsg);
         pg = findViewById(R.id.pg);
+        choose_date = findViewById(R.id.choose_date);
+
+        //SET ON CLICK
+        choose_date.setOnClickListener(this);
+
+        //SET TEXT VIEW NO DATA FOUND
+        String nodates = getResources().getString(R.string.nodates);
+        nomsg.setText(nodates);
 
 
     }
@@ -106,6 +121,9 @@ public class request_online_conversation extends AppCompatActivity implements Vi
                     e.printStackTrace();
                 }
             }
+        } else if (v.getId() == R.id.choose_date) {
+            get_date_picker();
+
         }
     }
 
@@ -138,21 +156,29 @@ public class request_online_conversation extends AppCompatActivity implements Vi
 
             reserv_list = findViewById(R.id.reserv_list);
 
-            ArrayList<conversation_reserv_list> arrayList = new ArrayList<>();
+
+            if (arrayList.size() > 0) {
+                arrayList.clear(); //CLEAR LIST WHEN LOADING APPOINMENTS EVERY TIME
+            }
 
             //CHECK IF THERE IS DATA OR NOT
             if (datnum.length == 0) {
                 String nodates = getResources().getString(R.string.nodates);
                 nomsg.setText(nodates);   //IF THERE IS DATA RETURN NO DATA FOUND
-            }
-            else {
+
+            } else {
+
+                nomsg.setText("");
+
                 //LOOP TO GET DATA
                 for (int index = 0; index < datnum.length; index++) {
                     arrayList.add(new conversation_reserv_list("" + datnum[index].getId(), datnum[index].getFrom(), datnum[index].getTo()));
                 }
-                utils_adapter utils_adapter = new utils_adapter();
-                utils_adapter.Adapter(reserv_list, new conversation_item_adapter(this, arrayList), this);
+
             }
+
+            utils_adapter utils_adapter = new utils_adapter();
+            utils_adapter.Adapter(reserv_list, new conversation_item_adapter(this, arrayList), this);
 
         }
 
@@ -196,6 +222,7 @@ public class request_online_conversation extends AppCompatActivity implements Vi
         ratingBar.setRating(rating_bar);
         price.setText(conversation_price);
 
+
     }
 
     //PAYMENT PROCESS
@@ -237,4 +264,45 @@ public class request_online_conversation extends AppCompatActivity implements Vi
             }
         }
     }
+
+
+    //GET DATE PICKER
+    void get_date_picker() {
+        // TODO Auto-generated method stub
+        //To show current date in the datepicker
+        Calendar mcurrentDate = Calendar.getInstance();
+        int mYear = mcurrentDate.get(Calendar.YEAR);
+        int mMonth = mcurrentDate.get(Calendar.MONTH);
+        int mDay = mcurrentDate.get(Calendar.DAY_OF_MONTH);
+
+        DatePickerDialog mDatePicker;
+
+        mDatePicker = new DatePickerDialog(request_online_conversation.this, R.style.DialogTheme, new DatePickerDialog.OnDateSetListener() {
+            public void onDateSet(DatePicker datepicker, int selectedyear, int selectedmonth, int selectedday) {
+                // TODO Auto-generated method stub
+                /*      Your code   to get date and time    */
+                selectedmonth = selectedmonth + 1;
+                //GET TIME PICKER
+                choose_date.setText(selectedyear + "-" + selectedmonth + "-" + selectedday);
+                //GET DATA FROM SERVER
+                get_appoienments(choose_date.getText().toString());
+                pg.setVisibility(View.VISIBLE); //SET PROGRESS DIALOG VISIBLE
+
+            }
+        }, mYear, mMonth, mDay);
+        mDatePicker.setTitle("Select Date");
+        mDatePicker.show();
+    }
+
+    //CALL SERVER FOR APPOIENMENTS
+    void get_appoienments(String Date) {
+        //NO DATES
+        try {
+            new Apicalls(this, this).appointment(doc_id, Date);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
+
 }

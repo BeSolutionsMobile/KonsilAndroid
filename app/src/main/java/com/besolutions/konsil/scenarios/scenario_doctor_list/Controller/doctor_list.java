@@ -118,7 +118,9 @@ public class doctor_list extends AppCompatActivity implements View.OnClickListen
         }
 
         for (int index = 0; index < root_doc_speciality.getDoctors().length; index++) {
-            arrayList.add(new doctor_list_items("" + doctor[index].getId(), doctor[index].getName(), doctor[index].getDegree(), doctor[index].getImageUrl(), doctor[index].getRate()));
+            String image_url = doctor[index].getImageUrl();
+            image_url.replace(" ","20%");
+            arrayList.add(new doctor_list_items("" + doctor[index].getId(), doctor[index].getName(), doctor[index].getDegree(), image_url, doctor[index].getRate()));
         }
 
         utils_adapter utils_adapter = new utils_adapter();

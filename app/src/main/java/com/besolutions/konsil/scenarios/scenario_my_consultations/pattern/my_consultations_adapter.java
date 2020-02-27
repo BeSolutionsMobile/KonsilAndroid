@@ -41,24 +41,34 @@ public class my_consultations_adapter extends RecyclerView.Adapter<my_consultati
 
     @Override
     public void onBindViewHolder(@NonNull my_consultations_holder viewHolder, final int i) {
+
+        //DEFINE ALL VARS
         Picasso.with(context).load(mylist.get(i).getImg()).into(viewHolder.circleImageView);
         viewHolder.name.setText(mylist.get(i).getName());
-        viewHolder.desc.setText(mylist.get(i).getDesc());
         viewHolder.price.setText(mylist.get(i).getPrice());
         viewHolder.status.setText(mylist.get(i).getStatus());
+
+        //CHECK TYPE TO KNOW IF VIEW IS CONSULTATION OR CONVERSATION
+        if(mylist.get(i).getType().equals("1"))
+        {
+            viewHolder.desc.setText("consultation");   //SET TEXT CONSULTATION
+        }
+        else {
+            viewHolder.desc.setText("conversation");   //SET TEXT CONVERSATION
+        }
 
         viewHolder.view.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 //CHECK FOR TYPE TO KNOW GO TO CONVERSATION OR CONSULTATION
-                if (mylist.get(i).getType().equals("1")) {
+                if (mylist.get(i).getType().equals("1")) {        //CONSULTATION
 
                     doc_id = mylist.get(i).getDoc_id();
                     Intent intent = new Intent(context, consulation_result.class);
                     id = mylist.get(i).getId();
                     context.startActivity(intent);
 
-                } else if (mylist.get(i).getType().equals("2")) {
+                } else if (mylist.get(i).getType().equals("2")) {     //CONVERSATION
 
                     doc_id = mylist.get(i).getDoc_id();
                     Intent intent = new Intent(context, online_conversation.class);

@@ -156,9 +156,9 @@ public class Apicalls {
      * @func UPDATE_USER_INFO
      */
 
-    public void update_personal_info(String name, String phone, String email, String password, String image_url) throws JSONException {
+    public void update_personal_info(String name, String phone, String email, String password, String image_url, String patient_history) throws JSONException {
 
-        apiRouter.makeAdvancedRequest(Apiclient.UPDATE_USER_INFO.getURL(), Request.Method.POST, Apiclient.UPDATE_USER_INFO.getParams(), Arrays.asList(name, phone, email, password, image_url), null);
+        apiRouter.makeAdvancedRequest(Apiclient.UPDATE_USER_INFO.getURL(), Request.Method.POST, Apiclient.UPDATE_USER_INFO.getParams(), Arrays.asList(name, phone, email, password, image_url ,patient_history), null);
 
     }
 
@@ -287,7 +287,7 @@ public class Apicalls {
 
     public void consultation_files(final String consultation_id) throws JSONException {
 
-        apiRouter.makeAdvancedRequest(Apiclient.CONSULTATION_FILES.getURL(), Request.Method.POST, Apiclient.CONSULTATION_FILES.getParams(), Arrays.asList("3"), null);
+        apiRouter.makeAdvancedRequest(Apiclient.CONSULTATION_FILES.getURL(), Request.Method.POST, Apiclient.CONSULTATION_FILES.getParams(), Arrays.asList(consultation_id), null);
 
     }
 

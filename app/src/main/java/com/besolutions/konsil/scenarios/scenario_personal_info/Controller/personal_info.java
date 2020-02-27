@@ -1,18 +1,22 @@
 package com.besolutions.konsil.scenarios.scenario_personal_info.Controller;
 
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.provider.MediaStore;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
 import com.android.volley.VolleyError;
 import com.besolutions.konsil.NetworkLayer.Apicalls;
 import com.besolutions.konsil.NetworkLayer.NetworkInterface;
@@ -97,13 +101,18 @@ public class personal_info extends AppCompatActivity implements NetworkInterface
 
         userInfo = root_personal_info.getUserInfo();
 
-        //SAVE PERSONLA INFORMATION
+        //SAVE PERSONAL INFORMATION
         new send_data().send_name(this, userInfo.getName());
         new send_data().send_email(this, userInfo.getEmail());
         new send_data().send_phone(this, userInfo.getPhone());
         new send_data().send_descripition(this, desc.getText().toString());
 
-        //OPEN DIALOG SUCCESS EDIT
+        //CHECK IF THERE IS IMAGE WILL SAVE IT TO SHAREDPREFRENCES OR NOT
+        if(!firebase_storage_one_img.imageURL.equals("noImage"))
+        {
+            send_data.send_image(personal_info.this,firebase_storage_one_img.imageURL); //SAVE IMAGE IN LOCAL DATA
+        }
+
 
 
     }
@@ -148,7 +157,7 @@ public class personal_info extends AppCompatActivity implements NetworkInterface
                 try {
 
                     new Apicalls(personal_info.this, personal_info.this).update_personal_info(username.getText().toString()
-                            , phone.getText().toString(), email.getText().toString(), password.getText().toString(), firebase_storage_one_img.imageURL);
+                            , phone.getText().toString(), email.getText().toString(), password.getText().toString(), firebase_storage_one_img.imageURL , desc.getText().toString());
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -165,15 +174,23 @@ public class personal_info extends AppCompatActivity implements NetworkInterface
         if (resultCode == RESULT_OK) {
             if (requestCode == 1) {
                 Uri selectedImage = data.getData();
+
+                Log.e("img_is", selectedImage + "");
                 InputStream imageStream = null;
+
+
+
                 try {
                     FileOutputStream fos = null;
                     imageStream = getContentResolver().openInputStream(selectedImage);
+                    Log.e("img_is", imageStream + "");
+
                 } catch (FileNotFoundException e) {
                     e.printStackTrace();
                 }
                 Bitmap SelectedPhoto = BitmapFactory.decodeStream(imageStream);
                 bitmaps = Bitmap.createScaledBitmap(SelectedPhoto, 300, 300, true);
+                Log.e("img_is", bitmaps + "");
 
                 firebase_storage_one_img firebase_storage = new firebase_storage_one_img();
                 firebase_storage.uploadImage(selectedImage, personal_info.this, true);
@@ -186,4 +203,29 @@ public class personal_info extends AppCompatActivity implements NetworkInterface
         super.onStop();
 
     }
+
+//    private String getRealPathFromURI(Uri contentUri) {
+//
+//        // can post image
+//        String[] proj = {MediaStore.Images.Media.DATA};
+//        Cursor cursor = managedQuery(contentUri,
+//                proj, // Which columns to return
+//                null,       // WHERE clause; which rows to return (all rows)
+//                null,       // WHERE clause selection arguments (none)
+//                null); // Order-by clause (ascending by name)
+//        int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
+//        cursor.moveToFirst();
+//
+//        String res = cursor.getString(column_index);
+//        cursor.close();
+//
+//
+//        for (int index = 0; index < res.length(); index++) {
+//               if(res.contains("/"))
+//               {
+//                   Log.e("res...",""+index);
+//               }
+//        }
+//        return res;
+//    }
 }

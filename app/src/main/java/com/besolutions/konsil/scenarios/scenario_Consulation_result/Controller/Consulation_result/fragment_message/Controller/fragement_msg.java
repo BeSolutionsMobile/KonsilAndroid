@@ -50,7 +50,7 @@ public class fragement_msg extends Fragment implements View.OnClickListener, Net
     TextView nomsg;
     ProgressBar pg;
 
-
+    String no_msg;
     public fragement_msg() {
         // Required empty public constructor
     }
@@ -69,6 +69,8 @@ public class fragement_msg extends Fragment implements View.OnClickListener, Net
         send_msg = view.findViewById(R.id.send_msg);
         nomsg = view.findViewById(R.id.nomsg);
         pg = view.findViewById(R.id.pg);
+
+         no_msg = getActivity().getResources().getString(R.string.no_msg); //THERE IS NO MESSAGE FOUND
 
 
         //SET ON CLICK BUTTON
@@ -105,6 +107,8 @@ public class fragement_msg extends Fragment implements View.OnClickListener, Net
     @Override
     public void OnResponse(ResponseModel model) {
 
+
+
         //GET DATA FROM SERVER GET ALL MESSAGES
         if (msg_status == 0) {
 
@@ -119,8 +123,7 @@ public class fragement_msg extends Fragment implements View.OnClickListener, Net
 
             messages = root_msg.getMessages();
             if (messages.length == 0) {
-             //   String no_msg = getContext().getResources().getString(R.string.no_msg);
-                nomsg.setText("No Messages");
+                nomsg.setText(no_msg);
             } else {
                 for (int index = 0; index < messages.length; index++) {
                     arrayList.add(new consulation_list("" + messages[index].getId(), messages[index].getName(), messages[index].getMessage(), messages[index].getUserImage()));

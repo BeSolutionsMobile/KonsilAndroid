@@ -115,6 +115,7 @@
     <string name="registed_suc">تم التسجيل بنجاح</string>
     <string name="doctor">رئيس القسم في مستشفى برلين</string>
     <string name="edited_successfully">Edited successfully...</string>
+    <string name="tap_to_choose_desired_day">Tap to choose desired day</string>
 
 
 </resources>

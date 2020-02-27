@@ -13,6 +13,7 @@ import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.besolutions.konsil.local_data.saved_data;
 import com.besolutions.konsil.utils.firebase_storage;
+import com.besolutions.konsil.utils.firebase_storage_pdf;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -80,7 +81,6 @@ public class APIRouter {
     }
 
 
-
     public void makeAdvancedRequest(String url, final int method, final List<String> params, final List<String> values, final HashMap<String, String> body) throws JSONException {
         Log.e("url", url);
 
@@ -90,7 +90,7 @@ public class APIRouter {
         if (params != null && values != null) {
             for (int index = 0; index < params.size(); index++) {
                 object.put(params.get(index), values.get(index));
-                Log.e("paramms", params.get(index) + "000" +values.get(index));
+                Log.e("paramms", params.get(index) + "000" + values.get(index));
 
             }
         }
@@ -151,7 +151,7 @@ public class APIRouter {
         object.put("degree_id", jsonArray);
         object.put("rate", rate);
 
-        Log.e("speciality_id",""+special_id +"degree_id0000"+jsonArray + rate);
+        Log.e("speciality_id", "" + special_id + "degree_id0000" + jsonArray + rate);
 
 
         JsonObjectRequest sr = new JsonObjectRequest(method, url, object,
@@ -194,25 +194,34 @@ public class APIRouter {
     }
 
     //CUSTOM SEND API FOR SEND CONSULTATION
-    public void makeAdvancedRequest_addconsultation(String url, final int method ,String title,String details,String doc_id, final HashMap<String, String> body) throws JSONException {
+    public void makeAdvancedRequest_addconsultation(String url, final int method, String title, String details, String doc_id, final HashMap<String, String> body) throws JSONException {
         Log.e("url", url);
 
         networkInterface.OnStart();
 
         JSONObject object = new JSONObject();
 
+        //image
         JSONArray jsonArray = new JSONArray();
         //CHECK FOR ARRAY OF IMAGES IF NULL OR NOT
-        if(firebase_storage.images == null)
-        {
-            jsonArray.put("link");
-        }
-        else {
+        if (firebase_storage.images == null) {
+            jsonArray.put("noImages");
+        } else {
             for (String n : firebase_storage.images) {
                 jsonArray.put(n);
             }
         }
 
+        //pdf
+        JSONArray jsonArray_pdf = new JSONArray();
+        //CHECK FOR ARRAY OF IMAGES IF NULL OR NOT
+        if (firebase_storage_pdf.pdf == null) {
+            jsonArray_pdf.put("noFiles");
+        } else {
+            for (String n : firebase_storage_pdf.pdf) {
+                jsonArray_pdf.put(n);
+            }
+        }
 
 
         //SEND FILES TO FILES
@@ -220,7 +229,7 @@ public class APIRouter {
         object.put("details", details);
         object.put("doctor_id", doc_id);
         object.put("images", jsonArray);
-        object.put("files", jsonArray);
+        object.put("files", jsonArray_pdf);
 
 
         JsonObjectRequest sr = new JsonObjectRequest(method, url, object,

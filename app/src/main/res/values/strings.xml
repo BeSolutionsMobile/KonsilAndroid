@@ -67,7 +67,7 @@
     <string name="there_is_a_medical_report_for_case">There is a medical report for case</string>
     <string name="date_of_report">date of report :</string>
     <string name="choose_file_to_uplaod">Choose file to uplaod</string>
-    <string name="conversation_hour_rate">Conversation hour rate :</string>
+    <string name="conversation_hour_rate">Conversation rate :</string>
     <string name="please_select_from_the_available_periods">Please select from the available periods</string>
     <string name="date">Date :</string>
     <string name="duration">Duration :</string>
@@ -88,7 +88,7 @@
     <string name="add_your_password">Add Your Password</string>
     <string name="add_your_email">Add Your Email</string>
     <string name="add_your_phone">Add Your Phone</string>
-    <string name="welcome_to_konzil">Welcome To Konzilmed</string>
+    <string name="welcome_to_konzil">Welcome To Konsilmed</string>
     <string name="chat_or_get_consultations_and_repoerts_from_doctors_in_all_fields_of_medicine_any_time_any_where_now">Chat or get consultations and repoerts from doctors in all fields of medicine any time any where now .</string>
     <string name="logged_in_successfully">Logged in Successfully...</string>
     <string name="Surgeries">Surgeries</string>
@@ -143,6 +143,13 @@
     <string name="select_degree">You must select degree</string>
     <string name="select_rate">You must select rate</string>
     <string name="no_doctors">No Doctors</string>
-
+    <string name="no_files">There is no files uploaded</string>
+    <string name="uploading">Uploading...</string>
+    <string name="upd_success">Uploaded Successfully</string>
+    <string name="upd_failed">Uploading Failed</string>
+    <string name="uploaded">Uploaded</string>
+    <string name="_30_minutes">30 minutes</string>
+    <string name="tap_to_choose_desired_day">Tap to choose desired day</string>
+    <string name="nobioavailable">No Bioavailable</string>
 
 </resources>

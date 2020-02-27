@@ -27,6 +27,7 @@ public class utils_adapter {
         RecyclerView.LayoutManager layoutManager=new LinearLayoutManager(context);
         recyclerView.setLayoutManager(layoutManager);
         RecyclerView.Adapter adapter= dd;
+        adapter.notifyDataSetChanged();
         recyclerView.setAdapter(adapter);
     }
 

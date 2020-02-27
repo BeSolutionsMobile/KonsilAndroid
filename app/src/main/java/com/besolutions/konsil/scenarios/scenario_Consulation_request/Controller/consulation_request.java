@@ -28,6 +28,7 @@ import com.besolutions.konsil.config.Config;
 import com.besolutions.konsil.scenarios.scenario_Consulation_request.model.consultation_reserve;
 import com.besolutions.konsil.scenarios.scenario_mian_page.Controller.main_screen;
 import com.besolutions.konsil.utils.firebase_storage;
+import com.besolutions.konsil.utils.firebase_storage_pdf;
 import com.besolutions.konsil.utils.utils;
 import com.google.gson.Gson;
 import com.paypal.android.sdk.payments.PayPalConfiguration;
@@ -118,9 +119,9 @@ public class consulation_request extends AppCompatActivity implements View.OnCli
             String descr = getResources().getString(R.string.desc);
 
             if (title.getText().length() < 4) {
-                Toasty.warning(consulation_request.this, titles,Toasty.LENGTH_SHORT).show();
+                Toasty.warning(consulation_request.this, titles, Toasty.LENGTH_SHORT).show();
             } else if (desc.getText().length() < 4) {
-                Toasty.warning(consulation_request.this, descr,Toasty.LENGTH_SHORT).show();
+                Toasty.warning(consulation_request.this, descr, Toasty.LENGTH_SHORT).show();
             } else {
 
                 int doc_id = getIntent().getIntExtra("doc_id", 0);
@@ -189,10 +190,13 @@ public class consulation_request extends AppCompatActivity implements View.OnCli
             }
         } else if (requestCode == 2) {
             if (resultCode == RESULT_OK) {
+
+                Uri selectedPdf = data.getData();
+
+                //UPLOAD TO FIREBASE
+                firebase_storage_pdf firebase_storage = new firebase_storage_pdf();
+                firebase_storage.uploadImage(selectedPdf,consulation_request.this,true);
                 upload_file_check.playAnimation();
-                Uri selected_file = data.getData();
-
-
             }
         } else if (requestCode == PAYPAL_REQUEST_CODE) {
 
@@ -214,7 +218,6 @@ public class consulation_request extends AppCompatActivity implements View.OnCli
 
                     paid = 1;
                 }
-
             }
 
         } else if (requestCode == PaymentActivity.RESULT_EXTRAS_INVALID) {

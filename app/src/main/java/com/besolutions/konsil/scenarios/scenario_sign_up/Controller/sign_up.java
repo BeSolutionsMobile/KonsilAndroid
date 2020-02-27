@@ -1,5 +1,6 @@
 package com.besolutions.konsil.scenarios.scenario_sign_up.Controller;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -86,13 +87,10 @@ public class sign_up extends AppCompatActivity implements View.OnClickListener, 
                 String password_empty = getResources().getString(R.string.password_empty);
                 password.setError(password_empty);
                 yoyo(R.id.password);
-            }
-            else if(check_box == false)
-            {
+            } else if (check_box == false) {
                 String accept_condition = getResources().getString(R.string.accept_condition);
-                Toasty.warning(sign_up.this,accept_condition,Toasty.LENGTH_LONG).show();
-            }
-            else {
+                Toasty.warning(sign_up.this, accept_condition, Toasty.LENGTH_LONG).show();
+            } else {
 
                 new utils().set_dialog(sign_up.this);  //CALL PROGRESS DIALOG
 
@@ -115,41 +113,36 @@ public class sign_up extends AppCompatActivity implements View.OnClickListener, 
 
         new utils().dismiss_dialog(sign_up.this);  //DISMISS PROGRESS DIALOG
 
-        Gson gson=new Gson();
-        root_signup = gson.fromJson(""+model.getResponse(),root_signup.class);
+        Gson gson = new Gson();
+        root_signup = gson.fromJson("" + model.getResponse(), root_signup.class);
 
         UserInfo = root_signup.getUserInfo();
 
         //GET TOKEN AND SAVE IT IN LOCAL DATA
         send_data.save_token(sign_up.this, root_signup.getToken());
 
-       //POP UP
-        loading loading=new loading();
-        loading.dialog(sign_up.this,R.layout.successful_login,.80);
+        //POP UP
+        loading loading = new loading();
+        loading.dialog(sign_up.this, R.layout.successful_login, .80);
 
         //SAVE PERSONAL INFO
 
-        new send_data().send_name(this,UserInfo.getName());
-        new send_data().send_email(this,UserInfo.getEmail());
-        new send_data().send_phone(this,UserInfo.getPhone());
+        new send_data().send_name(this, UserInfo.getName());
+        new send_data().send_email(this, UserInfo.getEmail());
+        new send_data().send_phone(this, UserInfo.getPhone());
 
         new send_data().login_status(sign_up.this, true);  //SET TRUE TO MAKE LOGIN AFTER FIRST LOGIN
-
-
 
 
     }
 
     @Override
     public void OnError(VolleyError error) {
-        if(error.networkResponse.statusCode == 402)
-        {
+        if (error.networkResponse.statusCode == 402) {
             String email_token = getResources().getString(R.string.email_token);
-            Toasty.error(sign_up.this,email_token,Toasty.LENGTH_SHORT).show();
-        }
-        else if(error.networkResponse.statusCode == 500)
-        {
-            Toasty.error(sign_up.this," Error on Saving Data",Toasty.LENGTH_SHORT).show();
+            Toasty.error(sign_up.this, email_token, Toasty.LENGTH_SHORT).show();
+        } else if (error.networkResponse.statusCode == 500) {
+            Toasty.error(sign_up.this, " Error on Saving Data", Toasty.LENGTH_SHORT).show();
         }
     }
 
@@ -174,5 +167,15 @@ public class sign_up extends AppCompatActivity implements View.OnClickListener, 
             }
         });
         return token;
+    }
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        Intent intent = new Intent(this, login.class);
+        overridePendingTransition(0, 0);
+        startActivity(intent);
+        overridePendingTransition(0, 0);
+
     }
 }

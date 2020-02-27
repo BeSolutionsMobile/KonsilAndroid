@@ -1,11 +1,14 @@
 package com.besolutions.konsil.scenarios.scenario_splash_screen.Controller;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
 
 import com.besolutions.konsil.R;
 import com.besolutions.konsil.local_data.saved_data;
+import com.besolutions.konsil.local_data.send_data;
+import com.besolutions.konsil.scenarios.scenario_login.Controller.login;
 import com.besolutions.konsil.scenarios.scenario_splash_screen.pattern.viewimage;
 import com.besolutions.konsil.utils.utils;
 
@@ -31,5 +34,16 @@ public class splash_screen extends AppCompatActivity {
     protected void onStop() {
         super.onStop();
         finish();
+        send_data.tour_status(splash_screen.this,true);
+
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        if(new saved_data().get_tour_status(splash_screen.this) == true)
+        {
+            startActivity(new Intent(splash_screen.this, login.class));
+        }
     }
 }

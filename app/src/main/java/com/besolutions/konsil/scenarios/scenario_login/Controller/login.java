@@ -170,4 +170,9 @@ public class login extends AppCompatActivity implements View.OnClickListener, Ne
         moveTaskToBack(true);
     }
 
+    @Override
+    protected void onStart() {
+        super.onStart();
+
+    }
 }

@@ -42,6 +42,7 @@
             android:layout_height="wrap_content"
             app:rrb_drawableHeight="48dp"
             app:rrb_drawableWidth="48dp"
+            app:rrb_textSize="@dimen/_9ssp"
             app:rrb_text="@string/msg"
             app:rrb_textColor="@color/cardview_light_background"
              />
@@ -51,6 +52,7 @@
             android:layout_height="wrap_content"
             app:rrb_drawableHeight="36dp"
             app:rrb_drawableWidth="36dp"
+            app:rrb_textSize="@dimen/_9ssp"
             app:rrb_text="@string/final_report"
             app:rrb_textColor="@color/cardview_light_background"
             />
@@ -61,6 +63,7 @@
             app:rrb_drawableHeight="24dp"
             app:rrb_drawableWidth="24dp"
             app:rrb_text="@string/files"
+            app:rrb_textSize="@dimen/_9ssp"
             app:rrb_textColor="@color/cardview_light_background"
             />
     </co.ceryle.radiorealbutton.RadioRealButtonGroup>

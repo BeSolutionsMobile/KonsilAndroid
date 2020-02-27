@@ -10,6 +10,7 @@ import android.util.Log;
 import android.widget.Toast;
 
 
+import com.besolutions.konsil.R;
 import com.besolutions.konsil.scenarios.scenario_Consulation_request.Controller.consulation_request;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -37,17 +38,10 @@ public class firebase_storage {
 
         final String uploading,done,failed;
 
-        if(isEnglish)
-        {
-            uploading = "Uploading...";
-            done = "Uploaded Successfully";
-            failed = "Uploading Failed";
-        }else
-        {
-            uploading = "???? ????????";
-            done = "?? ????? ?????";
-            failed = "???";
-        }
+        uploading = context.getResources().getString(R.string.uploading);
+        done = context.getResources().getString(R.string.upd_success);
+        failed = context.getResources().getString(R.string.upd_failed);
+
         //DEFINE ARRAYLIST
         images = new ArrayList<>();
         if(clipData != null)
@@ -84,7 +78,7 @@ public class firebase_storage {
 
                                 }
                             });
-                            Toasty.success(context,"Successful Uploaded",Toasty.LENGTH_SHORT).show();
+                            Toasty.success(context,context.getResources().getString(R.string.done),Toasty.LENGTH_SHORT).show();
 
 
                         }
@@ -101,7 +95,7 @@ public class firebase_storage {
                         public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
                             double progress = (100.0*taskSnapshot.getBytesTransferred()/taskSnapshot
                                     .getTotalByteCount());
-                            progressDialog.setMessage("Uploaded "+(int)progress+"%");
+                            progressDialog.setMessage(  context.getResources().getString(R.string.uploaded) +(int)progress+"%");
                         }
                     });
             }

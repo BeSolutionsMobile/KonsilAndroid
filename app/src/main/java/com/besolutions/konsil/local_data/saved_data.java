@@ -73,4 +73,11 @@ public class saved_data {
         Boolean status = sharedPreferences.getBoolean("login_bool", false);
         return status;
     }
+
+    //GET LOGIN STATUS
+    public Boolean get_tour_status(Context context) {
+        SharedPreferences sharedPreferences = context.getSharedPreferences("tour_status", MODE_PRIVATE);
+        Boolean status = sharedPreferences.getBoolean("tour_status", false);
+        return status;
+    }
 }

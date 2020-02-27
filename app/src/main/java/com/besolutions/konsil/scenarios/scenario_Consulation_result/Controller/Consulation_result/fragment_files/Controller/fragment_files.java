@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
+import android.widget.TextView;
 
 import com.android.volley.VolleyError;
 import com.besolutions.konsil.NetworkLayer.Apicalls;
@@ -33,7 +34,7 @@ public class fragment_files extends Fragment implements NetworkInterface,View.On
     View view;
     RecyclerView list;
     ProgressBar pg;
-
+    TextView nodata;
 
     public fragment_files() {
         // Required empty public constructor
@@ -55,7 +56,7 @@ public class fragment_files extends Fragment implements NetworkInterface,View.On
 
         //DEFINE VARS
         pg = view.findViewById(R.id.pg);
-
+        nodata = view.findViewById(R.id.files);
 
         return view;
     }
@@ -89,6 +90,12 @@ public class fragment_files extends Fragment implements NetworkInterface,View.On
             utils_adapter utils_adapter = new utils_adapter();
             utils_adapter.Adapter(list, new file_result_adapter(getActivity(), arrayList), getActivity());
 
+            //CHECK IF THERE IS NO FILE UPLOADED THEN CHANGE THE TEXT
+            if(jsonArray.length() == 0 )
+            {
+                String files = getActivity().getString(R.string.no_files);
+                nodata.setText(files);
+            }
 
         } catch (JSONException e) {
             e.printStackTrace();

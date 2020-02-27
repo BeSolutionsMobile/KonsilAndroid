@@ -42,6 +42,7 @@ public class fragment_report extends Fragment implements View.OnClickListener, N
     Consultation consultations;
     TextView no_medical;
     LinearLayout setvisablitiy;
+    String no_medical_r;
 
     public fragment_report() {
         // Required empty public constructor
@@ -67,6 +68,8 @@ public class fragment_report extends Fragment implements View.OnClickListener, N
         } catch (JSONException e) {
             e.printStackTrace();
         }
+
+         no_medical_r = getResources().getString(R.string.no_medical_r); //NO MEDICAL REPORT RESOURCE
 
 
         return view;
@@ -101,7 +104,6 @@ public class fragment_report extends Fragment implements View.OnClickListener, N
             //SET VISIBILITY AND TEXT
             setvisablitiy.setVisibility(View.GONE);
 
-            String no_medical_r = getResources().getString(R.string.no_medical_r);
             no_medical.setText(no_medical_r);
         } else {
 

@@ -207,10 +207,6 @@
               android:background="@drawable/request_online_conversation"
               />
       </LinearLayout>
-     <ImageView
-         android:layout_width="match_parent"
-         android:layout_height="match_parent"
-         android:scaleType="fitXY"
-         android:src="@drawable/doctor_info_details"/>
+
   </LinearLayout>
 </android.support.v4.widget.DrawerLayout>

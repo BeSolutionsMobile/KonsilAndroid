@@ -7,6 +7,7 @@ import android.support.annotation.NonNull;
 import android.widget.Toast;
 
 
+import com.besolutions.konsil.R;
 import com.besolutions.konsil.local_data.send_data;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
@@ -21,7 +22,7 @@ import java.util.UUID;
 
 public class firebase_storage_one_img{
 
-    public static String imageURL = "";
+    public static String imageURL = "noImage";
 
     public String uploadImage(Uri customfilepath, final Context context,Boolean isEnglish) {
 
@@ -30,17 +31,9 @@ public class firebase_storage_one_img{
 
         final String uploading,done,failed;
 
-        if(isEnglish)
-        {
-            uploading = "Uploading...";
-            done = "Uploaded Successfully";
-            failed = "Uploading Failed";
-        }else
-        {
-            uploading = "???? ????????";
-            done = "?? ????? ?????";
-            failed = "???";
-        }
+        uploading = context.getResources().getString(R.string.uploading);
+        done = context.getResources().getString(R.string.upd_success);
+        failed = context.getResources().getString(R.string.upd_failed);
 
         if(customfilepath != null)
         {
@@ -65,7 +58,6 @@ public class firebase_storage_one_img{
 
                                     imageURL = uri.toString();
 
-                                    send_data.send_image(context,imageURL);
 
 
                                 }
@@ -85,7 +77,7 @@ public class firebase_storage_one_img{
                         public void onProgress(UploadTask.TaskSnapshot taskSnapshot) {
                             double progress = (100.0*taskSnapshot.getBytesTransferred()/taskSnapshot
                                     .getTotalByteCount());
-                            progressDialog.setMessage("Uploaded "+(int)progress+"%");
+                            progressDialog.setMessage(context.getResources().getString(R.string.uploaded)+(int)progress+"%");
                         }
                     });
         }

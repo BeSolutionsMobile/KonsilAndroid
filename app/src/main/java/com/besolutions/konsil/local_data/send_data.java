@@ -104,4 +104,14 @@ public class send_data {
         editor.putBoolean("login_bool", status);
         editor.commit();
     }
+
+    //SAVE TOUR FLAG
+    public static void tour_status(Context context,boolean status)
+    {
+        //SAVE LANGUAGE STATUS
+        SharedPreferences sharedPreferences=context.getSharedPreferences("tour_status",MODE_PRIVATE);
+        SharedPreferences.Editor editor=sharedPreferences.edit();
+        editor.putBoolean("tour_status", status);
+        editor.commit();
+    }
 }
