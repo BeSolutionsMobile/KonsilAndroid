@@ -38,7 +38,7 @@
         <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="@string/consualtion_details"
+        android:text="@string/consualtion_details_request"
         android:textColor="@color/color2"
         android:textSize="@dimen/_13ssp"
         android:layout_marginTop="@dimen/_20sdp"

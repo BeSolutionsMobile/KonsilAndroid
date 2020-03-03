@@ -29,7 +29,7 @@
             android:layout_marginTop="@dimen/_15sdp"
             android:layout_marginBottom="91dp"
             android:background="@drawable/buttom_bg"
-            android:text="Logout"
+            android:text="@string/logout"
             android:textAllCaps="false"
             android:textColor="@android:color/white"
             android:textSize="@dimen/_12ssp" />
@@ -57,7 +57,7 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:text="Change Language"
+                android:text="@string/change_language"
                 android:gravity="center|left"
                 android:paddingLeft="@dimen/_10sdp"
                 android:id="@+id/change_language"

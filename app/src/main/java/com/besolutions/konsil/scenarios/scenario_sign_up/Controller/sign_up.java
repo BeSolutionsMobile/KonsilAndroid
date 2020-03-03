@@ -21,6 +21,7 @@ import com.besolutions.konsil.scenarios.scenario_login.Controller.loading;
 import com.besolutions.konsil.scenarios.scenario_login.Controller.login;
 import com.besolutions.konsil.scenarios.scenario_sign_up.model.UserInfo;
 import com.besolutions.konsil.scenarios.scenario_sign_up.model.root_signup;
+import com.besolutions.konsil.scenarios.scenario_terms_of_use.Controller.terms_of_use;
 import com.besolutions.konsil.utils.utils;
 import com.daimajia.androidanimations.library.Techniques;
 import com.daimajia.androidanimations.library.YoYo;
@@ -59,6 +60,10 @@ public class sign_up extends AppCompatActivity implements View.OnClickListener, 
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 check_box = isChecked;
+                if(isChecked == true)
+                {
+                    startActivity(new Intent(sign_up.this, terms_of_use.class));
+                }
             }
         });
 

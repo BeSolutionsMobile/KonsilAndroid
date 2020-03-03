@@ -7,6 +7,7 @@ import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
 
 
+import android.util.Log;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.TextView;
@@ -116,6 +117,9 @@ public class doctor_list extends AppCompatActivity implements View.OnClickListen
         } else {
             nodata.setText("");
         }
+
+        Log.e("imageeeeee",""+root_doc_speciality.getDoctors().length);
+
 
         for (int index = 0; index < root_doc_speciality.getDoctors().length; index++) {
             String image_url = doctor[index].getImageUrl();

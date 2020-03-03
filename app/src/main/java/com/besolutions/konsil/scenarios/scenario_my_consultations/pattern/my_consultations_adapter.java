@@ -42,6 +42,10 @@ public class my_consultations_adapter extends RecyclerView.Adapter<my_consultati
     @Override
     public void onBindViewHolder(@NonNull my_consultations_holder viewHolder, final int i) {
 
+        //GET TEXT FROM RESOURCE
+        String consultation = context.getResources().getString(R.string.consultation); //CONSULTATION
+        String conversation = context.getResources().getString(R.string.conversation); //CONVERSATION
+
         //DEFINE ALL VARS
         Picasso.with(context).load(mylist.get(i).getImg()).into(viewHolder.circleImageView);
         viewHolder.name.setText(mylist.get(i).getName());
@@ -51,10 +55,10 @@ public class my_consultations_adapter extends RecyclerView.Adapter<my_consultati
         //CHECK TYPE TO KNOW IF VIEW IS CONSULTATION OR CONVERSATION
         if(mylist.get(i).getType().equals("1"))
         {
-            viewHolder.desc.setText("consultation");   //SET TEXT CONSULTATION
+            viewHolder.desc.setText(consultation);   //SET TEXT CONSULTATION
         }
         else {
-            viewHolder.desc.setText("conversation");   //SET TEXT CONVERSATION
+            viewHolder.desc.setText(conversation);   //SET TEXT CONVERSATION
         }
 
         viewHolder.view.setOnClickListener(new View.OnClickListener() {

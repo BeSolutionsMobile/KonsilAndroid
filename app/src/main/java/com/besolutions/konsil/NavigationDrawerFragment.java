@@ -157,13 +157,18 @@ public class NavigationDrawerFragment extends Fragment implements NavigationDraw
         String Personal_info = getResources().getString(R.string.Personal_info);
         String MyConsitations = getResources().getString(R.string.my_consultation);
         String MyComplaints = getResources().getString(R.string.my_complaints);
-        String Policy = getResources().getString(R.string.Policy);
+        String Policy = getResources().getString(R.string.privacy);
         String be_a_doctor = getResources().getString(R.string.be_a_doctor);
+        String faq = getResources().getString(R.string.faq);
+        String treatment_ger = getResources().getString(R.string.treatment_ger);
+        String terms_use = getResources().getString(R.string.terms_of_use);
 
         items.add(new NavigationItem(Personal_info, getResources().getDrawable(R.drawable.user)));
         items.add(new NavigationItem(MyConsitations, getResources().getDrawable(R.drawable.mail)));
-        items.add(new NavigationItem("FAQ", getResources().getDrawable(R.drawable.question)));
+        items.add(new NavigationItem(faq, getResources().getDrawable(R.drawable.question)));
         items.add(new NavigationItem(Policy, getResources().getDrawable(R.drawable.contract)));
+        items.add(new NavigationItem(treatment_ger, getResources().getDrawable(R.drawable.vaccination)));
+        items.add(new NavigationItem(terms_use, getResources().getDrawable(R.drawable.accept)));
         return items;
     }
 

@@ -43,7 +43,7 @@
     <string name="add_your_name">Add Your Name</string>
     <string name="complaint_message">Current Complaint</string>
     <string name="complaint_type">Complaint Type</string>
-    <string name="consult_amp_chat"><![CDATA[Consult & Chat]]></string>
+    <string name="consult_amp_chat">High-level consulting</string>
     <string name="start">Start</string>
     <string name="skip">Skip</string>
     <string name="english">English</string>
@@ -67,7 +67,7 @@
     <string name="there_is_a_medical_report_for_case">There is a medical report for case</string>
     <string name="date_of_report">date of report :</string>
     <string name="choose_file_to_uplaod">Choose file to uplaod</string>
-    <string name="conversation_hour_rate">Conversation rate :</string>
+    <string name="conversation_hour_rate">Conversation price :</string>
     <string name="please_select_from_the_available_periods">Please select from the available periods</string>
     <string name="date">Date :</string>
     <string name="duration">Duration :</string>
@@ -151,5 +151,77 @@
     <string name="_30_minutes">30 minutes</string>
     <string name="tap_to_choose_desired_day">Tap to choose desired day</string>
     <string name="nobioavailable">No Bioavailable</string>
+    <string name="terms_of_use">Terms of use</string>
+    <string name="faq">FAQ</string>
+    <string name="treatment_ger">Treatment in germany </string>
+    <string name="privacy">Privacy</string>
+    <string name="consualtion_details_request">Consualtion details</string>
+    <string name="terms">AGB Konsilmed UG
+
+General terms and conditions of Konsilmed UG (limited liability), Mainzer Landstra? E 50, 60328 Frankfurt am Main. ("Konsilmed"), for the use of the online consultation under and other under the portal advisory services
+
+Konsilmed does not provide any medical advice and is itself not approved as a doctor or in any other medical profession. Konsilmed operates exclusively the technical service of the platform. The advisory service is provided by the participating doctors.
+
+Part 1: Service users
+            1. Contents of the services
+(1) Konsilmed provides a technical platform that patients can use to get in touch with doctors. Patients can agree and conduct online counseling with the doctors. The video consultation takes place directly between the patient via an encrypted connection. Konsilmed only provides the technical processing of the service.
+                (2) Konsilmed is not responsible for the content of communication between doctor and patient. Konsilmed does not offer any medical or therapeutic services. Neither the use of Konsilmed nor the agreement of online counseling with doctors replace a traditional visit to the doctor. See a doctor or psychotherapist on site or in an emergency, if necessary.
+        (3) The use of Konsilmed is free of charge for the patients. Separate fees may be charged for the services provided by doctors. These are clearly identified to the patient. These services are billed directly to the patient via Konsilmed, even if the medical advice is provided directly by the doctors. In this respect, Konsilmed only acts as a clearing house.
+(4) As soon as the patient contacts a doctor, there is a separate contract with the doctors condition. This can result in costs for the patient. The doctor will inform the patient of this separately.
+
+    </string>
+    <string name="logout">Logout</string>
+    <string name="change_language">Change Language</string>
+    <string name="privacy_txt">Data protection
+Annotation:
+The data protection declaration must be integrated into the ordering process in such a way that the user actively confirms that he has taken note of it. This will typically be done together with the terms and conditions. Suggestion. Underlines stand for a link reference. With the tracking tools is in para. 14 link to the texts for the tracking tools (see separate file "Tracking Tools"). Please let us know if additional tracking tools are used. Furthermore, the data protection declaration on the website should be linked (usually in the footer, next to the imprint:
+
+Imprint data protection declaration
+
+
+☒ I have read the cancellation policy.
+
+☒ I have read the terms and conditions and data protection declaration.
+
+1. General information and principles of data processing
+We are pleased that you are visiting our website. The protection of your privacy and the protection of your personal data, the so-called personal data, when using our website is very important to us.
+
+According to Art. 4 No. 1 GDPR, personal data is all information relating to an identified or identifiable natural person. This includes, for example, information such as your first and last name, your address, your telephone number, your email address, but also your IP address.
+Data that cannot be linked to your person, such as anonymization, is not personal data. The processing (e.g. collection, storage, reading, querying, use, transmission, deletion or destruction) according to Art. 4 No. 2 GDPR always requires a legal legal basis or your consent. Processed personal data must be deleted as soon as the purpose of the processing has been achieved and there are no longer any statutory retention requirements.
+Here you will find information about the handling of your personal data when you visit our website. To provide the functions and services of our website, it is necessary that we collect personal data about you.
+We also explain to you the type and scope of the respective data processing, the purpose and the corresponding legal basis and the respective storage period.
+
+This data protection declaration only applies to this website. It does not apply to other websites to which we only refer by means of a hyperlink. We cannot assume any responsibility for the confidential handling of your personal data on these third-party websites, as we have no influence on whether these companies comply with the data protection regulations. Please inform yourself directly about the handling of your personal data by these companies on this website.
+
+
+
+
+
+2. Responsible body
+Responsible for the processing of personal data on this website is (see Imprint):
+
+3. Provision and use of the website / server log files
+a) Type and scope of data processing
+If you use this website without otherwise transmitting data to us (e.g. by registering or using the contact form), we collect technically necessary data via server log files that are automatically transmitted to our server, including:
+•	IP address
+• Date and time of the request
+• Name and URL of the retrieved file
+• Website from which access is made (referrer URL)
+• Access Status / HTTP status code
+• Browser type
+• Language and version of the browser software
+•	Operating system
+
+b) Purpose and legal basis
+This processing is technically necessary in order to be able to display our website to you. We also use the data to ensure the security and stability of our website.
+The legal basis for this processing is Art. 6 Para. 1 lit. f) GDPR. The processing of the data mentioned is necessary for the provision of a website and thus serves to protect a legitimate interest of our company.
+
+c) Storage period
+As soon as the aforementioned personal data are no longer required to display the website, they will be deleted. The collection of the data for the provision of the website and the storage of the data in log files is absolutely necessary for the operation of the website. There is consequently no possibility for the user to object to this aspect. Further storage can take place in individual cases if this is required by law.
+
+4. Use of cookies
+a) Type, scope and purpose of data processing
+We use cookies. Cookies are small files that we send to your browser when you visit our website and are stored there.
+Some functions of our website cannot be offered without the use of technically necessary cookies. Other cookies, on the other hand, allow us to perform various analyzes. So some cookies can v</string>
 
 </resources>

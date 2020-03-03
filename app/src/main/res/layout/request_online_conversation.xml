@@ -5,15 +5,20 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".scenarios.scenario_request_online_conversation.Controller.request_online_conversation">
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+    <android.support.v4.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
    <LinearLayout
        android:layout_width="match_parent"
        android:layout_height="match_parent"
        android:weightSum="1"
        android:orientation="vertical">
     <LinearLayout
-        android:layout_weight=".6"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:orientation="vertical">
     <include layout="@layout/toolbar_default"
         android:id="@+id/toolbar_actionbar"
@@ -131,30 +136,31 @@
 
        <LinearLayout
            android:layout_width="match_parent"
-           android:layout_height="0dp"
-           android:weightSum="1"
+           android:layout_height="match_parent"
            android:orientation="vertical"
-           android:layout_weight=".4">
+           android:layout_marginTop="@dimen/_10sdp"
+           android:layout_marginBottom="@dimen/_50sdp"
+           >
            <RadioGroup
                android:layout_width="match_parent"
-               android:layout_height="0dp"
-               android:layout_weight=".75">
+               android:layout_height="match_parent"
+               >
                <RelativeLayout
                    android:layout_width="match_parent"
                    android:layout_height="match_parent">
            <android.support.v7.widget.RecyclerView
                android:layout_width="match_parent"
                android:layout_height="match_parent"
-               android:paddingTop="@dimen/_10sdp"
                android:layout_marginLeft="@dimen/_15sdp"
                android:layout_marginRight="@dimen/_15sdp"
                android:id="@+id/reserv_list"
                />
                    <TextView
-                       android:layout_width="wrap_content"
-                       android:layout_height="wrap_content"
+                       android:layout_width="match_parent"
+                       android:layout_height="match_parent"
                        android:textColor="@android:color/black"
                        android:textSize="@dimen/_13ssp"
+                       android:gravity="center"
                        android:layout_centerInParent="true"
                        android:id="@+id/nomsg"/>
                    <ProgressBar
@@ -167,27 +173,30 @@
                        />
                </RelativeLayout>
            </RadioGroup>
-           <LinearLayout
-               android:layout_width="match_parent"
-               android:layout_height="0dp"
-               android:layout_weight=".25"
-               android:orientation="vertical">
-               <Button
-                   android:layout_width="match_parent"
-                   android:layout_height="@dimen/_27sdp"
-                   android:layout_marginTop="@dimen/_5sdp"
-                   android:background="@drawable/buttom_bg"
-                   android:layout_marginBottom="@dimen/_15sdp"
-                   android:text="@string/complete_the_request"
-                   android:textColor="@android:color/white"
-                   android:textAllCaps="false"
-                   android:textSize="@dimen/_12ssp"
-                   android:id="@+id/complete_req"
-                   android:layout_marginLeft="@dimen/_15sdp"
-                   android:layout_marginRight="@dimen/_15sdp"
-                   />
-           </LinearLayout>
+
 
        </LinearLayout>
    </LinearLayout>
+    </android.support.v4.widget.NestedScrollView>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_alignParentBottom="true"
+            android:orientation="vertical">
+            <Button
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_27sdp"
+                android:layout_marginTop="@dimen/_5sdp"
+                android:background="@drawable/buttom_bg"
+                android:layout_marginBottom="@dimen/_15sdp"
+                android:text="@string/complete_the_request"
+                android:textColor="@android:color/white"
+                android:textAllCaps="false"
+                android:textSize="@dimen/_12ssp"
+                android:id="@+id/complete_req"
+                android:layout_marginLeft="@dimen/_15sdp"
+                android:layout_marginRight="@dimen/_15sdp"
+                />
+        </LinearLayout>
+    </RelativeLayout>
 </android.support.v4.widget.DrawerLayout>
