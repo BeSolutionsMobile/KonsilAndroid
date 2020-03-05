@@ -20,6 +20,8 @@
         android:layout_height="match_parent"
         android:gravity="center"
         android:id="@+id/terms"
+        android:textSize="@dimen/_13ssp"
+        android:justificationMode="inter_word"
         android:text="@string/terms"
         android:paddingRight="@dimen/_15sdp"
         android:paddingLeft="@dimen/_15sdp"

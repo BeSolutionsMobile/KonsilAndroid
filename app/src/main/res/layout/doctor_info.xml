@@ -6,7 +6,10 @@
     android:background="@drawable/pro_bg"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".scenarios.scenario_doctor_info.Controller.doctor_info">
-  <LinearLayout
+   <RelativeLayout
+       android:layout_width="match_parent"
+       android:layout_height="match_parent">
+    <LinearLayout
       android:layout_width="match_parent"
       android:layout_height="match_parent"
       android:orientation="vertical">
@@ -45,13 +48,14 @@
           android:gravity="center"
           android:layout_marginTop="@dimen/_3sdp"
           android:textColor="@color/color2"
-          android:textSize="@dimen/_12ssp"
+          android:textSize="@dimen/_14ssp"
           />
       <TextView
           android:layout_width="match_parent"
           android:layout_height="wrap_content"
           android:id="@+id/doc_job"
           android:gravity="center"
+          android:textSize="@dimen/_13ssp"
           android:textColor="@android:color/black"
           />
       <RatingBar
@@ -61,8 +65,8 @@
           android:isIndicator="true"
           android:focusable="false"
           android:clickable="false"
-          android:scaleX="1.2"
-          android:scaleY="1.2"
+          android:scaleX="1.4"
+          android:scaleY="1.4"
           android:layout_marginTop="@dimen/_7sdp"
           android:layout_gravity="center"
           android:stepSize=".2"
@@ -121,6 +125,10 @@
                   android:textSize="@dimen/_10ssp"
                   android:textColor="@color/color2"
                   />
+              <LinearLayout
+                  android:layout_width="wrap_content"
+                  android:layout_height="wrap_content"
+                  android:orientation="horizontal">
               <TextView
                   android:layout_width="wrap_content"
                   android:layout_height="wrap_content"
@@ -128,6 +136,15 @@
                   android:textSize="@dimen/_10ssp"
                   android:textColor="@color/color2"
                   />
+                  <TextView
+                      android:layout_width="wrap_content"
+                      android:layout_height="wrap_content"
+                      android:text="EUR"
+                      android:layout_marginLeft="@dimen/_2sdp"
+                      android:textSize="@dimen/_10ssp"
+                      android:textColor="@color/color2"
+                      />
+              </LinearLayout>
           </LinearLayout>
           <View
               android:layout_weight=".005"
@@ -162,9 +179,10 @@
           android:paddingRight="@dimen/_50sdp"
           android:gravity="center"
           android:paddingLeft="@dimen/_50sdp"
+          android:justificationMode="inter_word"
           android:textColor="@android:color/black"
           android:layout_marginTop="@dimen/_15sdp"
-          android:textSize="@dimen/_10ssp"
+          android:textSize="@dimen/_12ssp"
           android:id="@+id/doc_desc"
           />
       <LinearLayout
@@ -209,4 +227,12 @@
       </LinearLayout>
 
   </LinearLayout>
+       <ProgressBar
+           android:layout_width="@dimen/_50sdp"
+           android:layout_height="@dimen/_50sdp"
+           android:id="@+id/pg"
+           android:indeterminateTint="@color/color2"
+           android:layout_centerInParent="true"
+           />
+   </RelativeLayout>
 </android.support.v4.widget.DrawerLayout>

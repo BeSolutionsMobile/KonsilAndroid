@@ -18,7 +18,7 @@
         android:layout_height="@dimen/_48sdp"
         android:layout_alignParentStart="true"
         android:layout_alignParentBottom="true"
-        android:layout_marginBottom="@dimen/_90sdp"
+        android:layout_marginBottom="@dimen/_20sdp"
         android:padding="@dimen/_3sdp"
         app:ci_drawable="@drawable/oookkkkk"
         app:ci_drawable_unselected="@drawable/un_selected"

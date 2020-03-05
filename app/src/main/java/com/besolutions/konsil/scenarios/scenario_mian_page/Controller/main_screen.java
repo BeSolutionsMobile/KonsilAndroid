@@ -2,6 +2,7 @@ package com.besolutions.konsil.scenarios.scenario_mian_page.Controller;
 
 import android.content.Intent;
 import android.net.Uri;
+import android.support.design.widget.Snackbar;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -23,10 +24,7 @@ import com.besolutions.konsil.NetworkLayer.Apicalls;
 import com.besolutions.konsil.NetworkLayer.NetworkInterface;
 import com.besolutions.konsil.NetworkLayer.ResponseModel;
 import com.besolutions.konsil.R;
-import com.besolutions.konsil.local_data.send_data;
-import com.besolutions.konsil.local_data.saved_data;
-import com.besolutions.konsil.scenarios.scenario_be_a_doctor.Controller.be_a_doctor;
-import com.besolutions.konsil.scenarios.scenario_login.Controller.loading;
+
 import com.besolutions.konsil.scenarios.scenario_mian_page.model.all_specialitiesDatum;
 import com.besolutions.konsil.scenarios.scenario_mian_page.model.all_specialitiesroot_specialities;
 import com.besolutions.konsil.scenarios.scenario_mian_page.model.main_screen_list;
@@ -34,9 +32,9 @@ import com.besolutions.konsil.scenarios.scenario_mian_page.pattern.main_screen_a
 import com.besolutions.konsil.scenarios.scenario_my_consultations.Controlller.my_consultations;
 import com.besolutions.konsil.scenarios.scenario_personal_info.Controller.personal_info;
 import com.besolutions.konsil.scenarios.scenario_policy.controller.policy;
-import com.besolutions.konsil.scenarios.scenario_splash_screen.Controller.splash_screen;
 import com.besolutions.konsil.scenarios.scenario_terms_of_use.Controller.terms_of_use;
 import com.besolutions.konsil.scenarios.scenarios_faq.controller.faq;
+import com.besolutions.konsil.utils.checkConnection;
 import com.besolutions.konsil.utils.utils;
 import com.besolutions.konsil.utils.utils_adapter;
 import com.google.gson.Gson;
@@ -44,6 +42,8 @@ import com.google.gson.Gson;
 import org.json.JSONException;
 
 import java.util.ArrayList;
+
+import me.relex.circleindicator.SnackbarBehavior;
 
 public class main_screen extends AppCompatActivity implements NavigationDrawerCallbacks, View.OnClickListener, NetworkInterface {
     Toolbar mToolbar;
@@ -64,7 +64,6 @@ public class main_screen extends AppCompatActivity implements NavigationDrawerCa
         utils = new utils();
 
         mToolbar = findViewById(R.id.toolbar_actionbar);
-        //   mToolbar.setTitle("Spechalist");
         setSupportActionBar(mToolbar);
 
         title = findViewById(R.id.title);
@@ -82,13 +81,6 @@ public class main_screen extends AppCompatActivity implements NavigationDrawerCa
         LinearLayout change_lan = findViewById(R.id.change_lan);
         change_lan.setOnClickListener(this);
 
-
-        //GET DATA FROM SERVER
-        try {
-            new Apicalls(this, this).get_all_specialities();
-        } catch (JSONException e) {
-            Log.e("WRONG", "WRONG FROM SERVER");
-        }
 
         //PROGRESS DIALOG
         pg = findViewById(R.id.pg);
@@ -111,12 +103,12 @@ public class main_screen extends AppCompatActivity implements NavigationDrawerCa
             startActivity(new Intent(this, my_consultations.class));  //GO TO MY CONSULTATION
         } else if (position == 2) {
             startActivity(new Intent(this, faq.class)); //GO TO FAQ
-        }else if (position == 3) {
+        } else if (position == 3) {
             startActivity(new Intent(this, policy.class)); //GO TO PRIVACY
         } else if (position == 4) {
-            Intent browse = new Intent( Intent.ACTION_VIEW , Uri.parse("https://www.konsilmed.com/treatment-in-germany") );
-            startActivity( browse );       //GO TO TREATMENT IN GERMANY
-        }else if (position == 5) {
+            Intent browse = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.konsilmed.com/treatment-in-germany"));
+            startActivity(browse);       //GO TO TREATMENT IN GERMANY
+        } else if (position == 5) {
             startActivity(new Intent(this, terms_of_use.class));  //GO TO TERMS OF USE
         }
     }
@@ -165,7 +157,8 @@ public class main_screen extends AppCompatActivity implements NavigationDrawerCa
 
         if (v.getId() == R.id.change_lan) {
             language_filter language_filter = new language_filter();
-            language_filter.dialog_language(main_screen.this, R.layout.language_filter, .70);            mNavigationDrawerFragment.closeDrawer();
+            language_filter.dialog_language(main_screen.this, R.layout.language_filter, .70);
+            mNavigationDrawerFragment.closeDrawer();
             mNavigationDrawerFragment.closeDrawer();
 
         }
@@ -199,7 +192,32 @@ public class main_screen extends AppCompatActivity implements NavigationDrawerCa
 
     @Override
     public void OnError(VolleyError error) {
-        Toast.makeText(this, "" + error.networkResponse, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "No Internet Connection", Toast.LENGTH_SHORT).show();
 
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        mNavigationDrawerFragment.closeDrawer();
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        DrawerLayout drawerLayout = findViewById(R.id.drawer);
+
+        if (checkConnection.isOnline(main_screen.this) == false) {
+            Snackbar.make(drawerLayout, "No Internet Connection", 10000).show();
+        }
+        else {
+            //GET DATA FROM SERVER
+            try {
+                pg.setVisibility(View.VISIBLE);
+                new Apicalls(this, this).get_all_specialities();
+            } catch (JSONException e) {
+                Log.e("WRONG", "WRONG FROM SERVER");
+            }
+        }
     }
 }

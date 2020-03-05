@@ -133,7 +133,7 @@ public class doctor_list extends AppCompatActivity implements View.OnClickListen
 
     @Override
     public void OnError(VolleyError error) {
-        Toast.makeText(this, "error" + error.networkResponse.statusCode, Toast.LENGTH_SHORT).show();
+        Toast.makeText(this, "No Internet Connection", Toast.LENGTH_SHORT).show();
     }
 
 

@@ -68,6 +68,7 @@ public class request_online_conversation extends AppCompatActivity implements Vi
     ProgressBar pg;
 
     TextView choose_date;
+    String conversation_price;
 
     private static PayPalConfiguration payPalConfiguration = new PayPalConfiguration()
             .environment(PayPalConfiguration.ENVIRONMENT_SANDBOX).clientId(Config.CLIENT_ID);
@@ -206,13 +207,14 @@ public class request_online_conversation extends AppCompatActivity implements Vi
         String image = getIntent().getStringExtra("image");
         String docName = getIntent().getStringExtra("doc_name");
         String jobTitle = getIntent().getStringExtra("doc_title");
-        String conversation_price = getIntent().getStringExtra("conversation_price");
+        conversation_price = getIntent().getStringExtra("conversation_price");
         int rating_bar = getIntent().getIntExtra("rating", 0);
 
         ci_image = findViewById(R.id.doc_img);
         doc_name = findViewById(R.id.doc_name);
         job_title = findViewById(R.id.job_title);
         ratingBar = findViewById(R.id.ratings);
+
         price = findViewById(R.id.price);
 
         //SET DATA
@@ -228,7 +230,7 @@ public class request_online_conversation extends AppCompatActivity implements Vi
     //PAYMENT PROCESS
     private void process_payment() {
         String pay_konsil = getResources().getString(R.string.pay_konsil);
-        PayPalPayment payPalPayment = new PayPalPayment(new BigDecimal("150"), "USD",
+        PayPalPayment payPalPayment = new PayPalPayment(new BigDecimal(conversation_price), "EUR",
                 pay_konsil, PayPalPayment.PAYMENT_INTENT_SALE);
 
         Intent intent = new Intent(request_online_conversation.this, PaymentActivity.class);

@@ -145,8 +145,9 @@ public class consulation_request extends AppCompatActivity implements View.OnCli
     private void process_payment() {
 
         String pay_konsil = getResources().getString(R.string.pay_konsil);
+        String consultation_price = getIntent().getStringExtra("consultation_price");
 
-        PayPalPayment payPalPayment = new PayPalPayment(new BigDecimal("150"), "USD",
+        PayPalPayment payPalPayment = new PayPalPayment(new BigDecimal(consultation_price), "EUR",
                 pay_konsil, PayPalPayment.PAYMENT_INTENT_SALE);
 
         Intent intent = new Intent(consulation_request.this, PaymentActivity.class);

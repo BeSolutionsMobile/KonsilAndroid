@@ -8,6 +8,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.ProgressBar;
 import android.widget.RatingBar;
 import android.widget.TextView;
 
@@ -33,15 +34,19 @@ public class doctor_info extends AppCompatActivity implements View.OnClickListen
     int doc_id;
     String doc_id_st;
     String No_bioavailable;
+    ProgressBar pg;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.doctor_info);
 
+        //DEFINE ALL VARS
         ratings = findViewById(R.id.ratings);
         request_consulation = findViewById(R.id.request_consulation);
         online_res = findViewById(R.id.online_res);
+        pg = findViewById(R.id.pg);
 
 
         ratings.setRating(4);
@@ -61,6 +66,7 @@ public class doctor_info extends AppCompatActivity implements View.OnClickListen
         if (v.getId() == R.id.request_consulation) {
             Intent intent = new Intent(doctor_info.this, consulation_request.class);
             intent.putExtra("doc_id", doc_id);
+            intent.putExtra("consultation_price", ""+doctors.getConsultationPrice());
             startActivity(intent);
         } else if (v.getId() == R.id.online_res) {
 
@@ -97,6 +103,9 @@ public class doctor_info extends AppCompatActivity implements View.OnClickListen
     @SuppressLint("SetTextI18n")
     @Override
     public void OnResponse(ResponseModel model) {
+        //PROGRESS BAR VISABILITY
+        pg.setVisibility(View.GONE);
+
         de.hdodenhof.circleimageview.CircleImageView doc_img = findViewById(R.id.doc_img);
         TextView doc_name = findViewById(R.id.doc_name);
         TextView doc_job = findViewById(R.id.doc_job);
@@ -121,15 +130,12 @@ public class doctor_info extends AppCompatActivity implements View.OnClickListen
         ratingBar.setRating(doctors.getRate());
 
         //SET CHECK ON DOCTOR_DESCRIPITION IF NULL OR NOT
-        if(doctors.getJobTitle() == null)
-        {
+        if (doctors.getJobTitle() == null) {
             doc_desc.setText(No_bioavailable);  //IF ITEMS RETURN WITH NULL
-        }
-        else {
+        } else {
             doc_desc.setText("" + doctors.getJobTitle());  //IF ITEMS RETURN WITH DATA
 
         }
-
 
         doc_id = doctors.getId();
 
@@ -141,6 +147,7 @@ public class doctor_info extends AppCompatActivity implements View.OnClickListen
 
     @Override
     public void OnError(VolleyError error) {
-
+       //PROGRESS BAR VISABILITY GONE
+        pg.setVisibility(View.GONE);
     }
 }

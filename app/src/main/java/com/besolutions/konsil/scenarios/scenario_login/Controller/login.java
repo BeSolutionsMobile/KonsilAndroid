@@ -83,10 +83,12 @@ public class login extends AppCompatActivity implements View.OnClickListener, Ne
             password = findViewById(R.id.password);
 
             if (email.getText().toString().length() < 6) {
-                email.setError("Please enter the correct mail!");
+                String email_txt =  getResources().getString(R.string.email_val);
+                email.setError(email_txt);  //VALIDATION ON EMAIL
                 yoyo(R.id.email, email);
-            } else if (password.getText().toString().length() < 6) {
-                password.setError("Please enter the correct password!");
+            } else if (password.getText().toString().length() < 8) {
+                String password_txt =  getResources().getString(R.string.password_val);
+                password.setError(password_txt);  //VALIDATION ON PASSWORD
                 yoyo(R.id.password, password);
             } else {
 
@@ -136,14 +138,13 @@ public class login extends AppCompatActivity implements View.OnClickListener, Ne
 
         new send_data().login_status(login.this, true);  //SET TRUE TO MAKE LOGIN AFTER FIRST LOGIN
 
-
-
     }
 
     @Override
     public void OnError(VolleyError error) {
         if (error.networkResponse.statusCode == 401) {
-            Toasty.error(login.this, "Email or Password is incorrect", Toasty.LENGTH_SHORT).show();
+            String error_mail_pass =  getResources().getString(R.string.error_mail_pass); //ERROR IN MAIL OR PASSWORD
+            Toasty.error(login.this, error_mail_pass, Toasty.LENGTH_SHORT).show();
         } else if (error.networkResponse.statusCode == 405) {
             Toasty.error(login.this, "Email is Empty", Toasty.LENGTH_SHORT).show();
         } else if (error.networkResponse.statusCode == 406) {
@@ -151,6 +152,7 @@ public class login extends AppCompatActivity implements View.OnClickListener, Ne
         } else if (error.networkResponse.statusCode == 407) {
             Toasty.error(login.this, "Mobile Token is Empty", Toasty.LENGTH_SHORT).show();
         }
+        new utils().dismiss_dialog(login.this);
     }
 
     //CHECK IF FINGER PRINT

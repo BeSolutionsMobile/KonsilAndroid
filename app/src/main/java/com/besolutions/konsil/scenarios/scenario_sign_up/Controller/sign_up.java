@@ -149,6 +149,8 @@ public class sign_up extends AppCompatActivity implements View.OnClickListener, 
         } else if (error.networkResponse.statusCode == 500) {
             Toasty.error(sign_up.this, " Error on Saving Data", Toasty.LENGTH_SHORT).show();
         }
+
+        new utils().dismiss_dialog(sign_up.this);  //DISMISS PROGRESS DIALOG
     }
 
 

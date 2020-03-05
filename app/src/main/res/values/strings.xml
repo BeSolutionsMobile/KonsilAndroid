@@ -50,7 +50,7 @@
     <string name="germany">Germany</string>
     <string name="orrr">OR</string>
     <string name="full_name">Full Name</string>
-    <string name="accept_all_items_and_conditions">Accept All Items And Conditions</string>
+    <string name="accept_all_items_and_conditions">Accept All Terms And Conditions</string>
     <string name="Specialist">Specialities List</string>
     <string name="degrees">Degree :</string>
     <string name="rate">Rate :</string>
@@ -89,7 +89,7 @@
     <string name="add_your_email">Add Your Email</string>
     <string name="add_your_phone">Add Your Phone</string>
     <string name="welcome_to_konzil">Welcome To Konsilmed</string>
-    <string name="chat_or_get_consultations_and_repoerts_from_doctors_in_all_fields_of_medicine_any_time_any_where_now">Chat or get consultations and repoerts from doctors in all fields of medicine any time any where now .</string>
+    <string name="chat_or_get_consultations_and_repoerts_from_doctors_in_all_fields_of_medicine_any_time_any_where_now">get consultations and repoerts from doctors in all fields of medicine any time any where now .</string>
     <string name="logged_in_successfully">Logged in Successfully...</string>
     <string name="Surgeries">Surgeries</string>
     <string name="Dental">Dental</string>
@@ -156,6 +156,9 @@
     <string name="treatment_ger">Treatment in germany </string>
     <string name="privacy">Privacy</string>
     <string name="consualtion_details_request">Consualtion details</string>
+    <string name="email_val">Email is too short!</string>
+    <string name="password_val">Password is too short!</string>
+    <string name="error_mail_pass">Email or Password is incorrect</string>
     <string name="terms">AGB Konsilmed UG
 
 General terms and conditions of Konsilmed UG (limited liability), Mainzer Landstra? E 50, 60328 Frankfurt am Main. ("Konsilmed"), for the use of the online consultation under and other under the portal advisory services
@@ -223,5 +226,6 @@ As soon as the aforementioned personal data are no longer required to display th
 a) Type, scope and purpose of data processing
 We use cookies. Cookies are small files that we send to your browser when you visit our website and are stored there.
 Some functions of our website cannot be offered without the use of technically necessary cookies. Other cookies, on the other hand, allow us to perform various analyzes. So some cookies can v</string>
+    <string name="language">Language</string>
 
 </resources>

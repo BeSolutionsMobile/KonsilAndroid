@@ -130,6 +130,10 @@
             android:layout_marginRight="@dimen/_15sdp"
             android:hint="@string/tap_to_choose_desired_day"
             android:gravity="center"
+            android:layout_marginTop="@dimen/_3sdp"
+            android:background="@drawable/desire_date_bg"
+            android:textColorHint="@android:color/white"
+            android:textColor="@android:color/white"
             android:id="@+id/choose_date"
             android:layout_marginLeft="@dimen/_15sdp"/>
     </LinearLayout>

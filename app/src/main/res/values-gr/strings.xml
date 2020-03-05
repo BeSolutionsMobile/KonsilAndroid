@@ -89,7 +89,7 @@
     <string name="add_your_email">Fügen Sie Ihre E-Mail hinzu</string>
     <string name="add_your_phone">Fügen Sie Ihr Telefon hinzu</string>
     <string name="welcome_to_konzil">Willkommen bei Konsilmed</string>
-    <string name="chat_or_get_consultations_and_repoerts_from_doctors_in_all_fields_of_medicine_any_time_any_where_now">Chatten oder erhalten Sie jederzeit und überall Konsultationen und Berichte von Ärzten aus allen Bereichen der Medizin.</string>
+    <string name="chat_or_get_consultations_and_repoerts_from_doctors_in_all_fields_of_medicine_any_time_any_where_now">erhalten Sie jederzeit und überall Konsultationen und Berichte von Ärzten aus allen Bereichen der Medizin.</string>
     <string name="logged_in_successfully">Erfolgreich eingeloggt...</string>
     <string name="Surgeries">Chirurgie</string>
     <string name="Dental">Dental</string>
@@ -155,6 +155,9 @@
     <string name="treatment_ger">Behandlung in deutschland</string>
     <string name="privacy">Privatsphäre</string>
     <string name="consualtion_details_request">Aktuelle beschwerden</string>
+    <string name="email_val">E-Mail ist zu kurz!</string>
+    <string name="password_val">Das Passwort ist zu kurz!</string>
+    <string name="error_mail_pass">Email oder Passwort ist falsch</string>
     <string name="terms">AGB Konsilmed UG
 
 Allgemeine Gesch?ftsbedingungen der Konsilmed UG (haftungsbesch?nkt), Mainzer Landstra?e 50, 60328 Frankfurt am Main. („Konsilmed”), für die Nutzung der Online-Konsultation unter  und sonstigen unter dem PortalBeratungsleistungen („Onlineberatung”)
@@ -523,5 +526,6 @@ OK       Mehr Informationen
 
 
 </string>
+    <string name="language">Language</string>
 
 </resources>

@@ -21,6 +21,8 @@
             android:gravity="center"
             android:id="@+id/policy"
             android:text="@string/privacy_txt"
+            android:textSize="@dimen/_13ssp"
+            android:justificationMode="inter_word"
             android:paddingRight="@dimen/_15sdp"
             android:paddingLeft="@dimen/_15sdp"
             android:paddingTop="@dimen/_10sdp"
