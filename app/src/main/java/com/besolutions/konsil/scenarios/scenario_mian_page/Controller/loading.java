@@ -26,7 +26,7 @@ public class loading {
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             public void run() {
-                context.startActivity(new Intent(context, login.class));
+                context.startActivity(new Intent(context, main_screen.class));
                 dialog.dismiss();
             }
         }, 2000);

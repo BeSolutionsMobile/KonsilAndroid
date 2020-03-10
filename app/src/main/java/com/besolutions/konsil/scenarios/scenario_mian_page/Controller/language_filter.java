@@ -41,6 +41,10 @@ public class language_filter implements View.OnClickListener , NetworkInterface 
         LinearLayout germany = dialog.findViewById(R.id.germany);
         germany.setOnClickListener(this);
 
+        //ARABIC
+        LinearLayout arabic = dialog.findViewById(R.id.arabic);
+        arabic.setOnClickListener(this);
+
         dialog.show();
     }
 
@@ -65,6 +69,23 @@ public class language_filter implements View.OnClickListener , NetworkInterface 
         } else if(v.getId() == R.id.germany)
         {
             send_data.send_lan(context, "gr");
+            new utils().set_language(new saved_data().get_lan(context),context); //CHANGE LANGUAGE
+
+            //CALL SERVER
+            try {
+                new Apicalls(context,language_filter.this).change_lan(context);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+
+
+            new loading().dialog(context,R.layout.language_changed,.70);
+
+
+        }
+        else if(v.getId() == R.id.arabic)
+        {
+            send_data.send_lan(context, "ar");
             new utils().set_language(new saved_data().get_lan(context),context); //CHANGE LANGUAGE
 
             //CALL SERVER

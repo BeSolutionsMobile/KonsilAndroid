@@ -20,6 +20,8 @@ public class Doctor{
     private String name;
     @SerializedName("rate")
     private int rate;
+    @SerializedName("lang")
+    private String lang;
 
     public void setDegree(String degree){
         this.degree = degree;
@@ -51,6 +53,12 @@ public class Doctor{
     public int getRate(){
         return this.rate;
     }
+    public void setLang(String lang){
+        this.lang = lang;
+    }
+    public String getLang(){
+        return this.lang;
+    }
 
     /**
      * Instantiate the instance using the passed jsonObject to set the properties values
@@ -64,6 +72,7 @@ public class Doctor{
         name = String.valueOf(jsonObject.opt("name"));
         rate = jsonObject.optInt("rate");
         id = jsonObject.optInt("id");
+        lang = String.valueOf(jsonObject.opt("lang"));
     }
 
     /**
@@ -78,6 +87,7 @@ public class Doctor{
             jsonObject.put("image_url", imageUrl);
             jsonObject.put("name", name);
             jsonObject.put("rate", rate);
+            jsonObject.put("lang", lang);
 
         } catch (JSONException e) {
             // TODO Auto-generated catch block

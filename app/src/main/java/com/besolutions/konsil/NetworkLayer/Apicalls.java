@@ -303,7 +303,11 @@ public class Apicalls {
         String language = new saved_data().get_lan(context);
         if(language.equals("gr"))
         {
-            language ="de";
+            language ="de";  //IF LANGUAGE IS GERMANY
+        }
+        else if(language.equals("ar"))
+        {
+            language ="ar";  //IF LANGUAGE IS ARABIC
         }
 
         apiRouter.makeAdvancedRequest(Apiclient.CHANGE_LANG.getURL(), Request.Method.POST, Apiclient.CHANGE_LANG.getParams(), Arrays.asList(language), null);

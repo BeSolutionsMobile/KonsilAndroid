@@ -111,7 +111,7 @@ public class NavigationDrawerFragment extends Fragment implements NavigationDraw
         card_bg.setBackgroundResource(R.drawable.img_header_bg);
 
         final List<NavigationItem> navigationItems = getMenu();
-        NavigationDrawerAdapter adapter = new NavigationDrawerAdapter(navigationItems);
+        NavigationDrawerAdapter adapter = new NavigationDrawerAdapter(navigationItems,getActivity());
         adapter.setNavigationDrawerCallbacks(this);
         mDrawerList.setAdapter(adapter);
         selectItem(mCurrentSelectedPosition);

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:background="@drawable/pro_bg"
+    android:orientation="vertical"
+    tools:context=".scenarios.scenario_splash_screen.Controller.splash_screen">
+   <RelativeLayout
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       >
+   <LinearLayout
+       android:layout_width="match_parent"
+       android:layout_height="match_parent"
+       android:orientation="vertical"
+       android:gravity="center">
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_120sdp"
+        android:src="@drawable/konzil_logo"/>
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/welcome_to_konzil"
+        android:gravity="center"
+        android:textSize="@dimen/_14ssp"
+        android:layout_marginTop="@dimen/_50sdp"
+        android:textColor="@color/color2"
+        />
+
+   </LinearLayout>
+   </RelativeLayout>
+</LinearLayout>

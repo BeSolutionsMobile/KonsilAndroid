@@ -50,7 +50,7 @@
     <string name="germany">Germany</string>
     <string name="orrr">oder</string>
     <string name="full_name">vollständiger Name</string>
-    <string name="accept_all_items_and_conditions">Akzeptieren Sie alle Geschäftsbedingungen</string>
+    <string name="accept_all_items_and_conditions">Ich akzeptiere alle AGB und Datenschutz Erklärungenen</string>
     <string name="Specialist">Spezialitätenliste</string>
     <string name="degrees">Grad :</string>
     <string name="rate">Bewertung :</string>
@@ -67,7 +67,7 @@
     <string name="there_is_a_medical_report_for_case">Dies ist der ärztliche Bericht für den Fall</string>
     <string name="date_of_report">Datum des Berichts :</string>
     <string name="choose_file_to_uplaod">Wählen Sie eine Datei aus, um sie hochzuladen</string>
-    <string name="conversation_hour_rate">Wechselkurs :</string>
+    <string name="conversation_hour_rate">Konversation Preis :</string>
     <string name="please_select_from_the_available_periods">Bitte wählen Sie aus den verfügbaren Zeiträumen</string>
     <string name="date">Datum :</string>
     <string name="duration">Dauer :</string>
@@ -153,7 +153,7 @@
     <string name="faq">Häufige fragen</string>
     <string name="consultation">Konsultation</string>
     <string name="treatment_ger">Behandlung in deutschland</string>
-    <string name="privacy">Privatsphäre</string>
+    <string name="privacy">Datenschutz Erklärung</string>
     <string name="consualtion_details_request">Aktuelle beschwerden</string>
     <string name="email_val">E-Mail ist zu kurz!</string>
     <string name="password_val">Das Passwort ist zu kurz!</string>
@@ -526,6 +526,6 @@ OK       Mehr Informationen
 
 
 </string>
-    <string name="language">Language</string>
+    <string name="language">Sprache</string>
 
 </resources>

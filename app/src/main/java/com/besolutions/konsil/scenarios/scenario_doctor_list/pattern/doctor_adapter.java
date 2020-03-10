@@ -43,6 +43,7 @@ public class doctor_adapter extends RecyclerView.Adapter<doctor_adapter.doctor_h
         viewHolder.name.setText(mylist.get(i).getName());
         viewHolder.degree.setText(mylist.get(i).getDegree());
         viewHolder.rating.setRating(mylist.get(i).getRate());
+        viewHolder.lang.setText(mylist.get(i).getLang());
         viewHolder.item.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -59,7 +60,7 @@ public class doctor_adapter extends RecyclerView.Adapter<doctor_adapter.doctor_h
     }
 
     class doctor_holder extends RecyclerView.ViewHolder {
-        TextView name, degree;
+        TextView name, degree, lang;
         ImageView doctor_img;
         RatingBar rating;
         LinearLayout item;
@@ -71,6 +72,7 @@ public class doctor_adapter extends RecyclerView.Adapter<doctor_adapter.doctor_h
             doctor_img = itemView.findViewById(R.id.doctor_img);
             rating = itemView.findViewById(R.id.ratings);
             item = itemView.findViewById(R.id.item);
+            lang = itemView.findViewById(R.id.lang);
         }
     }
 

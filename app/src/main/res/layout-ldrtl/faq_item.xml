@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:id="@+id/clickon"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:layoutDirection="rtl"
+    android:layout_marginBottom="@dimen/_10sdp"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_30sdp"
+        android:orientation="horizontal"
+        android:layout_marginRight="@dimen/_10sdp"
+        android:layout_marginLeft="@dimen/_10sdp"
+
+        android:layoutDirection="ltr"
+        android:background="@drawable/faq_item_bg">
+
+    <TextView
+        android:layout_width="@dimen/_30sdp"
+        android:layout_height="match_parent"
+        android:background="@drawable/expand_btn_ar"
+        android:text="+"
+        android:gravity="center"
+        android:textSize="@dimen/_12ssp"
+        android:textStyle="bold"
+        android:textColor="@android:color/white"
+        android:layout_gravity="center"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:gravity="left|center"
+        android:id="@+id/parent"
+        android:paddingBottom="@dimen/_3sdp"
+        android:textAlignment="center"
+        android:text="kanflanflknalkfnlkanflaknflanfklakfnlanflwkajdwkjadwjbjwkabdkjwbddbkwjbdjwbkdb"
+        android:paddingRight="@dimen/_10sdp"
+        android:layout_height="match_parent"/>
+
+    </LinearLayout>
+</LinearLayout>

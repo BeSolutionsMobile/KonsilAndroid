@@ -1,11 +1,14 @@
 package com.besolutions.konsil;
 
 
+import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
+
+import com.besolutions.konsil.local_data.saved_data;
 
 import java.util.List;
 
@@ -16,9 +19,11 @@ public class NavigationDrawerAdapter extends RecyclerView.Adapter<NavigationDraw
     private NavigationDrawerCallbacks mNavigationDrawerCallbacks;
     private View mSelectedView;
     private int mSelectedPosition;
+    Context context;
 
-    public NavigationDrawerAdapter(List<NavigationItem> data) {
+    public NavigationDrawerAdapter(List<NavigationItem> data, Context context) {
         mData = data;
+        this.context = context;
     }
 
     public NavigationDrawerCallbacks getNavigationDrawerCallbacks() {
@@ -55,7 +60,14 @@ public class NavigationDrawerAdapter extends RecyclerView.Adapter<NavigationDraw
     @Override
     public void onBindViewHolder(NavigationDrawerAdapter.ViewHolder viewHolder, int i) {
         viewHolder.textView.setText(mData.get(i).getText());
-        viewHolder.textView.setCompoundDrawablesWithIntrinsicBounds(mData.get(i).getDrawable(), null, null, null);
+
+        //CHECK LANGUAGE ARABIC OR ELSE
+        if (new saved_data().get_lan(context).equals("ar")) {
+            viewHolder.textView.setCompoundDrawablesWithIntrinsicBounds(null, null, mData.get(i).getDrawable(), null); //IF LANGUAGE IS ARABIC
+        } else {
+            viewHolder.textView.setCompoundDrawablesWithIntrinsicBounds(mData.get(i).getDrawable(), null, null, null); //IF LANGUAGE ISNT ARABIC
+        }
+
         if (mSelectedPosition == 0) {
             if (mSelectedView != null) {
                 mSelectedView.setSelected(false);

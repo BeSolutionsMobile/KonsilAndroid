@@ -9,7 +9,9 @@ import com.besolutions.konsil.R;
 import com.besolutions.konsil.local_data.saved_data;
 import com.besolutions.konsil.local_data.send_data;
 import com.besolutions.konsil.scenarios.scenario_login.Controller.login;
+import com.besolutions.konsil.scenarios.scenario_mian_page.Controller.main_screen;
 import com.besolutions.konsil.scenarios.scenario_splash_screen.pattern.viewimage;
+import com.besolutions.konsil.scenarios.secnario_fingerprint.Controller.fingerprint;
 import com.besolutions.konsil.utils.utils;
 
 import me.relex.circleindicator.CircleIndicator;
@@ -43,7 +45,22 @@ public class splash_screen extends AppCompatActivity {
         super.onStart();
         if(new saved_data().get_tour_status(splash_screen.this) == true)
         {
+            setCheck_finger();
+        }
+        else {
             startActivity(new Intent(splash_screen.this, login.class));
+        }
+    }
+
+    //CHECK IF FINGER PRINT
+    void setCheck_finger() {
+        if(new saved_data().get_login_status(this) == true) {
+            if (new saved_data().get_finger_print(this).equals("yes")) {
+                startActivity(new Intent(splash_screen.this, fingerprint.class));
+            }
+            else {
+                startActivity(new Intent(splash_screen.this, main_screen.class));
+            }
         }
     }
 }
