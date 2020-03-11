@@ -7,27 +7,40 @@ import android.net.ConnectivityManager;
 import android.net.NetworkInfo;
 import android.util.Log;
 
+import static com.facebook.FacebookSdk.getApplicationContext;
+
 public class UpdateReceiver extends BroadcastReceiver {
+
+    public static ConnectivityReceiverListener connectivityReceiverListener;
+
+    public UpdateReceiver() {
+        super();
+    }
+
     @Override
-    public void onReceive(Context context, Intent intent) {
-        boolean is_connect = false;
+    public void onReceive(Context context, Intent arg1) {
+        ConnectivityManager cm = (ConnectivityManager) context
+                .getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+        boolean isConnected = activeNetwork != null
+                && activeNetwork.isConnectedOrConnecting();
 
-        try {
-            ConnectivityManager cm = (ConnectivityManager) context.getSystemService(Context.CONNECTIVITY_SERVICE);
-            NetworkInfo netInfo = cm.getActiveNetworkInfo();
-            //should check null because in airplane mode it will be null
-            if (netInfo != null) {
-                netInfo.isConnected();
-                is_connect = true;
-
-            }
-        } catch (NullPointerException e) {
-            e.printStackTrace();
-            is_connect = false;
-
+        if (connectivityReceiverListener != null) {
+            connectivityReceiverListener.onNetworkConnectionChanged(isConnected);
         }
-        intent = new Intent("broadCastName");
-        intent.putExtra("status", is_connect);
-        context.sendBroadcast(intent);
+    }
+
+    public static boolean isConnected() {
+        ConnectivityManager
+                cm = (ConnectivityManager) my_application_status.getInstance().getApplicationContext()
+                .getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetwork = cm.getActiveNetworkInfo();
+        return activeNetwork != null
+                && activeNetwork.isConnectedOrConnecting();
+    }
+
+
+    public interface ConnectivityReceiverListener {
+        void onNetworkConnectionChanged(boolean isConnected);
     }
 }

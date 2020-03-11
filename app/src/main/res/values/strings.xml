@@ -227,5 +227,6 @@ a) Type, scope and purpose of data processing
 We use cookies. Cookies are small files that we send to your browser when you visit our website and are stored there.
 Some functions of our website cannot be offered without the use of technically necessary cookies. Other cookies, on the other hand, allow us to perform various analyzes. So some cookies can v</string>
     <string name="language">Language</string>
+    <string name="dr">Dr :</string>
 
 </resources>

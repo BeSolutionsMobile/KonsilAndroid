@@ -205,7 +205,7 @@
               android:id="@+id/request_consulation"
               android:textColor="@android:color/white"
               android:layout_height="match_parent"
-              android:background="@drawable/request_consulation_bg"
+              android:background="@drawable/request_consulation_bg_ar"
               />
           <Button
               android:layout_weight=".025"
@@ -222,7 +222,7 @@
               android:textSize="@dimen/_12ssp"
               android:textColor="@android:color/white"
               android:layout_height="match_parent"
-              android:background="@drawable/request_online_conversation"
+              android:background="@drawable/request_online_conversation_ar"
               />
       </LinearLayout>
 

@@ -15,6 +15,7 @@
         android:layout_width="match_parent"
         android:layout_height="@dimen/_30sdp"
         app:rrbg_borderColor="@color/color2"
+        android:layoutDirection="ltr"
         app:rrbg_animateTexts_textColorTo="@android:color/white"
         app:rrbg_animateTexts_textColorFrom="@color/color2"
         android:layout_gravity="center_vertical"

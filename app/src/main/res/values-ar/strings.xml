@@ -162,6 +162,7 @@
     <string name="logout">تسجيل الخروج</string>
     <string name="change_language">تغيير اللغة</string>
     <string name="language">اللغة</string>
+    <string name="dr">طبيب :</string>
 
 
 </resources>

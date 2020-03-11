@@ -30,6 +30,7 @@
         app:rrbg_dividerPadding="0dp"
         app:rrbg_dividerRadius="0dp"
         app:rrbg_dividerSize="2dp"
+        android:layoutDirection="ltr"
         app:rrbg_enableDeselection="false"
         app:rrbg_radius="10dp"
         app:rrbg_selectorAboveOfBottomLine="false"

@@ -53,7 +53,7 @@ public class faq extends AppCompatActivity implements NetworkInterface {
         setSupportActionBar(mToolbar);
 
         TextView title = findViewById(R.id.title);
-        title.setText("FAQ");
+        title.setText(getResources().getString(R.string.faq));
     }
 
     @Override

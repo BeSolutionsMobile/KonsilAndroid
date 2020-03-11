@@ -16,6 +16,7 @@
      android:layout_height="0dp"
      android:layout_weight=".3"
      android:paddingLeft="@dimen/_15sdp"
+     android:paddingRight="@dimen/_15sdp"
      android:orientation="vertical">
    <LinearLayout
        android:layout_width="match_parent"
@@ -24,7 +25,7 @@
        <TextView
            android:layout_width="wrap_content"
            android:layout_height="wrap_content"
-           android:text="Dr :"
+           android:text="@string/dr"
            android:textSize="@dimen/_12ssp"
            android:textColor="@color/color2"
            />
