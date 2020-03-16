@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.view.ViewPager;
 import android.support.v7.app.AppCompatActivity;
+import android.widget.Toast;
 
 import com.besolutions.konsil.R;
 import com.besolutions.konsil.local_data.saved_data;
@@ -47,20 +48,21 @@ public class splash_screen extends AppCompatActivity {
         {
             setCheck_finger();
         }
-        else {
-            startActivity(new Intent(splash_screen.this, login.class));
-        }
+
     }
 
     //CHECK IF FINGER PRINT
     void setCheck_finger() {
-        if(new saved_data().get_login_status(this) == true) {
-            if (new saved_data().get_finger_print(this).equals("yes")) {
+        if(new saved_data().get_login_status(this) == true) { //CHECK IF LOGIN IS TRUE
+            if (new saved_data().get_finger_print(this).equals("yes")) {  // CHECK IF FINGER PRINT TRUE
                 startActivity(new Intent(splash_screen.this, fingerprint.class));
             }
             else {
                 startActivity(new Intent(splash_screen.this, main_screen.class));
             }
+        }
+        else {
+            startActivity(new Intent(splash_screen.this, login.class)); //GO TO LOGIN IF FALSE LOGIN
         }
     }
 }

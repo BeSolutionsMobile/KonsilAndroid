@@ -26,6 +26,8 @@ import com.besolutions.konsil.scenarios.scenario_doctor_list.model.Doctor;
 import com.besolutions.konsil.scenarios.scenario_doctor_list.model.doctor_list_items;
 import com.besolutions.konsil.scenarios.scenario_doctor_list.model.root;
 import com.besolutions.konsil.scenarios.scenario_doctor_list.pattern.doctor_adapter;
+import com.besolutions.konsil.scenarios.scenario_mian_page.Controller.main_screen;
+import com.besolutions.konsil.utils.regist_network_broadcast;
 import com.besolutions.konsil.utils.utils_adapter;
 import com.google.gson.Gson;
 
@@ -43,6 +45,8 @@ public class doctor_list extends AppCompatActivity implements View.OnClickListen
     ProgressBar pg;
     static int id;
     static int id_filter = 0;
+    static TextView tv_check_connection;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -56,6 +60,8 @@ public class doctor_list extends AppCompatActivity implements View.OnClickListen
         setSupportActionBar(mToolbar);
 
         pg = findViewById(R.id.pg);
+        tv_check_connection = findViewById(R.id.tv_check_connection);
+
 
         TextView title = findViewById(R.id.title);
         String doc_filters = getResources().getString(R.string.Specialist);
@@ -76,6 +82,9 @@ public class doctor_list extends AppCompatActivity implements View.OnClickListen
         } catch (JSONException e) {
             e.printStackTrace();
         }
+
+        //CALL BROADCAST RECIEVER METHOD
+        new regist_network_broadcast().registerNetworkBroadcastForNougat(doctor_list .this);
     }
 
 

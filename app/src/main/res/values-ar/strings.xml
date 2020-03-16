@@ -4,7 +4,7 @@
     <string name="drawer_close">Menu closed</string>
     <string name="action_settings">الاعدادات</string>
     <string name="e_mail_address">البريد الالكترونى</string>
-    <string name="allow_biomatric_authentication">Erlaube biometrische Authentifizierung</string>
+    <string name="allow_biomatric_authentication">تسجيل الدخول بالبصمه</string>
     <string name="no_account">ليس لديك حساب ؟</string>
     <string name="register_now">التسجيل</string>
     <string name="password">كلمة المرور</string>
