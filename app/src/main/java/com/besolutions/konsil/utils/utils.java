@@ -13,6 +13,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.DisplayMetrics;
 
 
+import com.besolutions.konsil.R;
+
 import java.util.Locale;
 
 
@@ -99,8 +101,10 @@ public class utils {
 
     public void set_dialog(Context context)
     {
+        String loading =  context.getResources().getString(R.string.loading_c);
+
         pd = new ProgressDialog(context);
-        pd.setMessage("Loading...");
+        pd.setMessage(loading);
         pd.show();
     }
 

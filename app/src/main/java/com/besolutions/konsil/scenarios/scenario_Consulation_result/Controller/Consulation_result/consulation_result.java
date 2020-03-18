@@ -4,10 +4,12 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
 
+import com.besolutions.konsil.network_check_status.regist_network_broadcast;
 import com.besolutions.konsil.scenarios.scenario_Consulation_result.Controller.Consulation_result.fragment_files.Controller.fragment_files;
 import com.besolutions.konsil.scenarios.scenario_Consulation_result.Controller.Consulation_result.fragment_message.Controller.fragement_msg;
 import com.besolutions.konsil.scenarios.scenario_Consulation_result.Controller.Consulation_result.fragment_report.Controller.fragment_report;
 import com.besolutions.konsil.R;
+import com.besolutions.konsil.scenarios.scenario_compalint_details.compalint_details.Controller.compalint_details;
 import com.besolutions.konsil.utils.utils;
 
 import co.ceryle.radiorealbutton.RadioRealButton;
@@ -45,6 +47,9 @@ public class consulation_result extends AppCompatActivity {
         TextView title = findViewById(R.id.title);
         String req_online_con = getResources().getString(R.string.consualtion_details);
         title.setText(req_online_con);
+
+        //CALL BROADCAST RECIEVER METHOD
+        new regist_network_broadcast().registerNetworkBroadcastForNougat(consulation_result.this);
 
     }
 }

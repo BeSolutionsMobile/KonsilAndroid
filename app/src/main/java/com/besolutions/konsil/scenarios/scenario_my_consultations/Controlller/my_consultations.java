@@ -14,6 +14,8 @@ import com.besolutions.konsil.NetworkLayer.Apicalls;
 import com.besolutions.konsil.NetworkLayer.NetworkInterface;
 import com.besolutions.konsil.NetworkLayer.ResponseModel;
 import com.besolutions.konsil.R;
+import com.besolutions.konsil.network_check_status.regist_network_broadcast;
+import com.besolutions.konsil.scenarios.scenario_mian_page.Controller.main_screen;
 import com.besolutions.konsil.scenarios.scenario_my_consultations.model.Datum;
 import com.besolutions.konsil.scenarios.scenario_my_consultations.model.root_consultation;
 import com.besolutions.konsil.scenarios.scenario_my_consultations.pattern.my_consultations_adapter;
@@ -55,6 +57,9 @@ public class my_consultations extends AppCompatActivity implements NetworkInterf
 
         //DEFINE VARS
         nodata = findViewById(R.id.nodata);
+
+        //CALL BROADCAST RECIEVER METHOD
+        new regist_network_broadcast().registerNetworkBroadcastForNougat(my_consultations.this);
     }
 
 
@@ -111,6 +116,8 @@ public class my_consultations extends AppCompatActivity implements NetworkInterf
 
     @Override
     public void OnError(VolleyError error) {
-
+        pg.setVisibility(View.GONE);
     }
+
+
 }

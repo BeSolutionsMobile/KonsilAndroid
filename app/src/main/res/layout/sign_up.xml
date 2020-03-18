@@ -16,6 +16,7 @@
             android:layout_height="match_parent"
             android:gravity="center"
             android:orientation="vertical">
+            <include layout="@layout/connection_txt"/>
             <ImageView
                 android:layout_width="@dimen/_100sdp"
                 android:layout_height="@dimen/_100sdp"
@@ -80,17 +81,52 @@
                 android:paddingRight="@dimen/_5sdp"
                 android:background="@drawable/form_bg"
                 />
-            <CheckBox
-                android:layout_marginTop="@dimen/_5sdp"
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_marginLeft="@dimen/_25sdp"
-                android:paddingLeft="@dimen/_7sdp"
-                android:paddingRight="@dimen/_30sdp"
+                android:layout_height="wrap_content"
+                android:gravity="center|left"
+                android:layout_marginTop="@dimen/_5sdp"
+                >
+            <CheckBox
+                android:layout_width="wrap_content"
+                android:layout_marginLeft="@dimen/_30sdp"
+                android:paddingLeft="@dimen/_4sdp"
                 android:layout_height="wrap_content"
                 android:textSize="@dimen/_11ssp"
                 android:id="@+id/accept_condition"
-                android:text="@string/accept_all_items_and_conditions"
                 />
+                 <TextView
+                     android:layout_width="wrap_content"
+                     android:layout_height="@dimen/_30sdp"
+                     android:layout_gravity="center"
+                     android:gravity="center"
+                     android:text="@string/accept_all_items_and_conditions"/>
+                <TextView
+                     android:layout_width="wrap_content"
+                     android:layout_height="@dimen/_30sdp"
+                     android:layout_gravity="center"
+                     android:gravity="center"
+                    android:id="@+id/terms"
+                    android:layout_marginLeft="@dimen/_3sdp"
+                     android:textColor="#0000FF"
+                     android:text="@string/terms_of_use"/>
+                <TextView
+                     android:layout_width="wrap_content"
+                     android:layout_height="@dimen/_30sdp"
+                     android:layout_gravity="center"
+                     android:gravity="center"
+                    android:layout_marginLeft="@dimen/_3sdp"
+                     android:text="@string/and"/>
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="@dimen/_30sdp"
+                    android:layout_gravity="center"
+                    android:gravity="center"
+                    android:id="@+id/privacy"
+                    android:layout_marginLeft="@dimen/_3sdp"
+                    android:textColor="#0000FF"
+                    android:text="@string/privacy"/>
+            </LinearLayout>
 
             <Button
                 android:layout_width="@dimen/_100sdp"

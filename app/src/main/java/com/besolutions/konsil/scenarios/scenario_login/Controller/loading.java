@@ -6,12 +6,18 @@ import android.content.Intent;
 import android.os.Handler;
 import android.view.Window;
 
+import com.android.volley.VolleyError;
+import com.besolutions.konsil.NetworkLayer.Apicalls;
+import com.besolutions.konsil.NetworkLayer.NetworkInterface;
+import com.besolutions.konsil.NetworkLayer.ResponseModel;
 import com.besolutions.konsil.scenarios.scenario_mian_page.Controller.main_screen;
+
+import org.json.JSONException;
 
 import java.util.Objects;
 
 
-public class loading {
+public class loading implements NetworkInterface {
     public void dialog(final Context context, int resource, double widthh) {
         final Dialog dialog = new Dialog(context);
         Objects.requireNonNull(dialog.getWindow()).setBackgroundDrawableResource(android.R.color.transparent);
@@ -22,6 +28,8 @@ public class loading {
         dialog.getWindow().setLayout(width, height);
         dialog.show();
 
+        change_lan(context); //DATA CAME FROM SERVER
+
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {
             public void run() {
@@ -30,4 +38,33 @@ public class loading {
             }
         }, 2000);
     }
+
+
+    //CHANGE LANGUAGE USING API
+    void change_lan(Context context)
+    {
+
+                try {
+                    new Apicalls(context, loading.this).change_lan(context);
+                } catch (JSONException e) {
+                    e.printStackTrace();
+                }
+            }
+
+
+    @Override
+    public void OnStart() {
+
+    }
+
+    @Override
+    public void OnResponse(ResponseModel model) {
+
+    }
+
+    @Override
+    public void OnError(VolleyError error) {
+
+    }
 }
+

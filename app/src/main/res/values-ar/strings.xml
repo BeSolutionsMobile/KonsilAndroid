@@ -16,7 +16,7 @@
     <string name="filter">تصنيف</string>
     <string name="degree">الدرجه</string>
     <string name="submit">تم</string>
-    <string name="finger">البصمه</string>
+    <string name="finger">استخدم البصمه لتسجيل الدخول</string>
     <string name="patients">المرضى</string>
     <string name="request_consulation">طلب استشاره</string>
     <string name="requst_online_converstaion">طلب محادثه اون لاين</string>
@@ -150,7 +150,7 @@
     <string name="uploaded">تم الرفع</string>
     <string name="_30_minutes">30 دقيقة</string>
     <string name="tap_to_choose_desired_day">اضغط لاختيار اليوم المطلوب</string>
-    <string name="nobioavailable">لا يوجد بيومترية مسجلة في هذا الجهاز</string>
+    <string name="nobioavailable">لا يوجد بيانات</string>
     <string name="terms_of_use">سياسة الاستخدام</string>
     <string name="faq">الاسئله الشائعة</string>
     <string name="treatment_ger">العلاج فى المانيا </string>
@@ -163,6 +163,9 @@
     <string name="change_language">تغيير اللغة</string>
     <string name="language">اللغة</string>
     <string name="dr">طبيب :</string>
+    <string name="and">و</string>
+    <string name="loading_c">جارى التحميل...</string>
+
 
 
 </resources>

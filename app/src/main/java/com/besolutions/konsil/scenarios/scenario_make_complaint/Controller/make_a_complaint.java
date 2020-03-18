@@ -18,6 +18,8 @@ import com.besolutions.konsil.NetworkLayer.Apicalls;
 import com.besolutions.konsil.NetworkLayer.NetworkInterface;
 import com.besolutions.konsil.NetworkLayer.ResponseModel;
 import com.besolutions.konsil.R;
+import com.besolutions.konsil.network_check_status.regist_network_broadcast;
+import com.besolutions.konsil.scenarios.scenario_compalint_details.compalint_details.Controller.compalint_details;
 import com.besolutions.konsil.scenarios.scenario_make_complaint.model.Datum;
 import com.besolutions.konsil.scenarios.scenario_make_complaint.model.root_complaint_type;
 import com.besolutions.konsil.scenarios.scenario_mian_page.Controller.main_screen;
@@ -60,6 +62,9 @@ public class make_a_complaint extends AppCompatActivity implements View.OnClickL
         }
 
         Set_Spinner_id();
+
+        //CALL BROADCAST RECIEVER METHOD
+        new regist_network_broadcast().registerNetworkBroadcastForNougat(make_a_complaint.this);
 
 
     }

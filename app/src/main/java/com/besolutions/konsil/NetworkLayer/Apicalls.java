@@ -1,6 +1,7 @@
 package com.besolutions.konsil.NetworkLayer;
 
 import android.content.Context;
+import android.widget.Toast;
 
 import com.android.volley.Request;
 import com.besolutions.konsil.local_data.saved_data;
@@ -301,7 +302,12 @@ public class Apicalls {
     public void change_lan(Context context) throws JSONException {
 
         String language = new saved_data().get_lan(context);
-        if(language.equals("gr"))
+
+        if(language.equals("en"))
+        {
+            language ="en";  //IF LANGUAGE IS ENGLISH
+        }
+      else  if(language.equals("de"))
         {
             language ="de";  //IF LANGUAGE IS GERMANY
         }
@@ -309,6 +315,8 @@ public class Apicalls {
         {
             language ="ar";  //IF LANGUAGE IS ARABIC
         }
+
+
 
         apiRouter.makeAdvancedRequest(Apiclient.CHANGE_LANG.getURL(), Request.Method.POST, Apiclient.CHANGE_LANG.getParams(), Arrays.asList(language), null);
 

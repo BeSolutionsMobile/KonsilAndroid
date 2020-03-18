@@ -153,6 +153,7 @@ public class fragement_msg extends Fragment implements View.OnClickListener, Net
 
     @Override
     public void OnError(VolleyError error) {
+        pg.setVisibility(View.GONE); //SET IT IF THERE IS DATA FROM SERVER
 
     }
 

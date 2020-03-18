@@ -1,14 +1,7 @@
 package com.besolutions.konsil.scenarios.scenario_mian_page.Controller;
 
-import android.content.Context;
 import android.content.Intent;
-import android.content.IntentFilter;
-import android.graphics.Color;
-import android.net.ConnectivityManager;
 import android.net.Uri;
-import android.os.Build;
-import android.os.Handler;
-import android.support.design.widget.Snackbar;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -40,9 +33,7 @@ import com.besolutions.konsil.scenarios.scenario_personal_info.Controller.person
 import com.besolutions.konsil.scenarios.scenario_policy.controller.policy;
 import com.besolutions.konsil.scenarios.scenario_terms_of_use.Controller.terms_of_use;
 import com.besolutions.konsil.scenarios.scenarios_faq.controller.faq;
-import com.besolutions.konsil.utils.NetworkChangeReceiver;
-import com.besolutions.konsil.utils.checkConnection;
-import com.besolutions.konsil.utils.regist_network_broadcast;
+import com.besolutions.konsil.network_check_status.regist_network_broadcast;
 import com.besolutions.konsil.utils.utils;
 import com.besolutions.konsil.utils.utils_adapter;
 import com.google.gson.Gson;
@@ -50,8 +41,6 @@ import com.google.gson.Gson;
 import org.json.JSONException;
 
 import java.util.ArrayList;
-
-import me.relex.circleindicator.SnackbarBehavior;
 
 public class main_screen extends AppCompatActivity implements NavigationDrawerCallbacks, View.OnClickListener, NetworkInterface {
     Toolbar mToolbar;
@@ -62,7 +51,6 @@ public class main_screen extends AppCompatActivity implements NavigationDrawerCa
     all_specialitiesDatum[] all_specialitiesDatumsss;
     ProgressBar pg;
     static TextView tv_check_connection;
-    static int call_api_num = 0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -103,32 +91,7 @@ public class main_screen extends AppCompatActivity implements NavigationDrawerCa
 
     }
 
-    public static void dialog(boolean value){
-        if(value){
 
-            call_api_num = 1;
-            tv_check_connection.setText("Connecting !!!");
-            tv_check_connection.setBackgroundColor(Color.GREEN);
-            tv_check_connection.setTextColor(Color.BLACK);
-            tv_check_connection.setVisibility(View.VISIBLE);
-
-
-
-            Handler handler = new Handler();
-            Runnable delayrunnable = new Runnable() {
-                @Override
-                public void run() {
-                    tv_check_connection.setVisibility(View.GONE);
-                }
-            };
-            handler.postDelayed(delayrunnable, 3000);
-        }else {
-            tv_check_connection.setVisibility(View.VISIBLE);
-            tv_check_connection.setText("Could not Connect to internet");
-            tv_check_connection.setBackgroundColor(Color.RED);
-            tv_check_connection.setTextColor(Color.WHITE);
-        }
-    }
 
 
     @Override
@@ -146,12 +109,14 @@ public class main_screen extends AppCompatActivity implements NavigationDrawerCa
         } else if (position == 2) {
             startActivity(new Intent(this, faq.class)); //GO TO FAQ
         } else if (position == 3) {
-            startActivity(new Intent(this, policy.class)); //GO TO PRIVACY
+            Intent browse = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.konsilmed.com/privacy"));
+            startActivity(browse);       //GO TO PRIVACY
         } else if (position == 4) {
             Intent browse = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.konsilmed.com/treatment-in-germany"));
             startActivity(browse);       //GO TO TREATMENT IN GERMANY
         } else if (position == 5) {
-            startActivity(new Intent(this, terms_of_use.class));  //GO TO TERMS OF USE
+            Intent browse = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.konsilmed.com/terms"));
+            startActivity(browse);       //GO TO TERMS OF USE
         }
     }
 
@@ -234,8 +199,7 @@ public class main_screen extends AppCompatActivity implements NavigationDrawerCa
 
     @Override
     public void OnError(VolleyError error) {
-        Toast.makeText(this, "No Internet Connection", Toast.LENGTH_SHORT).show();
-
+        pg.setVisibility(View.GONE);
     }
 
     @Override
@@ -248,19 +212,12 @@ public class main_screen extends AppCompatActivity implements NavigationDrawerCa
     protected void onResume() {
         super.onResume();
 
-        DrawerLayout drawerLayout = findViewById(R.id.drawer);
-
-        if (checkConnection.isOnline(main_screen.this) == false) {
-            Snackbar.make(drawerLayout, "No Internet Connection", 10000).show();
-        }
-        else {
-            //GET DATA FROM SERVER
-            try {
-                pg.setVisibility(View.VISIBLE);
-                new Apicalls(this, this).get_all_specialities();
-            } catch (JSONException e) {
-                Log.e("WRONG", "WRONG FROM SERVER");
-            }
+        //GET DATA FROM SERVER
+        try {
+            pg.setVisibility(View.VISIBLE);
+            new Apicalls(this, this).get_all_specialities();
+        } catch (JSONException e) {
+            Log.e("WRONG", "WRONG FROM SERVER");
         }
     }
 

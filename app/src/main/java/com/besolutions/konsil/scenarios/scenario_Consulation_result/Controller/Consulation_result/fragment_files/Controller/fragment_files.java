@@ -105,7 +105,7 @@ public class fragment_files extends Fragment implements NetworkInterface,View.On
 
     @Override
     public void OnError(VolleyError error) {
-
+        pg.setVisibility(View.GONE); //SET IT IF THERE IS DATA FROM SERVER
     }
 
     @Override

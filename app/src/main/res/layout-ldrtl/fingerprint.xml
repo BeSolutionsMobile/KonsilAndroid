@@ -18,16 +18,30 @@
         android:textStyle="bold"
         android:id="@+id/fingerprint"
         android:textSize="@dimen/_18ssp"/>
+    <RelativeLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
     <ImageView
         android:layout_width="@dimen/_80sdp"
         android:layout_height="@dimen/_90sdp"
         android:layout_marginTop="@dimen/_10sdp"
         android:padding="@dimen/_15sdp"
         android:tint="@color/color2"
+        android:layout_centerInParent="true"
         android:id="@+id/finger"
         app:srcCompat="@drawable/finger"
         android:background="@drawable/finger_bg"
         />
+    <com.airbnb.lottie.LottieAnimationView
+        android:layout_width="@dimen/_120sdp"
+        android:layout_height="@dimen/_120sdp"
+        android:layout_gravity="center"
+        app:lottie_autoPlay="false"
+        android:id="@+id/finger_unlock"
+        app:lottie_loop="false"
+        app:lottie_rawRes="@raw/unlock_finger"
+        />
+    </RelativeLayout>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="@dimen/_40sdp"

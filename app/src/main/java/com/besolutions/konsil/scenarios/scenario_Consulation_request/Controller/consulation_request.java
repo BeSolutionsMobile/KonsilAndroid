@@ -25,7 +25,9 @@ import com.besolutions.konsil.NetworkLayer.NetworkInterface;
 import com.besolutions.konsil.NetworkLayer.ResponseModel;
 import com.besolutions.konsil.R;
 import com.besolutions.konsil.config.Config;
+import com.besolutions.konsil.network_check_status.regist_network_broadcast;
 import com.besolutions.konsil.scenarios.scenario_Consulation_request.model.consultation_reserve;
+import com.besolutions.konsil.scenarios.scenario_compalint_details.compalint_details.Controller.compalint_details;
 import com.besolutions.konsil.scenarios.scenario_mian_page.Controller.main_screen;
 import com.besolutions.konsil.utils.firebase_storage;
 import com.besolutions.konsil.utils.firebase_storage_pdf;
@@ -87,7 +89,8 @@ public class consulation_request extends AppCompatActivity implements View.OnCli
 
         set_toolbar_name();
 
-
+       //CALL BROADCAST RECIEVER METHOD
+        new regist_network_broadcast().registerNetworkBroadcastForNougat(consulation_request.this);
     }
 
     @Override
@@ -250,6 +253,6 @@ public class consulation_request extends AppCompatActivity implements View.OnCli
 
     @Override
     public void OnError(VolleyError error) {
-        Toast.makeText(this, "" + error.networkResponse, Toast.LENGTH_SHORT).show();
+
     }
 }

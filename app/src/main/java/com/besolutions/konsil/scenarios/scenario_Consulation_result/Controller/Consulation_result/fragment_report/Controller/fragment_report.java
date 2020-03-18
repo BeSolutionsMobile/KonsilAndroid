@@ -117,6 +117,6 @@ public class fragment_report extends Fragment implements View.OnClickListener, N
 
     @Override
     public void OnError(VolleyError error) {
-        Toast.makeText(getActivity(), "" + error.networkResponse, Toast.LENGTH_SHORT).show();
+
     }
 }

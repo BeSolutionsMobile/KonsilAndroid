@@ -24,7 +24,9 @@ import com.besolutions.konsil.NetworkLayer.ResponseModel;
 import com.besolutions.konsil.R;
 import com.besolutions.konsil.local_data.saved_data;
 import com.besolutions.konsil.local_data.send_data;
+import com.besolutions.konsil.network_check_status.regist_network_broadcast;
 import com.besolutions.konsil.scenarios.scenario_login.Controller.loading;
+import com.besolutions.konsil.scenarios.scenario_mian_page.Controller.main_screen;
 import com.besolutions.konsil.scenarios.scenario_personal_info.model.UserInfo;
 import com.besolutions.konsil.scenarios.scenario_personal_info.model.root_personal_info;
 import com.besolutions.konsil.utils.firebase_storage_one_img;
@@ -80,6 +82,9 @@ public class personal_info extends AppCompatActivity implements NetworkInterface
         done.setOnClickListener(this);
         change_photo.setOnClickListener(this);
 
+
+        //CALL BROADCAST RECIEVER METHOD
+        new regist_network_broadcast().registerNetworkBroadcastForNougat(personal_info.this);
 
     }
 
@@ -204,28 +209,4 @@ public class personal_info extends AppCompatActivity implements NetworkInterface
 
     }
 
-//    private String getRealPathFromURI(Uri contentUri) {
-//
-//        // can post image
-//        String[] proj = {MediaStore.Images.Media.DATA};
-//        Cursor cursor = managedQuery(contentUri,
-//                proj, // Which columns to return
-//                null,       // WHERE clause; which rows to return (all rows)
-//                null,       // WHERE clause selection arguments (none)
-//                null); // Order-by clause (ascending by name)
-//        int column_index = cursor.getColumnIndexOrThrow(MediaStore.Images.Media.DATA);
-//        cursor.moveToFirst();
-//
-//        String res = cursor.getString(column_index);
-//        cursor.close();
-//
-//
-//        for (int index = 0; index < res.length(); index++) {
-//               if(res.contains("/"))
-//               {
-//                   Log.e("res...",""+index);
-//               }
-//        }
-//        return res;
-//    }
 }

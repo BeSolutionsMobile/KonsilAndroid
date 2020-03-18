@@ -12,6 +12,8 @@ import com.besolutions.konsil.NetworkLayer.Apicalls;
 import com.besolutions.konsil.NetworkLayer.NetworkInterface;
 import com.besolutions.konsil.NetworkLayer.ResponseModel;
 import com.besolutions.konsil.R;
+import com.besolutions.konsil.network_check_status.regist_network_broadcast;
+import com.besolutions.konsil.scenarios.scenario_mian_page.Controller.main_screen;
 import com.besolutions.konsil.scenarios.scenarios_faq.model.Datum;
 import com.besolutions.konsil.scenarios.scenarios_faq.model.root_faq;
 import com.besolutions.konsil.scenarios.scenarios_faq.pattern.expandAdapter;
@@ -40,12 +42,15 @@ public class faq extends AppCompatActivity implements NetworkInterface {
         }
 
         set_toolbar_name();
-
+ 
         try {
             new Apicalls(this,this).faq();
         } catch (JSONException e) {
             e.printStackTrace();
         }
+
+        //CALL BROADCAST RECIEVER METHOD
+        new regist_network_broadcast().registerNetworkBroadcastForNougat(faq.this);
     }
 
     public void set_toolbar_name() {

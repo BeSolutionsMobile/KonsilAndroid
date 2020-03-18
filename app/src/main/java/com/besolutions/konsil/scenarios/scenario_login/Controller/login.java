@@ -1,6 +1,7 @@
 package com.besolutions.konsil.scenarios.scenario_login.Controller;
 
 import android.content.Intent;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -20,14 +21,19 @@ import com.besolutions.konsil.R;
 import com.besolutions.konsil.local_data.saved_data;
 import com.besolutions.konsil.local_data.send_data;
 
+import com.besolutions.konsil.network_check_status.regist_network_broadcast;
+import com.besolutions.konsil.scenarios.scenario_compalint_details.compalint_details.Controller.compalint_details;
 import com.besolutions.konsil.scenarios.scenario_login.model.UserInfo;
 import com.besolutions.konsil.scenarios.scenario_login.model.login_root;
 import com.besolutions.konsil.scenarios.scenario_mian_page.Controller.main_screen;
+import com.besolutions.konsil.scenarios.scenario_splash_screen.Controller.splash_screen;
 import com.besolutions.konsil.scenarios.secnario_fingerprint.Controller.fingerprint;
 import com.besolutions.konsil.scenarios.scenario_sign_up.Controller.sign_up;
 import com.besolutions.konsil.utils.utils;
 import com.google.gson.Gson;
 
+
+import org.json.JSONException;
 
 import es.dmoral.toasty.Toasty;
 
@@ -72,8 +78,7 @@ public class login extends AppCompatActivity implements View.OnClickListener, Ne
             }
         });
 
-        //SET FINGER PRINT
-        setCheck_finger();
+
     }
 
     @Override
@@ -100,6 +105,9 @@ public class login extends AppCompatActivity implements View.OnClickListener, Ne
         } else if (v.getId() == R.id.signup) {
             startActivity(new Intent(this, sign_up.class));
         }
+
+        //CALL BROADCAST RECIEVER METHOD
+        new regist_network_broadcast().registerNetworkBroadcastForNougat(login.this);
     }
 
     @Override
@@ -119,8 +127,7 @@ public class login extends AppCompatActivity implements View.OnClickListener, Ne
         new utils().dismiss_dialog(login.this);  //DISMISS PROGRESS DIALOG
 
 
-        loading loading = new loading();
-        loading.dialog(login.this, R.layout.successful_login, .80);
+
 
         Gson gson = new Gson();
 
@@ -137,6 +144,13 @@ public class login extends AppCompatActivity implements View.OnClickListener, Ne
         new send_data().send_phone(this, userInfo.getPhone());
 
         new send_data().login_status(login.this, true);  //SET TRUE TO MAKE LOGIN AFTER FIRST LOGIN
+
+
+        loading loading = new loading();
+        loading.dialog(login.this, R.layout.successful_login, .80);
+
+
+
 
     }
 
@@ -155,17 +169,7 @@ public class login extends AppCompatActivity implements View.OnClickListener, Ne
         new utils().dismiss_dialog(login.this);
     }
 
-    //CHECK IF FINGER PRINT
-    void setCheck_finger() {
-        if(new saved_data().get_login_status(this) == true) {
-            if (new saved_data().get_finger_print(this).equals("yes")) {
-                startActivity(new Intent(login.this, fingerprint.class));
-            }
-            else {
-                startActivity(new Intent(login.this, main_screen.class));
-            }
-        }
-    }
+
 
     @Override
     public void onBackPressed() {
@@ -177,4 +181,6 @@ public class login extends AppCompatActivity implements View.OnClickListener, Ne
         super.onStart();
 
     }
+
+
 }

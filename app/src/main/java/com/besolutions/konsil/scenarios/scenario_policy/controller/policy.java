@@ -17,5 +17,7 @@ public class policy extends AppCompatActivity {
         TextView title = findViewById(R.id.title);
         String terms_of_use = getResources().getString(R.string.privacy);
         title.setText(terms_of_use);
+
+
     }
 }

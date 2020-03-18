@@ -16,7 +16,7 @@
     <string name="filter">Filter</string>
     <string name="degree">Degree</string>
     <string name="submit">Submit</string>
-    <string name="finger">finger</string>
+    <string name="finger">Use your finger to login</string>
     <string name="patients">Patients</string>
     <string name="request_consulation">Request Consulation</string>
     <string name="requst_online_converstaion">Requst Online Converstaion</string>
@@ -50,7 +50,7 @@
     <string name="germany">Germany</string>
     <string name="orrr">OR</string>
     <string name="full_name">Full Name</string>
-    <string name="accept_all_items_and_conditions">I accept all the terms of use and the privacy policy</string>
+    <string name="accept_all_items_and_conditions">I accept all the </string>
     <string name="Specialist">Specialities List</string>
     <string name="degrees">Degree :</string>
     <string name="rate">Rate :</string>
@@ -228,5 +228,7 @@ We use cookies. Cookies are small files that we send to your browser when you vi
 Some functions of our website cannot be offered without the use of technically necessary cookies. Other cookies, on the other hand, allow us to perform various analyzes. So some cookies can v</string>
     <string name="language">Language</string>
     <string name="dr">Dr :</string>
+    <string name="and">and</string>
+    <string name="loading_c">Loading...</string>
 
 </resources>

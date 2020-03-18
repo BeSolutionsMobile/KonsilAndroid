@@ -8,6 +8,7 @@
     android:background="@drawable/make_compalint"
     tools:context=".scenarios.scenario_make_complaint.Controller.make_a_complaint">
 <include layout="@layout/toolbar_default"/>
+    <include layout="@layout/connection_txt"/>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

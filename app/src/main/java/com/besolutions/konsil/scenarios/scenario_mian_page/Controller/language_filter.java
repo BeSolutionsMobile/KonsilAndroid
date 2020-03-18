@@ -68,7 +68,7 @@ public class language_filter implements View.OnClickListener , NetworkInterface 
 
         } else if(v.getId() == R.id.germany)
         {
-            send_data.send_lan(context, "gr");
+            send_data.send_lan(context, "de");
             new utils().set_language(new saved_data().get_lan(context),context); //CHANGE LANGUAGE
 
             //CALL SERVER

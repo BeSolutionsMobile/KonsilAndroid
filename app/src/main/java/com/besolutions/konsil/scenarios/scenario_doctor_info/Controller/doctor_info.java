@@ -17,10 +17,13 @@ import com.besolutions.konsil.NetworkLayer.Apicalls;
 import com.besolutions.konsil.NetworkLayer.NetworkInterface;
 import com.besolutions.konsil.NetworkLayer.ResponseModel;
 import com.besolutions.konsil.R;
+import com.besolutions.konsil.network_check_status.regist_network_broadcast;
+import com.besolutions.konsil.scenarios.scenario_compalint_details.compalint_details.Controller.compalint_details;
 import com.besolutions.konsil.scenarios.scenario_doctor_info.model.Doctor;
 import com.besolutions.konsil.scenarios.scenario_doctor_info.model.root_details;
 import com.besolutions.konsil.scenarios.scenario_request_online_conversation.Controller.request_online_conversation;
 import com.besolutions.konsil.scenarios.scenario_Consulation_request.Controller.consulation_request;
+import com.besolutions.konsil.scenarios.scenario_sign_up.Controller.sign_up;
 import com.google.gson.Gson;
 import com.squareup.picasso.Picasso;
 
@@ -58,6 +61,8 @@ public class doctor_info extends AppCompatActivity implements View.OnClickListen
         //SET RESOURCE FILE FOR CHECK IS NULL OR NOT
         No_bioavailable = getResources().getString(R.string.nobioavailable);
 
+        //CALL BROADCAST RECIEVER METHOD
+        new regist_network_broadcast().registerNetworkBroadcastForNougat(doctor_info.this);
 
     }
 
@@ -142,6 +147,7 @@ public class doctor_info extends AppCompatActivity implements View.OnClickListen
         //SET ON CLICK DATA
         online_res.setOnClickListener(this);
         request_consulation.setOnClickListener(this);
+
 
     }
 

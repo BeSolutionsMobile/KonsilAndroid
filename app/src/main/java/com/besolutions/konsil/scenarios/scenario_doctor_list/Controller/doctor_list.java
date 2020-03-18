@@ -26,8 +26,7 @@ import com.besolutions.konsil.scenarios.scenario_doctor_list.model.Doctor;
 import com.besolutions.konsil.scenarios.scenario_doctor_list.model.doctor_list_items;
 import com.besolutions.konsil.scenarios.scenario_doctor_list.model.root;
 import com.besolutions.konsil.scenarios.scenario_doctor_list.pattern.doctor_adapter;
-import com.besolutions.konsil.scenarios.scenario_mian_page.Controller.main_screen;
-import com.besolutions.konsil.utils.regist_network_broadcast;
+import com.besolutions.konsil.network_check_status.regist_network_broadcast;
 import com.besolutions.konsil.utils.utils_adapter;
 import com.google.gson.Gson;
 
@@ -142,7 +141,7 @@ public class doctor_list extends AppCompatActivity implements View.OnClickListen
 
     @Override
     public void OnError(VolleyError error) {
-        Toast.makeText(this, "No Internet Connection", Toast.LENGTH_SHORT).show();
+        pg.setVisibility(View.GONE);
     }
 
 

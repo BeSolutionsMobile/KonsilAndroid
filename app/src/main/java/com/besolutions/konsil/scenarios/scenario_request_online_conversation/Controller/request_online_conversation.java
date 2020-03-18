@@ -24,6 +24,7 @@ import com.besolutions.konsil.NetworkLayer.NetworkInterface;
 import com.besolutions.konsil.NetworkLayer.ResponseModel;
 import com.besolutions.konsil.R;
 import com.besolutions.konsil.config.Config;
+import com.besolutions.konsil.network_check_status.regist_network_broadcast;
 import com.besolutions.konsil.scenarios.scenario_Consulation_request.Controller.consulation_request;
 import com.besolutions.konsil.scenarios.scenario_mian_page.Controller.main_screen;
 import com.besolutions.konsil.scenarios.scenario_payment.controller.payment;
@@ -102,6 +103,9 @@ public class request_online_conversation extends AppCompatActivity implements Vi
         //SET TEXT VIEW NO DATA FOUND
         String nodates = getResources().getString(R.string.nodates);
         nomsg.setText(nodates);
+
+        //CALL BROADCAST RECIEVER METHOD
+        new regist_network_broadcast().registerNetworkBroadcastForNougat(request_online_conversation.this);
 
 
     }
@@ -198,8 +202,7 @@ public class request_online_conversation extends AppCompatActivity implements Vi
 
     @Override
     public void OnError(VolleyError error) {
-        Toast.makeText(this, "" + error.networkResponse.statusCode, Toast.LENGTH_SHORT).show();
-    }
+        pg.setVisibility(View.GONE);    }
 
     //SET DOCTOR_DETAILS
     void set_doc_details() {

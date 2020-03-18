@@ -1,6 +1,7 @@
 package com.besolutions.konsil.scenarios.scenario_sign_up.Controller;
 
 import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
@@ -8,6 +9,7 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.android.volley.VolleyError;
@@ -17,8 +19,10 @@ import com.besolutions.konsil.NetworkLayer.ResponseModel;
 import com.besolutions.konsil.R;
 import com.besolutions.konsil.local_data.saved_data;
 import com.besolutions.konsil.local_data.send_data;
+import com.besolutions.konsil.network_check_status.regist_network_broadcast;
 import com.besolutions.konsil.scenarios.scenario_login.Controller.loading;
 import com.besolutions.konsil.scenarios.scenario_login.Controller.login;
+import com.besolutions.konsil.scenarios.scenario_mian_page.Controller.main_screen;
 import com.besolutions.konsil.scenarios.scenario_sign_up.model.UserInfo;
 import com.besolutions.konsil.scenarios.scenario_sign_up.model.root_signup;
 import com.besolutions.konsil.scenarios.scenario_terms_of_use.Controller.terms_of_use;
@@ -40,6 +44,7 @@ public class sign_up extends AppCompatActivity implements View.OnClickListener, 
     com.besolutions.konsil.scenarios.scenario_sign_up.model.UserInfo UserInfo;
     CheckBox accept_condition;
     Boolean check_box = false;
+    TextView terms,privacy;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +57,8 @@ public class sign_up extends AppCompatActivity implements View.OnClickListener, 
         email = findViewById(R.id.email);
         password = findViewById(R.id.password);
         accept_condition = findViewById(R.id.accept_condition);
+        terms = findViewById(R.id.terms);
+        privacy =findViewById(R.id.privacy);
 
         signup.setOnClickListener(this);
 
@@ -60,14 +67,20 @@ public class sign_up extends AppCompatActivity implements View.OnClickListener, 
             @Override
             public void onCheckedChanged(CompoundButton buttonView, boolean isChecked) {
                 check_box = isChecked;
-                if(isChecked == true)
-                {
-                    startActivity(new Intent(sign_up.this, terms_of_use.class));
-                }
             }
         });
 
+        //GO TO TERMS OF USE
+        terms.setOnClickListener(this);
+
+        //GO TO PRIVACY
+        privacy.setOnClickListener(this);
+
+
         firebase_token();
+
+        //CALL BROADCAST RECIEVER METHOD
+        new regist_network_broadcast().registerNetworkBroadcastForNougat(sign_up.this);
 
     }
 
@@ -104,6 +117,16 @@ public class sign_up extends AppCompatActivity implements View.OnClickListener, 
                 String lang = new saved_data().get_lan(sign_up.this);
                 new Apicalls(sign_up.this, this).insertUser(username.getText().toString(), phone.getText().toString(), email.getText().toString(), password.getText().toString(), "2", "", new saved_data().get_lan(this), firebase_token());
             }
+        }
+        else if(v.getId() ==R.id.terms)
+        {
+            Intent browse = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.konsilmed.com/terms"));
+            startActivity(browse);       //GO TO TERMS OF USE
+        }
+        else if(v.getId() == R.id.privacy)
+        {
+            Intent browse = new Intent(Intent.ACTION_VIEW, Uri.parse("https://www.konsilmed.com/privacy"));
+            startActivity(browse);       //GO TO PRIVACY
         }
 
     }

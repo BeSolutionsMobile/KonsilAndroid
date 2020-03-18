@@ -10,6 +10,8 @@ import com.besolutions.konsil.NetworkLayer.NetworkInterface;
 import com.besolutions.konsil.NetworkLayer.ResponseModel;
 import com.besolutions.konsil.R;
 
+import com.besolutions.konsil.network_check_status.regist_network_broadcast;
+import com.besolutions.konsil.scenarios.scenario_mian_page.Controller.main_screen;
 import com.besolutions.konsil.scenarios.scenario_online_conversation.Controller.info.Controller.fragment_info;
 import com.besolutions.konsil.scenarios.scenario_online_conversation.Controller.report.Controller.fragment_report_online_c;
 import com.besolutions.konsil.utils.utils;
@@ -45,6 +47,9 @@ public class online_conversation extends AppCompatActivity implements NetworkInt
         });
         radioRealButtonGroup.setPosition(0);
         set_toolbar_name();
+
+        //CALL BROADCAST RECIEVER METHOD
+        new regist_network_broadcast().registerNetworkBroadcastForNougat(online_conversation.this);
     }
 
     public void set_toolbar_name()

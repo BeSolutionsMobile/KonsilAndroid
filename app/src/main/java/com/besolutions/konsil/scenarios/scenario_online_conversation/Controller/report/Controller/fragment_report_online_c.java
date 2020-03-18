@@ -110,6 +110,6 @@ public class fragment_report_online_c extends Fragment implements View.OnClickLi
 
     @Override
     public void OnError(VolleyError error) {
-        Toasty.warning(getContext(), "Cant Connect Server", Toasty.LENGTH_LONG).show();
+
     }
 }
