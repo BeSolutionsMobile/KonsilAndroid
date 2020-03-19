@@ -12,7 +12,7 @@
         android:roundIcon="@mipmap/konzil_logo_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-        tools:ignore="GoogleAppIndexingWarning">
+    tools:ignore="GoogleAppIndexingWarning">
         <activity android:name=".network.accccccccc"></activity>
         <activity android:name=".scenarios.scenario_policy.controller.policy" />
         <activity android:name=".scenarios.scenario_terms_of_use.Controller.terms_of_use" />

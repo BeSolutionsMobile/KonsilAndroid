@@ -93,6 +93,7 @@ public class utils {
         Configuration configuration=resources.getConfiguration();
         configuration.setLocale(new Locale(Lan.toLowerCase()));
         resources.updateConfiguration(configuration,displayMetrics);
+
     }
 
     /**

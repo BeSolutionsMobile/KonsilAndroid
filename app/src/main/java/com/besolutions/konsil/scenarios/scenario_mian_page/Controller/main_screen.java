@@ -1,12 +1,15 @@
 package com.besolutions.konsil.scenarios.scenario_mian_page.Controller;
 
 import android.content.Intent;
+import android.content.res.Configuration;
+import android.content.res.Resources;
 import android.net.Uri;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.Toolbar;
+import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -24,6 +27,7 @@ import com.besolutions.konsil.NetworkLayer.NetworkInterface;
 import com.besolutions.konsil.NetworkLayer.ResponseModel;
 import com.besolutions.konsil.R;
 
+import com.besolutions.konsil.local_data.saved_data;
 import com.besolutions.konsil.scenarios.scenario_mian_page.model.all_specialitiesDatum;
 import com.besolutions.konsil.scenarios.scenario_mian_page.model.all_specialitiesroot_specialities;
 import com.besolutions.konsil.scenarios.scenario_mian_page.model.main_screen_list;
@@ -41,6 +45,7 @@ import com.google.gson.Gson;
 import org.json.JSONException;
 
 import java.util.ArrayList;
+import java.util.Locale;
 
 public class main_screen extends AppCompatActivity implements NavigationDrawerCallbacks, View.OnClickListener, NetworkInterface {
     Toolbar mToolbar;
@@ -212,7 +217,6 @@ public class main_screen extends AppCompatActivity implements NavigationDrawerCa
     protected void onResume() {
         super.onResume();
 
-        //GET DATA FROM SERVER
         try {
             pg.setVisibility(View.VISIBLE);
             new Apicalls(this, this).get_all_specialities();
@@ -227,5 +231,13 @@ public class main_screen extends AppCompatActivity implements NavigationDrawerCa
 
         //CALL BROADCAST RECIEVER METHOD
         new regist_network_broadcast().unregisterNetworkChanges(main_screen.this);
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        new utils().set_language(new saved_data().get_lan(main_screen.this),main_screen.this); //CHANGE LANGUAGE
+
+
     }
 }
