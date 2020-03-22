@@ -1,5 +1,6 @@
 package com.besolutions.konsil.scenarios.scenario_login.Controller;
 
+import android.app.Activity;
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
@@ -26,7 +27,11 @@ public class loading implements NetworkInterface {
         int width = (int) (context.getResources().getDisplayMetrics().widthPixels * widthh);
         int height = android.view.WindowManager.LayoutParams.WRAP_CONTENT;
         dialog.getWindow().setLayout(width, height);
-        dialog.show();
+
+        Activity activity = (Activity)context;
+        if(!activity.isFinishing()) {
+            dialog.show();
+        }
 
         change_lan(context); //DATA CAME FROM SERVER
 

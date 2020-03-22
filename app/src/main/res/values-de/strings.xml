@@ -101,7 +101,7 @@
     <string name="doc_info">Arzt Info</string>
     <string name="online_con_details">Online-Konversationsdetails</string>
     <string name="con_req">Konsultationsanfrage</string>
-    <string name="patient_history">Vordiagnosen</string>
+    <string name="patient_history">Bitte schreiben Sie Ihre Krankheitsgeschichte</string>
     <string name="done">erledigt</string>
     <string name="pay">Zahlen</string>
     <string name="credit_card_type">Kreditkartentyp *</string>

@@ -62,10 +62,6 @@ public class doctor_list extends AppCompatActivity implements View.OnClickListen
         tv_check_connection = findViewById(R.id.tv_check_connection);
 
 
-        TextView title = findViewById(R.id.title);
-        String doc_filters = getResources().getString(R.string.Specialist);
-        title.setText(doc_filters);
-
         id = getIntent().getIntExtra("id", 0);
         int num = getIntent().getIntExtra("num", 0);
 

@@ -50,8 +50,8 @@
     <string name="germany">Germany</string>
     <string name="orrr">او</string>
     <string name="full_name">الاسم بالكامل</string>
-    <string name="accept_all_items_and_conditions">قبول الشروط والاحكام</string>
-    <string name="Specialist">متخصص</string>
+    <string name="accept_all_items_and_conditions">قبول </string>
+    <string name="Specialist">قائمه التخصصات</string>
     <string name="degrees">الدرجه :</string>
     <string name="rate">التقييم :</string>
     <string name="doc_filters">Ärzte Filter</string>
@@ -100,8 +100,8 @@
     <string name="language_changed_successfully">تم تغيير اللغه....</string>
     <string name="doc_info">تفاصيل الطبيب</string>
     <string name="online_con_details">تفاصيل المحادثه</string>
-    <string name="con_req">طلب محادثه</string>
-    <string name="patient_history">تاريخ المريض</string>
+    <string name="con_req">طلب استشاره</string>
+    <string name="patient_history">اكتب تاريخك المرضى والامراض المذمنه الخاصه بك ...</string>
     <string name="done">تم</string>
     <string name="pay">دفع</string>
     <string name="credit_card_type">Kreditkartentyp *</string>
@@ -151,10 +151,10 @@
     <string name="_30_minutes">30 دقيقة</string>
     <string name="tap_to_choose_desired_day">اضغط لاختيار اليوم المطلوب</string>
     <string name="nobioavailable">لا يوجد بيانات</string>
-    <string name="terms_of_use">سياسة الاستخدام</string>
+    <string name="terms_of_use">سياسه الشروط والاحكام</string>
     <string name="faq">الاسئله الشائعة</string>
     <string name="treatment_ger">العلاج فى المانيا </string>
-    <string name="privacy">الخصوصية</string>
+    <string name="privacy">سياسه الخصوصيه</string>
     <string name="consualtion_details_request">تفاصيل الاستشاره</string>
     <string name="email_val">الايميل قصير جدا!</string>
     <string name="password_val">كلمة السر قصيرة جدا!</string>
