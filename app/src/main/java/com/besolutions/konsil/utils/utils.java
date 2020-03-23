@@ -32,7 +32,7 @@ public class utils {
                public void run() {
                    try {
                        // sleep during 800ms
-                       Thread.sleep(3000);
+                       Thread.sleep(5000);
                    } catch (InterruptedException e) {
                        e.printStackTrace();
                    }
