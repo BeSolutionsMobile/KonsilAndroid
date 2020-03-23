@@ -35,7 +35,6 @@ public class splash_screen extends AppCompatActivity implements NetworkInterface
         //CHANGE LANGUAGE
         new utils().set_language(new saved_data().get_lan(splash_screen.this), splash_screen.this);
 
-
         final ViewPager viewPager = findViewById(R.id.viewpager);
         viewimage = new viewimage(splash_screen.this);
         viewPager.setAdapter(viewimage);
