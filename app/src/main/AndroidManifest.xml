@@ -3,6 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.besolutions.konsil">
 
+    <uses-sdk tools:overrideLibrary="com.paypal.android.sdk.payments" />
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:name=".network.MyApplication"
         android:allowBackup="true"
@@ -12,8 +17,16 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
-    tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".network.accccccccc"></activity>
+        tools:ignore="GoogleAppIndexingWarning">
+        <activity android:name=".scenarios.scenario_splash_Activity.Controller.splash_activity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity android:name=".network.accccccccc" />
         <activity android:name=".scenarios.scenario_policy.controller.policy" />
         <activity android:name=".scenarios.scenario_terms_of_use.Controller.terms_of_use" />
         <activity android:name=".scenarios.scenario_payment.controller.payment" />
@@ -22,15 +35,9 @@
         <activity android:name=".scenarios.scenario_make_complaint.Controller.make_a_complaint" />
         <activity android:name=".scenarios.scenario_be_a_doctor.Controller.be_a_doctor" />
         <activity android:name=".scenarios.scenario_mian_page.Controller.main_screen" />
-
         <activity android:name=".scenarios.scenario_splash_screen.Controller.splash_screen">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
-
         <activity android:name=".scenarios.scenario_personal_info.Controller.personal_info" />
         <activity android:name=".scenarios.scenario_my_consultations.Controlller.my_consultations" />
         <activity android:name=".scenarios.scenario_compalint_details.compalint_details.Controller.compalint_details" />
@@ -67,14 +74,9 @@
             </intent-filter>
         </activity>
 
-        <meta-data android:name="com.facebook.sdk.ApplicationId"
-            android:value="@string/facebook_app_id"/>
-
+        <meta-data
+            android:name="com.facebook.sdk.ApplicationId"
+            android:value="@string/facebook_app_id" />
     </application>
-
-    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
-    <uses-permission android:name="android.permission.INTERNET" />
-
-    <uses-sdk tools:overrideLibrary="com.paypal.android.sdk.payments" />
 
 </manifest>
