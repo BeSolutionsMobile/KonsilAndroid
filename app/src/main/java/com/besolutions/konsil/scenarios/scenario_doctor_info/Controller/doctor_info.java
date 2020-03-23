@@ -38,7 +38,7 @@ public class doctor_info extends AppCompatActivity implements View.OnClickListen
     String doc_id_st;
     String No_bioavailable;
     ProgressBar pg;
-
+    TextView degree;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -119,6 +119,7 @@ public class doctor_info extends AppCompatActivity implements View.OnClickListen
         TextView consultation = findViewById(R.id.consultation);
         TextView conversation = findViewById(R.id.conversation);
         RatingBar ratingBar = findViewById(R.id.ratings);
+        degree = findViewById(R.id.degree);
 
 
         Gson gson = new Gson();
@@ -128,17 +129,18 @@ public class doctor_info extends AppCompatActivity implements View.OnClickListen
         //SET DATA
         Picasso.with(doctor_info.this).load(doctors.getImageUrl()).into(doc_img);
         doc_name.setText(doctors.getName());
-        doc_job.setText(doctors.getSpecialist());
+        doc_job.setText(""+doctors.getJobTitle());
         price.setText("" + doctors.getConsultationPrice());
         consultation.setText("" + doctors.getTotalConsultation());
         conversation.setText("" + doctors.getTotalConversation());
+        degree.setText(""+doctors.getDegree());
         ratingBar.setRating(doctors.getRate());
 
         //SET CHECK ON DOCTOR_DESCRIPITION IF NULL OR NOT
-        if (doctors.getJobTitle() == null) {
+        if (doctors.getBio() == null) {
             doc_desc.setText(No_bioavailable);  //IF ITEMS RETURN WITH NULL
         } else {
-            doc_desc.setText("" + doctors.getJobTitle());  //IF ITEMS RETURN WITH DATA
+            doc_desc.setText("" + doctors.getBio());  //IF ITEMS RETURN WITH DATA
 
         }
 

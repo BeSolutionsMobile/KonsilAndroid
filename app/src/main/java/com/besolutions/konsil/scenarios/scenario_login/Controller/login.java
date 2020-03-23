@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
+import android.net.Uri;
 import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
@@ -48,6 +49,13 @@ import com.facebook.Profile;
 import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInAccount;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.common.SignInButton;
+import com.google.android.gms.common.api.ApiException;
+import com.google.android.gms.tasks.Task;
 import com.google.gson.Gson;
 
 
@@ -72,7 +80,12 @@ public class login extends AppCompatActivity implements View.OnClickListener, Ne
     LoginButton fb_login;
     static CallbackManager callbackManager;
     boolean fb_status = false;
-    static  String email_fb,id_fab;
+    static String email_fb, id_fab;
+    SignInButton sign_in_google;
+    GoogleSignInClient mGoogleSignInClient;
+    int GOOGLE_SIGN_IN = 0;
+    static String personName_G,personEmail_G,personId_G;
+    int google_num =0;
 
 
     @Override
@@ -85,11 +98,13 @@ public class login extends AppCompatActivity implements View.OnClickListener, Ne
         check = findViewById(R.id.check);
         signup = findViewById(R.id.signup);
         check_finger = findViewById(R.id.check);
+        sign_in_google= findViewById(R.id.sign_in_google);
 
 
         login.setOnClickListener(this);
         check.setOnClickListener(this);
         signup.setOnClickListener(this);
+        sign_in_google.setOnClickListener(this);
 
         firebase_token();
 
@@ -107,10 +122,21 @@ public class login extends AppCompatActivity implements View.OnClickListener, Ne
 
         fb_login(); //CALL FACEBOOK LOGIN
 
-
         printKeyHash();
 
         checkLoginStatus();
+
+
+        //METHOD USING TO GOOGLE SIGN IN
+        GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                .requestEmail()
+                .build();
+
+        // Build a GoogleSignInClient with the options specified by gso.
+        mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
+
+        //SET TEXT IN GOOGLE
+        setGooglePlusButtonText(sign_in_google,"Continue With Google");
 
 
     }
@@ -136,8 +162,12 @@ public class login extends AppCompatActivity implements View.OnClickListener, Ne
                 //CALL SERVER
                 new Apicalls(login.this, login.this).loginUser(email.getText().toString(), password.getText().toString(), firebase_token());
             }
-        } else if (v.getId() == R.id.signup) {
+        }
+        else if (v.getId() == R.id.signup) {
             startActivity(new Intent(this, sign_up.class));
+        }
+        else if(v.getId() == R.id.sign_in_google) {
+            setSign_in_google();
         }
 
         //CALL BROADCAST RECIEVER METHOD
@@ -158,7 +188,7 @@ public class login extends AppCompatActivity implements View.OnClickListener, Ne
     @Override
     public void OnResponse(ResponseModel model) {
 
-        if (fb_status == false) {
+        if ((fb_status == false)&&(google_num == 0)) {
             new utils().dismiss_dialog(login.this);  //DISMISS PROGRESS DIALOG
         }
 
@@ -195,8 +225,16 @@ public class login extends AppCompatActivity implements View.OnClickListener, Ne
             String error_mail_pass = getResources().getString(R.string.error_mail_pass); //ERROR IN MAIL OR PASSWORD
             Toasty.error(login.this, error_mail_pass, Toasty.LENGTH_SHORT).show();
         } else if (error.networkResponse.statusCode == 402) {
-            //CALL SERVER
-            new Apicalls(login.this, login.this).loginUser(email_fb, id_fab, firebase_token());
+            //CALL SERVER IN LOGIN
+
+            if(google_num == 1) //IF THIS IS GOOGLE
+            {
+                new Apicalls(login.this, login.this).loginUser(personEmail_G, personId_G, firebase_token());
+            }
+            else { //IF THIS IS FACEBOOK
+                new Apicalls(login.this, login.this).loginUser(email_fb, id_fab, firebase_token());
+            }
+
         } else if (error.networkResponse.statusCode == 405) {
             new utils().dismiss_dialog(login.this);
             Toasty.error(login.this, "Email is Empty", Toasty.LENGTH_SHORT).show();
@@ -255,6 +293,13 @@ public class login extends AppCompatActivity implements View.OnClickListener, Ne
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
         callbackManager.onActivityResult(requestCode, resultCode, data);
         super.onActivityResult(requestCode, resultCode, data);
+        // Result returned from launching the Intent from GoogleSignInClient.getSignInIntent(...);
+        if (requestCode == GOOGLE_SIGN_IN) {
+            // The Task returned from this call is always completed, no need to attach
+            // a listener.
+            Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
+            handleSignInResult(task);
+        }
     }
 
     AccessTokenTracker tokenTracker = new AccessTokenTracker() {
@@ -323,6 +368,56 @@ public class login extends AppCompatActivity implements View.OnClickListener, Ne
 
         } catch (NoSuchAlgorithmException e) {
 
+        }
+    }
+
+    /**
+     * GOOGLE SIGN IN
+     */
+
+    //GOOGLE SIGN IN
+    private void setSign_in_google() {
+        Intent signInIntent = mGoogleSignInClient.getSignInIntent();
+        startActivityForResult(signInIntent, GOOGLE_SIGN_IN);
+    }
+
+    // RESULT CAME FROM GOOGLE
+    private void handleSignInResult(Task<GoogleSignInAccount> completedTask) {
+        try {
+            GoogleSignInAccount account = completedTask.getResult(ApiException.class);
+
+            // Signed in successfully, show authenticated UI.
+            GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(login.this);
+            if (acct != null) {
+                 personName_G = acct.getDisplayName();
+                 personEmail_G = acct.getEmail();
+                 personId_G = acct.getId();
+
+                 google_num = 1; //THIS IS USED TO KNOW IF FACEBOOK OR GMAIL
+
+
+                //CALL REGIST API
+               new Apicalls(login.this, login.this).insertUser(personName_G, "01152314753", personEmail_G, personId_G, "2", "", new saved_data().get_lan(login.this), firebase_token());
+
+            }
+
+        } catch (ApiException e) {
+            // The ApiException status code indicates the detailed failure reason.
+            // Please refer to the GoogleSignInStatusCodes class reference for more information.
+            Log.w("result", "signInResult:failed code=" + e.getStatusCode());
+        }
+    }
+
+    protected void setGooglePlusButtonText(SignInButton signInButton, String buttonText) {
+        // Find the TextView that is inside of the SignInButton and set its text
+        for (int i = 0; i < signInButton.getChildCount(); i++) {
+            View v = signInButton.getChildAt(i);
+
+            if (v instanceof TextView) {
+                TextView tv = (TextView) v;
+                tv.setText(buttonText);
+                return;
+            }
         }
     }
 }
