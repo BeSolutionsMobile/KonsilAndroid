@@ -43,7 +43,7 @@
                 android:layout_width="@dimen/_200sdp"
                 android:layout_height="@dimen/_50sdp"
                 xmlns:facebook="http://schemas.android.com/apk/res-auto"
-                 facebook:com_facebook_login_text="Continue With Facebook"
+                 facebook:com_facebook_login_text="@string/fb_login"
                 android:layout_marginLeft="@dimen/_40sdp"
                 android:layout_marginRight="@dimen/_40sdp"
                 android:layout_marginTop="@dimen/_8sdp"

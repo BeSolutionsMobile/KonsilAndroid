@@ -530,6 +530,8 @@ OK       Mehr Informationen
     <string name="dr">Dr :</string>
     <string name="and">und</string>
     <string name="loading_c">Wird geladen...</string>
+    <string name="fb_login">Weiter mit Facebook</string>
+    <string name="google_login">Weiter mit Google</string>
 
 
 </resources>

@@ -232,5 +232,7 @@ Some functions of our website cannot be offered without the use of technically n
     <string name="loading_c">Loading...</string>
     <string name="facebook_app_id">3298950006800475</string>
     <string name="loginprotocolscheme">fb3298950006800475</string>
+    <string name="fb_login">Continue With Facebook</string>
+    <string name="google_login">Continue With Google</string>
 
 </resources>

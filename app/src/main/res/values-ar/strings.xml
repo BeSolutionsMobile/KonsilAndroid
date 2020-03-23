@@ -165,6 +165,8 @@
     <string name="dr">طبيب :</string>
     <string name="and">و</string>
     <string name="loading_c">جارى التحميل...</string>
+    <string name="fb_login">الدخول باستخدام فيس بوك</string>
+    <string name="google_login">الدخول باستخدام جوجل</string>
 
 
 

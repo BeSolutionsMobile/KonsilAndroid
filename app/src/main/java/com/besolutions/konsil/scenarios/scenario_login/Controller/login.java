@@ -138,7 +138,7 @@ public class login extends AppCompatActivity implements View.OnClickListener, Ne
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
 
         //SET TEXT IN GOOGLE
-        setGooglePlusButtonText(sign_in_google,"Continue With Google");
+        setGooglePlusButtonText(sign_in_google,getResources().getString(R.string.google_login));
 
 
     }
