@@ -234,7 +234,6 @@ public class login extends AppCompatActivity implements View.OnClickListener, Ne
         //SET PERMISSION TO GET DATA
         fb_login.setReadPermissions("public_profile", "user_friends", "user_photos", "email", "user_birthday", "public_profile", "contact_email");
 
-        fb_login.setCompoundDrawablesWithIntrinsicBounds(null, null, null, null);
         fb_login.registerCallback(callbackManager, new FacebookCallback<LoginResult>() {
             @Override
             public void onSuccess(LoginResult loginResult) {

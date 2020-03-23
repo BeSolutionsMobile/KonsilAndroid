@@ -33,7 +33,7 @@ public class loading implements NetworkInterface {
             dialog.show();
         }
 
-        change_lan(context); //DATA CAME FROM SERVER
+       change_lan(context); //DATA CAME FROM SERVER
 
         Handler handler = new Handler();
         handler.postDelayed(new Runnable() {

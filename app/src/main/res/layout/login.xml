@@ -22,30 +22,15 @@
         android:layout_height="@dimen/_100sdp"
         android:src="@drawable/konzil_logo"
         android:layout_marginTop="@dimen/_15sdp"/>
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/_25sdp"
-        android:src="@drawable/twitter"
-        android:layout_marginLeft="@dimen/_30sdp"
-        android:layout_marginRight="@dimen/_30sdp"
-        android:layout_marginTop="@dimen/_15sdp"
-        />
-    <ImageView
-        android:layout_width="match_parent"
-        android:layout_height="@dimen/_25sdp"
-        android:src="@drawable/gmail"
-        android:layout_marginLeft="@dimen/_30sdp"
-        android:layout_marginRight="@dimen/_30sdp"
-        android:layout_marginTop="@dimen/_8sdp"
-        />
+
             <com.facebook.login.widget.LoginButton
-                android:layout_width="@dimen/_200sdp"
-                android:layout_height="@dimen/_25sdp"
-                android:layout_marginTop="@dimen/_10sdp"
+                android:layout_width="match_parent"
+                android:layout_height="@dimen/_50sdp"
                 xmlns:facebook="http://schemas.android.com/apk/res-auto"
                  facebook:com_facebook_login_text="Continue With Facebook"
-                android:layout_marginRight="@dimen/_10sdp"
-                android:textSize="@dimen/_12ssp"
+                android:layout_marginLeft="@dimen/_40sdp"
+                android:layout_marginRight="@dimen/_40sdp"
+                android:layout_marginTop="@dimen/_8sdp"                android:textSize="@dimen/_12ssp"
                 android:textColor="@android:color/white"
                 android:id="@+id/fb_login"
                 />

@@ -142,74 +142,7 @@
                 android:id="@+id/signup"
                 android:textColor="@android:color/white"
                 android:background="@drawable/buttom_bg"/>
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/_60sdp"
-                android:gravity="center"
-                android:orientation="horizontal">
 
-                <ImageView
-                    android:layout_width="@dimen/_9sdp"
-                    android:layout_height="@dimen/_9sdp"
-                    android:layout_marginLeft="@dimen/_7sdp"
-                    android:src="@drawable/or_bg"/>
-                <ImageView
-                    android:layout_width="@dimen/_9sdp"
-                    android:layout_height="@dimen/_9sdp"
-                    android:layout_marginLeft="@dimen/_7sdp"
-                    android:src="@drawable/or_bg"/>
-                <ImageView
-                    android:layout_width="@dimen/_7sdp"
-                    android:layout_height="@dimen/_7sdp"
-                    android:layout_marginLeft="@dimen/_7sdp"
-                    android:src="@drawable/or_bg"/>
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/orrr"
-                    android:textSize="@dimen/_12ssp"
-                    android:textColor="@color/color2"
-                    android:textStyle="bold"
-                    android:layout_marginLeft="@dimen/_10sdp"/>
-                <ImageView
-                    android:layout_width="@dimen/_7sdp"
-                    android:layout_height="@dimen/_7sdp"
-                    android:layout_marginLeft="@dimen/_10sdp"
-                    android:src="@drawable/or_bg"/>
-                <ImageView
-                    android:layout_width="@dimen/_9sdp"
-                    android:layout_height="@dimen/_9sdp"
-                    android:layout_marginLeft="@dimen/_7sdp"
-                    android:src="@drawable/or_bg"/>
-                <ImageView
-                    android:layout_width="@dimen/_10sdp"
-                    android:layout_height="@dimen/_10sdp"
-                    android:layout_marginLeft="@dimen/_7sdp"
-                    android:src="@drawable/or_bg"/>
-            </LinearLayout>
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/_25sdp"
-                android:src="@drawable/twitter"
-                android:layout_marginLeft="@dimen/_30sdp"
-                android:layout_marginRight="@dimen/_30sdp"
-                />
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/_25sdp"
-                android:src="@drawable/gmail"
-                android:layout_marginLeft="@dimen/_30sdp"
-                android:layout_marginRight="@dimen/_30sdp"
-                android:layout_marginTop="@dimen/_8sdp"
-                />
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="@dimen/_25sdp"
-                android:src="@drawable/facebook"
-                android:layout_marginLeft="@dimen/_30sdp"
-                android:layout_marginRight="@dimen/_30sdp"
-                android:layout_marginTop="@dimen/_8sdp"
-                />
         </LinearLayout>
     </android.support.v4.widget.NestedScrollView>
 </LinearLayout>
