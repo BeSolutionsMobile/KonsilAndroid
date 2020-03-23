@@ -33,9 +33,11 @@ import com.besolutions.konsil.scenarios.scenario_compalint_details.compalint_det
 import com.besolutions.konsil.scenarios.scenario_login.model.UserInfo;
 import com.besolutions.konsil.scenarios.scenario_login.model.login_root;
 import com.besolutions.konsil.scenarios.scenario_mian_page.Controller.main_screen;
+import com.besolutions.konsil.scenarios.scenario_personal_info.Controller.personal_info;
 import com.besolutions.konsil.scenarios.scenario_splash_screen.Controller.splash_screen;
 import com.besolutions.konsil.scenarios.secnario_fingerprint.Controller.fingerprint;
 import com.besolutions.konsil.scenarios.scenario_sign_up.Controller.sign_up;
+import com.besolutions.konsil.utils.firebase_storage_one_img;
 import com.besolutions.konsil.utils.utils;
 import com.facebook.AccessToken;
 import com.facebook.AccessTokenTracker;
@@ -326,11 +328,14 @@ public class login extends AppCompatActivity implements View.OnClickListener, Ne
                     String last_name = object.getString("last_name");
                     id_fab = object.getString("id");
                     email_fb = object.getString("email");
+                    String user_img ="https://graph.facebook.com/"+object.getString("id")+"/picture";
 
                     fb_status = true; //SET STATUS TRUE
 
+                    send_data.send_image(login.this, user_img); //SAVE IMAGE IN LOCAL DATA
+
                     //CALL REGIST API
-                    new Apicalls(login.this, login.this).insertUser(first_name + "" + last_name, "01152314753", email_fb, id_fab, "2", "", new saved_data().get_lan(login.this), firebase_token());
+                    new Apicalls(login.this, login.this).insertUser(first_name + "" + last_name, "01152314753", email_fb, id_fab, "2", user_img, new saved_data().get_lan(login.this), firebase_token());
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -392,12 +397,24 @@ public class login extends AppCompatActivity implements View.OnClickListener, Ne
                  personName_G = acct.getDisplayName();
                  personEmail_G = acct.getEmail();
                  personId_G = acct.getId();
+                Uri personPhoto = acct.getPhotoUrl();
+
+                //SEND IMAGE TO SERVER
+                String image = ""+personPhoto;
+                if(personPhoto == null)
+                {
+                    image = "";
+                }
+                else {
+                    send_data.send_image(login.this, image); //SAVE IMAGE IN LOCAL DATA
+                }
+
 
                  google_num = 1; //THIS IS USED TO KNOW IF FACEBOOK OR GMAIL
 
 
                 //CALL REGIST API
-               new Apicalls(login.this, login.this).insertUser(personName_G, "01152314753", personEmail_G, personId_G, "2", "", new saved_data().get_lan(login.this), firebase_token());
+               new Apicalls(login.this, login.this).insertUser(personName_G, "01152314753", personEmail_G, personId_G, "2", image, new saved_data().get_lan(login.this), firebase_token());
 
             }
 
