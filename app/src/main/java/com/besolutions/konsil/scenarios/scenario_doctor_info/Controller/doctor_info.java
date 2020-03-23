@@ -11,6 +11,7 @@ import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RatingBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.VolleyError;
 import com.besolutions.konsil.NetworkLayer.Apicalls;
@@ -129,18 +130,29 @@ public class doctor_info extends AppCompatActivity implements View.OnClickListen
         //SET DATA
         Picasso.with(doctor_info.this).load(doctors.getImageUrl()).into(doc_img);
         doc_name.setText(doctors.getName());
-        doc_job.setText(""+doctors.getJobTitle());
         price.setText("" + doctors.getConsultationPrice());
         consultation.setText("" + doctors.getTotalConsultation());
         conversation.setText("" + doctors.getTotalConversation());
         degree.setText(""+doctors.getDegree());
         ratingBar.setRating(doctors.getRate());
 
+        //SET CHECK ON DOC JOB
+        if(doctors.getJobTitle() == null)
+        {
+            doc_job.setVisibility(View.GONE); //IF NULL SET VISIBALITY GONe
+        }
+        else {
+            doc_job.setText(""+doctors.getJobTitle());
+
+
+        }
+
         //SET CHECK ON DOCTOR_DESCRIPITION IF NULL OR NOT
         if (doctors.getBio() == null) {
             doc_desc.setText(No_bioavailable);  //IF ITEMS RETURN WITH NULL
         } else {
             doc_desc.setText("" + doctors.getBio());  //IF ITEMS RETURN WITH DATA
+
 
         }
 
