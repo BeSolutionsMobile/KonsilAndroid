@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:gravity="center|top"
-    android:background="@color/color1"
+    android:background="#fdfdfd"
     tools:context=".scenarios.scenario_login.Controller.login">
     <android.support.v4.widget.NestedScrollView
         android:layout_width="match_parent"
