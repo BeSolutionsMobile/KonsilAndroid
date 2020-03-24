@@ -1,5 +1,6 @@
 package com.besolutions.konsil.utils;
 
+import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
@@ -32,13 +33,15 @@ public class utils {
                public void run() {
                    try {
                        // sleep during 800ms
-                       Thread.sleep(5000);
+                       Thread.sleep(500);
                    } catch (InterruptedException e) {
                        e.printStackTrace();
                    }
                    // start HomeActivity
                    Intent intent=new Intent(context, second_class);
+                   ((AppCompatActivity)context).overridePendingTransition(0, 0);
                    context.startActivity(intent);
+                   ((AppCompatActivity)context).overridePendingTransition(0, 0);
                    ((AppCompatActivity)context).finish();
                }
            }).start();

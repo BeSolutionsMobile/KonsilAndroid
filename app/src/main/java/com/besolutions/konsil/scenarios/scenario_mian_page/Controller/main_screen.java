@@ -69,9 +69,6 @@ public class main_screen extends AppCompatActivity implements NavigationDrawerCa
         mToolbar = findViewById(R.id.toolbar_actionbar);
         setSupportActionBar(mToolbar);
 
-        title = findViewById(R.id.title);
-        String Spechalist = getResources().getString(R.string.Specialist);
-        title.setText(Spechalist);
 
 
         mNavigationDrawerFragment = (NavigationDrawerFragment)
