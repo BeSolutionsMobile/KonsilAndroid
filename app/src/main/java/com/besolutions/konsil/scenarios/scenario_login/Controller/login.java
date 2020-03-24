@@ -4,9 +4,11 @@ import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.Signature;
+import android.graphics.drawable.Drawable;
 import android.net.Uri;
 import android.os.Handler;
 import android.support.annotation.Nullable;
+import android.support.graphics.drawable.Animatable2Compat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Base64;
@@ -16,6 +18,8 @@ import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.CompoundButton;
 import android.widget.EditText;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -39,6 +43,12 @@ import com.besolutions.konsil.scenarios.secnario_fingerprint.Controller.fingerpr
 import com.besolutions.konsil.scenarios.scenario_sign_up.Controller.sign_up;
 import com.besolutions.konsil.utils.firebase_storage_one_img;
 import com.besolutions.konsil.utils.utils;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.DataSource;
+import com.bumptech.glide.load.engine.GlideException;
+import com.bumptech.glide.load.resource.gif.GifDrawable;
+import com.bumptech.glide.request.RequestListener;
+import com.bumptech.glide.request.target.Target;
 import com.facebook.AccessToken;
 import com.facebook.AccessTokenTracker;
 import com.facebook.CallbackManager;
@@ -71,6 +81,7 @@ import es.dmoral.toasty.Toasty;
 
 import static com.besolutions.konsil.utils.utils_library.firebase_token;
 import static com.besolutions.konsil.utils.utils_library.yoyo;
+import static com.besolutions.konsil.utils.utils_library.yoyo_fading;
 
 public class login extends AppCompatActivity implements View.OnClickListener, NetworkInterface {
     Button login;
@@ -88,6 +99,8 @@ public class login extends AppCompatActivity implements View.OnClickListener, Ne
     int GOOGLE_SIGN_IN = 0;
     static String personName_G,personEmail_G,personId_G;
     int google_num =0;
+    ImageView logoanim;
+
 
 
     @Override
@@ -96,11 +109,16 @@ public class login extends AppCompatActivity implements View.OnClickListener, Ne
 
         setContentView(R.layout.login);
 
+        //MOVE TO THE TOP OF ACTIVITY
+        move_to_top();
+
+
         login = findViewById(R.id.login);
         check = findViewById(R.id.check);
         signup = findViewById(R.id.signup);
         check_finger = findViewById(R.id.check);
         sign_in_google= findViewById(R.id.sign_in_google);
+        logoanim = findViewById(R.id.logoanim);
 
 
         login.setOnClickListener(this);
@@ -109,6 +127,12 @@ public class login extends AppCompatActivity implements View.OnClickListener, Ne
         sign_in_google.setOnClickListener(this);
 
         firebase_token();
+
+        //STOP IMAGE LOOPING
+        stop_looping();
+
+
+
 
         //SET FINGER PRINT
         check_finger.setOnCheckedChangeListener(new CompoundButton.OnCheckedChangeListener() {
@@ -436,5 +460,67 @@ public class login extends AppCompatActivity implements View.OnClickListener, Ne
                 return;
             }
         }
+    }
+
+    //ANIMATION IMAGE FOR SPLASH SCREEN
+    void move_to_top()
+    {
+
+
+
+
+                //SET ITEM VISABLE AFTER 2 SECONDS
+                Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    public void run() {
+                        logoanim.animate().y(50f);
+
+                        //SET ITEM VISABLE AFTER 2 SECONDS
+                        Handler handler1 = new Handler();
+                        handler1.postDelayed(new Runnable() {
+                            public void run() {
+
+                                //SET ALL COMPONET VISABLE
+                                LinearLayout visability = findViewById(R.id.visible);
+
+
+
+                                yoyo_fading(R.id.visible, visability);
+
+                                visability.setVisibility(View.VISIBLE);
+
+
+
+                            }
+                        }, 500);
+
+                    }
+                }, 3500);
+
+
+
+    }
+
+    //USING TO STOP ANIMATION
+    void stop_looping()
+    {
+
+        Glide.with(this).asGif().load(R.raw.anim).listener(new RequestListener<GifDrawable>() {
+            @Override
+            public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<GifDrawable> target, boolean isFirstResource) {
+                return false;
+            }
+
+            @Override
+            public boolean onResourceReady(GifDrawable resource, Object model, Target<GifDrawable> target, DataSource dataSource, boolean isFirstResource) {
+                resource.setLoopCount(1);
+                resource.registerAnimationCallback(new Animatable2Compat.AnimationCallback() {
+                    @Override
+                    public void onAnimationEnd(Drawable drawable) {
+                        //do whatever after specified number of loops complete
+                    }
+                });
+                return false;
+            }}).into(logoanim);
     }
 }

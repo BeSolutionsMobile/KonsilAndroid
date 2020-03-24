@@ -56,7 +56,7 @@ public enum Apiclient {
      * @BASE_URL
      */
 
-    String BASE_URL = "https://www.konsilmed.be4maps.com/api/";
+    String BASE_URL = "https://www.konsilmed.com/api/";
 
     private final String URL;
     private final List<String> params;

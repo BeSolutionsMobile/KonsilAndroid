@@ -19,11 +19,7 @@
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
         <activity android:name=".scenarios.scenario_splash_Activity.Controller.splash_activity">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
 
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
         </activity>
 
         <activity android:name=".network.accccccccc" />
@@ -36,7 +32,11 @@
         <activity android:name=".scenarios.scenario_be_a_doctor.Controller.be_a_doctor" />
         <activity android:name=".scenarios.scenario_mian_page.Controller.main_screen" />
         <activity android:name=".scenarios.scenario_splash_screen.Controller.splash_screen">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
         </activity>
         <activity android:name=".scenarios.scenario_personal_info.Controller.personal_info" />
         <activity android:name=".scenarios.scenario_my_consultations.Controlller.my_consultations" />

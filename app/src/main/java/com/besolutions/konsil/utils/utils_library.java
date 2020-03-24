@@ -33,4 +33,11 @@ public class utils_library {
                 .repeat(1)
                 .playOn(v.findViewById(id));
     }
+
+    ///USING YOYO LIBRARY FADE OUT
+    public static void yoyo_fading(int id, View v) {
+        YoYo.with(Techniques.FadeIn)
+                .duration(700)
+                .playOn(v.findViewById(id));
+    }
 }
