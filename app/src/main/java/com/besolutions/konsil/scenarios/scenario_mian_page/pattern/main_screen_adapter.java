@@ -15,6 +15,7 @@ import com.besolutions.konsil.R;
 import com.besolutions.konsil.local_data.saved_data;
 import com.besolutions.konsil.scenarios.scenario_doctor_list.Controller.doctor_list;
 import com.besolutions.konsil.scenarios.scenario_mian_page.model.main_screen_list;
+import com.bumptech.glide.Glide;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -38,7 +39,7 @@ public class main_screen_adapter extends RecyclerView.Adapter<main_screen_adapte
     @Override
     public void onBindViewHolder(@NonNull main_screen_holder viewHolder, final int i) {
         viewHolder.name.setText(mylist.get(i).getName());
-        Picasso.with(context).load(mylist.get(i).getImage()).into(viewHolder.img);
+        Glide.with(context).load(mylist.get(i).getImage()).into(viewHolder.img);
 
         //SET ON ITEM CLICK
         viewHolder.item.setOnClickListener(new View.OnClickListener() {

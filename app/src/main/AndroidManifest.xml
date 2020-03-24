@@ -51,6 +51,7 @@
         <activity android:name=".scenarios.scenario_sign_up.Controller.sign_up" />
         <activity android:name=".scenarios.secnario_fingerprint.Controller.fingerprint" />
         <activity android:name=".scenarios.scenario_login.Controller.login" />
+        <activity android:name=".scenarios.scenario_login.Controller.loginnormal"/>
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name" />

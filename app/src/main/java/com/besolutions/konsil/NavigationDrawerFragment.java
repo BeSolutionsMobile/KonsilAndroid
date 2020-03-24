@@ -35,6 +35,7 @@ import android.widget.TextView;
 import com.besolutions.konsil.local_data.saved_data;
 import com.besolutions.konsil.local_data.send_data;
 import com.besolutions.konsil.scenarios.scenario_login.Controller.login;
+import com.besolutions.konsil.scenarios.scenario_login.Controller.loginnormal;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -277,7 +278,7 @@ public class NavigationDrawerFragment extends Fragment implements NavigationDraw
     public void onClick(View v) {
         if (v.getId() == R.id.logout) {
             new send_data().login_status(getActivity(), false);  //SET FALSE TO MAKE LOGIN
-            getActivity().startActivity(new Intent(getActivity(),login.class));
+            getActivity().startActivity(new Intent(getActivity(),loginnormal.class));
             getActivity().finish();
 
         }

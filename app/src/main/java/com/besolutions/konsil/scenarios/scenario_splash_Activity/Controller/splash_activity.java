@@ -76,7 +76,7 @@ public class splash_activity extends AppCompatActivity {
                     e.printStackTrace();
                 }
 
-                logoanim.animate().y(5f);
+                logoanim.animate().yBy(500f);
 
 
                 //GO TO SECOND ACTIVITY

@@ -28,6 +28,7 @@ import com.besolutions.konsil.scenarios.scenario_doctor_list.model.root;
 import com.besolutions.konsil.scenarios.scenario_doctor_list.pattern.doctor_adapter;
 import com.besolutions.konsil.network_check_status.regist_network_broadcast;
 import com.besolutions.konsil.utils.utils_adapter;
+import com.cooltechworks.views.shimmer.ShimmerRecyclerView;
 import com.google.gson.Gson;
 
 import org.json.JSONException;
@@ -35,7 +36,7 @@ import org.json.JSONException;
 import java.util.ArrayList;
 
 public class doctor_list extends AppCompatActivity implements View.OnClickListener, NetworkInterface {
-    RecyclerView doctor_list;
+    ShimmerRecyclerView doctor_list;
     TextView filter;
     Doctor[] doctor;
     Degree[] Degree;
@@ -61,6 +62,7 @@ public class doctor_list extends AppCompatActivity implements View.OnClickListen
         pg = findViewById(R.id.pg);
         tv_check_connection = findViewById(R.id.tv_check_connection);
 
+        pg.setVisibility(View.GONE);
 
         id = getIntent().getIntExtra("id", 0);
         int num = getIntent().getIntExtra("num", 0);
@@ -104,7 +106,11 @@ public class doctor_list extends AppCompatActivity implements View.OnClickListen
 
         this.model = model;
 
+        //doctor_list = findViewById(R.id.doctor_list);
+
         doctor_list = findViewById(R.id.doctor_list);
+
+
         ArrayList<doctor_list_items> arrayList = new ArrayList<>();
 
         Gson gson = new Gson();

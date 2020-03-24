@@ -22,6 +22,7 @@ import com.besolutions.konsil.local_data.send_data;
 import com.besolutions.konsil.network_check_status.regist_network_broadcast;
 import com.besolutions.konsil.scenarios.scenario_login.Controller.loading;
 import com.besolutions.konsil.scenarios.scenario_login.Controller.login;
+import com.besolutions.konsil.scenarios.scenario_login.Controller.loginnormal;
 import com.besolutions.konsil.scenarios.scenario_mian_page.Controller.main_screen;
 import com.besolutions.konsil.scenarios.scenario_sign_up.model.UserInfo;
 import com.besolutions.konsil.scenarios.scenario_sign_up.model.root_signup;
@@ -202,7 +203,7 @@ public class sign_up extends AppCompatActivity implements View.OnClickListener, 
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        Intent intent = new Intent(this, login.class);
+        Intent intent = new Intent(this, loginnormal.class);
         overridePendingTransition(0, 0);
         startActivity(intent);
         overridePendingTransition(0, 0);

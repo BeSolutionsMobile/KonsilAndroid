@@ -6,11 +6,11 @@ import android.content.pm.PackageManager;
 import android.content.pm.Signature;
 import android.graphics.drawable.Drawable;
 import android.net.Uri;
+import android.os.Bundle;
 import android.os.Handler;
 import android.support.annotation.Nullable;
 import android.support.graphics.drawable.Animatable2Compat;
 import android.support.v7.app.AppCompatActivity;
-import android.os.Bundle;
 import android.util.Base64;
 import android.util.Log;
 import android.view.View;
@@ -21,27 +21,18 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.volley.VolleyError;
-
 import com.besolutions.konsil.NetworkLayer.Apicalls;
 import com.besolutions.konsil.NetworkLayer.NetworkInterface;
 import com.besolutions.konsil.NetworkLayer.ResponseModel;
 import com.besolutions.konsil.R;
 import com.besolutions.konsil.local_data.saved_data;
 import com.besolutions.konsil.local_data.send_data;
-
 import com.besolutions.konsil.network_check_status.regist_network_broadcast;
-import com.besolutions.konsil.scenarios.scenario_compalint_details.compalint_details.Controller.compalint_details;
 import com.besolutions.konsil.scenarios.scenario_login.model.UserInfo;
 import com.besolutions.konsil.scenarios.scenario_login.model.login_root;
-import com.besolutions.konsil.scenarios.scenario_mian_page.Controller.main_screen;
-import com.besolutions.konsil.scenarios.scenario_personal_info.Controller.personal_info;
-import com.besolutions.konsil.scenarios.scenario_splash_screen.Controller.splash_screen;
-import com.besolutions.konsil.scenarios.secnario_fingerprint.Controller.fingerprint;
 import com.besolutions.konsil.scenarios.scenario_sign_up.Controller.sign_up;
-import com.besolutions.konsil.utils.firebase_storage_one_img;
 import com.besolutions.konsil.utils.utils;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.DataSource;
@@ -54,11 +45,9 @@ import com.facebook.AccessTokenTracker;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
-import com.facebook.FacebookSdk;
 import com.facebook.GraphRequest;
 import com.facebook.GraphResponse;
 import com.facebook.Profile;
-import com.facebook.login.LoginManager;
 import com.facebook.login.LoginResult;
 import com.facebook.login.widget.LoginButton;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
@@ -69,7 +58,6 @@ import com.google.android.gms.common.SignInButton;
 import com.google.android.gms.common.api.ApiException;
 import com.google.android.gms.tasks.Task;
 import com.google.gson.Gson;
-
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -83,7 +71,7 @@ import static com.besolutions.konsil.utils.utils_library.firebase_token;
 import static com.besolutions.konsil.utils.utils_library.yoyo;
 import static com.besolutions.konsil.utils.utils_library.yoyo_fading;
 
-public class login extends AppCompatActivity implements View.OnClickListener, NetworkInterface {
+public class loginnormal extends AppCompatActivity implements View.OnClickListener, NetworkInterface {
     Button login;
     CheckBox check;
     TextView signup;
@@ -101,17 +89,15 @@ public class login extends AppCompatActivity implements View.OnClickListener, Ne
     int google_num =0;
     ImageView logoanim;
 
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        setContentView(R.layout.login);
+        setContentView(R.layout.loginnormal);
 
-        //MOVE TO THE TOP OF ACTIVITY
-        move_to_top();
+        LinearLayout visability = findViewById(R.id.visible);
 
+        visability.setVisibility(View.VISIBLE);
 
         login = findViewById(R.id.login);
         check = findViewById(R.id.check);
@@ -120,18 +106,12 @@ public class login extends AppCompatActivity implements View.OnClickListener, Ne
         sign_in_google= findViewById(R.id.sign_in_google);
         logoanim = findViewById(R.id.logoanim);
 
-
         login.setOnClickListener(this);
         check.setOnClickListener(this);
         signup.setOnClickListener(this);
         sign_in_google.setOnClickListener(this);
 
         firebase_token();
-
-        //STOP IMAGE LOOPING
-        stop_looping();
-
-
 
 
         //SET FINGER PRINT
@@ -141,7 +121,7 @@ public class login extends AppCompatActivity implements View.OnClickListener, Ne
                 email = findViewById(R.id.email);
                 password = findViewById(R.id.password);
 
-                new send_data().finger_print(login.this, "yes");
+                new send_data().finger_print(loginnormal.this, "yes");
 
             }
         });
@@ -183,10 +163,10 @@ public class login extends AppCompatActivity implements View.OnClickListener, Ne
                 yoyo(R.id.password, password);
             } else {
 
-                new utils().set_dialog(login.this);  //CALL PROGRESS DIALOG
+                new utils().set_dialog(loginnormal.this);  //CALL PROGRESS DIALOG
 
                 //CALL SERVER
-                new Apicalls(login.this, login.this).loginUser(email.getText().toString(), password.getText().toString(), firebase_token());
+                new Apicalls(loginnormal.this, loginnormal.this).loginUser(email.getText().toString(), password.getText().toString(), firebase_token());
             }
         }
         else if (v.getId() == R.id.signup) {
@@ -197,7 +177,7 @@ public class login extends AppCompatActivity implements View.OnClickListener, Ne
         }
 
         //CALL BROADCAST RECIEVER METHOD
-        new regist_network_broadcast().registerNetworkBroadcastForNougat(login.this);
+        new regist_network_broadcast().registerNetworkBroadcastForNougat(loginnormal.this);
     }
 
     @Override
@@ -215,7 +195,7 @@ public class login extends AppCompatActivity implements View.OnClickListener, Ne
     public void OnResponse(ResponseModel model) {
 
         if ((fb_status == false)&&(google_num == 0)) {
-            new utils().dismiss_dialog(login.this);  //DISMISS PROGRESS DIALOG
+            new utils().dismiss_dialog(loginnormal.this);  //DISMISS PROGRESS DIALOG
         }
 
 
@@ -224,7 +204,7 @@ public class login extends AppCompatActivity implements View.OnClickListener, Ne
         login_root login_root = gson.fromJson(model.getResponse(), login_root.class);
 
         //GET TOKEN AND SAVE IT IN LOCAL DATA
-        send_data.save_token(login.this, login_root.getToken());
+        send_data.save_token(loginnormal.this, login_root.getToken());
 
         //SAVE PERSONAL INFO
         userInfo = login_root.getUserInfo();
@@ -233,11 +213,11 @@ public class login extends AppCompatActivity implements View.OnClickListener, Ne
         new send_data().send_email(this, userInfo.getEmail());
         new send_data().send_phone(this, userInfo.getPhone());
 
-        new send_data().login_status(login.this, true);  //SET TRUE TO MAKE LOGIN AFTER FIRST LOGIN
+        new send_data().login_status(loginnormal.this, true);  //SET TRUE TO MAKE LOGIN AFTER FIRST LOGIN
 
 
         loading loading = new loading();
-        loading.dialog(login.this, R.layout.successful_login, .80);
+        loading.dialog(loginnormal.this, R.layout.successful_login, .80);
 
         fb_status = false;
 
@@ -247,29 +227,29 @@ public class login extends AppCompatActivity implements View.OnClickListener, Ne
     @Override
     public void OnError(VolleyError error) {
         if (error.networkResponse.statusCode == 401) {
-            new utils().dismiss_dialog(login.this);
+            new utils().dismiss_dialog(loginnormal.this);
             String error_mail_pass = getResources().getString(R.string.error_mail_pass); //ERROR IN MAIL OR PASSWORD
-            Toasty.error(login.this, error_mail_pass, Toasty.LENGTH_SHORT).show();
+            Toasty.error(loginnormal.this, error_mail_pass, Toasty.LENGTH_SHORT).show();
         } else if (error.networkResponse.statusCode == 402) {
             //CALL SERVER IN LOGIN
 
             if(google_num == 1) //IF THIS IS GOOGLE
             {
-                new Apicalls(login.this, login.this).loginUser(personEmail_G, personId_G, firebase_token());
+                new Apicalls(loginnormal.this, loginnormal.this).loginUser(personEmail_G, personId_G, firebase_token());
             }
             else { //IF THIS IS FACEBOOK
-                new Apicalls(login.this, login.this).loginUser(email_fb, id_fab, firebase_token());
+                new Apicalls(loginnormal.this, loginnormal.this).loginUser(email_fb, id_fab, firebase_token());
             }
 
         } else if (error.networkResponse.statusCode == 405) {
-            new utils().dismiss_dialog(login.this);
-            Toasty.error(login.this, "Email is Empty", Toasty.LENGTH_SHORT).show();
+            new utils().dismiss_dialog(loginnormal.this);
+            Toasty.error(loginnormal.this, "Email is Empty", Toasty.LENGTH_SHORT).show();
         } else if (error.networkResponse.statusCode == 406) {
-            new utils().dismiss_dialog(login.this);
-            Toasty.error(login.this, "Password is Empty", Toasty.LENGTH_SHORT).show();
+            new utils().dismiss_dialog(loginnormal.this);
+            Toasty.error(loginnormal.this, "Password is Empty", Toasty.LENGTH_SHORT).show();
         } else if (error.networkResponse.statusCode == 407) {
-            new utils().dismiss_dialog(login.this);
-            Toasty.error(login.this, "Mobile Token is Empty", Toasty.LENGTH_SHORT).show();
+            new utils().dismiss_dialog(loginnormal.this);
+            Toasty.error(loginnormal.this, "Mobile Token is Empty", Toasty.LENGTH_SHORT).show();
         }
     }
 
@@ -356,10 +336,10 @@ public class login extends AppCompatActivity implements View.OnClickListener, Ne
 
                     fb_status = true; //SET STATUS TRUE
 
-                    send_data.send_image(login.this, user_img); //SAVE IMAGE IN LOCAL DATA
+                    send_data.send_image(loginnormal.this, user_img); //SAVE IMAGE IN LOCAL DATA
 
                     //CALL REGIST API
-                    new Apicalls(login.this, login.this).insertUser(first_name + "" + last_name, "01152314753", email_fb, id_fab, "2", user_img, new saved_data().get_lan(login.this), firebase_token());
+                    new Apicalls(loginnormal.this, loginnormal.this).insertUser(first_name + "" + last_name, "01152314753", email_fb, id_fab, "2", user_img, new saved_data().get_lan(loginnormal.this), firebase_token());
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
@@ -416,11 +396,11 @@ public class login extends AppCompatActivity implements View.OnClickListener, Ne
             GoogleSignInAccount account = completedTask.getResult(ApiException.class);
 
             // Signed in successfully, show authenticated UI.
-            GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(login.this);
+            GoogleSignInAccount acct = GoogleSignIn.getLastSignedInAccount(loginnormal.this);
             if (acct != null) {
-                 personName_G = acct.getDisplayName();
-                 personEmail_G = acct.getEmail();
-                 personId_G = acct.getId();
+                personName_G = acct.getDisplayName();
+                personEmail_G = acct.getEmail();
+                personId_G = acct.getId();
                 Uri personPhoto = acct.getPhotoUrl();
 
                 //SEND IMAGE TO SERVER
@@ -430,15 +410,15 @@ public class login extends AppCompatActivity implements View.OnClickListener, Ne
                     image = "";
                 }
                 else {
-                    send_data.send_image(login.this, image); //SAVE IMAGE IN LOCAL DATA
+                    send_data.send_image(loginnormal.this, image); //SAVE IMAGE IN LOCAL DATA
                 }
 
 
-                 google_num = 1; //THIS IS USED TO KNOW IF FACEBOOK OR GMAIL
+                google_num = 1; //THIS IS USED TO KNOW IF FACEBOOK OR GMAIL
 
 
                 //CALL REGIST API
-               new Apicalls(login.this, login.this).insertUser(personName_G, "01152314753", personEmail_G, personId_G, "2", image, new saved_data().get_lan(login.this), firebase_token());
+                new Apicalls(loginnormal.this, loginnormal.this).insertUser(personName_G, "01152314753", personEmail_G, personId_G, "2", image, new saved_data().get_lan(loginnormal.this), firebase_token());
 
             }
 
@@ -462,65 +442,4 @@ public class login extends AppCompatActivity implements View.OnClickListener, Ne
         }
     }
 
-    //ANIMATION IMAGE FOR SPLASH SCREEN
-    void move_to_top()
-    {
-
-
-
-
-                //SET ITEM VISABLE AFTER 2 SECONDS
-                Handler handler = new Handler();
-                handler.postDelayed(new Runnable() {
-                    public void run() {
-                        logoanim.animate().y(50f);
-
-                        //SET ITEM VISABLE AFTER 2 SECONDS
-                        Handler handler1 = new Handler();
-                        handler1.postDelayed(new Runnable() {
-                            public void run() {
-
-                                //SET ALL COMPONET VISABLE
-                                LinearLayout visability = findViewById(R.id.visible);
-
-
-
-                                yoyo_fading(R.id.visible, visability);
-
-                                visability.setVisibility(View.VISIBLE);
-
-
-
-                            }
-                        }, 500);
-
-                    }
-                }, 3500);
-
-
-
-    }
-
-    //USING TO STOP ANIMATION
-    void stop_looping()
-    {
-
-        Glide.with(this).asGif().load(R.raw.anim).listener(new RequestListener<GifDrawable>() {
-            @Override
-            public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<GifDrawable> target, boolean isFirstResource) {
-                return false;
-            }
-
-            @Override
-            public boolean onResourceReady(GifDrawable resource, Object model, Target<GifDrawable> target, DataSource dataSource, boolean isFirstResource) {
-                resource.setLoopCount(1);
-                resource.registerAnimationCallback(new Animatable2Compat.AnimationCallback() {
-                    @Override
-                    public void onAnimationEnd(Drawable drawable) {
-                        //do whatever after specified number of loops complete
-                    }
-                });
-                return false;
-            }}).into(logoanim);
-    }
 }
