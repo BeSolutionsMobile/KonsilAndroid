@@ -9,6 +9,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
+
      <LinearLayout
          android:layout_width="match_parent"
          android:layout_height="match_parent"
@@ -45,6 +46,18 @@
             android:indeterminateTint="@color/color2"
             android:layout_centerInParent="true"
             />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="@string/Specialist"
+            android:layout_centerInParent="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="@dimen/_10sdp"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/_14ssp"
+            android:id="@+id/title"/>
     </RelativeLayout>
     <com.besolutions.konsil.ScrimInsetsFrameLayout
         android:id="@+id/scrimInsetsFrameLayout"
