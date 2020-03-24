@@ -20,7 +20,7 @@
             <ImageView
                 android:id="@+id/logoanim"
                 android:layout_width="match_parent"
-                android:layout_height="@dimen/_220sdp"
+                android:layout_height="@dimen/_150sdp"
                 android:scaleType="fitXY"
                 android:src="@drawable/konzil_logo"/>
 
