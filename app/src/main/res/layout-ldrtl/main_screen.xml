@@ -28,10 +28,11 @@
         android:textColor="@color/color2"
         android:textSize="@dimen/_13ssp"
         />
-    <android.support.v7.widget.RecyclerView
+    <com.cooltechworks.views.shimmer.ShimmerRecyclerView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:id="@+id/specialty_list"
+        app:shimmer_demo_layout_manager_type="grid"
         android:layout_marginTop="@dimen/_10sdp"
         android:layout_marginLeft="@dimen/_20sdp"
         android:layout_marginRight="@dimen/_20sdp"

@@ -1,30 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
     android:layout_height="@dimen/_120sdp"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical"
     android:gravity="center"
     android:id="@+id/item"
     android:layout_marginRight="@dimen/_5sdp"
     android:layout_marginLeft="@dimen/_5sdp"
     android:layout_marginBottom="@dimen/_10sdp"
-    android:background="@drawable/spechail_item"
-    >
-  <ImageView
-      android:layout_width="@dimen/_60sdp"
-      android:layout_height="@dimen/_60sdp"
-      android:id="@+id/img"
-      android:layout_marginBottom="@dimen/_15sdp"
-      android:src="@drawable/doctor_one"/>
+    android:background="@drawable/spechail_item">
+
+
+    <com.facebook.shimmer.ShimmerFrameLayout
+        android:id="@+id/shimmer_view_container"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+
+        <ImageView
+            android:layout_width="@dimen/_60sdp"
+            android:layout_height="@dimen/_60sdp"
+            android:id="@+id/img"
+            android:layout_marginBottom="@dimen/_15sdp"
+            android:src="@drawable/doctor_one"/>
+
+    </com.facebook.shimmer.ShimmerFrameLayout>
+
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/_30sdp"
         android:text="Surgery"
         android:maxLines="2"
         android:layout_marginBottom="@dimen/_3sdp"
         android:id="@+id/name"
         android:paddingRight="@dimen/_5sdp"
         android:paddingLeft="@dimen/_5sdp"
-        android:textSize="@dimen/_13ssp"
+        android:textSize="@dimen/_12ssp"
         android:gravity="center"/>
 </LinearLayout>

@@ -2,6 +2,8 @@ package com.besolutions.konsil.scenarios.scenario_doctor_info.Controller;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.Toolbar;
@@ -25,6 +27,12 @@ import com.besolutions.konsil.scenarios.scenario_doctor_info.model.root_details;
 import com.besolutions.konsil.scenarios.scenario_request_online_conversation.Controller.request_online_conversation;
 import com.besolutions.konsil.scenarios.scenario_Consulation_request.Controller.consulation_request;
 import com.besolutions.konsil.scenarios.scenario_sign_up.Controller.sign_up;
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.DataSource;
+import com.bumptech.glide.load.engine.GlideException;
+import com.bumptech.glide.request.RequestListener;
+import com.bumptech.glide.request.target.Target;
+import com.facebook.shimmer.ShimmerFrameLayout;
 import com.google.gson.Gson;
 import com.squareup.picasso.Picasso;
 
@@ -41,6 +49,9 @@ public class doctor_info extends AppCompatActivity implements View.OnClickListen
     ProgressBar pg;
     TextView degree;
 
+
+    ShimmerFrameLayout container;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,6 +63,9 @@ public class doctor_info extends AppCompatActivity implements View.OnClickListen
         online_res = findViewById(R.id.online_res);
         pg = findViewById(R.id.pg);
 
+        container = findViewById(R.id.shimmer_view_container);
+
+        container.startShimmerAnimation();
 
         ratings.setRating(4);
 
@@ -128,7 +142,25 @@ public class doctor_info extends AppCompatActivity implements View.OnClickListen
         doctors = root_details.getDoctor();
 
         //SET DATA
-        Picasso.with(doctor_info.this).load(doctors.getImageUrl()).into(doc_img);
+        //Picasso.with(doctor_info.this).load(doctors.getImageUrl()).into(doc_img);
+
+        Glide.with(doctor_info.this)
+                .load(doctors.getImageUrl())
+                .listener(new RequestListener<Drawable>() {
+                    @Override
+                    public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
+
+                        return false;
+                    }
+
+                    @Override
+                    public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
+                        container.stopShimmerAnimation();
+                        return false;
+                    }
+                })
+                .into(doc_img);
+
         doc_name.setText(doctors.getName());
         price.setText("" + doctors.getConsultationPrice());
         consultation.setText("" + doctors.getTotalConsultation());

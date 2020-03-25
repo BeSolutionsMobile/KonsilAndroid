@@ -40,6 +40,7 @@ import com.besolutions.konsil.scenarios.scenarios_faq.controller.faq;
 import com.besolutions.konsil.network_check_status.regist_network_broadcast;
 import com.besolutions.konsil.utils.utils;
 import com.besolutions.konsil.utils.utils_adapter;
+import com.cooltechworks.views.shimmer.ShimmerRecyclerView;
 import com.google.gson.Gson;
 
 import org.json.JSONException;
@@ -86,6 +87,7 @@ public class main_screen extends AppCompatActivity implements NavigationDrawerCa
         pg = findViewById(R.id.pg);
 
 
+        pg.setVisibility(View.GONE);
 
         //CALL BROADCAST RECIEVER METHOD
         new regist_network_broadcast().registerNetworkBroadcastForNougat(main_screen.this);
@@ -185,7 +187,7 @@ public class main_screen extends AppCompatActivity implements NavigationDrawerCa
         //SET VISABLITY GONE
         pg.setVisibility(View.GONE);
 
-        RecyclerView specialty_list = findViewById(R.id.specialty_list);
+        ShimmerRecyclerView specialty_list = findViewById(R.id.specialty_list);
         ArrayList<main_screen_list> arrayList = new ArrayList<>();
 
         Gson gson = new Gson();
@@ -215,7 +217,7 @@ public class main_screen extends AppCompatActivity implements NavigationDrawerCa
         super.onResume();
 
         try {
-            pg.setVisibility(View.VISIBLE);
+            //pg.setVisibility(View.VISIBLE);
             new Apicalls(this, this).get_all_specialities();
         } catch (JSONException e) {
             Log.e("WRONG", "WRONG FROM SERVER");

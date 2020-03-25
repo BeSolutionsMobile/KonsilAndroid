@@ -2,7 +2,9 @@ package com.besolutions.konsil.scenarios.scenario_mian_page.pattern;
 
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,6 +18,11 @@ import com.besolutions.konsil.local_data.saved_data;
 import com.besolutions.konsil.scenarios.scenario_doctor_list.Controller.doctor_list;
 import com.besolutions.konsil.scenarios.scenario_mian_page.model.main_screen_list;
 import com.bumptech.glide.Glide;
+import com.bumptech.glide.load.DataSource;
+import com.bumptech.glide.load.engine.GlideException;
+import com.bumptech.glide.request.RequestListener;
+import com.bumptech.glide.request.target.Target;
+import com.facebook.shimmer.ShimmerFrameLayout;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -37,9 +44,26 @@ public class main_screen_adapter extends RecyclerView.Adapter<main_screen_adapte
     }
 
     @Override
-    public void onBindViewHolder(@NonNull main_screen_holder viewHolder, final int i) {
+    public void onBindViewHolder(@NonNull final main_screen_holder viewHolder, final int i) {
         viewHolder.name.setText(mylist.get(i).getName());
-        Glide.with(context).load(mylist.get(i).getImage()).into(viewHolder.img);
+        //Glide.with(context).load(mylist.get(i).getImage()).into(viewHolder.img);
+
+        Glide.with(context)
+                .load(mylist.get(i).getImage()).placeholder(R.drawable.konzil_logo)
+                .listener(new RequestListener<Drawable>() {
+                    @Override
+                    public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
+
+                        return false;
+                    }
+
+                    @Override
+                    public boolean onResourceReady(Drawable resource, Object model, Target<Drawable> target, DataSource dataSource, boolean isFirstResource) {
+                        viewHolder.container.stopShimmerAnimation();
+                        return false;
+                    }
+                })
+                .into(viewHolder.img);
 
         //SET ON ITEM CLICK
         viewHolder.item.setOnClickListener(new View.OnClickListener() {
@@ -89,12 +113,17 @@ public class main_screen_adapter extends RecyclerView.Adapter<main_screen_adapte
         LinearLayout item;
         TextView name;
         ImageView img;
+        ShimmerFrameLayout container;
 
         main_screen_holder(@NonNull View itemView) {
             super(itemView);
             item = itemView.findViewById(R.id.item);
             name = itemView.findViewById(R.id.name);
             img = itemView.findViewById(R.id.img);
+
+            container = itemView.findViewById(R.id.shimmer_view_container);
+
+            container.startShimmerAnimation();
         }
     }
 }

@@ -46,14 +46,14 @@ public class doctor_adapter extends RecyclerView.Adapter<doctor_adapter.doctor_h
 
     @Override
     public void onBindViewHolder(@NonNull final doctor_holder viewHolder, final int i) {
-        Glide.with(context).load(mylist.get(i).getImg()).into(viewHolder.doctor_img);
+        //Glide.with(context).load(mylist.get(i).getImg()).into(viewHolder.doctor_img);
 
         Glide.with(context)
                 .load(mylist.get(i).getImg())
                 .listener(new RequestListener<Drawable>() {
                     @Override
                     public boolean onLoadFailed(@Nullable GlideException e, Object model, Target<Drawable> target, boolean isFirstResource) {
-                        
+
                         return false;
                     }
 
