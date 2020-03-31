@@ -523,8 +523,6 @@ OK       Mehr Informationen
 
 
 
-
-
 </string>
     <string name="language">Sprache</string>
     <string name="dr">Dr :</string>
@@ -532,6 +530,9 @@ OK       Mehr Informationen
     <string name="loading_c">Wird geladen...</string>
     <string name="fb_login">Anmeldung mit Facebook</string>
     <string name="google_login">Anmeldung mit Google</string>
+    <string name="show_more">Zeig mehr</string>
+    <string name="show_less">zeige weniger</string>
+
 
 
 </resources>

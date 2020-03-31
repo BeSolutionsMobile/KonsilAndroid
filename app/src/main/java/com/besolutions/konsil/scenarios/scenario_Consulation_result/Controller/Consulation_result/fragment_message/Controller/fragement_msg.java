@@ -11,6 +11,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ProgressBar;
+import android.widget.RelativeLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -49,7 +50,7 @@ public class fragement_msg extends Fragment implements View.OnClickListener, Net
     Message[] messages;
     TextView nomsg;
     ProgressBar pg;
-
+    RelativeLayout msg_container;
     String no_msg;
     public fragement_msg() {
         // Required empty public constructor
@@ -69,12 +70,19 @@ public class fragement_msg extends Fragment implements View.OnClickListener, Net
         send_msg = view.findViewById(R.id.send_msg);
         nomsg = view.findViewById(R.id.nomsg);
         pg = view.findViewById(R.id.pg);
+        msg_container = view.findViewById(R.id.msg_container);
 
          no_msg = getActivity().getResources().getString(R.string.no_msg); //THERE IS NO MESSAGE FOUND
 
 
         //SET ON CLICK BUTTON
         send_msg.setOnClickListener(this);
+
+        //CHECK STATUS TO MAKE HIM CAN SEND MSG OR NOT
+        if(my_consultations_adapter.status.equals("Closed"))
+        {
+            msg_container.setVisibility(View.GONE);
+        }
 
         return view;
     }

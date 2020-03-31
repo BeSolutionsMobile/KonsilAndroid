@@ -27,6 +27,7 @@ import com.besolutions.konsil.scenarios.scenario_doctor_info.model.root_details;
 import com.besolutions.konsil.scenarios.scenario_request_online_conversation.Controller.request_online_conversation;
 import com.besolutions.konsil.scenarios.scenario_Consulation_request.Controller.consulation_request;
 import com.besolutions.konsil.scenarios.scenario_sign_up.Controller.sign_up;
+import com.borjabravo.readmoretextview.ReadMoreTextView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.DataSource;
 import com.bumptech.glide.load.engine.GlideException;
@@ -129,7 +130,7 @@ public class doctor_info extends AppCompatActivity implements View.OnClickListen
         de.hdodenhof.circleimageview.CircleImageView doc_img = findViewById(R.id.doc_img);
         TextView doc_name = findViewById(R.id.doc_name);
         TextView doc_job = findViewById(R.id.doc_job);
-        TextView doc_desc = findViewById(R.id.doc_desc);
+        ReadMoreTextView doc_desc = findViewById(R.id.doc_desc);
         TextView price = findViewById(R.id.price);
         TextView consultation = findViewById(R.id.consultation);
         TextView conversation = findViewById(R.id.conversation);
@@ -184,7 +185,6 @@ public class doctor_info extends AppCompatActivity implements View.OnClickListen
             doc_desc.setText(No_bioavailable);  //IF ITEMS RETURN WITH NULL
         } else {
             doc_desc.setText("" + doctors.getBio());  //IF ITEMS RETURN WITH DATA
-
 
         }
 

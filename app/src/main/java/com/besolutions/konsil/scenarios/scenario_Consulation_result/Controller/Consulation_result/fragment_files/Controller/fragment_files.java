@@ -34,7 +34,7 @@ public class fragment_files extends Fragment implements NetworkInterface,View.On
     View view;
     RecyclerView list;
     ProgressBar pg;
-    TextView nodata;
+    TextView nodata,files;
 
     public fragment_files() {
         // Required empty public constructor
@@ -57,7 +57,9 @@ public class fragment_files extends Fragment implements NetworkInterface,View.On
         //DEFINE VARS
         pg = view.findViewById(R.id.pg);
         nodata = view.findViewById(R.id.files);
+        files = view.findViewById(R.id.status);
 
+        files.setText(my_consultations_adapter.status);
         return view;
     }
 

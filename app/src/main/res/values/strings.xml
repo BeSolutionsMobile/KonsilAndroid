@@ -234,5 +234,7 @@ Some functions of our website cannot be offered without the use of technically n
     <string name="loginprotocolscheme">fb3298950006800475</string>
     <string name="fb_login">Continue With Facebook</string>
     <string name="google_login">Continue With Google</string>
+    <string name="show_more">show more</string>
+    <string name="show_less">show less</string>
 
 </resources>

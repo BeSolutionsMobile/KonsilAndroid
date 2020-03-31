@@ -167,7 +167,8 @@
     <string name="loading_c">جارى التحميل...</string>
     <string name="fb_login">الدخول باستخدام فيس بوك</string>
     <string name="google_login">الدخول باستخدام جوجل</string>
-
+    <string name="show_more">عرض المزيد</string>
+    <string name="show_less">عرض الاقل</string>
 
 
 </resources>

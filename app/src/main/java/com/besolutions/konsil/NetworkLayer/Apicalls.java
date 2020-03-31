@@ -183,9 +183,9 @@ public class Apicalls {
      * @func Make Complaint
      */
 
-    public void make_complaint(String type_id, String message) throws JSONException {
+    public void make_complaint(String type_id, String message,String consultation_id) throws JSONException {
 
-        apiRouter.makeAdvancedRequest(Apiclient.MAKE_COMPLAINT.getURL(), Request.Method.POST, Apiclient.MAKE_COMPLAINT.getParams(), Arrays.asList(type_id, message), null);
+        apiRouter.makeAdvancedRequest(Apiclient.MAKE_COMPLAINT.getURL(), Request.Method.POST, Apiclient.MAKE_COMPLAINT.getParams(), Arrays.asList(type_id, message,consultation_id), null);
 
     }
 

@@ -23,6 +23,7 @@ import com.besolutions.konsil.scenarios.scenario_compalint_details.compalint_det
 import com.besolutions.konsil.scenarios.scenario_make_complaint.model.Datum;
 import com.besolutions.konsil.scenarios.scenario_make_complaint.model.root_complaint_type;
 import com.besolutions.konsil.scenarios.scenario_mian_page.Controller.main_screen;
+import com.besolutions.konsil.scenarios.scenario_my_consultations.pattern.my_consultations_adapter;
 import com.google.gson.Gson;
 
 import org.json.JSONException;
@@ -73,7 +74,7 @@ public class make_a_complaint extends AppCompatActivity implements View.OnClickL
     public void onClick(View v) {
         if (v.getId() == R.id.make_complaint) {
             try {
-                new Apicalls(make_a_complaint.this, make_a_complaint.this).make_complaint(Set_Spinner_id(),enter_msg.getText().toString());
+                new Apicalls(make_a_complaint.this, make_a_complaint.this).make_complaint(Set_Spinner_id(),enter_msg.getText().toString(), my_consultations_adapter.id);
                 flag = 1;
             } catch (JSONException e) {
                 e.printStackTrace();

@@ -31,7 +31,7 @@ public enum Apiclient {
     APPOIENMENTS("get-date", Arrays.asList("doctor_id","date")),
     UPDATE_USER_INFO("update-user-info", Arrays.asList("name","phone","email","password","image_url","medical_history")),
     GET_COMPLAINT_TYPE("get-complaint-type", null),
-    MAKE_COMPLAINT("make-complaint", Arrays.asList("type_id","complaint")),
+    MAKE_COMPLAINT("make-complaint", Arrays.asList("type_id","complaint","consultation_id")),
     MY_CONSULTATIONS("my-consultations", null),
     CONFIRM_CONSULTATION("confirm-consultation", Arrays.asList("consultation_id","payment_status")),
     RESERVE_CONVERSATION("reserve-conversation", Arrays.asList("doctor_id","appointment_id")),

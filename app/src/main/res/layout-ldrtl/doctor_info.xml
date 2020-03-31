@@ -9,6 +9,9 @@
    <RelativeLayout
        android:layout_width="match_parent"
        android:layout_height="match_parent">
+       <android.support.v4.widget.NestedScrollView
+           android:layout_width="match_parent"
+           android:layout_height="match_parent">
     <LinearLayout
       android:layout_width="match_parent"
       android:layout_height="match_parent"
@@ -200,24 +203,29 @@
                   />
           </LinearLayout>
       </LinearLayout>
-      <TextView
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:paddingRight="@dimen/_50sdp"
-          android:gravity="center"
-          android:paddingLeft="@dimen/_50sdp"
-          android:justificationMode="inter_word"
-          android:textColor="@android:color/black"
-          android:layout_marginTop="@dimen/_15sdp"
-          android:textSize="@dimen/_12ssp"
-          android:id="@+id/doc_desc"
-          />
+        <com.borjabravo.readmoretextview.ReadMoreTextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingRight="@dimen/_50sdp"
+            android:gravity="center"
+            app:trimLength="100"
+            app:trimExpandedText="@string/show_less"
+            app:trimCollapsedText="@string/show_more"
+            android:paddingLeft="@dimen/_50sdp"
+            android:justificationMode="inter_word"
+            android:textColor="@android:color/black"
+            android:layout_marginTop="@dimen/_15sdp"
+            android:textSize="@dimen/_12ssp"
+            app:trimMode="trimModeLength"
+            android:id="@+id/doc_desc"
+            />
       <LinearLayout
           android:layout_width="match_parent"
           android:layout_height="@dimen/_32sdp"
           android:weightSum="1"
           android:layout_marginTop="@dimen/_15sdp"
           android:gravity="center"
+          android:layout_marginBottom="@dimen/_30sdp"
           android:layout_marginRight="@dimen/_35sdp"
           android:layout_marginLeft="@dimen/_35sdp"
           android:orientation="horizontal">
@@ -254,6 +262,7 @@
       </LinearLayout>
 
   </LinearLayout>
+       </android.support.v4.widget.NestedScrollView>
        <ProgressBar
            android:layout_width="@dimen/_50sdp"
            android:layout_height="@dimen/_50sdp"

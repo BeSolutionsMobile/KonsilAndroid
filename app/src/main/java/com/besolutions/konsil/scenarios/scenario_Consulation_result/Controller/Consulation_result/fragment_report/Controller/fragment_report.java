@@ -40,7 +40,7 @@ public class fragment_report extends Fragment implements View.OnClickListener, N
     ImageView download;
     root_download_report root_download_report;
     Consultation consultations;
-    TextView no_medical;
+    TextView no_medical,status;
     LinearLayout setvisablitiy;
     String no_medical_r;
 
@@ -59,6 +59,9 @@ public class fragment_report extends Fragment implements View.OnClickListener, N
         download = view.findViewById(R.id.download);
         setvisablitiy = view.findViewById(R.id.setvisablitiy);
         no_medical = view.findViewById(R.id.no_medical);
+        status = view.findViewById(R.id.status);
+
+        status.setText(my_consultations_adapter.status);
 
         make_a_complaint.setOnClickListener(this);
         download.setOnClickListener(this);
