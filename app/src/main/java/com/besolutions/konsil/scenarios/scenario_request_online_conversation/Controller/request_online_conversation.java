@@ -72,7 +72,7 @@ public class request_online_conversation extends AppCompatActivity implements Vi
     String conversation_price;
 
     private static PayPalConfiguration payPalConfiguration = new PayPalConfiguration()
-            .environment(PayPalConfiguration.ENVIRONMENT_SANDBOX).clientId(Config.CLIENT_ID);
+            .environment(PayPalConfiguration.ENVIRONMENT_PRODUCTION).clientId(Config.CLIENT_ID);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
