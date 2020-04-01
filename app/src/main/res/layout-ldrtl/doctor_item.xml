@@ -40,18 +40,10 @@
             android:orientation="horizontal"
             >
         <TextView
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:id="@+id/degree"
-            android:textSize="@dimen/_12ssp"
-            android:textColor="@android:color/black"/>
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Ahmed mohamed ali"
             android:textSize="@dimen/_12ssp"
             android:id="@+id/name"
-            android:layout_marginRight="@dimen/_5sdp"
             android:textColor="@color/color2"/>
         </LinearLayout>
         <LinearLayout

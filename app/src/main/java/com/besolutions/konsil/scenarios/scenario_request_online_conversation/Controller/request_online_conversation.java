@@ -114,7 +114,7 @@ public class request_online_conversation extends AppCompatActivity implements Vi
     @Override
     public void onClick(View v) {
         if (v.getId() == R.id.complete_req) {
-            if (conversation_item_adapter.radio_id.equals("1000")) {
+            if ((conversation_item_adapter.radio_id.equals("1000"))||(nomsg.getText().toString().equals(getResources().getString(R.string.nodates)))) {
 
                 String choose_time = getResources().getString(R.string.choose_time);
                 Toasty.error(request_online_conversation.this, choose_time, Toasty.LENGTH_LONG).show();
@@ -194,6 +194,7 @@ public class request_online_conversation extends AppCompatActivity implements Vi
 
             Toasty.success(request_online_conversation.this, conversation_reserve.getMessage(), Toasty.LENGTH_SHORT).show();
             process_payment();
+            complete_req_status = 0;
         } else if (complete_req_status == 2) {
             complete_req_status = 1;
             startActivity(new Intent(request_online_conversation.this, main_screen.class));
@@ -202,7 +203,8 @@ public class request_online_conversation extends AppCompatActivity implements Vi
 
     @Override
     public void OnError(VolleyError error) {
-        pg.setVisibility(View.GONE);    }
+        pg.setVisibility(View.GONE);
+    }
 
     //SET DOCTOR_DETAILS
     void set_doc_details() {
@@ -304,6 +306,7 @@ public class request_online_conversation extends AppCompatActivity implements Vi
         //NO DATES
         try {
             new Apicalls(this, this).appointment(doc_id, Date);
+            conversation_item_adapter.radio_id = "1000";
         } catch (JSONException e) {
             e.printStackTrace();
         }

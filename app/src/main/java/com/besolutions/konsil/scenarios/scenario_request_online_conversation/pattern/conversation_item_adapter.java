@@ -1,7 +1,9 @@
 package com.besolutions.konsil.scenarios.scenario_request_online_conversation.pattern;
 
 import android.content.Context;
+import android.content.Intent;
 import android.support.annotation.NonNull;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,6 +13,7 @@ import android.widget.RadioButton;
 import android.widget.Toast;
 
 import com.besolutions.konsil.R;
+import com.besolutions.konsil.scenarios.scenario_request_online_conversation.Controller.request_online_conversation;
 import com.besolutions.konsil.scenarios.scenario_request_online_conversation.model.conversation_reserv_list;
 
 import java.util.ArrayList;
@@ -51,10 +54,19 @@ public class conversation_item_adapter extends RecyclerView.Adapter<conversation
                 }
                 lastCheckedRB = checked_rb;
 
-                radio_id = mylist.get(position).getId();
+                if(lastCheckedRB.isChecked() == true)
+                {
+                    radio_id = mylist.get(position).getId();
+
+                }
+                else {
+                    radio_id = "1000";
+                    lastCheckedRB = null;
+                }
 
             }
         });
+
 
     }
 

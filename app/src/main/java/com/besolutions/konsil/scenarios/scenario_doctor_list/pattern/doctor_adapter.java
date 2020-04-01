@@ -6,6 +6,7 @@ import android.graphics.drawable.Drawable;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v7.widget.RecyclerView;
+import android.text.Html;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -65,8 +66,8 @@ public class doctor_adapter extends RecyclerView.Adapter<doctor_adapter.doctor_h
                 })
                 .into(viewHolder.doctor_img);
 
-        viewHolder.name.setText(mylist.get(i).getName());
-        viewHolder.degree.setText(mylist.get(i).getDegree());
+//        viewHolder.name.setText(mylist.get(i).getName());
+//        viewHolder.degree.setText(mylist.get(i).getDegree());
         viewHolder.rating.setRating(mylist.get(i).getRate());
         viewHolder.lang.setText(mylist.get(i).getLang());
         viewHolder.item.setOnClickListener(new View.OnClickListener() {
@@ -77,6 +78,9 @@ public class doctor_adapter extends RecyclerView.Adapter<doctor_adapter.doctor_h
                 context.startActivity(intent);
             }
         });
+
+        String text = "<font color=#000000>"+mylist.get(i).getDegree()+"</font> <font color=#057493>"+" "+mylist.get(i).getName()+"</font>";
+        viewHolder.name.setText(Html.fromHtml(text));
     }
 
     @Override
