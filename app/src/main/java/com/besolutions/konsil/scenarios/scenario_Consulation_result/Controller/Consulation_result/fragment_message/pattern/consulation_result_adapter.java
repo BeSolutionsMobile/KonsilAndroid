@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.besolutions.konsil.R;
 import com.besolutions.konsil.scenarios.scenario_Consulation_result.Controller.Consulation_result.fragment_message.model.consulation_list;
+import com.bumptech.glide.Glide;
 import com.squareup.picasso.Picasso;
 
 import java.util.ArrayList;
@@ -37,7 +38,15 @@ public class consulation_result_adapter extends RecyclerView.Adapter<consulation
     public void onBindViewHolder(@NonNull consulation_result_holder viewHolder, int i) {
      viewHolder.name.setText(mylist.get(i).getName());
      viewHolder.desc.setText(mylist.get(i).getDesc());
-     Picasso.with(context).load(mylist.get(i).getImg()).into(viewHolder.img);
+
+     if(mylist.get(i).getImg().toString().equals("noImage"))
+     {
+         viewHolder.img.setImageResource(R.drawable.konzil_logo);
+     }
+     else {
+         Glide.with(context).load(mylist.get(i).getImg()).into(viewHolder.img);
+     }
+
     }
 
     @Override

@@ -40,6 +40,7 @@ public class fragment_report_online_c extends Fragment implements View.OnClickLi
     TextView date, status;
     TextView no_medical;
     LinearLayout setvisablitiy;
+    String no_med;
 
     public fragment_report_online_c() {
         // Required empty public constructor
@@ -66,6 +67,9 @@ public class fragment_report_online_c extends Fragment implements View.OnClickLi
         } catch (JSONException e) {
             e.printStackTrace();
         }
+
+        no_med = getResources().getString(R.string.no_medical_r);
+
 
         return view;
     }
@@ -98,7 +102,6 @@ public class fragment_report_online_c extends Fragment implements View.OnClickLi
              //SET VISIBILITY AND TEXT
             setvisablitiy.setVisibility(View.GONE);
 
-            String no_med = getResources().getString(R.string.no_medical_r);
             no_medical.setText(no_med);
         } else {
             //SET VISIBILITY AND TEXT

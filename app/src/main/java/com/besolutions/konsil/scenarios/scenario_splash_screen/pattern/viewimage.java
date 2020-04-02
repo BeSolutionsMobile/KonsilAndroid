@@ -14,6 +14,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.besolutions.konsil.R;
+import com.besolutions.konsil.local_data.send_data;
 import com.besolutions.konsil.scenarios.scenario_login.Controller.login;
 import com.besolutions.konsil.scenarios.scenario_login.Controller.loginnormal;
 import com.besolutions.konsil.scenarios.scenario_splash_screen.Controller.splash_screen;
@@ -78,5 +79,7 @@ public class viewimage extends PagerAdapter implements View.OnClickListener {
     @Override
     public void onClick(View v) {
             context.startActivity(new Intent(context, loginnormal.class));
+            send_data.tour_status(context,true);
+
     }
 }

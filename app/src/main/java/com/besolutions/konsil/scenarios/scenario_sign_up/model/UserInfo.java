@@ -17,7 +17,7 @@ public class UserInfo{
 	@SerializedName("id")
 	private int id;
 	@SerializedName("image_url")
-	private Object imageUrl;
+	private String imageUrl;
 	@SerializedName("lang")
 	private String lang;
 	@SerializedName("mobile_token")
@@ -47,10 +47,10 @@ public class UserInfo{
 	public int getId(){
 		return this.id;
 	}
-	public void setImageUrl(Object imageUrl){
+	public void setImageUrl(String imageUrl){
 		this.imageUrl = imageUrl;
 	}
-	public Object getImageUrl(){
+	public String getImageUrl(){
 		return this.imageUrl;
 	}
 	public void setLang(String lang){

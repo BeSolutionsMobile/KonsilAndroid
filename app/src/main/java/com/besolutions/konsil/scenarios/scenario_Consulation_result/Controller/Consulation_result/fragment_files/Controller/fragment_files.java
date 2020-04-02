@@ -36,6 +36,8 @@ public class fragment_files extends Fragment implements NetworkInterface,View.On
     ProgressBar pg;
     TextView nodata,files;
 
+    String files_st;
+
     public fragment_files() {
         // Required empty public constructor
     }
@@ -60,6 +62,9 @@ public class fragment_files extends Fragment implements NetworkInterface,View.On
         files = view.findViewById(R.id.status);
 
         files.setText(my_consultations_adapter.status);
+
+        files_st = getActivity().getString(R.string.no_files);
+
         return view;
     }
 
@@ -95,8 +100,7 @@ public class fragment_files extends Fragment implements NetworkInterface,View.On
             //CHECK IF THERE IS NO FILE UPLOADED THEN CHANGE THE TEXT
             if(jsonArray.length() == 0 )
             {
-                String files = getActivity().getString(R.string.no_files);
-                nodata.setText(files);
+                nodata.setText(files_st);
             }
 
         } catch (JSONException e) {

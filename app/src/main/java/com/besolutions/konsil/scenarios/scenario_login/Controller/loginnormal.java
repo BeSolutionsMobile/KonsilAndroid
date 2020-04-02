@@ -21,6 +21,7 @@ import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.android.volley.VolleyError;
 import com.besolutions.konsil.NetworkLayer.Apicalls;
@@ -212,6 +213,9 @@ public class loginnormal extends AppCompatActivity implements View.OnClickListen
         new send_data().send_name(this, userInfo.getName());
         new send_data().send_email(this, userInfo.getEmail());
         new send_data().send_phone(this, userInfo.getPhone());
+        send_data.send_image(loginnormal.this, userInfo.getImageUrl()); //SAVE IMAGE IN LOCAL DATA
+
+//        Log.e("img_url",userInfo.getImageUrl());
 
         new send_data().login_status(loginnormal.this, true);  //SET TRUE TO MAKE LOGIN AFTER FIRST LOGIN
 
@@ -336,7 +340,6 @@ public class loginnormal extends AppCompatActivity implements View.OnClickListen
 
                     fb_status = true; //SET STATUS TRUE
 
-                    send_data.send_image(loginnormal.this, user_img); //SAVE IMAGE IN LOCAL DATA
 
                     //CALL REGIST API
                     new Apicalls(loginnormal.this, loginnormal.this).insertUser(first_name + "" + last_name, "01152314753", email_fb, id_fab, "2", user_img, new saved_data().get_lan(loginnormal.this), firebase_token());

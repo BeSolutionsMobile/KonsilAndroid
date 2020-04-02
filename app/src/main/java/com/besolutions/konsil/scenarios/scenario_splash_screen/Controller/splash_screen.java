@@ -47,7 +47,6 @@ public class splash_screen extends AppCompatActivity implements NetworkInterface
     protected void onStop() {
         super.onStop();
         finish();
-        send_data.tour_status(splash_screen.this,true);
 
     }
 

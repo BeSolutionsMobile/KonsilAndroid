@@ -159,6 +159,8 @@ public class sign_up extends AppCompatActivity implements View.OnClickListener, 
         new send_data().send_name(this, UserInfo.getName());
         new send_data().send_email(this, UserInfo.getEmail());
         new send_data().send_phone(this, UserInfo.getPhone());
+        send_data.send_image(this, UserInfo.getImageUrl()); //SAVE IMAGE IN LOCAL DATA
+
 
         new send_data().login_status(sign_up.this, true);  //SET TRUE TO MAKE LOGIN AFTER FIRST LOGIN
 

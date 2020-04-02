@@ -232,6 +232,9 @@ public class login extends AppCompatActivity implements View.OnClickListener, Ne
         new send_data().send_name(this, userInfo.getName());
         new send_data().send_email(this, userInfo.getEmail());
         new send_data().send_phone(this, userInfo.getPhone());
+        send_data.send_image(login.this, userInfo.getImageUrl()); //SAVE IMAGE IN LOCAL DATA
+
+//        Log.e("img_url",userInfo.getImageUrl());
 
         new send_data().login_status(login.this, true);  //SET TRUE TO MAKE LOGIN AFTER FIRST LOGIN
 
@@ -356,7 +359,6 @@ public class login extends AppCompatActivity implements View.OnClickListener, Ne
 
                     fb_status = true; //SET STATUS TRUE
 
-                    send_data.send_image(login.this, user_img); //SAVE IMAGE IN LOCAL DATA
 
                     //CALL REGIST API
                     new Apicalls(login.this, login.this).insertUser(first_name + "" + last_name, "01152314753", email_fb, id_fab, "2", user_img, new saved_data().get_lan(login.this), firebase_token());

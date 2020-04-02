@@ -4,6 +4,7 @@ package com.besolutions.konsil.scenarios.scenario_Consulation_result.Controller.
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -20,6 +21,7 @@ import com.besolutions.konsil.NetworkLayer.Apicalls;
 import com.besolutions.konsil.NetworkLayer.NetworkInterface;
 import com.besolutions.konsil.NetworkLayer.ResponseModel;
 import com.besolutions.konsil.R;
+import com.besolutions.konsil.local_data.saved_data;
 import com.besolutions.konsil.scenarios.scenario_Consulation_result.Controller.Consulation_result.consulation_result;
 import com.besolutions.konsil.scenarios.scenario_Consulation_result.Controller.Consulation_result.fragment_message.model.Message;
 import com.besolutions.konsil.scenarios.scenario_Consulation_result.Controller.Consulation_result.fragment_message.model.consulation_list;
@@ -83,6 +85,8 @@ public class fragement_msg extends Fragment implements View.OnClickListener, Net
         {
             msg_container.setVisibility(View.GONE);
         }
+
+        swipe_refresh();
 
         return view;
     }
@@ -173,5 +177,20 @@ public class fragement_msg extends Fragment implements View.OnClickListener, Net
             e.printStackTrace();
         }
     }
+
+    //SWIPE REFRERSH
+    void swipe_refresh()
+    {
+        /// swipe Refresh
+        final SwipeRefreshLayout swipNotif = view.findViewById(R.id.swipe);
+        swipNotif.setOnRefreshListener(new SwipeRefreshLayout.OnRefreshListener() {
+            @Override
+            public void onRefresh() {
+                get_all_msg();
+                swipNotif.setRefreshing(false);
+            }
+        });
+    }
+
 
 }
