@@ -21,7 +21,7 @@
     <string name="request_consulation">طلب استشاره</string>
     <string name="requst_online_converstaion">طلب محادثه اون لاين</string>
     <string name="consulation_title">عنوان الاستشاره</string>
-    <string name="consualtion_details">تقاصيل الاستشاره</string>
+    <string name="consualtion_details">تفاصيل الاستشاره</string>
     <string name="upload_photos_of_the_medical_consulation">اختيار صور للاستشاره الطبيه</string>
     <string name="complete_the_request">اكمال الطلب</string>
     <string name="msg">الرسائل</string>
@@ -169,6 +169,8 @@
     <string name="google_login">الدخول باستخدام جوجل</string>
     <string name="show_more">عرض المزيد</string>
     <string name="show_less">عرض الاقل</string>
+    <string name="closed_cons">أغلقت</string>
+    <string name="confirm_upload">تاكيد الرفع</string>
 
 
 </resources>

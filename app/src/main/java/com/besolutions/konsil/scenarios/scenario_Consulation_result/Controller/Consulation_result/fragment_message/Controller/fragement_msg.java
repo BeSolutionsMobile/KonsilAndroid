@@ -76,12 +76,13 @@ public class fragement_msg extends Fragment implements View.OnClickListener, Net
 
          no_msg = getActivity().getResources().getString(R.string.no_msg); //THERE IS NO MESSAGE FOUND
 
+         String closed_cons = getActivity().getResources().getString(R.string.closed_cons);
 
         //SET ON CLICK BUTTON
         send_msg.setOnClickListener(this);
 
         //CHECK STATUS TO MAKE HIM CAN SEND MSG OR NOT
-        if(my_consultations_adapter.status.equals("Closed"))
+        if(my_consultations_adapter.status.equals(closed_cons))
         {
             msg_container.setVisibility(View.GONE);
         }

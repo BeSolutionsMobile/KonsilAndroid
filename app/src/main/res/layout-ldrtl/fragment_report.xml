@@ -76,6 +76,7 @@
                android:layout_height="wrap_content"
                android:textSize="@dimen/_12ssp"
                android:text="Closed"
+               android:id="@+id/status"
                android:textColor="@color/color3"
                />
        </LinearLayout>

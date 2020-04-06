@@ -244,6 +244,10 @@ public class consulation_request extends AppCompatActivity implements View.OnCli
             consultation_reserve = gson.fromJson("" + model.getJsonObject(), consultation_reserve.class);
 
             Toasty.success(consulation_request.this, consultation_reserve.getMessage(), Toasty.LENGTH_LONG).show();
+
+            firebase_storage.images = null;
+            firebase_storage_pdf.pdf = null;
+
         } else if (paid == 1) {
             paid = 0;
         }

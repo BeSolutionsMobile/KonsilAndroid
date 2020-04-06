@@ -1,8 +1,11 @@
 package com.besolutions.konsil.scenarios.scenario_Consulation_result.Controller.Consulation_result;
 
+import android.content.Intent;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.besolutions.konsil.network_check_status.regist_network_broadcast;
 import com.besolutions.konsil.scenarios.scenario_Consulation_result.Controller.Consulation_result.fragment_files.Controller.fragment_files;
@@ -51,5 +54,11 @@ public class consulation_result extends AppCompatActivity {
         //CALL BROADCAST RECIEVER METHOD
         new regist_network_broadcast().registerNetworkBroadcastForNougat(consulation_result.this);
 
+    }
+
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
+        super.onActivityResult(requestCode, resultCode, data);
     }
 }

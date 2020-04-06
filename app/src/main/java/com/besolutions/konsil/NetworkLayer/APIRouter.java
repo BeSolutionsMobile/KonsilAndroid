@@ -12,6 +12,7 @@ import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.StringRequest;
 import com.besolutions.konsil.local_data.saved_data;
+import com.besolutions.konsil.scenarios.scenario_my_consultations.pattern.my_consultations_adapter;
 import com.besolutions.konsil.utils.firebase_storage;
 import com.besolutions.konsil.utils.firebase_storage_pdf;
 
@@ -228,6 +229,79 @@ public class APIRouter {
         object.put("title", title);
         object.put("details", details);
         object.put("doctor_id", doc_id);
+        object.put("images", jsonArray);
+        object.put("files", jsonArray_pdf);
+
+
+        JsonObjectRequest sr = new JsonObjectRequest(method, url, object,
+
+                new Response.Listener<JSONObject>() {
+                    @Override
+                    public void onResponse(JSONObject response) {
+
+                        ResponseModel model = new ResponseModel(0, response);
+
+                        networkInterface.OnResponse(model);
+                    }
+                }, new Response.ErrorListener() {
+            @Override
+            public void onErrorResponse(VolleyError error) {
+
+                networkInterface.OnError(error);
+
+            }
+
+        }) {
+
+            @Override
+            public Map<String, String> getHeaders() {
+                final HashMap<String, String> header = new HashMap<>();
+                header.put("Accept", "application/json");
+                header.put("Content-Type", "application/json");
+                header.put("Authorization", "Bearer " + new saved_data().get_token(context));
+                return header;
+            }
+
+
+        };
+        sr.setShouldCache(false);
+        sr.setRetryPolicy(new DefaultRetryPolicy(
+                DefaultRetryPolicy.DEFAULT_TIMEOUT_MS * 2,
+                DefaultRetryPolicy.DEFAULT_MAX_RETRIES,
+                DefaultRetryPolicy.DEFAULT_BACKOFF_MULT));
+        RequestHandler.getInstance(context).addToRequestQueue(sr);
+    }
+
+    public void makeAdvancedRequest_uplaodconsultation_files(String url, final int method) throws JSONException {
+        Log.e("url", url);
+
+        networkInterface.OnStart();
+
+        JSONObject object = new JSONObject();
+
+        //image
+        JSONArray jsonArray = new JSONArray();
+        //CHECK FOR ARRAY OF IMAGES IF NULL OR NOT
+        if (firebase_storage.images == null) {
+            jsonArray.put("noImages");
+        } else {
+            for (String n : firebase_storage.images) {
+                jsonArray.put(n);
+            }
+        }
+
+        //pdf
+        JSONArray jsonArray_pdf = new JSONArray();
+        //CHECK FOR ARRAY OF IMAGES IF NULL OR NOT
+        if (firebase_storage_pdf.pdf == null) {
+            jsonArray_pdf.put("noFiles");
+        } else {
+            for (String n : firebase_storage_pdf.pdf) {
+                jsonArray_pdf.put(n);
+            }
+        }
+
+        object.put("consultation_id", my_consultations_adapter.id);
         object.put("images", jsonArray);
         object.put("files", jsonArray_pdf);
 

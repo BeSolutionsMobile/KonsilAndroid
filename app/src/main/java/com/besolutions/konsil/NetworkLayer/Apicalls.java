@@ -329,8 +329,9 @@ public class Apicalls {
      * @func Get Offer Data
      */
 
-    public void Get_data(String id) {
+    public void uplaod_consultation() throws JSONException {
 
+        apiRouter.makeAdvancedRequest_uplaodconsultation_files(Apiclient.UPLOAD_CONSULTATION_FILES.getURL(), Request.Method.POST);
 
     }
 

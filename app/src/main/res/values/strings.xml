@@ -236,5 +236,8 @@ Some functions of our website cannot be offered without the use of technically n
     <string name="google_login">Continue With Google</string>
     <string name="show_more">show more</string>
     <string name="show_less">show less</string>
+    <string name="closed_cons">Closed</string>
+    <string name="confirm_upload">Confirm Upload</string>
+
 
 </resources>

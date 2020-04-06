@@ -4,7 +4,9 @@
       <root url="jar://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/facebook-core-5.15.3.aar/fc27be0ee292c78fd3b02d1882527284/jars/classes.jar!/" />
       <root url="file://$USER_HOME$/.gradle/caches/transforms-1/files-1.1/facebook-core-5.15.3.aar/fc27be0ee292c78fd3b02d1882527284/res" />
     </CLASSES>
-    <JAVADOC />
+    <JAVADOC>
+      <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.facebook.android/facebook-core/5.15.3/51166b910aa6ba589236b41d84624722b96a69ab/facebook-core-5.15.3-javadoc.jar!/" />
+    </JAVADOC>
     <SOURCES>
       <root url="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/com.facebook.android/facebook-core/5.15.3/a3a6c3cd110f05e4968ec22a6245f4a2ad189ac3/facebook-core-5.15.3-sources.jar!/" />
     </SOURCES>

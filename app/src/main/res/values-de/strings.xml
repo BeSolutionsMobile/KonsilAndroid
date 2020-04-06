@@ -532,7 +532,8 @@ OK       Mehr Informationen
     <string name="google_login">Anmeldung mit Google</string>
     <string name="show_more">Zeig mehr</string>
     <string name="show_less">zeige weniger</string>
-
+    <string name="closed_cons">Closed</string>
+    <string name="confirm_upload">Upload bestätigen</string>
 
 
 </resources>

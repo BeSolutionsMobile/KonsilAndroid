@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".scenarios.scenario_Consulation_result.Controller.Consulation_result.fragment_files.Controller.fragment_files">
  <RelativeLayout
      android:layout_width="match_parent"
@@ -24,7 +25,7 @@
     <android.support.v7.widget.RecyclerView
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight=".75"
+        android:layout_weight=".3"
         android:layout_marginRight="@dimen/_10sdp"
         android:layout_marginLeft="@dimen/_10sdp"
         android:id="@+id/file_list"
@@ -33,7 +34,7 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight=".15"
+        android:layout_weight=".05"
         android:gravity="center">
         <TextView
             android:layout_width="wrap_content"
@@ -48,6 +49,81 @@
             android:id="@+id/status"
             android:textSize="@dimen/_12ssp"
             android:textColor="@color/color3"/>
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:id="@+id/linear_vis"
+        android:layout_weight=".5">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/upload_photos_of_the_medical_consulation"
+            android:textColor="@color/color2"
+            android:gravity="center"
+            android:textSize="@dimen/_13ssp"
+            android:layout_marginTop="@dimen/_10sdp"
+            />
+        <RelativeLayout
+            android:layout_width="@dimen/_40sdp"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_gravity="center"
+            >
+            <ImageView
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="@dimen/_40sdp"
+                android:id="@+id/upload_img"
+                android:layout_marginTop="@dimen/_7sdp"
+                android:src="@drawable/upload_img"
+                />
+            <com.airbnb.lottie.LottieAnimationView
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="@dimen/_20sdp"
+                android:layout_gravity="center"
+                android:id="@+id/check_img"
+                android:layout_alignParentRight="true"
+                app:lottie_autoPlay="false"
+                app:lottie_loop="false"
+                app:lottie_rawRes="@raw/checkafter"
+                />
+        </RelativeLayout>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/upload_files_of_the_medical_consulation"
+            android:textColor="@color/color2"
+            android:gravity="center"
+            android:textSize="@dimen/_13ssp"
+            android:layout_marginTop="@dimen/_10sdp"
+            />
+
+        <RelativeLayout
+            android:layout_width="@dimen/_40sdp"
+            android:layout_height="@dimen/_40sdp"
+            android:layout_gravity="center"
+            >
+            <ImageView
+                android:layout_width="@dimen/_40sdp"
+                android:layout_height="@dimen/_40sdp"
+                android:layout_gravity="center"
+                android:layout_marginTop="@dimen/_7sdp"
+                android:id="@+id/upload_file"
+                android:tint="@color/color3"
+                android:src="@drawable/upload_file"
+                />
+            <com.airbnb.lottie.LottieAnimationView
+                android:layout_width="@dimen/_20sdp"
+                android:layout_height="@dimen/_20sdp"
+                android:layout_gravity="center"
+                android:layout_alignParentRight="true"
+                app:lottie_autoPlay="false"
+                app:lottie_loop="false"
+                android:id="@+id/check_file"
+                app:lottie_rawRes="@raw/checkafter"
+                />
+        </RelativeLayout>
 
     </LinearLayout>
 
@@ -66,5 +142,20 @@
          android:textSize="@dimen/_13ssp"
          android:layout_centerInParent="true"
          android:id="@+id/nodata"/>
+     <Button
+         android:layout_width="match_parent"
+         android:layout_height="@dimen/_27sdp"
+         android:layout_marginTop="@dimen/_20sdp"
+         android:background="@drawable/buttom_bg"
+         android:layout_marginBottom="@dimen/_15sdp"
+         android:text="@string/complete_the_request"
+         android:id="@+id/complete_req"
+         android:layout_alignParentBottom="true"
+         android:layout_marginRight="@dimen/_30sdp"
+         android:layout_marginLeft="@dimen/_30sdp"
+         android:textColor="@android:color/white"
+         android:textAllCaps="false"
+         android:textSize="@dimen/_12ssp"
+         />
  </RelativeLayout>
 </FrameLayout>
