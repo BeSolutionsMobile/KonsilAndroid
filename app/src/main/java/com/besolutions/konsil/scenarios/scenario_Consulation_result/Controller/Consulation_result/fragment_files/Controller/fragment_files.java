@@ -25,6 +25,8 @@ import com.besolutions.konsil.NetworkLayer.Apicalls;
 import com.besolutions.konsil.NetworkLayer.NetworkInterface;
 import com.besolutions.konsil.NetworkLayer.ResponseModel;
 import com.besolutions.konsil.scenarios.scenario_Consulation_request.Controller.consulation_request;
+import com.besolutions.konsil.scenarios.scenario_Consulation_result.Controller.Consulation_result.fragment_files.model.Consultation;
+import com.besolutions.konsil.scenarios.scenario_Consulation_result.Controller.Consulation_result.fragment_files.model.root_files;
 import com.besolutions.konsil.scenarios.scenario_Consulation_result.Controller.Consulation_result.fragment_report.model.file_list;
 import com.besolutions.konsil.scenarios.scenario_Consulation_result.Controller.Consulation_result.fragment_report.file_result_adapter;
 import com.besolutions.konsil.R;
@@ -34,6 +36,7 @@ import com.besolutions.konsil.utils.firebase_storage;
 import com.besolutions.konsil.utils.firebase_storage_pdf;
 import com.besolutions.konsil.utils.utils;
 import com.besolutions.konsil.utils.utils_adapter;
+import com.google.gson.Gson;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -48,16 +51,18 @@ import static android.app.Activity.RESULT_OK;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class fragment_files extends Fragment implements NetworkInterface,View.OnClickListener {
+public class fragment_files extends Fragment implements NetworkInterface, View.OnClickListener {
     View view;
     RecyclerView list;
     ProgressBar pg;
-    TextView nodata,files;
+    TextView nodata, files;
     LottieAnimationView upload_img_check, upload_file_check;
-    ImageView upload_img,upload_file;
-    String select_img,closed_cons;
+    ImageView upload_img, upload_file;
+    String select_img, closed_cons;
     Button complete_req;
-    boolean status  = false;
+    boolean status = false;
+    root_files root_files;
+    Consultation[] consultation;
 
 
     String files_st;
@@ -119,39 +124,32 @@ public class fragment_files extends Fragment implements NetworkInterface,View.On
     @Override
     public void OnResponse(ResponseModel model) {
 
-        if(status == false) {
+        if (status == false) {
 
             pg.setVisibility(View.GONE); //SET IT IF THERE IS DATA FROM SERVER
 
             ArrayList<file_list> arrayList = new ArrayList<>();
 
-            JSONObject jsonObject = model.getJsonObject();
-            try {
-                JSONObject jsonObject1 = jsonObject.getJSONObject("consultation");
-                JSONArray jsonArray = jsonObject1.getJSONArray("files");
+            Gson gson = new Gson();
 
-                for (int index = 0; index < jsonArray.length(); index++) {
+            root_files = gson.fromJson("" + model.getJsonObject(), root_files.class);
 
-                    String jsonObject2 = jsonArray.getString(index);
-                    arrayList.add(new file_list("1", jsonObject2));
+            consultation = root_files.getConsultation();
 
-                }
+            for (int index = 0; index < consultation.length; index++) {
+                arrayList.add(new file_list("" + consultation[index].getId(), consultation[index].getName(), consultation[index].getUrl()));
+            }
+            list = view.findViewById(R.id.file_list);
+            utils_adapter utils_adapter = new utils_adapter();
+            utils_adapter.Adapter(list, new file_result_adapter(getActivity(), arrayList), getActivity());
 
-                list = view.findViewById(R.id.file_list);
-                utils_adapter utils_adapter = new utils_adapter();
-                utils_adapter.Adapter(list, new file_result_adapter(getActivity(), arrayList), getActivity());
 
-                //CHECK IF THERE IS NO FILE UPLOADED THEN CHANGE THE TEXT
-                if (jsonArray.length() == 0) {
-                    nodata.setText(files_st);
-                }
-
-            } catch (JSONException e) {
-                e.printStackTrace();
+            //CHECK IF THERE IS NO FILE UPLOADED THEN CHANGE THE TEXT
+            if (consultation.length == 0) {
+                nodata.setText(files_st);
             }
 
-        }
-        else {
+        } else {
             String upd_sucess = getResources().getString(R.string.upd_success);
             Toasty.success(getActivity(), upd_sucess, Toasty.LENGTH_LONG).show();
 
@@ -179,17 +177,15 @@ public class fragment_files extends Fragment implements NetworkInterface,View.On
             startActivityForResult(Intent.createChooser(i, select_img), 1);
 
         } else if (v.getId() == R.id.upload_file) {
-            Intent i = new Intent( Intent.ACTION_OPEN_DOCUMENT);
+            Intent i = new Intent(Intent.ACTION_OPEN_DOCUMENT);
             i.setType("application/pdf");
             i.addCategory(Intent.CATEGORY_OPENABLE);
-            startActivityForResult(i,2);
+            startActivityForResult(i, 2);
 
-        }
-        else if(v.getId() == R.id.complete_req)
-        {
+        } else if (v.getId() == R.id.complete_req) {
             try {
-                new Apicalls(getActivity(),this).uplaod_consultation();
-                status = true ;
+                new Apicalls(getActivity(), this).uplaod_consultation();
+                status = true;
             } catch (JSONException e) {
                 e.printStackTrace();
             }
@@ -226,18 +222,17 @@ public class fragment_files extends Fragment implements NetworkInterface,View.On
 
                 //UPLOAD TO FIREBASE
                 firebase_storage_pdf firebase_storage = new firebase_storage_pdf();
-                firebase_storage.uploadImage(selectedPdf,getActivity(),true);
+                firebase_storage.uploadImage(selectedPdf, getActivity(), true);
                 upload_file_check.playAnimation();
             }
         }
-        }
+    }
 
     @Override
     public void onStart() {
         super.onStart();
-        LinearLayout  visiable = view.findViewById(R.id.linear_vis);
-        if(my_consultations_adapter.status.equals(closed_cons))
-        {
+        LinearLayout visiable = view.findViewById(R.id.linear_vis);
+        if (my_consultations_adapter.status.equals(closed_cons)) {
             visiable.setVisibility(View.GONE);
             complete_req.setVisibility(View.GONE);
         }

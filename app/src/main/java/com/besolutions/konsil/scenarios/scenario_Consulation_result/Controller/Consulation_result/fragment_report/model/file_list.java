@@ -1,11 +1,12 @@
 package com.besolutions.konsil.scenarios.scenario_Consulation_result.Controller.Consulation_result.fragment_report.model;
 
 public class file_list {
-    private String id,name;
+    private String id,name,url;
 
-    public file_list(String id, String name) {
+    public file_list(String id, String name,String url) {
         this.id = id;
         this.name = name;
+        this.url = url;
 
     }
 
@@ -25,4 +26,11 @@ public class file_list {
         this.name = name;
     }
 
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
 }

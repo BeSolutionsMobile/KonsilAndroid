@@ -2,10 +2,12 @@ package com.besolutions.konsil.scenarios.scenario_Consulation_request.Controller
 
 import android.content.ClipData;
 import android.content.Intent;
+import android.database.Cursor;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.provider.MediaStore;
+import android.provider.OpenableColumns;
 import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -197,6 +199,7 @@ public class consulation_request extends AppCompatActivity implements View.OnCli
 
                 Uri selectedPdf = data.getData();
 
+
                 //UPLOAD TO FIREBASE
                 firebase_storage_pdf firebase_storage = new firebase_storage_pdf();
                 firebase_storage.uploadImage(selectedPdf,consulation_request.this,true);
@@ -259,4 +262,7 @@ public class consulation_request extends AppCompatActivity implements View.OnCli
     public void OnError(VolleyError error) {
 
     }
+
+
+
 }

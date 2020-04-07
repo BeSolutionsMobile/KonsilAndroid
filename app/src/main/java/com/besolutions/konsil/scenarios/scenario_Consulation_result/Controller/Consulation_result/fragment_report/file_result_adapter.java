@@ -40,7 +40,7 @@ public class file_result_adapter extends RecyclerView.Adapter<file_result_adapte
      viewHolder.file_download.setOnClickListener(new View.OnClickListener() {
          @Override
          public void onClick(View v) {
-             Intent browse = new Intent(Intent.ACTION_VIEW, Uri.parse(mylist.get(i).getName()));
+             Intent browse = new Intent(Intent.ACTION_VIEW, Uri.parse(mylist.get(i).getUrl()));
              context.startActivity(browse);
          }
      });

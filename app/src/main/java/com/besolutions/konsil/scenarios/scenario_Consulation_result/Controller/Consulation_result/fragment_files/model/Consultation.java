@@ -1,7 +1,7 @@
 package com.besolutions.konsil.scenarios.scenario_Consulation_result.Controller.Consulation_result.fragment_files.model;//
 //  Consultation.java
 //  Model Generated using http://www.jsoncafe.com/ 
-//  Created on February 23, 2020
+//  Created on April 7, 2020
 
 import org.json.*;
 import java.util.*;
@@ -10,22 +10,30 @@ import com.google.gson.annotations.SerializedName;
 
 public class Consultation{
 
-	@SerializedName("files")
-	private JSONArray files;
 	@SerializedName("id")
 	private int id;
+	@SerializedName("name")
+	private String name;
+	@SerializedName("url")
+	private String url;
 
-	public void setFiles(JSONArray files){
-		this.files = files;
-	}
-	public JSONArray getFiles(){
-		return this.files;
-	}
 	public void setId(int id){
 		this.id = id;
 	}
 	public int getId(){
 		return this.id;
+	}
+	public void setName(String name){
+		this.name = name;
+	}
+	public String getName(){
+		return this.name;
+	}
+	public void setUrl(String url){
+		this.url = url;
+	}
+	public String getUrl(){
+		return this.url;
 	}
 
 	/**
@@ -35,8 +43,9 @@ public class Consultation{
 		if(jsonObject == null){
 			return;
 		}
+		name = jsonObject.optString("name");
+		url = jsonObject.optString("url");
 		id = jsonObject.optInt("id");
-		files = jsonObject.optJSONArray("files");
 	}
 
 	/**
@@ -46,8 +55,9 @@ public class Consultation{
 	{
 		JSONObject jsonObject = new JSONObject();
 		try {
-			jsonObject.put("files", files);
 			jsonObject.put("id", id);
+			jsonObject.put("name", name);
+			jsonObject.put("url", url);
 			
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block

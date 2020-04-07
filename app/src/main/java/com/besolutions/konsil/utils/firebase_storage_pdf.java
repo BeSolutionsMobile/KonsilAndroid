@@ -4,6 +4,7 @@ import android.app.ProgressDialog;
 import android.content.Context;
 import android.net.Uri;
 import android.support.annotation.NonNull;
+import android.util.Log;
 import android.widget.Toast;
 
 
@@ -28,7 +29,7 @@ public class firebase_storage_pdf{
     public static List<String> pdf;
 
 
-    public String uploadImage(Uri customfilepath, final Context context,Boolean isEnglish) {
+    public String uploadImage(final Uri customfilepath, final Context context, Boolean isEnglish) {
 
         FirebaseStorage storage = FirebaseStorage.getInstance();
         StorageReference storageReference = storage.getReference();
@@ -65,7 +66,8 @@ public class firebase_storage_pdf{
 
                                     imageURL = uri.toString();
 
-                                    pdf.add(imageURL);
+                                    pdf.add(imageURL+"&name="+new utils().getFileName(customfilepath,context));
+                                    Log.e("pdf_is",imageURL+"&name="+new utils().getFileName(customfilepath,context));
 
                                 }
                             });

@@ -4,7 +4,9 @@ package com.besolutions.konsil.utils;
 import android.app.ProgressDialog;
 import android.content.ClipData;
 import android.content.Context;
+import android.database.Cursor;
 import android.net.Uri;
+import android.provider.OpenableColumns;
 import android.support.annotation.NonNull;
 import android.util.Log;
 import android.widget.Toast;
@@ -54,9 +56,12 @@ public class firebase_storage {
             {
 
                 ClipData.Item item = clipData.getItemAt(index);
-                Uri uri = item.getUri();
-            final StorageReference ref = storageReference.child("images/"+ UUID.randomUUID().toString());
-            ref.putFile(uri)
+                final Uri uris = item.getUri();
+
+
+
+                final StorageReference ref = storageReference.child("images/"+ UUID.randomUUID().toString());
+            ref.putFile(uris)
                     .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
                         @Override
                         public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
@@ -72,7 +77,7 @@ public class firebase_storage {
 
                                     imageURL = uri.toString();
 
-                                    images.add(imageURL);
+                                    images.add(imageURL+"&name="+new utils().getFileName(uris,context));
 
                                     Log.e("imageURL", String.valueOf(images));
 
@@ -103,6 +108,8 @@ public class firebase_storage {
 
         return imageURL;
     }
+
+
 }
 
 
