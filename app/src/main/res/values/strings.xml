@@ -238,6 +238,13 @@ Some functions of our website cannot be offered without the use of technically n
     <string name="show_less">show less</string>
     <string name="closed_cons">Closed</string>
     <string name="confirm_upload">Confirm Upload</string>
+    <string name="amount">Amount :</string>
+    <string name="doctor_pay">Doctor :</string>
+    <string name="type">Type :</string>
+    <string name="choose_your_payment_method">Choose your payment method :</string>
+    <string name="paymentmethod">Payment</string>
+    <string name="checkout">Checkout</string>
+    <string name="payment_failed">Failed to complete payment please try again</string>
 
 
 </resources>

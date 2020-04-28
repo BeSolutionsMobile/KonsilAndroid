@@ -30,7 +30,9 @@ import com.besolutions.konsil.config.Config;
 import com.besolutions.konsil.network_check_status.regist_network_broadcast;
 import com.besolutions.konsil.scenarios.scenario_Consulation_request.model.consultation_reserve;
 import com.besolutions.konsil.scenarios.scenario_compalint_details.compalint_details.Controller.compalint_details;
+import com.besolutions.konsil.scenarios.scenario_login.Controller.login;
 import com.besolutions.konsil.scenarios.scenario_mian_page.Controller.main_screen;
+import com.besolutions.konsil.scenarios.scenario_payment_methods.controller.pament_method;
 import com.besolutions.konsil.utils.firebase_storage;
 import com.besolutions.konsil.utils.firebase_storage_pdf;
 import com.besolutions.konsil.utils.utils;
@@ -55,24 +57,19 @@ public class consulation_request extends AppCompatActivity implements View.OnCli
     LottieAnimationView upload_img_check, upload_file_check;
     EditText title, desc;
     consultation_reserve consultation_reserve;
-
-
-    private static final int PAYPAL_REQUEST_CODE = 3;
-
+    String consultation_price,doc_name ;
     int paid = 0;
-
-    private static PayPalConfiguration payPalConfiguration = new PayPalConfiguration()
-            .environment(PayPalConfiguration.ENVIRONMENT_PRODUCTION).clientId(Config.CLIENT_ID);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.consulation_request);
 
-        //START PAYPAL SERVICE
-        Intent intent = new Intent(this, PayPalService.class);
-        intent.putExtra(PayPalService.EXTRA_PAYPAL_CONFIGURATION, payPalConfiguration);
-        startService(intent);
+
+        //GET DATA FRPM PREVIOUS PAGE
+        consultation_price = getIntent().getStringExtra("consultation_price");
+        doc_name = getIntent().getStringExtra("doc_name");
+
 
         upload_img = findViewById(R.id.upload_img);
         upload_file = findViewById(R.id.upload_file);
@@ -137,32 +134,14 @@ public class consulation_request extends AppCompatActivity implements View.OnCli
                 } catch (JSONException e) {
                     e.printStackTrace();
                 }
-                process_payment();
+                new utils().set_dialog(consulation_request.this);  //CALL PROGRESS DIALOG
+//                process_payment();
             }
 
         } else if (v.getId() == R.id.upload_file) {
             utils.upload_files(this, 2);
         }
     }
-
-
-    //PAYMENT PROCESS
-    private void process_payment() {
-
-        String pay_konsil = getResources().getString(R.string.pay_konsil);
-        String consultation_price = getIntent().getStringExtra("consultation_price");
-
-        PayPalPayment payPalPayment = new PayPalPayment(new BigDecimal(consultation_price), "EUR",
-                pay_konsil, PayPalPayment.PAYMENT_INTENT_SALE);
-
-        Intent intent = new Intent(consulation_request.this, PaymentActivity.class);
-        intent.putExtra(PayPalService.EXTRA_PAYPAL_CONFIGURATION, payPalConfiguration);
-        intent.putExtra(PaymentActivity.EXTRA_PAYMENT, payPalPayment);
-
-        startActivityForResult(intent, PAYPAL_REQUEST_CODE);
-
-    }
-
 
     //TOOLBAR NAME
     public void set_toolbar_name() {
@@ -205,33 +184,7 @@ public class consulation_request extends AppCompatActivity implements View.OnCli
                 firebase_storage.uploadImage(selectedPdf,consulation_request.this,true);
                 upload_file_check.playAnimation();
             }
-        } else if (requestCode == PAYPAL_REQUEST_CODE) {
-
-            if (resultCode == RESULT_OK) {
-                PaymentConfirmation paymentConfirmation = data.getParcelableExtra(PaymentActivity.EXTRA_RESULT_CONFIRMATION);
-                //VALIDATE ON ALL ITEMS
-                if (paymentConfirmation != null) {
-
-                    String successfull_payment = getResources().getString(R.string.successfull_payment);
-                    Toasty.success(consulation_request.this, successfull_payment, Toasty.LENGTH_LONG).show();
-                    startActivity(new Intent(consulation_request.this, main_screen.class));
-
-                    try {
-                        new Apicalls(consulation_request.this, consulation_request.this).confirm_consultation("" + consultation_reserve.getId(), "" + 1);
-                    } catch (JSONException e) {
-                        e.printStackTrace();
-                    }
-                    Log.e("statusandsecond", "" + consultation_reserve.getId());
-
-                    paid = 1;
-                }
-            }
-
-        } else if (requestCode == PaymentActivity.RESULT_EXTRAS_INVALID) {
-            String Invalid = getResources().getString(R.string.Invalid);
-            Toasty.error(consulation_request.this, Invalid, Toasty.LENGTH_SHORT).show();
         }
-
     }
 
     @Override
@@ -243,10 +196,22 @@ public class consulation_request extends AppCompatActivity implements View.OnCli
     public void OnResponse(ResponseModel model) {
 
         if (paid == 0) {
+
+            new utils().dismiss_dialog(consulation_request.this);  //DISMISS PROGRESS DIALOG
+
             Gson gson = new Gson();
             consultation_reserve = gson.fromJson("" + model.getJsonObject(), consultation_reserve.class);
 
             Toasty.success(consulation_request.this, consultation_reserve.getMessage(), Toasty.LENGTH_LONG).show();
+
+            //GO TO NEXT PAGE (PAYMENT METHOD)
+            Intent intent = new Intent(consulation_request.this, pament_method.class);
+            intent.putExtra("doctor_name",doc_name);
+            intent.putExtra("consultation_price",consultation_price);
+            intent.putExtra("consultation_id",""+consultation_reserve.getId());
+            intent.putExtra("consultation_type","Consultation");
+            startActivity(intent);
+
 
             firebase_storage.images = null;
             firebase_storage_pdf.pdf = null;
@@ -262,7 +227,5 @@ public class consulation_request extends AppCompatActivity implements View.OnCli
     public void OnError(VolleyError error) {
 
     }
-
-
 
 }

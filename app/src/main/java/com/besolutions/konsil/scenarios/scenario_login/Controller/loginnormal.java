@@ -66,6 +66,7 @@ import org.json.JSONObject;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
+import co.infinum.goldfinger.Goldfinger;
 import es.dmoral.toasty.Toasty;
 
 import static com.besolutions.konsil.utils.utils_library.firebase_token;
@@ -89,6 +90,7 @@ public class loginnormal extends AppCompatActivity implements View.OnClickListen
     static String personName_G,personEmail_G,personId_G;
     int google_num =0;
     ImageView logoanim;
+    Goldfinger goldfinger;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -106,6 +108,8 @@ public class loginnormal extends AppCompatActivity implements View.OnClickListen
         check_finger = findViewById(R.id.check);
         sign_in_google= findViewById(R.id.sign_in_google);
         logoanim = findViewById(R.id.logoanim);
+        goldfinger = new Goldfinger.Builder(loginnormal.this).build();
+
 
         login.setOnClickListener(this);
         check.setOnClickListener(this);
@@ -132,6 +136,8 @@ public class loginnormal extends AppCompatActivity implements View.OnClickListen
         printKeyHash();
 
         checkLoginStatus();
+
+        setCheck_finger();
 
 
         //METHOD USING TO GOOGLE SIGN IN
@@ -442,6 +448,21 @@ public class loginnormal extends AppCompatActivity implements View.OnClickListen
                 tv.setText(buttonText);
                 return;
             }
+        }
+    }
+
+    //CHECK GOLDFINGER OR NOT
+    void setCheck_finger()
+    {
+
+        if(goldfinger.hasFingerprintHardware() == false)
+        {
+            check.setVisibility(View.GONE);
+
+        }
+        else if(goldfinger.hasEnrolledFingerprint() == false)
+        {
+            check.setVisibility(View.GONE);
         }
     }
 

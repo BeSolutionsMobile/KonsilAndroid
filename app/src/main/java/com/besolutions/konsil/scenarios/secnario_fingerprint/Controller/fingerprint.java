@@ -29,6 +29,7 @@ fingerprint extends AppCompatActivity {
         setContentView(R.layout.fingerprint);
 
         goldfinger = new Goldfinger.Builder(fingerprint.this).build();
+
     }
 
     @Override

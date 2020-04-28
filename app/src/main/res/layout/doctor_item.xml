@@ -65,6 +65,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginLeft="@dimen/_5sdp"
                 android:text="Germany"
+                android:gravity="center|left"
                 android:textColor="@color/color2"
                 android:textSize="@dimen/_12ssp" />
         </LinearLayout>

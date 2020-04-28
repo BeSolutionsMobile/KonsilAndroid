@@ -106,103 +106,106 @@
           android:secondaryProgressTint="#ffffff"
           android:numStars="5"
           />
-      <LinearLayout
-          android:layout_width="match_parent"
-          android:layout_height="@dimen/_35sdp"
-          android:layout_marginTop="@dimen/_13sdp"
-          android:layout_marginRight="@dimen/_32sdp"
-          android:layout_marginLeft="@dimen/_32sdp"
-          android:background="@drawable/doctor_details_bg"
-          android:orientation="horizontal"
-          android:weightSum="1"
-          >
-          <LinearLayout
-              android:layout_weight=".2995"
-              android:layout_width="0dp"
-              android:orientation="vertical"
-              android:gravity="center"
-              android:layout_height="match_parent">
-              <TextView
-                  android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:text="@string/consultation"
-                  android:textSize="@dimen/_10ssp"
-                  android:textColor="@color/color2"
-                  />
-              <TextView
-                  android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:textSize="@dimen/_10ssp"
-                  android:id="@+id/consultation"
-                  android:textColor="@color/color2"
-                  />
-          </LinearLayout>
-          <View
-              android:layout_weight=".005"
-              android:layout_width="0dp"
-              android:background="@color/color3"
-              android:layout_height="match_parent"/>
-          <LinearLayout
-              android:layout_weight=".4"
-              android:layout_width="0dp"
-              android:orientation="vertical"
-              android:gravity="center"
-              android:layout_height="match_parent">
-              <TextView
-                  android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:text="@string/consulation_price"
-                  android:textSize="@dimen/_10ssp"
-                  android:textColor="@color/color2"
-                  />
-              <LinearLayout
-                  android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:orientation="horizontal">
-              <TextView
-                  android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:id="@+id/price"
-                  android:textSize="@dimen/_10ssp"
-                  android:textColor="@color/color2"
-                  />
-                  <TextView
-                      android:layout_width="wrap_content"
-                      android:layout_height="wrap_content"
-                      android:text="EUR"
-                      android:layout_marginLeft="@dimen/_2sdp"
-                      android:textSize="@dimen/_10ssp"
-                      android:textColor="@color/color2"
-                      />
-              </LinearLayout>
-          </LinearLayout>
-          <View
-              android:layout_weight=".005"
-              android:layout_width="0dp"
-              android:background="@color/color3"
-              android:layout_height="match_parent"/>
-          <LinearLayout
-              android:layout_weight=".2995"
-              android:layout_width="0dp"
-              android:orientation="vertical"
-              android:gravity="center"
-              android:layout_height="match_parent">
-              <TextView
-                  android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:text="@string/conversation"
-                  android:textSize="@dimen/_10ssp"
-                  android:textColor="@color/color2"
-                  />
-              <TextView
-                  android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:textSize="@dimen/_10ssp"
-                  android:id="@+id/conversation"
-                  android:textColor="@color/color2"
-                  />
-          </LinearLayout>
-      </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/_13sdp"
+            android:layout_marginRight="@dimen/_32sdp"
+            android:paddingBottom="@dimen/_5sdp"
+            android:paddingTop="@dimen/_3sdp"
+            android:layout_marginLeft="@dimen/_32sdp"
+            android:background="@drawable/doctor_details_bg"
+            android:orientation="horizontal"
+            android:weightSum="1"
+            >
+            <LinearLayout
+                android:layout_weight=".2995"
+                android:layout_width="0dp"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_height="match_parent">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/consultation"
+                    android:textSize="@dimen/_10ssp"
+                    android:textColor="@color/color2"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/_10ssp"
+                    android:layout_marginTop="@dimen/_2sdp"
+                    android:id="@+id/consultation"
+                    android:textColor="@color/color2"
+                    />
+            </LinearLayout>
+            <View
+                android:layout_weight=".005"
+                android:layout_width="0dp"
+                android:background="@color/color3"
+                android:layout_height="match_parent"/>
+            <LinearLayout
+                android:layout_weight=".4"
+                android:layout_width="0dp"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_height="match_parent">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/consulation_price"
+                    android:textColor="@color/color2"
+                    android:textSize="@dimen/_10ssp" />
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/price"
+                        android:textSize="@dimen/_10ssp"
+                        android:textColor="@color/color2"
+                        />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="EUR"
+                        android:layout_marginLeft="@dimen/_2sdp"
+                        android:textSize="@dimen/_10ssp"
+                        android:textColor="@color/color2"
+                        />
+                </LinearLayout>
+            </LinearLayout>
+            <View
+                android:layout_weight=".005"
+                android:layout_width="0dp"
+                android:background="@color/color3"
+                android:layout_height="match_parent"/>
+            <LinearLayout
+                android:layout_weight=".2995"
+                android:layout_width="0dp"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:layout_height="match_parent">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/conversation"
+                    android:textSize="@dimen/_10ssp"
+                    android:textColor="@color/color2"
+                    />
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textSize="@dimen/_10ssp"
+                    android:id="@+id/conversation"
+                    android:textColor="@color/color2"
+                    />
+            </LinearLayout>
+        </LinearLayout>
         <com.borjabravo.readmoretextview.ReadMoreTextView
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -221,7 +224,7 @@
             />
       <LinearLayout
           android:layout_width="match_parent"
-          android:layout_height="@dimen/_32sdp"
+          android:layout_height="@dimen/_40sdp"
           android:weightSum="1"
           android:layout_marginTop="@dimen/_15sdp"
           android:gravity="center"
@@ -230,31 +233,27 @@
           android:layout_marginLeft="@dimen/_35sdp"
           android:orientation="horizontal">
           <Button
-              android:layout_weight=".475"
+              android:layout_weight=".48"
               android:layout_width="0dp"
-              android:paddingLeft="@dimen/_3sdp"
-              android:paddingRight="@dimen/_3sdp"
               android:text="@string/request_consulation"
               android:textAllCaps="false"
-              android:textSize="@dimen/_12ssp"
+              android:textSize="@dimen/_11ssp"
               android:id="@+id/request_consulation"
               android:textColor="@android:color/white"
               android:layout_height="match_parent"
               android:background="@drawable/request_consulation_bg_ar"
               />
           <Button
-              android:layout_weight=".025"
+              android:layout_weight=".02"
               android:layout_width="0dp"
               android:layout_height="match_parent"/>
           <Button
-              android:layout_weight=".475"
+              android:layout_weight=".48"
               android:layout_width="0dp"
-              android:paddingLeft="@dimen/_3sdp"
               android:id="@+id/online_res"
-              android:paddingRight="@dimen/_3sdp"
               android:text="@string/requst_online_converstaion"
               android:textAllCaps="false"
-              android:textSize="@dimen/_12ssp"
+              android:textSize="@dimen/_11ssp"
               android:textColor="@android:color/white"
               android:layout_height="match_parent"
               android:background="@drawable/request_online_conversation_ar"

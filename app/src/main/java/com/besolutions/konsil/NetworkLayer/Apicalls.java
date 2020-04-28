@@ -338,6 +338,19 @@ public class Apicalls {
     //----------------------------------------------------------------------------------------------
 
     /**
+     * @func CHECK OUT
+     */
+
+    public void check_out(String amount) throws JSONException {
+
+        apiRouter.makeAdvancedRequest(Apiclient.CHECK_OUT.getURL(), Request.Method.POST, Apiclient.CHECK_OUT.getParams(), Arrays.asList(amount), null);
+
+    }
+
+
+    //----------------------------------------------------------------------------------------------
+
+    /**
      * @func Get Orders Data
      */
 

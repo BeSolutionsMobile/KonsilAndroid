@@ -28,6 +28,7 @@ import com.besolutions.konsil.network_check_status.regist_network_broadcast;
 import com.besolutions.konsil.scenarios.scenario_Consulation_request.Controller.consulation_request;
 import com.besolutions.konsil.scenarios.scenario_mian_page.Controller.main_screen;
 import com.besolutions.konsil.scenarios.scenario_payment.controller.payment;
+import com.besolutions.konsil.scenarios.scenario_payment_methods.controller.pament_method;
 import com.besolutions.konsil.scenarios.scenario_request_online_conversation.model.Datum;
 import com.besolutions.konsil.scenarios.scenario_request_online_conversation.model.conversation_reserve;
 import com.besolutions.konsil.scenarios.scenario_request_online_conversation.model.root_appointment;
@@ -69,10 +70,8 @@ public class request_online_conversation extends AppCompatActivity implements Vi
     ProgressBar pg;
 
     TextView choose_date;
-    String conversation_price;
+    String conversation_price,doctor_name;
 
-    private static PayPalConfiguration payPalConfiguration = new PayPalConfiguration()
-            .environment(PayPalConfiguration.ENVIRONMENT_PRODUCTION).clientId(Config.CLIENT_ID);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -82,6 +81,7 @@ public class request_online_conversation extends AppCompatActivity implements Vi
         complete_req.setOnClickListener(this);
 
         doc_id = getIntent().getStringExtra("doc_id");
+        doctor_name = getIntent().getStringExtra("doc_name");
 
 
         set_toolbar_name();
@@ -191,9 +191,16 @@ public class request_online_conversation extends AppCompatActivity implements Vi
         else if (complete_req_status == 1) {
             Gson gson = new Gson();
             conversation_reserve = gson.fromJson("" + model.getJsonObject(), conversation_reserve.class);
-
             Toasty.success(request_online_conversation.this, conversation_reserve.getMessage(), Toasty.LENGTH_SHORT).show();
-            process_payment();
+
+            //GO TO NEXT PAGE (PAYMENT METHOD)
+            Intent intent = new Intent(request_online_conversation.this, pament_method.class);
+            intent.putExtra("doctor_name",doctor_name);
+            intent.putExtra("consultation_price",conversation_price);
+            intent.putExtra("consultation_id",""+conversation_reserve.getId());
+            intent.putExtra("consultation_type","Conversation");
+            startActivity(intent);
+
             complete_req_status = 0;
         } else if (complete_req_status == 2) {
             complete_req_status = 1;
@@ -232,19 +239,6 @@ public class request_online_conversation extends AppCompatActivity implements Vi
 
     }
 
-    //PAYMENT PROCESS
-    private void process_payment() {
-        String pay_konsil = getResources().getString(R.string.pay_konsil);
-        PayPalPayment payPalPayment = new PayPalPayment(new BigDecimal(conversation_price), "EUR",
-                pay_konsil, PayPalPayment.PAYMENT_INTENT_SALE);
-
-        Intent intent = new Intent(request_online_conversation.this, PaymentActivity.class);
-        intent.putExtra(PayPalService.EXTRA_PAYPAL_CONFIGURATION, payPalConfiguration);
-        intent.putExtra(PaymentActivity.EXTRA_PAYMENT, payPalPayment);
-
-        startActivityForResult(intent, PAYPAL_REQUEST_CODE);
-
-    }
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {

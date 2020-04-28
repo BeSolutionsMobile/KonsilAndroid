@@ -46,6 +46,7 @@ public enum Apiclient {
     CHANGE_PHOTO("update-personal-image", Collections.singletonList("image_url")),
     ADD_PROMO_CODE("add-promocode", Collections.singletonList("promo_code")),
     BILL_AMOUNT("finish-order", Arrays.asList("order_id","bill_amount")),
+    CHECK_OUT("stripe-token", Arrays.asList("amount")),
     UPDATE_INVESTOR("update_investor?", Arrays.asList("id","Name","Email","Password","Age","Gender","Work","Mobile","Images")),
     UPLOAD_CONSULTATION_FILES("upload-consultation-files", Arrays.asList("consultation_id","images","files"));
 

@@ -534,6 +534,11 @@ OK       Mehr Informationen
     <string name="show_less">zeige weniger</string>
     <string name="closed_cons">Closed</string>
     <string name="confirm_upload">Upload bestätigen</string>
-
-
+    <string name="amount">Betrag :</string>
+    <string name="doctor_pay">Arzt :</string>
+    <string name="type">Betrag :</string>
+    <string name="choose_your_payment_method">Wählen Sie Ihre Zahlungsmethode :</string>
+    <string name="paymentmethod">Zahlung</string>
+    <string name="checkout">Auschecken</string>
+    <string name="payment_failed">Die Zahlung konnte nicht abgeschlossen werden. Bitte versuchen Sie es erneut</string>
 </resources>

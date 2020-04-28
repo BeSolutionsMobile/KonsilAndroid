@@ -18,40 +18,66 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".scenarios.scenario_splash_Activity.Controller.splash_activity">
-
-        </activity>
-
-        <activity android:name=".network.accccccccc" />
-        <activity android:name=".scenarios.scenario_policy.controller.policy" />
-        <activity android:name=".scenarios.scenario_terms_of_use.Controller.terms_of_use" />
-        <activity android:name=".scenarios.scenario_payment.controller.payment" />
-        <activity android:name=".scenarios.scenaio_settings.Controller.settings" />
-        <activity android:name=".scenarios.scenario_welcome_tour.scenario_welcome_tour" />
-        <activity android:name=".scenarios.scenario_make_complaint.Controller.make_a_complaint" />
-        <activity android:name=".scenarios.scenario_be_a_doctor.Controller.be_a_doctor" />
-        <activity android:name=".scenarios.scenario_mian_page.Controller.main_screen" />
-        <activity android:name=".scenarios.scenario_splash_screen.Controller.splash_screen">
+        <activity android:name=".scenarios.scenario_checkout_credit.controller.checkout_credit"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name=".scenarios.scenario_payment_methods.controller.pament_method"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".scenarios.scenario_splash_Activity.Controller.splash_activity"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".network.accccccccc"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".scenarios.scenario_policy.controller.policy"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".scenarios.scenario_terms_of_use.Controller.terms_of_use"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".scenarios.scenario_payment.controller.payment"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".scenarios.scenaio_settings.Controller.settings"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".scenarios.scenario_welcome_tour.scenario_welcome_tour"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".scenarios.scenario_make_complaint.Controller.make_a_complaint"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".scenarios.scenario_be_a_doctor.Controller.be_a_doctor"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".scenarios.scenario_mian_page.Controller.main_screen"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".scenarios.scenario_splash_screen.Controller.splash_screen"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".scenarios.scenario_personal_info.Controller.personal_info" />
-        <activity android:name=".scenarios.scenario_my_consultations.Controlller.my_consultations" />
-        <activity android:name=".scenarios.scenario_compalint_details.compalint_details.Controller.compalint_details" />
-        <activity android:name=".scenarios.scenarios_faq.controller.faq" />
-        <activity android:name=".scenarios.scenario_online_conversation.Controller.online_conversation" />
-        <activity android:name=".scenarios.scenario_request_online_conversation.Controller.request_online_conversation" />
-        <activity android:name=".scenarios.scenario_Consulation_result.Controller.Consulation_result.consulation_result" />
-        <activity android:name=".scenarios.scenario_Consulation_request.Controller.consulation_request" />
-        <activity android:name=".scenarios.scenario_doctor_info.Controller.doctor_info" />
-        <activity android:name=".scenarios.scenario_doctor_list.Controller.doctor_list" />
-        <activity android:name=".scenarios.scenario_sign_up.Controller.sign_up" />
-        <activity android:name=".scenarios.secnario_fingerprint.Controller.fingerprint" />
-        <activity android:name=".scenarios.scenario_login.Controller.login" />
-        <activity android:name=".scenarios.scenario_login.Controller.loginnormal"/>
+        <activity android:name=".scenarios.scenario_personal_info.Controller.personal_info"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".scenarios.scenario_my_consultations.Controlller.my_consultations"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".scenarios.scenario_compalint_details.compalint_details.Controller.compalint_details"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".scenarios.scenarios_faq.controller.faq"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".scenarios.scenario_online_conversation.Controller.online_conversation"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".scenarios.scenario_request_online_conversation.Controller.request_online_conversation"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".scenarios.scenario_Consulation_result.Controller.Consulation_result.consulation_result"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".scenarios.scenario_Consulation_request.Controller.consulation_request"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".scenarios.scenario_doctor_info.Controller.doctor_info"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".scenarios.scenario_doctor_list.Controller.doctor_list"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".scenarios.scenario_sign_up.Controller.sign_up"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".scenarios.secnario_fingerprint.Controller.fingerprint"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".scenarios.scenario_login.Controller.login"
+            android:screenOrientation="portrait"/>
+        <activity android:name=".scenarios.scenario_login.Controller.loginnormal"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name" />

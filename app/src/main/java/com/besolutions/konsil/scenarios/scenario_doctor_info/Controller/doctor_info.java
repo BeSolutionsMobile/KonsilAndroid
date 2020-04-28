@@ -88,6 +88,8 @@ public class doctor_info extends AppCompatActivity implements View.OnClickListen
             Intent intent = new Intent(doctor_info.this, consulation_request.class);
             intent.putExtra("doc_id", doc_id);
             intent.putExtra("consultation_price", ""+doctors.getConsultationPrice());
+            intent.putExtra("doc_name", ""+doctors.getName());
+
             startActivity(intent);
         } else if (v.getId() == R.id.online_res) {
 

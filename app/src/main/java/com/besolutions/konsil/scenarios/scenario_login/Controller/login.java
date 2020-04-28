@@ -77,6 +77,7 @@ import org.json.JSONObject;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
+import co.infinum.goldfinger.Goldfinger;
 import es.dmoral.toasty.Toasty;
 
 import static com.besolutions.konsil.utils.utils_library.firebase_token;
@@ -100,6 +101,7 @@ public class login extends AppCompatActivity implements View.OnClickListener, Ne
     static String personName_G,personEmail_G,personId_G;
     int google_num =0;
     ImageView logoanim;
+    Goldfinger goldfinger;
 
 
 
@@ -119,6 +121,8 @@ public class login extends AppCompatActivity implements View.OnClickListener, Ne
         check_finger = findViewById(R.id.check);
         sign_in_google= findViewById(R.id.sign_in_google);
         logoanim = findViewById(R.id.logoanim);
+        goldfinger = new Goldfinger.Builder(login.this).build();
+
 
 
         login.setOnClickListener(this);
@@ -130,6 +134,9 @@ public class login extends AppCompatActivity implements View.OnClickListener, Ne
 
         //STOP IMAGE LOOPING
         stop_looping();
+
+        //CHECK FINGER PRINT
+        setCheck_finger();
 
 
 
@@ -163,6 +170,7 @@ public class login extends AppCompatActivity implements View.OnClickListener, Ne
 
         //SET TEXT IN GOOGLE
         setGooglePlusButtonText(sign_in_google,getResources().getString(R.string.google_login));
+
 
 
     }
@@ -524,5 +532,19 @@ public class login extends AppCompatActivity implements View.OnClickListener, Ne
                 });
                 return false;
             }}).into(logoanim);
+    }
+
+    //CHECK GOLDFINGER OR NOT
+    void setCheck_finger()
+    {
+        if(goldfinger.hasFingerprintHardware() == false)
+        {
+            check.setVisibility(View.GONE);
+
+        }
+        else if(goldfinger.hasEnrolledFingerprint() == false)
+        {
+            check.setVisibility(View.GONE);
+        }
     }
 }

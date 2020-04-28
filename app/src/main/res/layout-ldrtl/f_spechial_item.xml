@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
-    android:layout_height="@dimen/_120sdp"
+    android:layout_height="@dimen/_130sdp"
     android:orientation="vertical"
     android:gravity="center"
     android:id="@+id/item"
@@ -15,8 +15,8 @@
       android:layout_width="wrap_content"
       android:layout_height="wrap_content">
     <ImageView
-        android:layout_width="@dimen/_60sdp"
-        android:layout_height="@dimen/_60sdp"
+        android:layout_width="@dimen/_50sdp"
+        android:layout_height="@dimen/_50sdp"
         android:id="@+id/img"
         android:layout_marginBottom="@dimen/_15sdp"
         android:src="@drawable/doctor_one"/>
@@ -25,10 +25,10 @@
 
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="@dimen/_45sdp"
         android:text="Surgery"
         android:maxLines="2"
-        android:layout_marginBottom="@dimen/_3sdp"
+        android:ellipsize="end"
         android:id="@+id/name"
         android:paddingRight="@dimen/_5sdp"
         android:paddingLeft="@dimen/_5sdp"

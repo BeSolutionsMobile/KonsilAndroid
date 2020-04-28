@@ -171,6 +171,15 @@
     <string name="show_less">عرض الاقل</string>
     <string name="closed_cons">أغلقت</string>
     <string name="confirm_upload">تاكيد الرفع</string>
+    <string name="amount">المبلغ :</string>
+    <string name="doctor_pay">طبيب :</string>
+    <string name="type">النوع :</string>
+    <string name="choose_your_payment_method">اختر وسيلة الدفع</string>
+    <string name="paymentmethod">الدفع</string>
+    <string name="checkout">الدفع</string>
+    <string name="payment_failed">فشل فى إكمال الدفع ، يرجى المحاولة مرة أخرى</string>
+
+
 
 
 </resources>
