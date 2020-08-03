@@ -522,7 +522,7 @@ public class Apicalls {
     public void promoCode(final String promo_code) {
 
         try {
-            apiRouter.makeAdvancedRequest(Apiclient.ADD_PROMO_CODE.getURL(), Request.Method.POST, Apiclient.ADD_PROMO_CODE.getParams(), Arrays.asList(promo_code), null);
+            apiRouter.makeAdvancedRequest(Apiclient.PROMO_CODE.getURL(), Request.Method.POST, Apiclient.PROMO_CODE.getParams(), Arrays.asList(promo_code), null);
         } catch (JSONException e) {
             e.printStackTrace();
         }

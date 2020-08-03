@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -20,6 +21,7 @@ import com.besolutions.konsil.scenarios.scenario_Consulation_request.Controller.
 import com.besolutions.konsil.scenarios.scenario_Consulation_request.model.consultation_reserve;
 import com.besolutions.konsil.scenarios.scenario_checkout_credit.controller.checkout_credit;
 import com.besolutions.konsil.scenarios.scenario_mian_page.Controller.main_screen;
+import com.besolutions.konsil.utils.utils;
 import com.paypal.android.sdk.payments.PayPalConfiguration;
 import com.paypal.android.sdk.payments.PayPalPayment;
 import com.paypal.android.sdk.payments.PayPalService;
@@ -33,9 +35,10 @@ import java.math.BigDecimal;
 import es.dmoral.toasty.Toasty;
 
 public class pament_method extends AppCompatActivity implements NetworkInterface, View.OnClickListener {
-    String consultation_price,consultation_type,doc_name,consultation_id;
-    TextView price,consultation,doctor;
-    ImageView paypal,credit;
+    String consultation_price, consultation_type, doc_name, consultation_id;
+    TextView price, consultation, doctor, send_promo;
+    ImageView paypal, credit;
+    EditText write_promo;
 
     //PAYPAL CONFIGRATIONS
     private static final int PAYPAL_REQUEST_CODE = 3;
@@ -70,15 +73,18 @@ public class pament_method extends AppCompatActivity implements NetworkInterface
         consultation = findViewById(R.id.type);
         paypal = findViewById(R.id.paypal);
         credit = findViewById(R.id.credit);
+        write_promo = findViewById(R.id.editPromo);
+        send_promo = findViewById(R.id.txtSend);
 
         //SET DATA IN TEXTS
-        price.setText("€"+consultation_price);
+        price.setText("€" + consultation_price);
         doctor.setText(doc_name);
         consultation.setText(consultation_type);
 
         //SET BUTTONS CLICK
         paypal.setOnClickListener(this);
         credit.setOnClickListener(this);
+        send_promo.setOnClickListener(this);
 
 
     }
@@ -91,27 +97,36 @@ public class pament_method extends AppCompatActivity implements NetworkInterface
 
     @Override
     public void OnResponse(ResponseModel model) {
-
+        new utils().dismiss_dialog(pament_method.this);
+        Toasty.success(this,model.getJsonObject().optString("message"),Toasty.LENGTH_SHORT).show();
     }
 
     @Override
     public void OnError(VolleyError error) {
-
+       new utils().dismiss_dialog(pament_method.this);
+       if(error.networkResponse.statusCode == 404)
+       {
+           Toasty.error(this,getString(R.string.invalid_promo),Toasty.LENGTH_SHORT).show();
+       }
     }
 
     @Override
     public void onClick(View view) {
-        if(view.getId() == R.id.paypal)
-        {
+        if (view.getId() == R.id.paypal) {
             process_payment();
-        }
-        else if(view.getId() == R.id.credit)
-        {
+        } else if (view.getId() == R.id.credit) {
             Intent intent = new Intent(pament_method.this, checkout_credit.class);
-            intent.putExtra("consultation_price",consultation_price);
-            intent.putExtra("consultation_id",consultation_id);
-            intent.putExtra("consultation_type",consultation_type);
+            intent.putExtra("consultation_price", consultation_price);
+            intent.putExtra("consultation_id", consultation_id);
+            intent.putExtra("consultation_type", consultation_type);
             startActivity(intent);
+        } else if (view.getId() == R.id.txtSend) {
+            if (write_promo.getText().length() == 0) {
+                Toasty.warning(pament_method.this, getString(R.string.insert_promo), Toasty.LENGTH_SHORT).show();
+            } else {
+                new utils().set_dialog(pament_method.this);
+                new Apicalls(pament_method.this, pament_method.this).promoCode(write_promo.getText().toString());
+            }
         }
     }
 
@@ -147,7 +162,7 @@ public class pament_method extends AppCompatActivity implements NetworkInterface
                     startActivity(new Intent(pament_method.this, main_screen.class));
 
                     try {
-                         new Apicalls(pament_method.this, pament_method.this).confirm_consultation("" + consultation_id, "" + 1);
+                        new Apicalls(pament_method.this, pament_method.this).confirm_consultation("" + consultation_id, "" + 1);
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }

@@ -112,4 +112,33 @@
        android:layout_marginLeft="@dimen/_30sdp"
        android:layout_marginRight="@dimen/_30sdp"
        />
+
+    <LinearLayout
+        android:layout_width="@dimen/_250sdp"
+        android:layout_height="@dimen/_35sdp"
+        android:layout_gravity="center"
+        android:layout_marginTop="@dimen/_40sdp"
+        android:weightSum="1"
+        android:orientation="horizontal">
+        <EditText
+            android:id="@+id/editPromo"
+            android:layout_weight=".75"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:hint="@string/prome_code_here"
+            android:gravity="center"
+            android:textColor="@android:color/black"
+            android:textSize="@dimen/_13ssp"
+            />
+        <TextView
+            android:id="@+id/txtSend"
+            android:layout_weight=".25"
+            android:layout_width="0dp"
+            android:background="@drawable/copy_2"
+            android:text="@string/send"
+            android:gravity="center"
+            android:textColor="@android:color/white"
+            android:textSize="@dimen/_12ssp"
+            android:layout_height="match_parent"/>
+    </LinearLayout>
 </LinearLayout>

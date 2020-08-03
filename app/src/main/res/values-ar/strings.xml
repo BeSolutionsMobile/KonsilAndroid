@@ -178,8 +178,8 @@
     <string name="paymentmethod">الدفع</string>
     <string name="checkout">الدفع</string>
     <string name="payment_failed">فشل فى إكمال الدفع ، يرجى المحاولة مرة أخرى</string>
-
-
-
+    <string name="prome_code_here">الرمز الترويجي هنا</string>
+    <string name="insert_promo">يجب عليك إدخال حرف على الأقل</string>
+    <string name="invalid_promo">الرمز الترويجي غير صالح</string>
 
 </resources>

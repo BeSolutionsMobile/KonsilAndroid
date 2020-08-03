@@ -159,6 +159,8 @@
     <string name="email_val">Email is too short!</string>
     <string name="password_val">Password is too short!</string>
     <string name="error_mail_pass">Email or Password is incorrect</string>
+    <string name="insert_promo">You must insert at least on character</string>
+    <string name="invalid_promo">Invalid Promo Code</string>
     <string name="terms">AGB Konsilmed UG
 
 General terms and conditions of Konsilmed UG (limited liability), Mainzer Landstra? E 50, 60328 Frankfurt am Main. ("Konsilmed"), for the use of the online consultation under and other under the portal advisory services
@@ -245,6 +247,7 @@ Some functions of our website cannot be offered without the use of technically n
     <string name="paymentmethod">Payment</string>
     <string name="checkout">Checkout</string>
     <string name="payment_failed">Failed to complete payment please try again</string>
+    <string name="prome_code_here">prome code here</string>
 
 
 </resources>

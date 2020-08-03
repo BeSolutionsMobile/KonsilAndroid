@@ -541,4 +541,7 @@ OK       Mehr Informationen
     <string name="paymentmethod">Zahlung</string>
     <string name="checkout">Auschecken</string>
     <string name="payment_failed">Die Zahlung konnte nicht abgeschlossen werden. Bitte versuchen Sie es erneut</string>
+    <string name="prome_code_here">Promo-Code hier</string>
+    <string name="insert_promo">Sie müssen mindestens das Wort einfügen</string>
+    <string name="invalid_promo">Ungültiger Promo-Code</string>
 </resources>
