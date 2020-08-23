@@ -9,14 +9,14 @@
     tools:context=".scenarios.scenario_be_a_doctor.Controller.be_a_doctor">
 
  <include layout="@layout/toolbar_default"/>
-    <android.support.v4.widget.NestedScrollView
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical">
-    <android.support.v7.widget.CardView
+    <androidx.cardview.widget.CardView
         android:layout_width="@dimen/_86sdp"
         android:layout_height="@dimen/_86sdp"
         app:cardCornerRadius="@dimen/_43sdp"
@@ -26,7 +26,7 @@
         app:cardBackgroundColor="@color/color3"
         android:layout_gravity="center"
         >
-        <android.support.v7.widget.CardView
+        <androidx.cardview.widget.CardView
             android:layout_width="@dimen/_84sdp"
             android:layout_height="@dimen/_84sdp"
             app:cardCornerRadius="@dimen/_42sdp"
@@ -57,8 +57,8 @@
                     app:lottie_rawRes="@raw/checkafter"
                     />
             </RelativeLayout>
-        </android.support.v7.widget.CardView>
-    </android.support.v7.widget.CardView>
+        </androidx.cardview.widget.CardView>
+    </androidx.cardview.widget.CardView>
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -218,5 +218,5 @@
         android:layout_marginBottom="@dimen/_20sdp"
         />
     </LinearLayout>
-    </android.support.v4.widget.NestedScrollView>
+    </androidx.core.widget.NestedScrollView>
 </LinearLayout>

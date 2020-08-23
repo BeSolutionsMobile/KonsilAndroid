@@ -181,5 +181,7 @@
     <string name="prome_code_here">الرمز الترويجي هنا</string>
     <string name="insert_promo">يجب عليك إدخال حرف على الأقل</string>
     <string name="invalid_promo">الرمز الترويجي غير صالح</string>
+    <string name="conversation_price">سعر المحادثة</string>
+
 
 </resources>

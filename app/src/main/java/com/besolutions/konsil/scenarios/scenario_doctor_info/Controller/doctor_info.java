@@ -3,17 +3,15 @@ package com.besolutions.konsil.scenarios.scenario_doctor_info.Controller;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
+import androidx.appcompat.widget.Toolbar;
 import android.view.View;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.RatingBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.volley.VolleyError;
 import com.besolutions.konsil.NetworkLayer.Apicalls;
@@ -21,12 +19,10 @@ import com.besolutions.konsil.NetworkLayer.NetworkInterface;
 import com.besolutions.konsil.NetworkLayer.ResponseModel;
 import com.besolutions.konsil.R;
 import com.besolutions.konsil.network_check_status.regist_network_broadcast;
-import com.besolutions.konsil.scenarios.scenario_compalint_details.compalint_details.Controller.compalint_details;
 import com.besolutions.konsil.scenarios.scenario_doctor_info.model.Doctor;
 import com.besolutions.konsil.scenarios.scenario_doctor_info.model.root_details;
 import com.besolutions.konsil.scenarios.scenario_request_online_conversation.Controller.request_online_conversation;
 import com.besolutions.konsil.scenarios.scenario_Consulation_request.Controller.consulation_request;
-import com.besolutions.konsil.scenarios.scenario_sign_up.Controller.sign_up;
 import com.borjabravo.readmoretextview.ReadMoreTextView;
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.load.DataSource;
@@ -35,7 +31,6 @@ import com.bumptech.glide.request.RequestListener;
 import com.bumptech.glide.request.target.Target;
 import com.facebook.shimmer.ShimmerFrameLayout;
 import com.google.gson.Gson;
-import com.squareup.picasso.Picasso;
 
 import es.dmoral.toasty.Toasty;
 
@@ -134,7 +129,7 @@ public class doctor_info extends AppCompatActivity implements View.OnClickListen
         TextView doc_job = findViewById(R.id.doc_job);
         ReadMoreTextView doc_desc = findViewById(R.id.doc_desc);
         TextView price = findViewById(R.id.price);
-        TextView consultation = findViewById(R.id.consultation);
+//        TextView consultation = findViewById(R.id.consultation);
         TextView conversation = findViewById(R.id.conversation);
         RatingBar ratingBar = findViewById(R.id.ratings);
         degree = findViewById(R.id.degree);
@@ -166,8 +161,8 @@ public class doctor_info extends AppCompatActivity implements View.OnClickListen
 
         doc_name.setText(doctors.getName());
         price.setText("" + doctors.getConsultationPrice());
-        consultation.setText("" + doctors.getTotalConsultation());
-        conversation.setText("" + doctors.getTotalConversation());
+//        consultation.setText("" + doctors.getTotalConsultation());
+        conversation.setText("" + doctors.getConversationPrice());
         degree.setText(""+doctors.getDegree());
         ratingBar.setRating(doctors.getRate());
 

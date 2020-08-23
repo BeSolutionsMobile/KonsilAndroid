@@ -1,15 +1,13 @@
 package com.besolutions.konsil.scenarios.scenario_payment_methods.controller;
 
 import android.content.Intent;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.volley.VolleyError;
 import com.besolutions.konsil.NetworkLayer.Apicalls;
@@ -17,11 +15,12 @@ import com.besolutions.konsil.NetworkLayer.NetworkInterface;
 import com.besolutions.konsil.NetworkLayer.ResponseModel;
 import com.besolutions.konsil.R;
 import com.besolutions.konsil.config.Config;
-import com.besolutions.konsil.scenarios.scenario_Consulation_request.Controller.consulation_request;
-import com.besolutions.konsil.scenarios.scenario_Consulation_request.model.consultation_reserve;
 import com.besolutions.konsil.scenarios.scenario_checkout_credit.controller.checkout_credit;
 import com.besolutions.konsil.scenarios.scenario_mian_page.Controller.main_screen;
+import com.besolutions.konsil.scenarios.scenario_payment_methods.model.promocodeDatum;
+import com.besolutions.konsil.scenarios.scenario_payment_methods.model.promocodeRootClass;
 import com.besolutions.konsil.utils.utils;
+import com.google.gson.Gson;
 import com.paypal.android.sdk.payments.PayPalConfiguration;
 import com.paypal.android.sdk.payments.PayPalPayment;
 import com.paypal.android.sdk.payments.PayPalService;
@@ -39,6 +38,11 @@ public class pament_method extends AppCompatActivity implements NetworkInterface
     TextView price, consultation, doctor, send_promo;
     ImageView paypal, credit;
     EditText write_promo;
+    promocodeRootClass promocodeRootClass;
+    promocodeDatum promocodeDatum;
+    String number_is;
+    String payment_price;
+    String promo_id = "0";
 
     //PAYPAL CONFIGRATIONS
     private static final int PAYPAL_REQUEST_CODE = 3;
@@ -66,6 +70,9 @@ public class pament_method extends AppCompatActivity implements NetworkInterface
         doc_name = getIntent().getStringExtra("doctor_name");
         consultation_type = getIntent().getStringExtra("consultation_type");
         consultation_id = getIntent().getStringExtra("consultation_id");
+
+        //SET PAYMENT PRICE
+        payment_price = consultation_price;
 
         //DEFINE VAR
         price = findViewById(R.id.price);
@@ -98,16 +105,38 @@ public class pament_method extends AppCompatActivity implements NetworkInterface
     @Override
     public void OnResponse(ResponseModel model) {
         new utils().dismiss_dialog(pament_method.this);
-        Toasty.success(this,model.getJsonObject().optString("message"),Toasty.LENGTH_SHORT).show();
+        Gson gson = new Gson();
+        promocodeRootClass = gson.fromJson("" + model.getJsonObject(), promocodeRootClass.class);
+        Toasty.success(pament_method.this, "" + promocodeRootClass.getMessage(), Toasty.LENGTH_SHORT).show();
+
+        promocodeDatum = promocodeRootClass.getData();
+        promo_id = "" + promocodeDatum.getId();
+
+
+        number_is = promocodeDatum.getDiscount();
+
+        double promo_num_is = Double.parseDouble(number_is);
+        if (promo_num_is < 1) {
+            double promo_code_price = Integer.parseInt(consultation_price) - (Integer.parseInt(consultation_price) * promo_num_is);
+
+            price.setText("€" + promo_code_price);
+            //SET PAYMENT PRICE
+            payment_price = "" + promo_code_price;
+        } else if (promo_num_is > 1) {
+            double promo_code_price = Integer.parseInt(consultation_price) - promo_num_is;
+            price.setText("€" + promo_code_price);
+            //SET PAYMENT PRICE
+            payment_price = "" + promo_code_price;
+        }
+
     }
 
     @Override
     public void OnError(VolleyError error) {
-       new utils().dismiss_dialog(pament_method.this);
-       if(error.networkResponse.statusCode == 404)
-       {
-           Toasty.error(this,getString(R.string.invalid_promo),Toasty.LENGTH_SHORT).show();
-       }
+        new utils().dismiss_dialog(pament_method.this);
+        if (error.networkResponse.statusCode == 404) {
+            Toasty.error(this, getString(R.string.invalid_promo), Toasty.LENGTH_SHORT).show();
+        }
     }
 
     @Override
@@ -116,9 +145,10 @@ public class pament_method extends AppCompatActivity implements NetworkInterface
             process_payment();
         } else if (view.getId() == R.id.credit) {
             Intent intent = new Intent(pament_method.this, checkout_credit.class);
-            intent.putExtra("consultation_price", consultation_price);
+            intent.putExtra("consultation_price", payment_price);
             intent.putExtra("consultation_id", consultation_id);
             intent.putExtra("consultation_type", consultation_type);
+            intent.putExtra("consultation_promo", promo_id);
             startActivity(intent);
         } else if (view.getId() == R.id.txtSend) {
             if (write_promo.getText().length() == 0) {
@@ -134,9 +164,8 @@ public class pament_method extends AppCompatActivity implements NetworkInterface
     private void process_payment() {
 
         String pay_konsil = getResources().getString(R.string.pay_konsil);
-        String consultation_price = getIntent().getStringExtra("consultation_price");
 
-        PayPalPayment payPalPayment = new PayPalPayment(new BigDecimal(consultation_price), "EUR",
+        PayPalPayment payPalPayment = new PayPalPayment(new BigDecimal(payment_price), "EUR",
                 pay_konsil, PayPalPayment.PAYMENT_INTENT_SALE);
 
         Intent intent = new Intent(pament_method.this, PaymentActivity.class);
@@ -162,7 +191,7 @@ public class pament_method extends AppCompatActivity implements NetworkInterface
                     startActivity(new Intent(pament_method.this, main_screen.class));
 
                     try {
-                        new Apicalls(pament_method.this, pament_method.this).confirm_consultation("" + consultation_id, "" + 1);
+                        new Apicalls(pament_method.this, pament_method.this).confirm_consultation("" + consultation_id, "" + 1, promo_id);
                     } catch (JSONException e) {
                         e.printStackTrace();
                     }

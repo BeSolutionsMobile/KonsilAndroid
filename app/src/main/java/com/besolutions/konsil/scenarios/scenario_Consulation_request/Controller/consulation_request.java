@@ -2,23 +2,19 @@ package com.besolutions.konsil.scenarios.scenario_Consulation_request.Controller
 
 import android.content.ClipData;
 import android.content.Intent;
-import android.database.Cursor;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.provider.MediaStore;
-import android.provider.OpenableColumns;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
-import android.util.Log;
+import androidx.appcompat.widget.Toolbar;
+
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.airbnb.lottie.LottieAnimationView;
 import com.android.volley.VolleyError;
@@ -26,28 +22,16 @@ import com.besolutions.konsil.NetworkLayer.Apicalls;
 import com.besolutions.konsil.NetworkLayer.NetworkInterface;
 import com.besolutions.konsil.NetworkLayer.ResponseModel;
 import com.besolutions.konsil.R;
-import com.besolutions.konsil.config.Config;
 import com.besolutions.konsil.network_check_status.regist_network_broadcast;
 import com.besolutions.konsil.scenarios.scenario_Consulation_request.model.consultation_reserve;
-import com.besolutions.konsil.scenarios.scenario_compalint_details.compalint_details.Controller.compalint_details;
-import com.besolutions.konsil.scenarios.scenario_login.Controller.login;
-import com.besolutions.konsil.scenarios.scenario_mian_page.Controller.main_screen;
 import com.besolutions.konsil.scenarios.scenario_payment_methods.controller.pament_method;
 import com.besolutions.konsil.utils.firebase_storage;
 import com.besolutions.konsil.utils.firebase_storage_pdf;
 import com.besolutions.konsil.utils.utils;
 import com.google.gson.Gson;
-import com.paypal.android.sdk.payments.PayPalConfiguration;
-import com.paypal.android.sdk.payments.PayPalPayment;
 import com.paypal.android.sdk.payments.PayPalService;
-import com.paypal.android.sdk.payments.PaymentActivity;
-import com.paypal.android.sdk.payments.PaymentConfirmation;
 
 import org.json.JSONException;
-
-import java.io.FileNotFoundException;
-import java.io.InputStream;
-import java.math.BigDecimal;
 
 import es.dmoral.toasty.Toasty;
 

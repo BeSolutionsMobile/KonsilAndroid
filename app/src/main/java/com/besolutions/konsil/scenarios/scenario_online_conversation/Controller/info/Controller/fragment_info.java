@@ -2,12 +2,11 @@ package com.besolutions.konsil.scenarios.scenario_online_conversation.Controller
 
 
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
+import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.volley.VolleyError;
 import com.besolutions.konsil.NetworkLayer.Apicalls;
@@ -17,7 +16,6 @@ import com.besolutions.konsil.R;
 import com.besolutions.konsil.scenarios.scenario_my_consultations.pattern.my_consultations_adapter;
 import com.besolutions.konsil.scenarios.scenario_online_conversation.Controller.info.model.Datum;
 import com.besolutions.konsil.scenarios.scenario_online_conversation.Controller.info.model.root_conversation_details;
-import com.besolutions.konsil.scenarios.scenario_request_online_conversation.Controller.request_online_conversation;
 import com.google.gson.Gson;
 
 import org.json.JSONException;
@@ -54,7 +52,7 @@ public class fragment_info extends Fragment implements NetworkInterface {
         status = view.findViewById(R.id.status);
 
         try {
-            new Apicalls(getActivity(), fragment_info.this).confirm_conversation(my_consultations_adapter.id, "1");
+            new Apicalls(getActivity(), fragment_info.this).confirm_conversation(my_consultations_adapter.id, "1","0");
         } catch (JSONException e) {
             e.printStackTrace();
         }

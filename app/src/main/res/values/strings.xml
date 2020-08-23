@@ -61,6 +61,7 @@
     <string name="ratess">Rate</string>
     <string name="consulation_price">Consulation Price</string>
     <string name="conversation">Conversation</string>
+    <string name="conversation_price">Conversation Price</string>
     <string name="upload_files_of_the_medical_consulation">Upload files of the medical Consulation</string>
     <string name="counseling_status">counseling status :</string>
     <string name="enter_message_here">Enter message here</string>

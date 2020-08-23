@@ -4,16 +4,14 @@ package com.besolutions.konsil.utils;
 import android.app.ProgressDialog;
 import android.content.ClipData;
 import android.content.Context;
-import android.database.Cursor;
 import android.net.Uri;
-import android.provider.OpenableColumns;
-import android.support.annotation.NonNull;
+
+import androidx.annotation.NonNull;
 import android.util.Log;
 import android.widget.Toast;
 
 
 import com.besolutions.konsil.R;
-import com.besolutions.konsil.scenarios.scenario_Consulation_request.Controller.consulation_request;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.storage.FirebaseStorage;

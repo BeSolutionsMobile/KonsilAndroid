@@ -1,8 +1,8 @@
 package com.besolutions.konsil.scenarios.scenario_online_conversation.Controller;
 
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.Toolbar;
+import androidx.appcompat.widget.Toolbar;
 import android.widget.TextView;
 
 import com.android.volley.VolleyError;
@@ -11,7 +11,6 @@ import com.besolutions.konsil.NetworkLayer.ResponseModel;
 import com.besolutions.konsil.R;
 
 import com.besolutions.konsil.network_check_status.regist_network_broadcast;
-import com.besolutions.konsil.scenarios.scenario_mian_page.Controller.main_screen;
 import com.besolutions.konsil.scenarios.scenario_online_conversation.Controller.info.Controller.fragment_info;
 import com.besolutions.konsil.scenarios.scenario_online_conversation.Controller.report.Controller.fragment_report_online_c;
 import com.besolutions.konsil.utils.utils;

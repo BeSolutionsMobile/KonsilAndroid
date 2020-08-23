@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.widget.DrawerLayout xmlns:app="http://schemas.android.com/apk/res-auto"
+<androidx.drawerlayout.widget.DrawerLayout xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
@@ -9,7 +9,7 @@
     <RelativeLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
-    <android.support.v4.widget.NestedScrollView
+    <androidx.core.widget.NestedScrollView
         android:layout_width="match_parent"
         android:layout_height="match_parent">
    <LinearLayout
@@ -25,7 +25,7 @@
         android:id="@+id/toolbar_actionbar"
         />
         <include layout="@layout/connection_txt"/>
-        <android.support.v7.widget.CardView
+        <androidx.cardview.widget.CardView
         android:layout_width="@dimen/_86sdp"
         android:layout_height="@dimen/_86sdp"
         app:cardCornerRadius="@dimen/_43sdp"
@@ -34,7 +34,7 @@
         app:cardBackgroundColor="@color/color3"
         android:layout_gravity="center"
         >
-        <android.support.v7.widget.CardView
+        <androidx.cardview.widget.CardView
             android:layout_width="@dimen/_84sdp"
             android:layout_height="@dimen/_84sdp"
             app:cardCornerRadius="@dimen/_42sdp"
@@ -47,8 +47,8 @@
                 android:id="@+id/doc_img"
                 android:layout_gravity="center"
                 />
-        </android.support.v7.widget.CardView>
-    </android.support.v7.widget.CardView>
+        </androidx.cardview.widget.CardView>
+    </androidx.cardview.widget.CardView>
     <TextView
 
         android:layout_width="match_parent"
@@ -156,7 +156,7 @@
                <RelativeLayout
                    android:layout_width="match_parent"
                    android:layout_height="match_parent">
-           <android.support.v7.widget.RecyclerView
+           <androidx.recyclerview.widget.RecyclerView
                android:layout_width="match_parent"
                android:layout_height="match_parent"
                android:layoutDirection="rtl"
@@ -186,7 +186,7 @@
 
        </LinearLayout>
    </LinearLayout>
-    </android.support.v4.widget.NestedScrollView>
+    </androidx.core.widget.NestedScrollView>
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -208,4 +208,4 @@
                 />
         </LinearLayout>
     </RelativeLayout>
-</android.support.v4.widget.DrawerLayout>
+</androidx.drawerlayout.widget.DrawerLayout>

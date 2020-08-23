@@ -1,6 +1,6 @@
 package com.besolutions.konsil.scenarios.scenario_welcome_tour;
 
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 
 import com.besolutions.konsil.R;

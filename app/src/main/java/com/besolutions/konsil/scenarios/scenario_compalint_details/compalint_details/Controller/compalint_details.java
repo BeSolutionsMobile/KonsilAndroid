@@ -1,14 +1,13 @@
 package com.besolutions.konsil.scenarios.scenario_compalint_details.compalint_details.Controller;
 
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.RecyclerView;
+import androidx.recyclerview.widget.RecyclerView;
 
 import com.besolutions.konsil.network_check_status.regist_network_broadcast;
 import com.besolutions.konsil.scenarios.scenario_Consulation_result.Controller.Consulation_result.fragment_message.model.consulation_list;
 import com.besolutions.konsil.R;
 import com.besolutions.konsil.scenarios.scenario_compalint_details.compalint_details.pattern.message_adapter;
-import com.besolutions.konsil.scenarios.scenario_mian_page.Controller.main_screen;
 import com.besolutions.konsil.utils.utils_adapter;
 
 import java.util.ArrayList;

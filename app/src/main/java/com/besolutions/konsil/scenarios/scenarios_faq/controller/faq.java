@@ -1,10 +1,10 @@
 package com.besolutions.konsil.scenarios.scenarios_faq.controller;
 
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.appcompat.widget.Toolbar;
 import android.widget.TextView;
 
 import com.android.volley.VolleyError;
@@ -13,7 +13,6 @@ import com.besolutions.konsil.NetworkLayer.NetworkInterface;
 import com.besolutions.konsil.NetworkLayer.ResponseModel;
 import com.besolutions.konsil.R;
 import com.besolutions.konsil.network_check_status.regist_network_broadcast;
-import com.besolutions.konsil.scenarios.scenario_mian_page.Controller.main_screen;
 import com.besolutions.konsil.scenarios.scenarios_faq.model.Datum;
 import com.besolutions.konsil.scenarios.scenarios_faq.model.root_faq;
 import com.besolutions.konsil.scenarios.scenarios_faq.pattern.expandAdapter;

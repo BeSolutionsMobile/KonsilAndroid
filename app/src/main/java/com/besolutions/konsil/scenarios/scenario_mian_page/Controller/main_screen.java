@@ -1,15 +1,13 @@
 package com.besolutions.konsil.scenarios.scenario_mian_page.Controller;
 
 import android.content.Intent;
-import android.content.res.Configuration;
-import android.content.res.Resources;
 import android.net.Uri;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.AppCompatActivity;
+import androidx.drawerlayout.widget.DrawerLayout;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
-import android.util.DisplayMetrics;
+
+import androidx.appcompat.widget.Toolbar;
+
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -17,7 +15,6 @@ import android.view.View;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.volley.VolleyError;
 import com.besolutions.konsil.NavigationDrawerCallbacks;
@@ -34,8 +31,6 @@ import com.besolutions.konsil.scenarios.scenario_mian_page.model.main_screen_lis
 import com.besolutions.konsil.scenarios.scenario_mian_page.pattern.main_screen_adapter;
 import com.besolutions.konsil.scenarios.scenario_my_consultations.Controlller.my_consultations;
 import com.besolutions.konsil.scenarios.scenario_personal_info.Controller.personal_info;
-import com.besolutions.konsil.scenarios.scenario_policy.controller.policy;
-import com.besolutions.konsil.scenarios.scenario_terms_of_use.Controller.terms_of_use;
 import com.besolutions.konsil.scenarios.scenarios_faq.controller.faq;
 import com.besolutions.konsil.network_check_status.regist_network_broadcast;
 import com.besolutions.konsil.utils.utils;
@@ -46,7 +41,6 @@ import com.google.gson.Gson;
 import org.json.JSONException;
 
 import java.util.ArrayList;
-import java.util.Locale;
 
 public class main_screen extends AppCompatActivity implements NavigationDrawerCallbacks, View.OnClickListener, NetworkInterface {
     Toolbar mToolbar;

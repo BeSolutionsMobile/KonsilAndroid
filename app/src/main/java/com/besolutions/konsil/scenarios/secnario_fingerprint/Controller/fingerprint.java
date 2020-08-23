@@ -3,13 +3,12 @@ package com.besolutions.konsil.scenarios.secnario_fingerprint.Controller;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.view.View;
 import android.widget.ImageView;
 
 import com.airbnb.lottie.LottieAnimationView;
 import com.besolutions.konsil.R;
-import com.besolutions.konsil.scenarios.scenario_login.Controller.loading;
 import com.besolutions.konsil.scenarios.scenario_login.Controller.login;
 import com.besolutions.konsil.scenarios.scenario_mian_page.Controller.main_screen;
 

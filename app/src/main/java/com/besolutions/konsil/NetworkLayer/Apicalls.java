@@ -159,7 +159,7 @@ public class Apicalls {
 
     public void update_personal_info(String name, String phone, String email, String password, String image_url, String patient_history) throws JSONException {
 
-        apiRouter.makeAdvancedRequest(Apiclient.UPDATE_USER_INFO.getURL(), Request.Method.POST, Apiclient.UPDATE_USER_INFO.getParams(), Arrays.asList(name, phone, email, password, image_url ,patient_history), null);
+        apiRouter.makeAdvancedRequest(Apiclient.UPDATE_USER_INFO.getURL(), Request.Method.POST, Apiclient.UPDATE_USER_INFO.getParams(), Arrays.asList(name, phone, email, password, image_url, patient_history), null);
 
     }
 
@@ -183,9 +183,9 @@ public class Apicalls {
      * @func Make Complaint
      */
 
-    public void make_complaint(String type_id, String message,String consultation_id) throws JSONException {
+    public void make_complaint(String type_id, String message, String consultation_id) throws JSONException {
 
-        apiRouter.makeAdvancedRequest(Apiclient.MAKE_COMPLAINT.getURL(), Request.Method.POST, Apiclient.MAKE_COMPLAINT.getParams(), Arrays.asList(type_id, message,consultation_id), null);
+        apiRouter.makeAdvancedRequest(Apiclient.MAKE_COMPLAINT.getURL(), Request.Method.POST, Apiclient.MAKE_COMPLAINT.getParams(), Arrays.asList(type_id, message, consultation_id), null);
 
     }
 
@@ -211,9 +211,9 @@ public class Apicalls {
      * @func CONFIRM_CONSULTATION
      */
 
-    public void confirm_consultation(String consultation_id, String payment_status) throws JSONException {
+    public void confirm_consultation(String consultation_id, String payment_status, String promo_code_id) throws JSONException {
 
-        apiRouter.makeAdvancedRequest(Apiclient.CONFIRM_CONSULTATION.getURL(), Request.Method.POST, Apiclient.CONFIRM_CONSULTATION.getParams(), Arrays.asList(consultation_id, payment_status), null);
+        apiRouter.makeAdvancedRequest(Apiclient.CONFIRM_CONSULTATION.getURL(), Request.Method.POST, Apiclient.CONFIRM_CONSULTATION.getParams(), Arrays.asList(consultation_id, payment_status, promo_code_id), null);
 
     }
 
@@ -237,8 +237,8 @@ public class Apicalls {
      * @func Confirm Conversation
      */
 
-    public void confirm_conversation(final String consultation_id, final String payment_status) throws JSONException {
-        apiRouter.makeAdvancedRequest(Apiclient.CONFIRM_CONVERSATION.getURL(), Request.Method.POST, Apiclient.CONFIRM_CONVERSATION.getParams(), Arrays.asList(consultation_id, payment_status), null);
+    public void confirm_conversation(final String consultation_id, final String payment_status, String consultation_promo) throws JSONException {
+        apiRouter.makeAdvancedRequest(Apiclient.CONFIRM_CONVERSATION.getURL(), Request.Method.POST, Apiclient.CONFIRM_CONVERSATION.getParams(), Arrays.asList(consultation_id, payment_status, consultation_promo), null);
 
     }
 
@@ -303,19 +303,13 @@ public class Apicalls {
 
         String language = new saved_data().get_lan(context);
 
-        if(language.equals("en"))
-        {
-            language ="en";  //IF LANGUAGE IS ENGLISH
+        if (language.equals("en")) {
+            language = "en";  //IF LANGUAGE IS ENGLISH
+        } else if (language.equals("de")) {
+            language = "de";  //IF LANGUAGE IS GERMANY
+        } else if (language.equals("ar")) {
+            language = "ar";  //IF LANGUAGE IS ARABIC
         }
-      else  if(language.equals("de"))
-        {
-            language ="de";  //IF LANGUAGE IS GERMANY
-        }
-        else if(language.equals("ar"))
-        {
-            language ="ar";  //IF LANGUAGE IS ARABIC
-        }
-
 
 
         apiRouter.makeAdvancedRequest(Apiclient.CHANGE_LANG.getURL(), Request.Method.POST, Apiclient.CHANGE_LANG.getParams(), Arrays.asList(language), null);

@@ -1,8 +1,9 @@
 package com.besolutions.konsil.scenarios.scenario_checkout_credit.controller;
 
 import android.content.Intent;
-import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.NonNull;
+import androidx.multidex.MultiDex;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -15,15 +16,9 @@ import com.besolutions.konsil.NetworkLayer.NetworkInterface;
 import com.besolutions.konsil.NetworkLayer.ResponseModel;
 import com.besolutions.konsil.R;
 import com.besolutions.konsil.scenarios.scenario_checkout_credit.model.secret_code;
-import com.besolutions.konsil.scenarios.scenario_login.Controller.login;
 import com.besolutions.konsil.scenarios.scenario_mian_page.Controller.main_screen;
-import com.besolutions.konsil.scenarios.scenario_payment_methods.controller.pament_method;
-import com.besolutions.konsil.scenarios.scenario_request_online_conversation.Controller.request_online_conversation;
-import com.besolutions.konsil.scenarios.scenario_request_online_conversation.model.conversation_reserve;
 import com.besolutions.konsil.utils.utils;
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import com.google.gson.reflect.TypeToken;
 import com.stripe.android.ApiResultCallback;
 import com.stripe.android.PaymentConfiguration;
 import com.stripe.android.PaymentIntentResult;
@@ -37,17 +32,14 @@ import org.json.JSONException;
 
 import java.io.IOException;
 import java.lang.ref.WeakReference;
-import java.lang.reflect.Type;
-import java.util.Map;
 import java.util.Objects;
 
 import es.dmoral.toasty.Toasty;
-import okhttp3.Response;
 
 public class checkout_credit extends AppCompatActivity implements NetworkInterface, View.OnClickListener {
     private String paymentIntentClientSecret;
     private Stripe stripe;
-    String consultation_price,consultation_id,consultation_type;
+    String consultation_price,consultation_id,consultation_type,consultation_promo;
     Button pay;
     secret_code secret_code;
     int num = 0;
@@ -71,6 +63,7 @@ public class checkout_credit extends AppCompatActivity implements NetworkInterfa
         consultation_price = getIntent().getStringExtra("consultation_price");
         consultation_id = getIntent().getStringExtra("consultation_id");
         consultation_type = getIntent().getStringExtra("consultation_type");
+        consultation_promo = getIntent().getStringExtra("consultation_promo");
 
         //CALL SERVER
         try {
@@ -196,10 +189,10 @@ public class checkout_credit extends AppCompatActivity implements NetworkInterfa
                 try {
                     if(consultation_type.equals("Consultation"))
                     {
-                        new Apicalls(checkout_credit.this, checkout_credit.this).confirm_consultation("" + consultation_id, "" + 1);
+                        new Apicalls(checkout_credit.this, checkout_credit.this).confirm_consultation("" + consultation_id, "" + 1,consultation_promo);
                     }
                     else {
-                        new Apicalls(checkout_credit.this, checkout_credit.this).confirm_conversation("" + consultation_id, "1");
+                        new Apicalls(checkout_credit.this, checkout_credit.this).confirm_conversation("" + consultation_id, "1",consultation_promo);
                     }
                 } catch (JSONException e) {
                     e.printStackTrace();

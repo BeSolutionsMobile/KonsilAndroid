@@ -1,33 +1,27 @@
 package com.besolutions.konsil.scenarios.scenario_request_online_conversation.Controller;
 
 import android.app.DatePickerDialog;
-import android.app.TimePickerDialog;
 import android.content.Intent;
-import android.support.annotation.Nullable;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.support.v7.widget.RecyclerView;
-import android.support.v7.widget.Toolbar;
-import android.util.Log;
+import androidx.recyclerview.widget.RecyclerView;
+import androidx.appcompat.widget.Toolbar;
+
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.ProgressBar;
 import android.widget.RatingBar;
 import android.widget.TextView;
-import android.widget.TimePicker;
-import android.widget.Toast;
 
 import com.android.volley.VolleyError;
 import com.besolutions.konsil.NetworkLayer.Apicalls;
 import com.besolutions.konsil.NetworkLayer.NetworkInterface;
 import com.besolutions.konsil.NetworkLayer.ResponseModel;
 import com.besolutions.konsil.R;
-import com.besolutions.konsil.config.Config;
 import com.besolutions.konsil.network_check_status.regist_network_broadcast;
-import com.besolutions.konsil.scenarios.scenario_Consulation_request.Controller.consulation_request;
 import com.besolutions.konsil.scenarios.scenario_mian_page.Controller.main_screen;
-import com.besolutions.konsil.scenarios.scenario_payment.controller.payment;
 import com.besolutions.konsil.scenarios.scenario_payment_methods.controller.pament_method;
 import com.besolutions.konsil.scenarios.scenario_request_online_conversation.model.Datum;
 import com.besolutions.konsil.scenarios.scenario_request_online_conversation.model.conversation_reserve;
@@ -36,16 +30,12 @@ import com.besolutions.konsil.scenarios.scenario_request_online_conversation.pat
 import com.besolutions.konsil.scenarios.scenario_request_online_conversation.model.conversation_reserv_list;
 import com.besolutions.konsil.utils.utils_adapter;
 import com.google.gson.Gson;
-import com.paypal.android.sdk.payments.PayPalConfiguration;
-import com.paypal.android.sdk.payments.PayPalPayment;
-import com.paypal.android.sdk.payments.PayPalService;
 import com.paypal.android.sdk.payments.PaymentActivity;
 import com.paypal.android.sdk.payments.PaymentConfirmation;
 import com.squareup.picasso.Picasso;
 
 import org.json.JSONException;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Calendar;
 
@@ -253,7 +243,7 @@ public class request_online_conversation extends AppCompatActivity implements Vi
                     String Successful_Payment = getResources().getString(R.string.successfull_payment);
                     Toasty.success(request_online_conversation.this, Successful_Payment, Toasty.LENGTH_LONG).show();
                     try {
-                        new Apicalls(request_online_conversation.this, request_online_conversation.this).confirm_conversation("" + conversation_reserve.getId(), "1");
+                        new Apicalls(request_online_conversation.this, request_online_conversation.this).confirm_conversation("" + conversation_reserve.getId(), "1","0");
                         complete_req_status = 2;
 
                     } catch (JSONException e) {

@@ -1,6 +1,6 @@
 package com.besolutions.konsil.scenarios.scenario_payment.controller;
 
-import android.support.v7.app.AppCompatActivity;
+import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -11,7 +11,6 @@ import android.widget.TextView;
 import com.besolutions.konsil.R;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class payment extends AppCompatActivity implements View.OnClickListener {
    Button pay;

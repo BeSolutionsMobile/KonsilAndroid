@@ -3,13 +3,12 @@ package com.besolutions.konsil.scenarios.scenario_doctor_list.Controller.filter.
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
-import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.RecyclerView;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.View;
 import android.view.Window;
 import android.widget.Button;
 import android.widget.RatingBar;
-import android.widget.Toast;
 
 import com.besolutions.konsil.R;
 import com.besolutions.konsil.scenarios.scenario_doctor_list.Controller.doctor_list;

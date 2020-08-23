@@ -2,23 +2,19 @@ package com.besolutions.konsil.scenarios.scenario_splash_screen.pattern;
 
 import android.content.Context;
 import android.content.Intent;
-import android.os.Handler;
-import android.support.annotation.NonNull;
-import android.support.v4.view.PagerAdapter;
+
+import androidx.annotation.NonNull;
+import androidx.viewpager.widget.PagerAdapter;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.besolutions.konsil.R;
 import com.besolutions.konsil.local_data.send_data;
-import com.besolutions.konsil.scenarios.scenario_login.Controller.login;
 import com.besolutions.konsil.scenarios.scenario_login.Controller.loginnormal;
-import com.besolutions.konsil.scenarios.scenario_splash_screen.Controller.splash_screen;
-import com.squareup.picasso.Picasso;
 
 public class viewimage extends PagerAdapter implements View.OnClickListener {
     Context context;

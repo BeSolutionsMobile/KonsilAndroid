@@ -1,277 +1,271 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.v4.widget.DrawerLayout xmlns:tools="http://schemas.android.com/tools"
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.drawerlayout.widget.DrawerLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/pro_bg"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     tools:context=".scenarios.scenario_doctor_info.Controller.doctor_info">
-   <RelativeLayout
-       android:layout_width="match_parent"
-       android:layout_height="match_parent">
-       <android.support.v4.widget.NestedScrollView
-           android:layout_width="match_parent"
-           android:layout_height="match_parent">
-    <LinearLayout
-      android:layout_width="match_parent"
-      android:layout_height="match_parent"
-      android:orientation="vertical">
-      <include layout="@layout/toolbar_default"
-          android:id="@+id/toolbar_actionbar"
-          />
-        <include layout="@layout/connection_txt"/>
 
-        <com.facebook.shimmer.ShimmerFrameLayout
-            android:id="@+id/shimmer_view_container"
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.core.widget.NestedScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/_15sdp">
+            android:layout_height="match_parent">
 
-            <android.support.v7.widget.CardView
-                android:layout_width="@dimen/_86sdp"
-                android:layout_height="@dimen/_86sdp"
-                app:cardCornerRadius="@dimen/_43sdp"
-                android:padding="@dimen/_20sdp"
-                app:cardBackgroundColor="@color/color3"
-                android:layout_gravity="center"
-                >
-                <android.support.v7.widget.CardView
-                    android:layout_width="@dimen/_84sdp"
-                    android:layout_height="@dimen/_84sdp"
-                    app:cardCornerRadius="@dimen/_42sdp"
-                    app:cardBackgroundColor="@color/color1"
-                    android:layout_gravity="center"
-                    >
-                    <de.hdodenhof.circleimageview.CircleImageView
-                        android:layout_width="@dimen/_83sdp"
-                        android:layout_height="@dimen/_83sdp"
-                        android:id="@+id/doc_img"
-                        android:src="@drawable/konzil_logo"
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <include
+                    android:id="@+id/toolbar_actionbar"
+                    layout="@layout/toolbar_default" />
+
+                <include layout="@layout/connection_txt" />
+
+                <com.facebook.shimmer.ShimmerFrameLayout
+                    android:id="@+id/shimmer_view_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_15sdp">
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="@dimen/_86sdp"
+                        android:layout_height="@dimen/_86sdp"
                         android:layout_gravity="center"
-                        />
-                </android.support.v7.widget.CardView>
-            </android.support.v7.widget.CardView>
+                        android:padding="@dimen/_20sdp"
+                        app:cardBackgroundColor="@color/color3"
+                        app:cardCornerRadius="@dimen/_43sdp">
+
+                        <androidx.cardview.widget.CardView
+                            android:layout_width="@dimen/_84sdp"
+                            android:layout_height="@dimen/_84sdp"
+                            android:layout_gravity="center"
+                            app:cardBackgroundColor="@color/color1"
+                            app:cardCornerRadius="@dimen/_42sdp">
+
+                            <de.hdodenhof.circleimageview.CircleImageView
+                                android:id="@+id/doc_img"
+                                android:layout_width="@dimen/_83sdp"
+                                android:layout_height="@dimen/_83sdp"
+                                android:layout_gravity="center"
+                                android:src="@drawable/konzil_logo" />
+                        </androidx.cardview.widget.CardView>
+                    </androidx.cardview.widget.CardView>
 
 
-        </com.facebook.shimmer.ShimmerFrameLayout>
+                </com.facebook.shimmer.ShimmerFrameLayout>
 
 
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_marginRight="@dimen/_10sdp"
+                    android:gravity="center|top"
+                    android:orientation="horizontal">
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="horizontal">
-      <TextView
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:id="@+id/degree"
-          android:gravity="center"
-          android:layout_marginTop="@dimen/_3sdp"
-          android:textColor="@color/color3"
-          android:textSize="@dimen/_14ssp"
-          />
-            <TextView
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:id="@+id/doc_name"
-          android:gravity="center"
-          android:layout_marginLeft="@dimen/_4sdp"
-          android:layout_marginTop="@dimen/_3sdp"
-          android:textColor="@color/color2"
-          android:textSize="@dimen/_14ssp"
-          />
-        </LinearLayout>
-      <TextView
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:id="@+id/doc_job"
-          android:gravity="center"
-          android:textSize="@dimen/_13ssp"
-          android:textColor="@android:color/black"
-          />
-      <RatingBar
-          android:id="@+id/ratings"
-          style="?android:attr/ratingBarStyleSmall"
-          android:layout_width="wrap_content"
-          android:isIndicator="true"
-          android:focusable="false"
-          android:clickable="false"
-          android:scaleX="1.4"
-          android:scaleY="1.4"
-          android:layout_marginTop="@dimen/_7sdp"
-          android:layout_gravity="center"
-          android:stepSize=".2"
-          android:layout_height="wrap_content"
-          android:progressTint="@color/color4"
-          android:progressBackgroundTint="#000000"
-          android:secondaryProgressTint="#ffffff"
-          android:numStars="5"
-          />
-      <LinearLayout
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:layout_marginTop="@dimen/_13sdp"
-          android:layout_marginRight="@dimen/_32sdp"
-          android:paddingBottom="@dimen/_5sdp"
-          android:paddingTop="@dimen/_3sdp"
-          android:layout_marginLeft="@dimen/_32sdp"
-          android:background="@drawable/doctor_details_bg"
-          android:orientation="horizontal"
-          android:weightSum="1"
-          >
-          <LinearLayout
-              android:layout_weight=".2995"
-              android:layout_width="0dp"
-              android:orientation="vertical"
-              android:gravity="center"
-              android:layout_height="match_parent">
-              <TextView
-                  android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:text="@string/consultation"
-                  android:textSize="@dimen/_10ssp"
-                  android:textColor="@color/color2"
-                  />
-              <TextView
-                  android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:textSize="@dimen/_10ssp"
-                  android:layout_marginTop="@dimen/_2sdp"
-                  android:id="@+id/consultation"
-                  android:textColor="@color/color2"
-                  />
-          </LinearLayout>
-          <View
-              android:layout_weight=".005"
-              android:layout_width="0dp"
-              android:background="@color/color3"
-              android:layout_height="match_parent"/>
-          <LinearLayout
-              android:layout_weight=".4"
-              android:layout_width="0dp"
-              android:orientation="vertical"
-              android:gravity="center"
-              android:layout_height="match_parent">
+                    <TextView
+                        android:id="@+id/degree"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_3sdp"
+                        android:gravity="center|top"
+                        android:textColor="@color/color3"
+                        android:textSize="@dimen/_12ssp" />
 
-              <TextView
-                  android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:text="@string/consulation_price"
-                  android:textColor="@color/color2"
-                  android:textSize="@dimen/_10ssp" />
-              <LinearLayout
-                  android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:orientation="horizontal">
-              <TextView
-                  android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:id="@+id/price"
-                  android:textSize="@dimen/_10ssp"
-                  android:textColor="@color/color2"
-                  />
-                  <TextView
-                      android:layout_width="wrap_content"
-                      android:layout_height="wrap_content"
-                      android:text="EUR"
-                      android:layout_marginLeft="@dimen/_2sdp"
-                      android:textSize="@dimen/_10ssp"
-                      android:textColor="@color/color2"
-                      />
-              </LinearLayout>
-          </LinearLayout>
-          <View
-              android:layout_weight=".005"
-              android:layout_width="0dp"
-              android:background="@color/color3"
-              android:layout_height="match_parent"/>
-          <LinearLayout
-              android:layout_weight=".2995"
-              android:layout_width="0dp"
-              android:orientation="vertical"
-              android:gravity="center"
-              android:layout_height="match_parent">
-              <TextView
-                  android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:text="@string/conversation"
-                  android:textSize="@dimen/_10ssp"
-                  android:textColor="@color/color2"
-                  />
-              <TextView
-                  android:layout_width="wrap_content"
-                  android:layout_height="wrap_content"
-                  android:textSize="@dimen/_10ssp"
-                  android:id="@+id/conversation"
-                  android:textColor="@color/color2"
-                  />
-          </LinearLayout>
-      </LinearLayout>
-      <com.borjabravo.readmoretextview.ReadMoreTextView
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:paddingRight="@dimen/_40sdp"
-          android:gravity="center"
-          app:trimLength="100"
-          app:trimExpandedText="@string/show_less"
-          app:trimCollapsedText="@string/show_more"
-          android:paddingLeft="@dimen/_40sdp"
-          android:justificationMode="inter_word"
-          android:textColor="@android:color/black"
-          android:layout_marginTop="@dimen/_15sdp"
-          android:textSize="@dimen/_12ssp"
-          app:trimMode="trimModeLength"
-          android:id="@+id/doc_desc"
-          />
-      <LinearLayout
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:weightSum="1"
-          android:layout_marginBottom="@dimen/_30sdp"
-          android:layout_marginTop="@dimen/_15sdp"
-          android:gravity="center"
-          android:layout_marginRight="@dimen/_35sdp"
-          android:layout_marginLeft="@dimen/_35sdp"
-          android:orientation="horizontal">
-          <Button
-              android:layout_weight=".48"
-              android:layout_width="0dp"
+                    <TextView
+                        android:id="@+id/doc_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/_3sdp"
+                        android:layout_marginLeft="@dimen/_2sdp"
 
-              android:text="@string/request_consulation"
-              android:textAllCaps="false"
-              android:textSize="@dimen/_11ssp"
-              android:id="@+id/request_consulation"
-              android:textColor="@android:color/white"
-              android:layout_height="match_parent"
-              android:background="@drawable/request_consulation_bg"
-              />
-          <Button
-              android:layout_weight=".02"
-              android:layout_width="0dp"
-              android:layout_height="match_parent"/>
-          <Button
-              android:layout_weight=".48"
-              android:layout_width="0dp"
-              android:id="@+id/online_res"
-              android:text="@string/requst_online_converstaion"
-              android:textAllCaps="false"
-              android:textSize="@dimen/_11ssp"
-              android:textColor="@android:color/white"
-              android:layout_height="match_parent"
-              android:background="@drawable/request_online_conversation"
-              />
-      </LinearLayout>
+                        android:gravity="center|left"
+                        android:textColor="@color/color2"
+                        android:textSize="@dimen/_12ssp" />
+                </LinearLayout>
 
-  </LinearLayout>
-       </android.support.v4.widget.NestedScrollView>
-       <ProgressBar
-           android:layout_width="@dimen/_50sdp"
-           android:layout_height="@dimen/_50sdp"
-           android:id="@+id/pg"
-           android:visibility="gone"
-           android:indeterminateTint="@color/color2"
-           android:layout_centerInParent="true"
-           />
-   </RelativeLayout>
-</android.support.v4.widget.DrawerLayout>
+                <TextView
+                    android:id="@+id/doc_job"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_4sdp"
+                    android:gravity="center"
+                    android:layout_marginLeft="@dimen/_10sdp"
+                    android:layout_marginRight="10dp"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/_12ssp" />
+
+                <RatingBar
+                    android:id="@+id/ratings"
+                    style="?android:attr/ratingBarStyleSmall"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="@dimen/_7sdp"
+                    android:clickable="false"
+                    android:focusable="false"
+                    android:isIndicator="true"
+                    android:numStars="5"
+                    android:progressBackgroundTint="#000000"
+                    android:progressTint="@color/color4"
+                    android:scaleX="1.4"
+                    android:scaleY="1.4"
+                    android:secondaryProgressTint="#ffffff"
+                    android:stepSize=".2" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/_32sdp"
+                    android:layout_marginTop="@dimen/_13sdp"
+                    android:layout_marginRight="@dimen/_32sdp"
+                    android:background="@drawable/doctor_details_bg"
+                    android:orientation="horizontal"
+                    android:paddingTop="@dimen/_3sdp"
+                    android:paddingBottom="@dimen/_5sdp"
+                    android:weightSum="1">
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight=".005"
+                        android:background="@color/color3" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight=".5"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/consulation_price"
+                            android:textColor="@color/color2"
+                            android:textSize="@dimen/_10ssp" />
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/price"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:textColor="@color/color2"
+                                android:textSize="@dimen/_10ssp" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="@dimen/_2sdp"
+                                android:text="EUR"
+                                android:textColor="@color/color2"
+                                android:textSize="@dimen/_10ssp" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight=".005"
+                        android:background="@color/color3" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight=".5"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/conversation_price"
+                            android:textColor="@color/color2"
+                            android:textSize="@dimen/_10ssp" />
+
+                        <TextView
+                            android:id="@+id/conversation"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textColor="@color/color2"
+                            android:textSize="@dimen/_10ssp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <com.borjabravo.readmoretextview.ReadMoreTextView
+                    android:id="@+id/doc_desc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:gravity="center"
+                    android:justificationMode="inter_word"
+                    android:paddingLeft="@dimen/_40sdp"
+                    android:paddingRight="@dimen/_40sdp"
+                    android:textColor="@android:color/black"
+                    android:textSize="@dimen/_12ssp"
+                    app:trimCollapsedText="@string/show_more"
+                    app:trimExpandedText="@string/show_less"
+                    app:trimLength="100"
+                    app:trimMode="trimModeLength" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="@dimen/_35sdp"
+                    android:layout_marginTop="@dimen/_15sdp"
+                    android:layout_marginRight="@dimen/_35sdp"
+                    android:layout_marginBottom="@dimen/_30sdp"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:weightSum="1">
+
+                    <Button
+                        android:id="@+id/request_consulation"
+                        android:layout_width="0dp"
+
+                        android:layout_height="match_parent"
+                        android:layout_weight=".48"
+                        android:background="@drawable/request_consulation_bg"
+                        android:text="@string/request_consulation"
+                        android:textAllCaps="false"
+                        android:textColor="@android:color/white"
+                        android:textSize="@dimen/_11ssp" />
+
+                    <Button
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight=".02" />
+
+                    <Button
+                        android:id="@+id/online_res"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight=".48"
+                        android:background="@drawable/request_online_conversation"
+                        android:text="@string/requst_online_converstaion"
+                        android:textAllCaps="false"
+                        android:textColor="@android:color/white"
+                        android:textSize="@dimen/_11ssp" />
+                </LinearLayout>
+
+            </LinearLayout>
+        </androidx.core.widget.NestedScrollView>
+
+        <ProgressBar
+            android:id="@+id/pg"
+            android:layout_width="@dimen/_50sdp"
+            android:layout_height="@dimen/_50sdp"
+            android:layout_centerInParent="true"
+            android:indeterminateTint="@color/color2"
+            android:visibility="gone" />
+    </RelativeLayout>
+</androidx.drawerlayout.widget.DrawerLayout>

@@ -4,8 +4,8 @@ package com.besolutions.konsil.scenarios.scenario_Consulation_result.Controller.
 import android.content.Intent;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.app.Fragment;
-import android.support.v7.widget.RecyclerView;
+import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -13,7 +13,6 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.android.volley.VolleyError;
 import com.besolutions.konsil.NetworkLayer.Apicalls;
@@ -24,12 +23,9 @@ import com.besolutions.konsil.scenarios.scenario_Consulation_result.Controller.C
 import com.besolutions.konsil.scenarios.scenario_Consulation_result.Controller.Consulation_result.fragment_report.model.root_download_report;
 import com.besolutions.konsil.scenarios.scenario_make_complaint.Controller.make_a_complaint;
 import com.besolutions.konsil.scenarios.scenario_my_consultations.pattern.my_consultations_adapter;
-import com.besolutions.konsil.scenarios.scenario_request_online_conversation.Controller.request_online_conversation;
 import com.google.gson.Gson;
 
 import org.json.JSONException;
-
-import es.dmoral.toasty.Toasty;
 
 /**
  * A simple {@link Fragment} subclass.

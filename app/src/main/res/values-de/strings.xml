@@ -544,4 +544,6 @@ OK       Mehr Informationen
     <string name="prome_code_here">Promo-Code hier</string>
     <string name="insert_promo">Sie müssen mindestens das Wort einfügen</string>
     <string name="invalid_promo">Ungültiger Promo-Code</string>
+    <string name="conversation_price">Gesprächspreis</string>
+
 </resources>
